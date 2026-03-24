@@ -2,11 +2,191 @@
 require_once '../app/config/config.php';
 
 $pageTitle = "Home - " . APP_NAME;
-$pageDescription = "Durga Saptashati Foundation - A non-profit organization dedicated to serving humanity through various charitable activities, education, healthcare, and social welfare.";
-$pageKeywords = "Durga Saptashati, NGO, charity, donate, volunteer, education, healthcare, community development, women empowerment, spiritual, India";
+$pageDescription = "Durga Saptashati Foundation - Empowerment, Education, Equality, Empathy. A trusted charity organisation in Delhi working for the empowerment of women, deprived children, senior citizens, and people with disabilities.";
 
 include '../app/views/layout/header.php';
 ?>
+
+<style>
+    .sanskrit-section {
+        background: url('<?php echo asset('img/facts.jpg') ?>') center center/cover no-repeat fixed;
+        position: relative;
+        padding: 100px 0;
+        color: #fff;
+    }
+    .sanskrit-section::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(26,27,46,0.85);
+    }
+    .sanskrit-text {
+        font-size: 2.2rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
+    .sanskrit-translation {
+        font-size: 1.2rem;
+        font-style: italic;
+        opacity: 0.9;
+    }
+    .gallery-section .gallery-item {
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 30px;
+        border-radius: 8px;
+    }
+    .gallery-section .gallery-item img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+    .gallery-section .gallery-item:hover img {
+        transform: scale(1.1);
+    }
+    .gallery-section .gallery-item .gallery-overlay {
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(242,101,34,0.7);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+    .gallery-section .gallery-item:hover .gallery-overlay {
+        opacity: 1;
+    }
+    .gallery-overlay a {
+        color: #fff;
+        font-size: 2rem;
+        width: 50px; height: 50px;
+        border: 2px solid #fff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s;
+    }
+    .gallery-overlay a:hover {
+        background: #fff;
+        color: #f26522;
+    }
+    .activities-section .activity-card {
+        background: #fff;
+        border-radius: 10px;
+        padding: 40px 25px;
+        text-align: center;
+        box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+        transition: all 0.4s ease;
+        height: 100%;
+    }
+    .activities-section .activity-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 40px rgba(242,101,34,0.2);
+    }
+    .activities-section .activity-card .icon-wrap {
+        width: 80px; height: 80px;
+        border-radius: 50%;
+        background: rgba(242,101,34,0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px;
+        font-size: 2rem;
+        color: #f26522;
+        transition: all 0.4s;
+    }
+    .activities-section .activity-card:hover .icon-wrap {
+        background: #f26522;
+        color: #fff;
+    }
+    .section-title span {
+        color: #f26522;
+    }
+    .causes-card {
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+        transition: all 0.4s;
+        background: #fff;
+        height: 100%;
+    }
+    .causes-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    }
+    .causes-card img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+    }
+    .causes-card .causes-body {
+        padding: 25px;
+    }
+    .causes-card .causes-body h5 {
+        color: #1a1b2e;
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+    .causes-card .causes-body p {
+        color: #666;
+        font-size: 0.95rem;
+        line-height: 1.7;
+    }
+    .event-card {
+        background: #fff;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        transition: all 0.3s;
+    }
+    .event-card:hover {
+        box-shadow: 0 10px 35px rgba(0,0,0,0.15);
+    }
+    .event-card .event-date {
+        background: #f26522;
+        color: #fff;
+        padding: 15px;
+        text-align: center;
+        min-width: 100px;
+    }
+    .event-card .event-date .day {
+        font-size: 2rem;
+        font-weight: 700;
+        line-height: 1;
+    }
+    .event-card .event-date .month {
+        font-size: 0.9rem;
+        text-transform: uppercase;
+    }
+    .event-card .event-info {
+        padding: 20px;
+    }
+    .event-card .event-info h5 {
+        font-weight: 700;
+        color: #1a1b2e;
+        margin-bottom: 10px;
+    }
+    .event-card .event-info p {
+        color: #888;
+        font-size: 0.9rem;
+        margin-bottom: 5px;
+    }
+    .tab-content-section .nav-tabs .nav-link {
+        color: #4a4c70;
+        font-weight: 600;
+        border: none;
+        border-bottom: 3px solid transparent;
+        padding: 10px 25px;
+    }
+    .tab-content-section .nav-tabs .nav-link.active {
+        color: #f26522;
+        border-bottom-color: #f26522;
+        background: transparent;
+    }
+</style>
 
 <!-- Carousel Start -->
 <div class="carousel" data-aos="fade" data-aos-duration="1500">
@@ -14,57 +194,47 @@ include '../app/views/layout/header.php';
         <div class="owl-carousel owl-theme">
             <div class="carousel-item">
                 <div class="carousel-img">
-                    <img src="<?php echo asset('img/carousel/carousel.webp'); ?>" alt="Helping Children">
+                    <img src="<?php echo asset('img/carousel/carousel.webp'); ?>" alt="Durga Saptashati Foundation">
                 </div>
                 <div class="carousel-text">
-                    <h1 data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">Let's be kind for children</h1>
+                    <h1 data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">Durga Saptashati Foundation</h1>
+                    <p data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000" style="letter-spacing: 2px; font-size: 1.1rem;">
+                        Empowerment || Education || Equality || Empathy
+                    </p>
+                    <div class="carousel-btn" data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000">
+                        <a class="btn btn-custom" href="<?php echo url('donate.php'); ?>">Donate Now</a>
+                        <a class="btn btn-custom" href="<?php echo url('become-volunteer.php'); ?>">Join Us</a>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="carousel-img">
+                    <img src="<?php echo asset('img/carousel/carousel-1.webp'); ?>" alt="Our Commitment to Community">
+                </div>
+                <div class="carousel-text">
+                    <h1 data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">Our Commitment to Community!</h1>
                     <p data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000">
-                        Join us in making a difference in the lives of underprivileged children through education,
-                        healthcare, and spiritual guidance.
+                        A trusted charity organisation in Delhi working for the empowerment of women, deprived children, senior citizens, and people with disabilities.
                     </p>
                     <div class="carousel-btn" data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000">
-                        <a class="btn btn-custom" href="<?php echo url('donate.php'); ?>">Donate Now</a>
+                        <a class="btn btn-custom" href="<?php echo url('about.php'); ?>">Learn More</a>
                         <a class="btn btn-custom btn-play" data-toggle="modal"
-                            data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-target="#videoModal">Watch
-                            Video</a>
+                            data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-target="#videoModal">Watch Video</a>
                     </div>
                 </div>
             </div>
             <div class="carousel-item">
                 <div class="carousel-img">
-                    <img src="<?php echo asset('img/carousel/carousel-1.webp'); ?>" alt="Helping Hand">
+                    <img src="<?php echo asset('img/carousel/carousel-2.webp'); ?>" alt="Gender Equality to Social Justice">
                 </div>
                 <div class="carousel-text">
-                    <h1 data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">Get Involved with helping hand
-                    </h1>
-                    <p>
-                        Together we can create positive change in society through compassion, service, and dedication to
-                        the divine mother.
+                    <h1 data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">From Gender Equality to Social Justice</h1>
+                    <p data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000">
+                        We are dismantling barriers, challenging stereotypes, and creating a more inclusive society through grassroots initiatives.
                     </p>
                     <div class="carousel-btn" data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000">
                         <a class="btn btn-custom" href="<?php echo url('donate.php'); ?>">Donate Now</a>
-                        <a class="btn btn-custom btn-play" data-toggle="modal"
-                            data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-target="#videoModal">Watch
-                            Video</a>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="carousel-img">
-                    <img src="<?php echo asset('img/carousel/carousel-2.webp'); ?>" alt="Bringing Smiles">
-                </div>
-                <div class="carousel-text">
-                    <h1 data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">Bringing smiles to millions
-                    </h1>
-                    <p>
-                        Through the grace of Durga Ma, we work tirelessly to bring hope, healing, and happiness to those
-                        in need.
-                    </p>
-                    <div class="carousel-btn" data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000">
-                        <a class="btn btn-custom" href="<?php echo url('donate.php'); ?>">Donate Now</a>
-                        <a class="btn btn-custom btn-play" data-toggle="modal"
-                            data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-target="#videoModal">Watch
-                            Video</a>
+                        <a class="btn btn-custom" href="<?php echo url('contact.php'); ?>">Get Involved</a>
                     </div>
                 </div>
             </div>
@@ -73,19 +243,16 @@ include '../app/views/layout/header.php';
 </div>
 <!-- Carousel End -->
 
-<!-- Video Modal Start-->
-<div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+<!-- Video Modal Start -->
+<div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-body">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <!-- 16:9 aspect ratio -->
                 <div class="embed-responsive embed-responsive-16by9">
-                    <iframe class="embed-responsive-item" src="" id="video" allowscriptaccess="always"
-                        allow="autoplay"></iframe>
+                    <iframe class="embed-responsive-item" src="" id="video" allowscriptaccess="always" allow="autoplay"></iframe>
                 </div>
             </div>
         </div>
@@ -93,762 +260,657 @@ include '../app/views/layout/header.php';
 </div>
 <!-- Video Modal End -->
 
-
-<!-- About Start -->
-<div class="about">
-    <div class="container-fluid">
-        <div class="row align-items-center">
-            <div class="col-lg-6">
-                <div class="about-img" data-aos="fade-right" data-aos-duration="1200" data-aos-once="true"
-                    data-parallax="scroll" data-image-src="<?php echo asset('img/about.jpg'); ?>">
-                </div>
-            </div>
-            <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1200" data-aos-once="true">
-                <div class="section-header">
-                    <p>Learn About Us</p>
-                    <h2>Spiritual foundation serving humanity</h2>
-                </div>
-                <div class="about-tab">
-                    <ul class="nav nav-pills nav-justified">
-                        <li class="nav-item">
-                            <a class="nav-link active" data-toggle="pill" href="javascript:void(0);"
-                                data-target="#tab-content-1" onclick="return false;">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="pill" href="javascript:void(0);"
-                                data-target="#tab-content-2" onclick="return false;">Mission</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="pill" href="javascript:void(0);"
-                                data-target="#tab-content-3" onclick="return false;">Vision</a>
-                        </li>
-                    </ul>
-
-                    <div class="tab-content text-justify">
-                        <div id="tab-content-1" class="tab-pane active donate-text">
-                            <p>Durga Saptashati Foundation is a women’s rights nonprofit
-                                organization which is a platform to empower widows, handicapped people, disabled people,
-                                senior citizens and
-                                women of the nation. With the goals of providing strength, confidence, better living,
-                                and respect, Saptashati Foundation brings in enlightenment and a ray of hope in the
-                                world of people who have gone through a lot of test things in their lives. We are the
-                                voice of these people, and we are dedicated to bringing that positive change that can
-                                bring happiness in their lives. We closely work with rural and urban women and
-                                organizations on various problems to make their lives better. Saptashati Foundation also
-                                links to various civil-society organizations on the welfare of society by addressing and
-                                resolving many issues for women and senior citizens. From providing better education for
-                                the needy people to raising voice against dowry harassment, child marriage, female
-                                genital mutilation, our team of Saptashati Foundation becomes the voice of the strong
-                                women of India and let them live with independence and a sense of respect in whatever
-                                they are doing.</p>
+<!-- About Section Start -->
+<div class="container-fluid py-5" id="about">
+    <div class="container py-4">
+        <div class="row" style="align-items:stretch;">
+            <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right" data-aos-duration="1000">
+                <div class="position-relative h-100" style="border-radius:12px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,0.12);">
+                    <img src="<?php echo asset('img/about.jpg') ?>" alt="About Durga Saptashati" style="width:100%;height:100%;object-fit:cover;display:block;">
+                    <a class="position-absolute d-flex align-items-center justify-content-center" href="" data-toggle="modal" data-target="#videoModal" style="top:0;left:0;right:0;bottom:0;background:linear-gradient(to top,rgba(0,0,0,0.5),rgba(0,0,0,0.1));">
+                        <div style="width:70px;height:70px;border-radius:50%;background:rgba(242,101,34,0.9);display:flex;align-items:center;justify-content:center;transition:all 0.3s;box-shadow:0 5px 25px rgba(242,101,34,0.4);" onmouseover="this.style.transform='scale(1.1)';this.style.background='#f26522'" onmouseout="this.style.transform='scale(1)';this.style.background='rgba(242,101,34,0.9)'">
+                            <i class="fa fa-play text-white" style="font-size:1.5rem;margin-left:4px;"></i>
                         </div>
-                        <div id="tab-content-2" class="tab-pane fade donate-text">
-                            <p>Widowed women, handicapped people, disabled people, have to struggle for their rights and
-                                are frequently victims of discrimination. At Saptashati Foundation, our team works
-                                towards empowering the widowed women of our Indian society and, we ensure that we reach
-                                every corner of India to uplift these widowed from their distressed state. Sustaining
-                                economic insecurity, social disgrace, and often abandonment, widowed women are facing
-                                several challenges in Indian society. At Saptashati Foundation, we are committed to
-                                transforming societal attitudes towards widowed women. We aim to shift Widowed women and
-                                their children need our support and care. Saptashati Foundation was established with the
-                                aim to inspire a sense of welfare and bring a social revolution in the way we see these
-                                serious matters. Our purpose is to offer financial and social as well as economic
-                                security to women who have endured the grief of widowhood. We help, assist, and support
-                                old and young widowed women in rural and urban areas to regain an opportunity at a more
-                                secure life. </p>
-                        </div>
-                        <div id="tab-content-3" class="tab-pane fade donate-text">
-                            <p>Our vision focuses on the welfare of handicapped people, widows, and senior citizens. In
-                                a bid to empower them with equal opportunities, we help them live independently with
-                                pride, dignity and self respect. We work towards the economic reform of these people,
-                                and help them provide the right skillset and exposure, so they may move forward in life.
-                                We fight against dowry harassment, infanticide, and human trafficking. Women comprise of
-                                half the population of the globe and share one percent of the resources. In India, women
-                                have been enduring hardships on account of their widowed or even divorced status. They
-                                are homebound often on account of this marital status, restricting them to grow
-                                personally or professionally. The growing globalization that benefits only the urban
-                                areas shows no remarkable impact on underprivileged rural areas- where women are still
-                                suffering due to societal pressures. Every change on the planet starts with a new phase
-                                of consciousness, a new experience, and a new vision.</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- About End -->
-
-
-<!-- Service Start -->
-<div class="service" data-aos="fade-up" data-aos-duration="1000">
-    <div class="container-fluid">
-        <div class="section-header text-center" data-aos="fade-up" data-aos-duration="800">
-            <p>What We Do?</p>
-            <h2>We believe that we can save more lives with you</h2>
-        </div>
-        <div class="row">
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
-                <div class="service-item">
-                    <div class="service-icon">
-                        <i class="flaticon-diet"></i>
-                    </div>
-                    <div class="service-text">
-                        <h3>Healthy Food</h3>
-                        <p>Providing nutritious meals and food security programs for underprivileged families and
-                            children</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
-                <div class="service-item">
-                    <div class="service-icon">
-                        <i class="flaticon-water"></i>
-                    </div>
-                    <div class="service-text">
-                        <h3>Pure Water</h3>
-                        <p>Ensuring access to clean and safe drinking water through well construction and purification
-                            systems</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
-                <div class="service-item">
-                    <div class="service-icon">
-                        <i class="flaticon-healthcare"></i>
-                    </div>
-                    <div class="service-text">
-                        <h3>Health Care</h3>
-                        <p>Providing medical assistance, health camps, and healthcare awareness programs for communities
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
-                <div class="service-item">
-                    <div class="service-icon">
-                        <i class="flaticon-education"></i>
-                    </div>
-                    <div class="service-text">
-                        <h3>Primary Education</h3>
-                        <p>Supporting education through scholarships, school supplies, and learning centers for children
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
-                <div class="service-item">
-                    <div class="service-icon">
-                        <i class="flaticon-home"></i>
-                    </div>
-                    <div class="service-text">
-                        <h3>Residence Facilities</h3>
-                        <p>Providing safe shelter and temporary housing for homeless and vulnerable individuals</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
-                <div class="service-item">
-                    <div class="service-icon">
-                        <i class="flaticon-social-care"></i>
-                    </div>
-                    <div class="service-text">
-                        <h3>Social Care</h3>
-                        <p>Offering counseling, emotional support, and community development programs</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Service End -->
-
-
-<!-- Facts Start -->
-<div class="facts" data-parallax="scroll" data-image-src="<?php echo asset('img/facts.jpg'); ?>" data-aos="fade"
-    data-aos-duration="1000">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="800">
-                <div class="facts-item">
-                    <i class="flaticon-home"></i>
-                    <div class="facts-text">
-                        <h3 class="facts-plus" data-toggle="counter-up">25</h3>
-                        <p>Communities</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="800">
-                <div class="facts-item">
-                    <i class="flaticon-charity"></i>
-                    <div class="facts-text">
-                        <h3 class="facts-plus" data-toggle="counter-up">150</h3>
-                        <p>Volunteers</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="800">
-                <div class="facts-item">
-                    <i class="flaticon-kindness"></i>
-                    <div class="facts-text">
-                        <h3 class="facts-dollar" data-toggle="counter-up">500000</h3>
-                        <p>Our Goal</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="800">
-                <div class="facts-item">
-                    <i class="flaticon-donation"></i>
-                    <div class="facts-text">
-                        <h3 class="facts-dollar" data-toggle="counter-up">250000</h3>
-                        <p>Raised</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Facts End -->
-
-
-<!-- Causes Start -->
-<div class="causes" data-aos="fade-up" data-aos-duration="1000">
-    <div class="container-fluid">
-        <div class="section-header text-center" data-aos="fade-up" data-aos-duration="800">
-            <p>Popular Causes</p>
-            <h2>Let's know about charity causes around the world</h2>
-        </div>
-        <div class="owl-carousel causes-carousel" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
-            <div class="causes-item">
-                <div class="causes-img">
-                    <img src="<?php echo asset('img/causes-1.jpg'); ?>" alt="Image">
-                </div>
-                <div class="causes-progress">
-                    <div class="progress">
-                        <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0"
-                            aria-valuemax="100">
-                            <span>85%</span>
-                        </div>
-                    </div>
-                    <div class="progress-text">
-                        <p><strong>Raised:</strong> ₹85,000</p>
-                        <p><strong>Goal:</strong> ₹1,00,000</p>
-                    </div>
-                </div>
-                <div class="causes-text">
-                    <h3>Education for Underprivileged Children</h3>
-                    <p>Supporting the education of children from disadvantaged backgrounds through scholarships and
-                        learning materials</p>
-                </div>
-                <div class="causes-btn">
-                    <a class="btn btn-custom" href="<?php echo url('causes.php'); ?>">Learn More</a>
-                    <a class="btn btn-custom" href="<?php echo url('donate.php'); ?>">Donate Now</a>
-                </div>
-            </div>
-            <div class="causes-item">
-                <div class="causes-img">
-                    <img src="<?php echo asset('img/causes-2.jpg'); ?>" alt="Image">
-                </div>
-                <div class="causes-progress">
-                    <div class="progress">
-                        <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0"
-                            aria-valuemax="100">
-                            <span>70%</span>
-                        </div>
-                    </div>
-                    <div class="progress-text">
-                        <p><strong>Raised:</strong> ₹70,000</p>
-                        <p><strong>Goal:</strong> ₹1,00,000</p>
-                    </div>
-                </div>
-                <div class="causes-text">
-                    <h3>Healthcare for Rural Communities</h3>
-                    <p>Providing medical assistance and health awareness programs in remote villages and underserved
-                        areas</p>
-                </div>
-                <div class="causes-btn">
-                    <a class="btn btn-custom" href="<?php echo url('causes.php'); ?>">Learn More</a>
-                    <a class="btn btn-custom" href="<?php echo url('donate.php'); ?>">Donate Now</a>
-                </div>
-            </div>
-            <div class="causes-item">
-                <div class="causes-img">
-                    <img src="<?php echo asset('img/causes-3.jpg'); ?>" alt="Image">
-                </div>
-                <div class="causes-progress">
-                    <div class="progress">
-                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0"
-                            aria-valuemax="100">
-                            <span>60%</span>
-                        </div>
-                    </div>
-                    <div class="progress-text">
-                        <p><strong>Raised:</strong> ₹60,000</p>
-                        <p><strong>Goal:</strong> ₹1,00,000</p>
-                    </div>
-                </div>
-                <div class="causes-text">
-                    <h3>Food Security Program</h3>
-                    <p>Ensuring nutritious meals for hungry families and children through our community kitchen
-                        initiatives</p>
-                </div>
-                <div class="causes-btn">
-                    <a class="btn btn-custom" href="<?php echo url('causes.php'); ?>">Learn More</a>
-                    <a class="btn btn-custom" href="<?php echo url('donate.php'); ?>">Donate Now</a>
-                </div>
-            </div>
-            <div class="causes-item">
-                <div class="causes-img">
-                    <img src="<?php echo asset('img/causes-4.jpg'); ?>" alt="Image">
-                </div>
-                <div class="causes-progress">
-                    <div class="progress">
-                        <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0"
-                            aria-valuemax="100">
-                            <span>90%</span>
-                        </div>
-                    </div>
-                    <div class="progress-text">
-                        <p><strong>Raised:</strong> ₹90,000</p>
-                        <p><strong>Goal:</strong> ₹1,00,000</p>
-                    </div>
-                </div>
-                <div class="causes-text">
-                    <h3>Clean Water Initiative</h3>
-                    <p>Providing access to clean and safe drinking water through well construction and purification
-                        systems</p>
-                </div>
-                <div class="causes-btn">
-                    <a class="btn btn-custom" href="<?php echo url('causes.php'); ?>">Learn More</a>
-                    <a class="btn btn-custom" href="<?php echo url('donate.php'); ?>">Donate Now</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Causes End -->
-
-
-<!-- Donate Start -->
-<div class="donate" data-parallax="scroll" data-image-src="<?php echo asset('img/donate.jpg'); ?>" data-aos="fade"
-    data-aos-duration="1000">
-    <div class="container-fluid">
-        <div class="row align-items-center">
-            <div class="col-lg-7" data-aos="fade-right" data-aos-duration="1000">
-                <div class="donate-content">
-                    <div class="section-header">
-                        <p>Donate Now</p>
-                        <h2>Let's donate to needy people for better lives</h2>
-                    </div>
-                    <div class="donate-text">
-                        <p>
-                            Your generous contribution helps us continue our mission of serving humanity through the
-                            divine grace of Durga Ma. Every donation, no matter the size, makes a meaningful difference
-                            in the lives of those we serve.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-5" data-aos="fade-left" data-aos-delay="200" data-aos-duration="1000">
-                <div class="donate-form">
-                    <form action="<?php echo url('donate.php'); ?>" method="POST">
-                        <div class="control-group">
-                            <input type="text" name="name" class="form-control" placeholder="Full Name" required />
-                        </div>
-                        <div class="control-group">
-                            <input type="email" name="email" class="form-control" placeholder="Email Address"
-                                required />
-                        </div>
-                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                            <label class="btn btn-custom active">
-                                <input type="radio" name="amount" value="500" checked> ₹500
-                            </label>
-                            <label class="btn btn-custom">
-                                <input type="radio" name="amount" value="1000"> ₹1000
-                            </label>
-                            <label class="btn btn-custom">
-                                <input type="radio" name="amount" value="2000"> ₹2000
-                            </label>
-                        </div>
-                        <div>
-                            <button class="btn btn-custom" type="submit">Donate Now</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Donate End -->
-
-
-<!-- Event Start -->
-<div class="event" data-aos="fade-up" data-aos-duration="1000">
-    <div class="container-fluid">
-        <div class="section-header text-center" data-aos="fade-up" data-aos-duration="800">
-            <p>Upcoming Events</p>
-            <h2>Be ready for our upcoming charity events</h2>
-        </div>
-        <div class="row">
-            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
-                <div class="event-item">
-                    <img src="<?php echo asset('img/event-1.jpg'); ?>" alt="Image">
-                    <div class="event-content">
-                        <div class="event-meta">
-                            <p><i class="fa fa-calendar-alt"></i>15-Oct-2024</p>
-                            <p><i class="far fa-clock"></i>10:00 - 16:00</p>
-                            <p><i class="fa fa-map-marker-alt"></i>New Delhi</p>
-                        </div>
-                        <div class="event-text">
-                            <h3>Durga Puja Celebration</h3>
-                            <p>
-                                Join us for our annual Durga Puja celebration with community prayers, cultural programs,
-                                and free meals for all
-                            </p>
-                            <a class="btn btn-custom" href="<?php echo url('event.php'); ?>">Join Now</a>
+                    </a>
+                    <div class="position-absolute" style="bottom:20px;left:20px;right:20px;">
+                        <div style="background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);border-radius:10px;padding:15px 20px;display:flex;align-items:center;gap:20px;">
+                            <div style="text-align:center;border-right:1px solid #eee;padding-right:20px;">
+                                <h4 style="color:#f26522;font-weight:700;margin:0;">10+</h4>
+                                <small style="color:#666;font-size:0.75rem;">Years of Service</small>
+                            </div>
+                            <div style="text-align:center;border-right:1px solid #eee;padding-right:20px;">
+                                <h4 style="color:#f26522;font-weight:700;margin:0;">5K+</h4>
+                                <small style="color:#666;font-size:0.75rem;">Lives Impacted</small>
+                            </div>
+                            <div style="text-align:center;">
+                                <h4 style="color:#f26522;font-weight:700;margin:0;">100+</h4>
+                                <small style="color:#666;font-size:0.75rem;">Volunteers</small>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
-                <div class="event-item">
-                    <img src="<?php echo asset('img/event-2.jpg'); ?>" alt="Image">
-                    <div class="event-content">
-                        <div class="event-meta">
-                            <p><i class="fa fa-calendar-alt"></i>22-Oct-2024</p>
-                            <p><i class="far fa-clock"></i>09:00 - 17:00</p>
-                            <p><i class="fa fa-map-marker-alt"></i>Mumbai</p>
-                        </div>
-                        <div class="event-text">
-                            <h3>Free Health Camp</h3>
-                            <p>
-                                Free medical checkups, medicines, and health awareness sessions for the underprivileged
-                                community
-                            </p>
-                            <a class="btn btn-custom" href="<?php echo url('event.php'); ?>">Join Now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Event End -->
-
-
-<!-- Team Start -->
-<div class="team" data-aos="fade-up" data-aos-duration="1000">
-    <div class="container-fluid">
-        <div class="section-header text-center" data-aos="fade-up" data-aos-duration="800">
-            <p>Meet Our Team</p>
-            <h2>Awesome people behind our charity activities</h2>
-        </div>
-        <div class="row">
-            <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="800">
-                <div class="team-item">
-                    <div class="team-img">
-                        <img src="<?php echo asset('img/team-1.jpg'); ?>" alt="Team Image">
-                    </div>
-                    <div class="team-text">
-                        <h2>Swami Ramdev</h2>
-                        <p>Founder & Spiritual Guide</p>
-                        <div class="team-social">
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="800">
-                <div class="team-item">
-                    <div class="team-img">
-                        <img src="<?php echo asset('img/team-2.jpg'); ?>" alt="Team Image">
-                    </div>
-                    <div class="team-text">
-                        <h2>Dr. Priya Sharma</h2>
-                        <p>Medical Director</p>
-                        <div class="team-social">
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="800">
-                <div class="team-item">
-                    <div class="team-img">
-                        <img src="<?php echo asset('img/team-3.jpg'); ?>" alt="Team Image">
-                    </div>
-                    <div class="team-text">
-                        <h2>Rajesh Kumar</h2>
-                        <p>Program Coordinator</p>
-                        <div class="team-social">
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="800">
-                <div class="team-item">
-                    <div class="team-img">
-                        <img src="<?php echo asset('img/team-4.jpg'); ?>" alt="Team Image">
-                    </div>
-                    <div class="team-text">
-                        <h2>Meera Devi</h2>
-                        <p>Community Outreach</p>
-                        <div class="team-social">
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Team End -->
-
-
-<!-- Volunteer Start -->
-<div class="volunteer" data-parallax="scroll" data-image-src="<?php echo asset('img/volunteer.jpg'); ?>" data-aos="fade"
-    data-aos-duration="1000">
-    <div class="container-fluid">
-        <div class="row align-items-center">
-            <div class="col-lg-5" data-aos="fade-right" data-aos-duration="1000">
-                <div class="volunteer-form">
-                    <form action="<?php echo url('volunteer.php'); ?>" method="POST">
-                        <div class="control-group">
-                            <input type="text" name="name" class="form-control" placeholder="Full Name" required />
-                        </div>
-                        <div class="control-group">
-                            <input type="email" name="email" class="form-control" placeholder="Email Address"
-                                required />
-                        </div>
-                        <div class="control-group">
-                            <textarea name="message" class="form-control"
-                                placeholder="Why you want to become a volunteer?" required></textarea>
-                        </div>
-                        <div>
-                            <button class="btn btn-custom" type="submit">Become a volunteer</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div class="col-lg-7" data-aos="fade-left" data-aos-delay="200" data-aos-duration="1000">
-                <div class="volunteer-content">
-                    <div class="section-header">
-                        <p>Become A Volunteer</p>
-                        <h2>Let's make a difference in the lives of others</h2>
-                    </div>
-                    <div class="volunteer-text">
-                        <p>
-                            Join our volunteer family and be part of the divine service to humanity. Through
-                            volunteering with us, you can contribute to meaningful change while experiencing spiritual
-                            growth and fulfillment. Together, we can serve the divine mother by serving her children.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Volunteer End -->
-
-
-<!-- Testimonial Start -->
-<div class="testimonial" data-aos="fade-up" data-aos-duration="1000">
-    <div class="container-fluid">
-        <div class="section-header text-center" data-aos="fade-up" data-aos-duration="800">
-            <p>Testimonial</p>
-            <h2>What people are talking about our charity activities</h2>
-        </div>
-        <div class="owl-carousel testimonials-carousel" data-aos="fade-up" data-aos-delay="200"
-            data-aos-duration="1000">
-            <div class="testimonial-item">
-                <div class="testimonial-profile">
-                    <img src="<?php echo asset('img/testimonial-1.jpg'); ?>" alt="Image">
-                    <div class="testimonial-name">
-                        <h3>Anjali Singh</h3>
-                        <p>Beneficiary Parent</p>
-                    </div>
-                </div>
-                <div class="testimonial-text">
-                    <p>
-                        "The foundation has been a blessing for our family. Their educational support helped my daughter
-                        complete her studies. We are forever grateful to Durga Ma and this wonderful organization."
-                    </p>
-                </div>
-            </div>
-            <div class="testimonial-item">
-                <div class="testimonial-profile">
-                    <img src="<?php echo asset('img/testimonial-2.jpg'); ?>" alt="Image">
-                    <div class="testimonial-name">
-                        <h3>Ram Prakash</h3>
-                        <p>Community Leader</p>
-                    </div>
-                </div>
-                <div class="testimonial-text">
-                    <p>
-                        "Their healthcare initiatives have transformed our village. The free medical camps and medicines
-                        have been a lifeline for many families. This is true service to humanity."
-                    </p>
-                </div>
-            </div>
-            <div class="testimonial-item">
-                <div class="testimonial-profile">
-                    <img src="<?php echo asset('img/testimonial-3.jpg'); ?>" alt="Image">
-                    <div class="testimonial-name">
-                        <h3>Dr. Sita Sharma</h3>
-                        <p>Volunteer Doctor</p>
-                    </div>
-                </div>
-                <div class="testimonial-text">
-                    <p>
-                        "Volunteering with this foundation has been a spiritually enriching experience. The dedication
-                        and compassion of the entire team is inspiring. It's a privilege to serve."
-                    </p>
-                </div>
-            </div>
-            <div class="testimonial-item">
-                <div class="testimonial-profile">
-                    <img src="<?php echo asset('img/testimonial-4.jpg'); ?>" alt="Image">
-                    <div class="testimonial-name">
-                        <h3>Mohan Kumar</h3>
-                        <p>Donor</p>
-                    </div>
-                </div>
-                <div class="testimonial-text">
-                    <p>
-                        "I have been supporting this foundation for years. Their transparency and genuine commitment to
-                        helping the needy makes me confident that every donation makes a real difference."
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Testimonial End -->
-
-
-<!-- Contact Start -->
-<div class="contact" data-aos="fade-up" data-aos-duration="1000">
-    <div class="container-fluid">
-        <div class="section-header text-center" data-aos="fade-up" data-aos-duration="800">
-            <p>Get In Touch</p>
-            <h2>Contact for any query</h2>
-        </div>
-        <div class="contact-img" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="1000">
-            <img src="<?php echo asset('img/contact.jpg'); ?>" alt="Image">
-        </div>
-        <div class="contact-form" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
-            <div id="success"></div>
-            <form name="sentMessage" id="contactForm" action="<?php echo url('contact.php'); ?>" method="POST"
-                novalidate="novalidate">
-                <div class="control-group">
-                    <input type="text" class="form-control" name="name" id="name" placeholder="Your Name"
-                        required="required" data-validation-required-message="Please enter your name" />
-                    <p class="help-block text-danger"></p>
-                </div>
-                <div class="control-group">
-                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email"
-                        required="required" data-validation-required-message="Please enter your email" />
-                    <p class="help-block text-danger"></p>
-                </div>
-                <div class="control-group">
-                    <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject"
-                        required="required" data-validation-required-message="Please enter a subject" />
-                    <p class="help-block text-danger"></p>
-                </div>
-                <div class="control-group">
-                    <textarea class="form-control" name="message" id="message" placeholder="Message" required="required"
-                        data-validation-required-message="Please enter your message"></textarea>
-                    <p class="help-block text-danger"></p>
+            <div class="col-lg-6 d-flex flex-column" data-aos="fade-left" data-aos-duration="1000">
+                <div style="padding-top:0;">
+                    <h6 class="text-uppercase mb-2" style="color:#f26522;letter-spacing:3px;font-weight:600;font-size:0.85rem;">About Us</h6>
+                    <h2 style="color:#1a1b2e;font-weight:700;margin-bottom:20px;">Our Commitment <span style="color:#f26522;">to Community!</span></h2>
                 </div>
                 <div>
-                    <button class="btn btn-custom" type="submit" id="sendMessageButton">Send Message</button>
+                    <!-- Tab Navigation -->
+                    <div style="display:flex;gap:0;margin-bottom:25px;border-bottom:2px solid #eee;">
+                        <button class="about-tab-btn active" onclick="switchAboutTab(this, 'about')" style="padding:10px 25px;border:none;background:none;font-weight:700;font-size:0.95rem;color:#1a1b2e;position:relative;cursor:pointer;transition:all 0.3s;border-bottom:3px solid #f26522;margin-bottom:-2px;">
+                            <i class="fas fa-info-circle mr-1" style="color:#f26522;"></i> About
+                        </button>
+                        <button class="about-tab-btn" onclick="switchAboutTab(this, 'mission')" style="padding:10px 25px;border:none;background:none;font-weight:700;font-size:0.95rem;color:#999;position:relative;cursor:pointer;transition:all 0.3s;border-bottom:3px solid transparent;margin-bottom:-2px;">
+                            <i class="fas fa-bullseye mr-1"></i> Mission
+                        </button>
+                        <button class="about-tab-btn" onclick="switchAboutTab(this, 'vision')" style="padding:10px 25px;border:none;background:none;font-weight:700;font-size:0.95rem;color:#999;position:relative;cursor:pointer;transition:all 0.3s;border-bottom:3px solid transparent;margin-bottom:-2px;">
+                            <i class="fas fa-eye mr-1"></i> Vision
+                        </button>
+                    </div>
+
+                    <!-- Tab Content -->
+                    <div id="about-tab-about" class="about-tab-content" style="display:block;">
+                        <p style="color:#555;line-height:1.85;font-size:0.95rem;">Durga Saptashati NGO in Dwarka, Delhi, is the brainchild of a visionary and empathetic leader, <strong style="color:#1a1b2e;">Sandhya Singh</strong>. Saptashati Foundation is a trusted charity organisation in Delhi working for the empowerment of women (from all walks of life), deprived children, senior citizens, and people with disabilities.</p>
+                        <p style="color:#555;line-height:1.85;font-size:0.95rem;">We are confident that giving a voice to the marginalised will create a more equal and just society. Our approaches are mainly grassroots initiatives because our founder, <strong style="color:#1a1b2e;">Sandhya Singh</strong>, strongly believes in the lasting impact of working from the ground up.</p>
+                        <p style="color:#555;line-height:1.85;font-size:0.95rem;">From gender equality to social justice, we are dismantling barriers, challenging stereotypes, and trying to create a more inclusive society. Our dedicated team of volunteers and members work closely with rural and urban communities on various issues to bring about meaningful and lasting change.</p>
+                    </div>
+                    <div id="about-tab-mission" class="about-tab-content" style="display:none;">
+                        <p style="color:#555;line-height:1.85;font-size:0.95rem;">Our mission is to work tirelessly for the empowerment of women from all walks of life, the upliftment of deprived children through education and care, the well-being of senior citizens, and the support of people with disabilities.</p>
+                        <p style="color:#555;line-height:1.85;font-size:0.95rem;">We aim to create lasting change through grassroots initiatives, skill development, awareness campaigns, and community-driven programs across Delhi. We provide free self-defence classes, judicial protection aid, and arrange skill development workshops to equip women with the knowledge and expertise they need.</p>
+                        <p style="color:#555;line-height:1.85;font-size:0.95rem;">Through our education initiatives, we help EWS children in Dwarka get admission to schools, organise after-school tuition classes, and distribute school supplies to remove barriers to learning.</p>
+                        <div style="display:flex;gap:15px;margin-top:15px;">
+                            <div style="flex:1;padding:12px;background:rgba(242,101,34,0.06);border-radius:8px;border-left:3px solid #f26522;">
+                                <strong style="color:#1a1b2e;font-size:0.85rem;">Women Empowerment</strong>
+                                <p style="margin:5px 0 0;font-size:0.8rem;color:#888;">Self-defence, skill development & awareness</p>
+                            </div>
+                            <div style="flex:1;padding:12px;background:rgba(242,101,34,0.06);border-radius:8px;border-left:3px solid #f26522;">
+                                <strong style="color:#1a1b2e;font-size:0.85rem;">Education For All</strong>
+                                <p style="margin:5px 0 0;font-size:0.8rem;color:#888;">EWS admissions, tuition & school supplies</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="about-tab-vision" class="about-tab-content" style="display:none;">
+                        <p style="color:#555;line-height:1.85;font-size:0.95rem;">Our vision is to build a more equal and just society where every individual, regardless of their gender, age, or ability, has access to opportunities, safety, and dignity.</p>
+                        <p style="color:#555;line-height:1.85;font-size:0.95rem;">We envision communities where women are empowered, children are educated, the elderly are cared for, and every voice is heard and valued. We strive to be the voice of the voiceless and bring positive change that leads to happiness, independence, and a sense of respect in whatever they are doing.</p>
+                        <p style="color:#555;line-height:1.85;font-size:0.95rem;">Every change on the planet starts with a new phase of consciousness, a new experience, and a new vision. We are committed to being that catalyst for transformation in our society.</p>
+                        <div style="display:flex;gap:15px;margin-top:15px;">
+                            <div style="text-align:center;flex:1;">
+                                <div style="width:50px;height:50px;border-radius:50%;background:rgba(242,101,34,0.1);display:flex;align-items:center;justify-content:center;margin:0 auto 8px;">
+                                    <i class="fas fa-balance-scale" style="color:#f26522;"></i>
+                                </div>
+                                <small style="color:#1a1b2e;font-weight:600;font-size:0.8rem;">Equality</small>
+                            </div>
+                            <div style="text-align:center;flex:1;">
+                                <div style="width:50px;height:50px;border-radius:50%;background:rgba(242,101,34,0.1);display:flex;align-items:center;justify-content:center;margin:0 auto 8px;">
+                                    <i class="fas fa-hand-holding-heart" style="color:#f26522;"></i>
+                                </div>
+                                <small style="color:#1a1b2e;font-weight:600;font-size:0.8rem;">Empathy</small>
+                            </div>
+                            <div style="text-align:center;flex:1;">
+                                <div style="width:50px;height:50px;border-radius:50%;background:rgba(242,101,34,0.1);display:flex;align-items:center;justify-content:center;margin:0 auto 8px;">
+                                    <i class="fas fa-graduation-cap" style="color:#f26522;"></i>
+                                </div>
+                                <small style="color:#1a1b2e;font-weight:600;font-size:0.8rem;">Education</small>
+                            </div>
+                            <div style="text-align:center;flex:1;">
+                                <div style="width:50px;height:50px;border-radius:50%;background:rgba(242,101,34,0.1);display:flex;align-items:center;justify-content:center;margin:0 auto 8px;">
+                                    <i class="fas fa-fist-raised" style="color:#f26522;"></i>
+                                </div>
+                                <small style="color:#1a1b2e;font-weight:600;font-size:0.8rem;">Empowerment</small>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </form>
+                <div class="mt-auto pt-3">
+                    <a href="<?php echo url('about.php') ?>" class="btn px-4 py-2" style="background:#f26522;color:#fff;border-radius:30px;font-weight:600;box-shadow:0 5px 20px rgba(242,101,34,0.3);transition:all 0.3s;" onmouseover="this.style.boxShadow='0 8px 30px rgba(242,101,34,0.45)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='0 5px 20px rgba(242,101,34,0.3)';this.style.transform='translateY(0)'">Learn More <i class="fa fa-arrow-right ml-2"></i></a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-<!-- Contact End -->
+<script>
+function switchAboutTab(btn, tab) {
+    document.querySelectorAll('.about-tab-btn').forEach(function(b) {
+        b.style.color = '#999';
+        b.style.borderBottomColor = 'transparent';
+    });
+    btn.style.color = '#1a1b2e';
+    btn.style.borderBottomColor = '#f26522';
+    document.querySelectorAll('.about-tab-content').forEach(function(c) {
+        c.style.display = 'none';
+    });
+    document.getElementById('about-tab-' + tab).style.display = 'block';
+}
+</script>
+<!-- About Section End -->
 
+<!-- Video Modal -->
+<div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content" style="background:transparent;border:none;">
+            <div class="modal-body p-0">
+                <button type="button" class="close text-white mb-2" data-dismiss="modal" aria-label="Close" style="opacity:1;">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-<!-- Blog Start -->
-<div class="blog" data-aos="fade-up" data-aos-duration="1000">
-    <div class="container-fluid">
-        <div class="section-header text-center" data-aos="fade-up" data-aos-duration="800">
-            <p>Our Blog</p>
-            <h2>Latest news & articles directly from our blog</h2>
+<!-- Our Causes Section Start -->
+<div class="container-fluid py-4" style="background:#f8f9fa;">
+    <div class="container py-3">
+        <div class="text-center mb-4" data-aos="fade-up">
+            <h6 class="text-uppercase mb-1" style="color:#f26522;letter-spacing:3px;font-weight:600;">What We Do</h6>
+            <h1 style="color:#1a1b2e;">Our <span style="color:#f26522;">Causes</span></h1>
         </div>
         <div class="row">
-            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
-                <div class="blog-item">
-                    <div class="blog-img">
-                        <img src="<?php echo asset('img/blog-1.jpg'); ?>" alt="Image">
+            <div class="col-lg-4 col-md-6 mb-3" data-aos="fade-up" data-aos-delay="100">
+                <div class="causes-card" style="border-radius:10px;overflow:hidden;box-shadow:0 3px 15px rgba(0,0,0,0.08);transition:all 0.4s;background:#fff;height:100%;border-bottom:3px solid #f26522;">
+                    <div style="position:relative;overflow:hidden;">
+                        <img src="<?php echo asset('img/causes-1.jpg') ?>" alt="Women Empowerment & Safety" style="width:100%;height:200px;object-fit:cover;transition:transform 0.5s;">
+                        <div style="position:absolute;top:12px;left:12px;background:#f26522;color:#fff;padding:4px 12px;border-radius:20px;font-size:0.75rem;font-weight:600;"><i class="fas fa-female mr-1"></i> Empowerment</div>
                     </div>
-                    <div class="blog-text">
-                        <h3><a href="<?php echo url('blog.php'); ?>">The Power of Saptashati Path</a></h3>
-                        <p>
-                            Discover the spiritual significance and benefits of reciting the Durga Saptashati for
-                            personal transformation and divine blessing.
-                        </p>
-                    </div>
-                    <div class="blog-meta">
-                        <p><i class="fa fa-user"></i><a href="#">Admin</a></p>
-                        <p><i class="fa fa-comments"></i><a href="#">12 Comments</a></p>
+                    <div style="padding:18px 18px 15px;">
+                        <h5 style="color:#1a1b2e;font-weight:700;font-size:1.05rem;margin-bottom:10px;">Women Empowerment & Safety</h5>
+                        <p style="color:#666;font-size:0.88rem;line-height:1.65;margin:0;">Empowered and safe women are the catalysts for social growth and progress. At Durga Saptashati, we provide free self-defence classes in Dwarka, ensuring that women have the tools and knowledge to protect themselves. Additionally, we offer judicial protection aid for women and arrange skill development classes and awareness drives.</p>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
-                <div class="blog-item">
-                    <div class="blog-img">
-                        <img src="<?php echo asset('img/blog-2.jpg'); ?>" alt="Image">
+            <div class="col-lg-4 col-md-6 mb-3" data-aos="fade-up" data-aos-delay="200">
+                <div class="causes-card" style="border-radius:10px;overflow:hidden;box-shadow:0 3px 15px rgba(0,0,0,0.08);transition:all 0.4s;background:#fff;height:100%;border-bottom:3px solid #f26522;">
+                    <div style="position:relative;overflow:hidden;">
+                        <img src="<?php echo asset('img/causes-2.jpg') ?>" alt="Hunger Reduction / Food Donation" style="width:100%;height:200px;object-fit:cover;transition:transform 0.5s;">
+                        <div style="position:absolute;top:12px;left:12px;background:#f26522;color:#fff;padding:4px 12px;border-radius:20px;font-size:0.75rem;font-weight:600;"><i class="fas fa-utensils mr-1"></i> Food Drive</div>
                     </div>
-                    <div class="blog-text">
-                        <h3><a href="<?php echo url('blog.php'); ?>">Community Service and Spiritual Growth</a></h3>
-                        <p>
-                            Learn how serving others through charitable activities leads to spiritual development and
-                            inner peace through divine grace.
-                        </p>
-                    </div>
-                    <div class="blog-meta">
-                        <p><i class="fa fa-user"></i><a href="#">Admin</a></p>
-                        <p><i class="fa fa-comments"></i><a href="#">8 Comments</a></p>
+                    <div style="padding:18px 18px 15px;">
+                        <h5 style="color:#1a1b2e;font-weight:700;font-size:1.05rem;margin-bottom:10px;">Hunger Reduction / Food Donation</h5>
+                        <p style="color:#666;font-size:0.88rem;line-height:1.65;margin:0;">In the battle against hunger, we refuse to retreat. Through our 'Hunger Reduction' initiative, we organise frequent food donation drives in Dwarka, health and hygiene awareness campaigns, and run a free kitchen, ensuring that no one in our community goes to bed hungry.</p>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
-                <div class="blog-item">
-                    <div class="blog-img">
-                        <img src="<?php echo asset('img/blog-3.jpg'); ?>" alt="Image">
+            <div class="col-lg-4 col-md-6 mb-3" data-aos="fade-up" data-aos-delay="300">
+                <div class="causes-card" style="border-radius:10px;overflow:hidden;box-shadow:0 3px 15px rgba(0,0,0,0.08);transition:all 0.4s;background:#fff;height:100%;border-bottom:3px solid #f26522;">
+                    <div style="position:relative;overflow:hidden;">
+                        <img src="<?php echo asset('img/causes-3.jpg') ?>" alt="Education For Everyone" style="width:100%;height:200px;object-fit:cover;transition:transform 0.5s;">
+                        <div style="position:absolute;top:12px;left:12px;background:#f26522;color:#fff;padding:4px 12px;border-radius:20px;font-size:0.75rem;font-weight:600;"><i class="fas fa-graduation-cap mr-1"></i> Education</div>
                     </div>
-                    <div class="blog-text">
-                        <h3><a href="<?php echo url('blog.php'); ?>">Healthcare for All: Our Mission</a></h3>
-                        <p>
-                            Read about our ongoing healthcare initiatives and how we're working to provide medical
-                            assistance to underserved communities.
-                        </p>
-                    </div>
-                    <div class="blog-meta">
-                        <p><i class="fa fa-user"></i><a href="#">Admin</a></p>
-                        <p><i class="fa fa-comments"></i><a href="#">15 Comments</a></p>
+                    <div style="padding:18px 18px 15px;">
+                        <h5 style="color:#1a1b2e;font-weight:700;font-size:1.05rem;margin-bottom:10px;">Education For Everyone</h5>
+                        <p style="color:#666;font-size:0.88rem;line-height:1.65;margin:0;">The transformative power of education is not a hidden fact. But still, many children are deprived of it because of financial conditions. That's why Durga Saptashati NGO in Dwarka is committed to providing access to quality education for all. Our NGO founder, Sandhya Singh, also helps EWS children in Dwarka get admission to schools using their quota privileges.</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!-- Blog End -->
+<!-- Our Causes Section End -->
+
+<!-- Sanskrit Quote Section Start -->
+<div class="sanskrit-section">
+    <div class="container position-relative text-center" data-aos="zoom-in" data-aos-duration="1000">
+        <p class="sanskrit-text mb-3">सर्वे भवन्तु सुखिनः सर्वे सन्तु निरामया।</p>
+        <p class="sanskrit-translation mb-4">"May all beings be happy, May all beings be free from illness"</p>
+        <div style="width:60px;height:3px;background:#f26522;margin:0 auto 20px;"></div>
+        <p class="text-white" style="max-width:700px;margin:0 auto;font-size:1.05rem;opacity:0.85;">This ancient prayer guides our actions with love, compassion, equality, and empathy in everything we do.</p>
+    </div>
+</div>
+<!-- Sanskrit Quote Section End -->
+
+<!-- Facts/Counter Section Start -->
+<div class="container-fluid py-5" style="background:#1a1b2e;">
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 text-center" data-aos="fade-up" data-aos-delay="100">
+                <div style="padding:30px;">
+                    <i class="fa fa-heart fa-3x mb-3" style="color:#f26522;"></i>
+                    <h1 class="text-white mb-2 counter-num" data-target="25">0</h1>
+                    <h6 class="text-uppercase text-white" style="letter-spacing:2px;opacity:0.8;">Happy Donators</h6>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 text-center" data-aos="fade-up" data-aos-delay="200">
+                <div style="padding:30px;">
+                    <i class="fa fa-check-circle fa-3x mb-3" style="color:#f26522;"></i>
+                    <h1 class="text-white mb-2 counter-num" data-target="10">0</h1>
+                    <h6 class="text-uppercase text-white" style="letter-spacing:2px;opacity:0.8;">Success Mission</h6>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 text-center" data-aos="fade-up" data-aos-delay="300">
+                <div style="padding:30px;">
+                    <i class="fa fa-users fa-3x mb-3" style="color:#f26522;"></i>
+                    <h1 class="text-white mb-2 counter-num" data-target="100">0</h1>
+                    <h6 class="text-uppercase text-white" style="letter-spacing:2px;opacity:0.8;">Volunteer Reached</h6>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 text-center" data-aos="fade-up" data-aos-delay="400">
+                <div style="padding:30px;">
+                    <i class="fa fa-globe fa-3x mb-3" style="color:#f26522;"></i>
+                    <h1 class="text-white mb-2 counter-num" data-target="5">0</h1>
+                    <h6 class="text-uppercase text-white" style="letter-spacing:2px;opacity:0.8;">Globalization Work</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+(function() {
+    var countersStarted = false;
+    function animateCounters() {
+        if (countersStarted) return;
+        countersStarted = true;
+        document.querySelectorAll('.counter-num').forEach(function(el) {
+            var target = parseInt(el.getAttribute('data-target'));
+            var duration = 2000;
+            var start = 0;
+            var startTime = null;
+            function step(timestamp) {
+                if (!startTime) startTime = timestamp;
+                var progress = Math.min((timestamp - startTime) / duration, 1);
+                var eased = 1 - Math.pow(1 - progress, 3);
+                el.textContent = Math.floor(eased * target);
+                if (progress < 1) {
+                    requestAnimationFrame(step);
+                } else {
+                    el.textContent = target;
+                }
+            }
+            requestAnimationFrame(step);
+        });
+    }
+    var counterSection = document.querySelector('.counter-num');
+    if (counterSection) {
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    observer.disconnect();
+                }
+            });
+        }, { threshold: 0.3 });
+        observer.observe(counterSection.closest('.container-fluid'));
+    }
+})();
+</script>
+<!-- Facts/Counter Section End -->
+
+<!-- Events Section Start -->
+<div class="container-fluid py-5">
+    <div class="container py-5">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <h6 class="text-uppercase" style="color:#f26522;letter-spacing:3px;font-weight:600;">What's Happening</h6>
+            <h1 style="color:#1a1b2e;">Upcoming & Past <span style="color:#f26522;">Events</span></h1>
+        </div>
+        <div class="owl-carousel events-carousel" data-aos="fade-up" data-aos-delay="200">
+            <div class="event-card d-flex">
+                <div class="event-date d-flex flex-column align-items-center justify-content-center">
+                    <span class="day">8</span>
+                    <span class="month">Mar</span>
+                </div>
+                <div class="event-info">
+                    <h5>International Women's Day 2021</h5>
+                    <p><i class="fa fa-clock mr-2"></i>11:00 AM - 3:00 PM</p>
+                    <p><i class="fa fa-map-marker-alt mr-2"></i>Dwarka, Delhi</p>
+                </div>
+            </div>
+            <div class="event-card d-flex">
+                <div class="event-date d-flex flex-column align-items-center justify-content-center">
+                    <span class="day">28</span>
+                    <span class="month">Feb</span>
+                </div>
+                <div class="event-info">
+                    <h5>Cultural Programme</h5>
+                    <p><i class="fa fa-clock mr-2"></i>5:00 PM - 7:30 PM</p>
+                    <p><i class="fa fa-map-marker-alt mr-2"></i>Dwarka, Delhi</p>
+                </div>
+            </div>
+            <div class="event-card d-flex">
+                <div class="event-date d-flex flex-column align-items-center justify-content-center">
+                    <span class="day">14</span>
+                    <span class="month">Jan</span>
+                </div>
+                <div class="event-info">
+                    <h5>Cultural Programme</h5>
+                    <p><i class="fa fa-clock mr-2"></i>5:00 PM - 7:30 PM</p>
+                    <p><i class="fa fa-map-marker-alt mr-2"></i>Dwarka, Delhi</p>
+                </div>
+            </div>
+            <div class="event-card d-flex">
+                <div class="event-date d-flex flex-column align-items-center justify-content-center">
+                    <span class="day">21</span>
+                    <span class="month">Jun</span>
+                </div>
+                <div class="event-info">
+                    <h5>Yoga Day 2021</h5>
+                    <p><i class="fa fa-clock mr-2"></i>5:00 AM - 10:00 AM</p>
+                    <p><i class="fa fa-map-marker-alt mr-2"></i>Dwarka, Delhi</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Events Section End -->
+
+<!-- Volunteer / Join Us Section Start -->
+<div class="container-fluid" style="background:url('<?php echo asset('img/volunteer.jpg') ?>') center center/cover no-repeat fixed;position:relative;">
+    <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(242,101,34,0.9);"></div>
+    <div class="container py-5 position-relative text-center" style="z-index:1;">
+        <div class="py-5" data-aos="zoom-in">
+            <h6 class="text-uppercase text-white mb-3" style="letter-spacing:3px;">Make a Difference</h6>
+            <h1 class="display-4 text-white mb-3 font-weight-bold">Want to Join Us?</h1>
+            <h4 class="text-white mb-4" style="opacity:0.9;">Become a Proud Volunteer</h4>
+            <p class="text-white mx-auto mb-4" style="max-width:600px;opacity:0.9;">Join our community of dedicated volunteers and help us create lasting change in the lives of women, children, senior citizens, and people with disabilities.</p>
+            <a href="<?php echo url('contact') ?>" class="btn btn-lg px-5 py-3" style="background:#fff;color:#f26522;border-radius:30px;font-weight:600;">Join Now <i class="fa fa-arrow-right ml-2"></i></a>
+        </div>
+    </div>
+</div>
+<!-- Volunteer / Join Us Section End -->
+
+<!-- Gallery Section Start -->
+<div class="container-fluid py-4 gallery-section" style="background:#f8f9fa;">
+    <div class="container py-3">
+        <div class="text-center mb-4" data-aos="fade-up">
+            <h6 class="text-uppercase mb-1" style="color:#f26522;letter-spacing:3px;font-weight:600;">See Our Work</h6>
+            <h1 style="color:#1a1b2e;">Our Campaign / <span style="color:#f26522;">Causes Gallery</span></h1>
+        </div>
+        <div class="row no-gutters">
+            <?php
+            $galleryImages = [
+                ['src' => 'img/causes-1.jpg', 'alt' => 'Women Empowerment', 'caption' => 'Women Empowerment'],
+                ['src' => 'img/causes-2.jpg', 'alt' => 'Food Donation', 'caption' => 'Food Donation Drive'],
+                ['src' => 'img/causes-3.jpg', 'alt' => 'Education', 'caption' => 'Education For All'],
+                ['src' => 'img/causes-4.jpg', 'alt' => 'Community Support', 'caption' => 'Community Support'],
+                ['src' => 'img/event-1.jpg', 'alt' => 'Events', 'caption' => 'Community Events'],
+                ['src' => 'img/event-2.jpg', 'alt' => 'Health Camp', 'caption' => 'Health Camps'],
+            ];
+            foreach ($galleryImages as $i => $img): ?>
+            <div class="col-lg-4 col-md-6 p-1" data-aos="fade-up" data-aos-delay="<?php echo ($i % 3 + 1) * 100; ?>">
+                <div class="gallery-item" onclick="openGallery(<?php echo $i; ?>)" style="cursor:pointer;">
+                    <img src="<?php echo asset($img['src']); ?>" alt="<?php echo $img['alt']; ?>">
+                    <div class="gallery-overlay">
+                        <div class="text-center text-white">
+                            <i class="fa fa-search-plus mb-2" style="font-size:1.5rem;"></i>
+                            <p class="mb-0 font-weight-bold" style="font-size:0.9rem;"><?php echo $img['caption']; ?></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</div>
+
+<!-- Gallery Lightbox Modal -->
+<div id="galleryModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.92);z-index:99999;align-items:center;justify-content:center;">
+    <button onclick="closeGallery()" style="position:absolute;top:20px;right:25px;background:none;border:none;color:#fff;font-size:2.5rem;cursor:pointer;z-index:10;opacity:0.8;transition:opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">&times;</button>
+    <button onclick="prevImage()" style="position:absolute;left:15px;top:50%;transform:translateY(-50%);background:rgba(242,101,34,0.8);border:none;color:#fff;font-size:1.5rem;width:50px;height:50px;border-radius:50%;cursor:pointer;transition:background 0.3s;" onmouseover="this.style.background='#f26522'" onmouseout="this.style.background='rgba(242,101,34,0.8)'"><i class="fas fa-chevron-left"></i></button>
+    <button onclick="nextImage()" style="position:absolute;right:15px;top:50%;transform:translateY(-50%);background:rgba(242,101,34,0.8);border:none;color:#fff;font-size:1.5rem;width:50px;height:50px;border-radius:50%;cursor:pointer;transition:background 0.3s;" onmouseover="this.style.background='#f26522'" onmouseout="this.style.background='rgba(242,101,34,0.8)'"><i class="fas fa-chevron-right"></i></button>
+    <div style="text-align:center;max-width:90%;max-height:85vh;">
+        <img id="galleryModalImg" src="" alt="" style="max-width:100%;max-height:78vh;border-radius:6px;box-shadow:0 10px 50px rgba(0,0,0,0.5);object-fit:contain;">
+        <p id="galleryModalCaption" style="color:#fff;margin-top:12px;font-size:1rem;font-weight:600;letter-spacing:1px;"></p>
+        <p id="galleryModalCounter" style="color:rgba(255,255,255,0.5);font-size:0.85rem;margin-top:4px;"></p>
+    </div>
+</div>
+
+<script>
+var galleryImages = [
+    <?php foreach ($galleryImages as $img): ?>
+    {src: '<?php echo asset($img["src"]); ?>', caption: '<?php echo $img["caption"]; ?>'},
+    <?php endforeach; ?>
+];
+var currentImg = 0;
+
+function openGallery(index) {
+    currentImg = index;
+    showImage();
+    document.getElementById('galleryModal').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+function closeGallery() {
+    document.getElementById('galleryModal').style.display = 'none';
+    document.body.style.overflow = '';
+}
+function showImage() {
+    document.getElementById('galleryModalImg').src = galleryImages[currentImg].src;
+    document.getElementById('galleryModalCaption').textContent = galleryImages[currentImg].caption;
+    document.getElementById('galleryModalCounter').textContent = (currentImg + 1) + ' / ' + galleryImages.length;
+}
+function nextImage() { currentImg = (currentImg + 1) % galleryImages.length; showImage(); }
+function prevImage() { currentImg = (currentImg - 1 + galleryImages.length) % galleryImages.length; showImage(); }
+
+document.getElementById('galleryModal').addEventListener('click', function(e) { if (e.target === this) closeGallery(); });
+document.addEventListener('keydown', function(e) {
+    if (document.getElementById('galleryModal').style.display === 'flex') {
+        if (e.key === 'Escape') closeGallery();
+        if (e.key === 'ArrowRight') nextImage();
+        if (e.key === 'ArrowLeft') prevImage();
+    }
+});
+</script>
+<!-- Gallery Section End -->
+
+<!-- Activities Section Start -->
+<div class="container-fluid py-5" style="background:#fff;">
+    <div class="container py-4">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <h6 class="text-uppercase mb-1" style="color:#f26522;letter-spacing:3px;font-weight:600;">How We Help</h6>
+            <h1 style="color:#1a1b2e;">Our <span style="color:#f26522;">Activities</span></h1>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div style="background:#fff;border:1px solid #eee;border-radius:16px;padding:35px 25px;text-align:center;height:100%;transition:all 0.4s ease;box-shadow:0 4px 20px rgba(0,0,0,0.06);" onmouseover="this.style.transform='translateY(-10px)';this.style.boxShadow='0 12px 35px rgba(242,101,34,0.15)';this.style.borderColor='#f26522'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.06)';this.style.borderColor='#eee'">
+                    <div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#f26522,#ff8a50);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:1.8rem;color:#fff;box-shadow:0 8px 25px rgba(242,101,34,0.3);">
+                        <i class="fas fa-first-aid"></i>
+                    </div>
+                    <h5 class="font-weight-bold mb-3" style="color:#1a1b2e;">Covid 19 Products</h5>
+                    <p style="color:#666;font-size:0.9rem;line-height:1.7;margin:0;">Distributing essential Covid-19 safety products including masks, sanitizers, and medical supplies to communities in need.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div style="background:#fff;border:1px solid #eee;border-radius:16px;padding:35px 25px;text-align:center;height:100%;transition:all 0.4s ease;box-shadow:0 4px 20px rgba(0,0,0,0.06);" onmouseover="this.style.transform='translateY(-10px)';this.style.boxShadow='0 12px 35px rgba(242,101,34,0.15)';this.style.borderColor='#f26522'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.06)';this.style.borderColor='#eee'">
+                    <div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#f26522,#ff8a50);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:1.8rem;color:#fff;box-shadow:0 8px 25px rgba(242,101,34,0.3);">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h5 class="font-weight-bold mb-3" style="color:#1a1b2e;">Serve People</h5>
+                    <p style="color:#666;font-size:0.9rem;line-height:1.7;margin:0;">Dedicated to serving the underprivileged through food drives, healthcare camps, and community welfare programmes.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div style="background:#fff;border:1px solid #eee;border-radius:16px;padding:35px 25px;text-align:center;height:100%;transition:all 0.4s ease;box-shadow:0 4px 20px rgba(0,0,0,0.06);" onmouseover="this.style.transform='translateY(-10px)';this.style.boxShadow='0 12px 35px rgba(242,101,34,0.15)';this.style.borderColor='#f26522'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.06)';this.style.borderColor='#eee'">
+                    <div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#f26522,#ff8a50);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:1.8rem;color:#fff;box-shadow:0 8px 25px rgba(242,101,34,0.3);">
+                        <i class="fas fa-donate"></i>
+                    </div>
+                    <h5 class="font-weight-bold mb-3" style="color:#1a1b2e;">Donation</h5>
+                    <p style="color:#666;font-size:0.9rem;line-height:1.7;margin:0;">Every contribution matters. Your generous donations help us sustain our initiatives and reach more people in need.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                <div style="background:#fff;border:1px solid #eee;border-radius:16px;padding:35px 25px;text-align:center;height:100%;transition:all 0.4s ease;box-shadow:0 4px 20px rgba(0,0,0,0.06);" onmouseover="this.style.transform='translateY(-10px)';this.style.boxShadow='0 12px 35px rgba(242,101,34,0.15)';this.style.borderColor='#f26522'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.06)';this.style.borderColor='#eee'">
+                    <div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#f26522,#ff8a50);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:1.8rem;color:#fff;box-shadow:0 8px 25px rgba(242,101,34,0.3);">
+                        <i class="fas fa-people-carry"></i>
+                    </div>
+                    <h5 class="font-weight-bold mb-3" style="color:#1a1b2e;">Community Support</h5>
+                    <p style="color:#666;font-size:0.9rem;line-height:1.7;margin:0;">Building stronger communities through awareness campaigns, skill development, and grassroots support programmes.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Activities Section End -->
+
+<!-- Donate Section Start -->
+<div class="container-fluid py-5" style="background:url('<?php echo asset('img/donate.jpg') ?>') center center/cover no-repeat fixed;position:relative;">
+    <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(26,27,46,0.9);"></div>
+    <div class="container py-5 position-relative" style="z-index:1;">
+        <div class="row align-items-center">
+            <div class="col-lg-7 mb-5 mb-lg-0" data-aos="fade-right">
+                <div class="section-title mb-4">
+                    <h6 class="text-uppercase" style="color:#f26522;letter-spacing:3px;font-weight:600;">Make a Donation</h6>
+                    <h1 class="text-white">Your Small Help Can Make a <span style="color:#f26522;">Big Difference</span></h1>
+                </div>
+                <p class="text-white mb-4" style="opacity:0.85;line-height:1.8;">Your generosity enables us to continue our mission of empowering women, educating children, and supporting the elderly and disabled. Every rupee counts in creating a more equal society.</p>
+                <div class="row">
+                    <div class="col-sm-6 mb-3">
+                        <div class="d-flex align-items-center">
+                            <i class="fa fa-check-circle mr-3" style="color:#f26522;font-size:1.3rem;"></i>
+                            <span class="text-white">100% Transparent</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 mb-3">
+                        <div class="d-flex align-items-center">
+                            <i class="fa fa-check-circle mr-3" style="color:#f26522;font-size:1.3rem;"></i>
+                            <span class="text-white">Tax Benefits (80G)</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 mb-3">
+                        <div class="d-flex align-items-center">
+                            <i class="fa fa-check-circle mr-3" style="color:#f26522;font-size:1.3rem;"></i>
+                            <span class="text-white">Secure Payments</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 mb-3">
+                        <div class="d-flex align-items-center">
+                            <i class="fa fa-check-circle mr-3" style="color:#f26522;font-size:1.3rem;"></i>
+                            <span class="text-white">Direct Impact</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5" data-aos="fade-left">
+                <div class="bg-white p-4 p-md-5" style="border-radius:15px;">
+                    <h3 class="text-center mb-4" style="color:#1a1b2e;font-weight:700;">Donate Now</h3>
+                    <form>
+                        <div class="form-group">
+                            <input type="text" class="form-control border-0 p-4" placeholder="Your Name" style="background:#f8f9fa;border-radius:8px;">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control border-0 p-4" placeholder="Your Email" style="background:#f8f9fa;border-radius:8px;">
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control border-0 p-4" style="background:#f8f9fa;border-radius:8px;height:auto;">
+                                <option selected>Select a Cause</option>
+                                <option>Women Empowerment</option>
+                                <option>Hunger Reduction</option>
+                                <option>Education For All</option>
+                                <option>General Fund</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input type="number" class="form-control border-0 p-4" placeholder="Amount (INR)" style="background:#f8f9fa;border-radius:8px;">
+                        </div>
+                        <div>
+                            <button class="btn btn-block py-3" type="submit" style="background:#f26522;color:#fff;border-radius:8px;font-weight:600;font-size:1.1rem;">Donate Now</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Donate Section End -->
+
+
+<!-- Blog Section Start -->
+<div class="container-fluid py-5" style="background:#f8f9fa;">
+    <div class="container py-4">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <h6 class="text-uppercase mb-1" style="color:#f26522;letter-spacing:3px;font-weight:600;">From Our Blog</h6>
+            <h1 style="color:#1a1b2e;">Latest <span style="color:#f26522;">News & Articles</span></h1>
+        </div>
+        <div class="row" style="display:flex;flex-wrap:wrap;">
+            <div class="col-lg-4 col-md-6 mb-4 d-flex" data-aos="fade-up" data-aos-delay="100">
+                <div class="d-flex flex-column" style="border-radius:12px;overflow:hidden;box-shadow:0 5px 25px rgba(0,0,0,0.08);transition:all 0.4s;background:#fff;width:100;" onmouseover="this.style.transform='translateY(-8px)';this.style.boxShadow='0 15px 40px rgba(0,0,0,0.15)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 5px 25px rgba(0,0,0,0.08)'">
+                    <div style="position:relative;overflow:hidden;">
+                        <img class="w-100" src="<?php echo asset('img/blog-1.jpg') ?>" alt="Women Empowerment" style="height:220px;object-fit:cover;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                        <div style="position:absolute;top:15px;left:15px;background:#f26522;color:#fff;padding:5px 14px;border-radius:20px;font-size:0.75rem;font-weight:600;">
+                            <i class="fas fa-female mr-1"></i> Empowerment
+                        </div>
+                    </div>
+                    <div class="p-4 d-flex flex-column flex-grow-1">
+                        <div class="d-flex align-items-center mb-3" style="gap:15px;">
+                            <small style="color:#999;"><i class="far fa-calendar-alt mr-1" style="color:#f26522;"></i> Jan 01, 2021</small>
+                            <small style="color:#999;"><i class="far fa-user mr-1" style="color:#f26522;"></i> Admin</small>
+                            <small style="color:#999;"><i class="far fa-comments mr-1" style="color:#f26522;"></i> 12 Comments</small>
+                        </div>
+                        <h5 class="font-weight-bold mb-2" style="color:#1a1b2e;font-size:1.1rem;line-height:1.4;">Women Empowerment Initiatives in Dwarka</h5>
+                        <p class="flex-grow-1" style="color:#666;font-size:0.9rem;line-height:1.7;">Discover how our self-defence classes and skill development programmes are transforming lives of women in Dwarka, Delhi.</p>
+                        <a href="<?php echo url('blog.php') ?>" style="color:#f26522;font-weight:600;font-size:0.9rem;display:inline-flex;align-items:center;transition:all 0.3s;" onmouseover="this.style.gap='10px'" onmouseout="this.style.gap='5px'">
+                            Read More <i class="fa fa-long-arrow-alt-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4 d-flex" data-aos="fade-up" data-aos-delay="200">
+                <div class="d-flex flex-column" style="border-radius:12px;overflow:hidden;box-shadow:0 5px 25px rgba(0,0,0,0.08);transition:all 0.4s;background:#fff;width:100%;" onmouseover="this.style.transform='translateY(-8px)';this.style.boxShadow='0 15px 40px rgba(0,0,0,0.15)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 5px 25px rgba(0,0,0,0.08)'">
+                    <div style="position:relative;overflow:hidden;">
+                        <img class="w-100" src="<?php echo asset('img/blog-2.jpg') ?>" alt="Food Donation" style="height:220px;object-fit:cover;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                        <div style="position:absolute;top:15px;left:15px;background:#f26522;color:#fff;padding:5px 14px;border-radius:20px;font-size:0.75rem;font-weight:600;">
+                            <i class="fas fa-utensils mr-1"></i> Food Drive
+                        </div>
+                    </div>
+                    <div class="p-4 d-flex flex-column flex-grow-1">
+                        <div class="d-flex align-items-center mb-3" style="gap:15px;">
+                            <small style="color:#999;"><i class="far fa-calendar-alt mr-1" style="color:#f26522;"></i> Feb 15, 2021</small>
+                            <small style="color:#999;"><i class="far fa-user mr-1" style="color:#f26522;"></i> Admin</small>
+                            <small style="color:#999;"><i class="far fa-comments mr-1" style="color:#f26522;"></i> 12 Comments</small>
+                        </div>
+                        <h5 class="font-weight-bold mb-2" style="color:#1a1b2e;font-size:1.1rem;line-height:1.4;">Food Donation Drive Success Story</h5>
+                        <p class="flex-grow-1" style="color:#666;font-size:0.9rem;line-height:1.7;">Our latest food donation drive reached over 200 families in Dwarka, providing nutritious meals and essential supplies.</p>
+                        <a href="<?php echo url('blog.php') ?>" style="color:#f26522;font-weight:600;font-size:0.9rem;display:inline-flex;align-items:center;transition:all 0.3s;" onmouseover="this.style.gap='10px'" onmouseout="this.style.gap='5px'">
+                            Read More <i class="fa fa-long-arrow-alt-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4 d-flex" data-aos="fade-up" data-aos-delay="300">
+                <div class="d-flex flex-column" style="border-radius:12px;overflow:hidden;box-shadow:0 5px 25px rgba(0,0,0,0.08);transition:all 0.4s;background:#fff;width:100%;" onmouseover="this.style.transform='translateY(-8px)';this.style.boxShadow='0 15px 40px rgba(0,0,0,0.15)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 5px 25px rgba(0,0,0,0.08)'">
+                    <div style="position:relative;overflow:hidden;">
+                        <img class="w-100" src="<?php echo asset('img/blog-3.jpg') ?>" alt="Education" style="height:220px;object-fit:cover;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                        <div style="position:absolute;top:15px;left:15px;background:#f26522;color:#fff;padding:5px 14px;border-radius:20px;font-size:0.75rem;font-weight:600;">
+                            <i class="fas fa-graduation-cap mr-1"></i> Education
+                        </div>
+                    </div>
+                    <div class="p-4 d-flex flex-column flex-grow-1">
+                        <div class="d-flex align-items-center mb-3" style="gap:15px;">
+                            <small style="color:#999;"><i class="far fa-calendar-alt mr-1" style="color:#f26522;"></i> Mar 08, 2021</small>
+                            <small style="color:#999;"><i class="far fa-user mr-1" style="color:#f26522;"></i> Admin</small>
+                            <small style="color:#999;"><i class="far fa-comments mr-1" style="color:#f26522;"></i> 12 Comments</small>
+                        </div>
+                        <h5 class="font-weight-bold mb-2" style="color:#1a1b2e;font-size:1.1rem;line-height:1.4;">Education For All: Changing Lives</h5>
+                        <p class="flex-grow-1" style="color:#666;font-size:0.9rem;line-height:1.7;">Learn how our education programmes and after-school tuition classes are helping underprivileged children achieve their dreams.</p>
+                        <a href="<?php echo url('blog.php') ?>" style="color:#f26522;font-weight:600;font-size:0.9rem;display:inline-flex;align-items:center;transition:all 0.3s;" onmouseover="this.style.gap='10px'" onmouseout="this.style.gap='5px'">
+                            Read More <i class="fa fa-long-arrow-alt-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Blog Section End -->
+
+<!-- Owl Carousel & AOS Initialization -->
+<script>
+    $(document).ready(function() {
+        // Events Carousel
+        $(".events-carousel").owlCarousel({
+            autoplay: true,
+            smartSpeed: 1000,
+            margin: 30,
+            dots: true,
+            loop: true,
+            nav: false,
+            responsive: {
+                0: { items: 1 },
+                576: { items: 1 },
+                768: { items: 2 },
+                992: { items: 3 }
+            }
+        });
+    });
+</script>
 
 <?php include '../app/views/layout/footer.php'; ?>
