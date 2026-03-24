@@ -25,14 +25,36 @@
                     <i class="fas fa-home"></i> <span>Dashboard</span>
                 </a>
 
+                <?php
+                // Dynamic counts
+                $blogCount = $pdo->query("SELECT COUNT(*) FROM blogs")->fetchColumn();
+                $pendingComments = $pdo->query("SELECT COUNT(*) FROM blog_comments WHERE status = 'pending'")->fetchColumn();
+                $totalComments = $pdo->query("SELECT COUNT(*) FROM blog_comments")->fetchColumn();
+
+                // Safe count for tables that may not exist yet
+                try { $donationCount = $pdo->query("SELECT COUNT(*) FROM donations")->fetchColumn(); } catch(Exception $e) { $donationCount = 0; }
+                try { $subscriberCount = $pdo->query("SELECT COUNT(*) FROM subscribers")->fetchColumn(); } catch(Exception $e) { $subscriberCount = 0; }
+                try { $queryCount = $pdo->query("SELECT COUNT(*) FROM contact_queries WHERE status = 'new'")->fetchColumn(); } catch(Exception $e) { $queryCount = 0; }
+                ?>
+
                 <a href="admin.php?page=blogs" class="sidebar-item <?= $currentPage === 'blogs' ? 'active' : '' ?>">
                     <i class="fas fa-blog"></i> <span>Blogs</span>
-                    <span class="badge-count">3</span>
+                    <?php if ($blogCount > 0): ?><span class="badge-count"><?= $blogCount ?></span><?php endif; ?>
                 </a>
 
                 <a href="admin.php?page=queries" class="sidebar-item <?= $currentPage === 'queries' ? 'active' : '' ?>">
                     <i class="fas fa-comments"></i> <span>Queries</span>
-                    <span class="badge-count">5</span>
+                    <?php if ($queryCount > 0): ?><span class="badge-count"><?= $queryCount ?></span><?php endif; ?>
+                </a>
+
+                <a href="admin.php?page=comments" class="sidebar-item <?= $currentPage === 'comments' ? 'active' : '' ?>">
+                    <i class="fas fa-comment-dots"></i> <span>Comments</span>
+                    <?php if ($pendingComments > 0): ?><span class="badge-count"><?= $pendingComments ?></span><?php endif; ?>
+                </a>
+
+                <a href="admin.php?page=donations" class="sidebar-item <?= $currentPage === 'donations' ? 'active' : '' ?>">
+                    <i class="fas fa-donate"></i> <span>Donations</span>
+                    <?php if ($donationCount > 0): ?><span class="badge-count"><?= $donationCount ?></span><?php endif; ?>
                 </a>
 
                 <div class="sidebar-menu-label">Content</div>
@@ -52,6 +74,7 @@
                 <a href="admin.php?page=subscribers"
                     class="sidebar-item <?= $currentPage === 'subscribers' ? 'active' : '' ?>">
                     <i class="fas fa-envelope-open-text"></i> <span>Newsletter</span>
+                    <?php if ($subscriberCount > 0): ?><span class="badge-count"><?= $subscriberCount ?></span><?php endif; ?>
                 </a>
 
                 <div class="sidebar-menu-label">System</div>
@@ -133,6 +156,24 @@
     </div>
 
     <script>
+    // Action menu toggle
+    function toggleActionMenu(btn) {
+        var menu = btn.nextElementSibling;
+        // Close all other menus first
+        document.querySelectorAll('.action-menu.show').forEach(function(m) {
+            if (m !== menu) m.classList.remove('show');
+        });
+        menu.classList.toggle('show');
+    }
+    // Close action menus on click outside
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.action-wrap')) {
+            document.querySelectorAll('.action-menu.show').forEach(function(m) {
+                m.classList.remove('show');
+            });
+        }
+    });
+
     // Live clock
     function updateClock() {
         var now = new Date();
@@ -169,6 +210,93 @@
     }
     window.addEventListener('resize', checkWidth);
     checkWidth();
+
+    // ===== CLIENT-SIDE TABLE PAGINATION =====
+    (function() {
+        document.querySelectorAll('table.paginated-table').forEach(function(table) {
+            var tbody = table.querySelector('tbody');
+            if (!tbody) return;
+            var allRows = Array.prototype.slice.call(tbody.querySelectorAll('tr'));
+            // Skip if table has no data rows or only a "no data" placeholder row
+            if (allRows.length === 0 || (allRows.length === 1 && allRows[0].querySelectorAll('td').length === 1)) return;
+
+            var pageSize = 10;
+            var currentPage = 1;
+            var panel = table.closest('.data-panel');
+
+            // Create pagination container
+            var paginationDiv = document.createElement('div');
+            paginationDiv.className = 'table-pagination';
+            if (panel) {
+                panel.appendChild(paginationDiv);
+            } else {
+                table.parentNode.insertBefore(paginationDiv, table.nextSibling);
+            }
+
+            function totalPages() {
+                return Math.max(1, Math.ceil(allRows.length / pageSize));
+            }
+
+            function render() {
+                var total = allRows.length;
+                var tp = totalPages();
+                if (currentPage > tp) currentPage = tp;
+                var start = (currentPage - 1) * pageSize;
+                var end = Math.min(start + pageSize, total);
+
+                // Show/hide rows
+                allRows.forEach(function(row, i) {
+                    row.style.display = (i >= start && i < end) ? '' : 'none';
+                });
+
+                // Build pagination HTML
+                var html = '<div class="page-info">';
+                html += '<span>Showing ' + (total === 0 ? '0' : (start + 1)) + '-' + end + ' of ' + total + '</span>';
+                html += '<select class="page-size-select" data-action="pagesize">';
+                [5, 10, 25, 50].forEach(function(s) {
+                    html += '<option value="' + s + '"' + (s === pageSize ? ' selected' : '') + '>' + s + '/page</option>';
+                });
+                html += '</select></div>';
+
+                html += '<div class="page-numbers">';
+                html += '<button class="page-btn' + (currentPage <= 1 ? ' disabled' : '') + '" data-action="prev">&lt;</button>';
+
+                // Page number buttons (show max 5)
+                var startPage = Math.max(1, currentPage - 2);
+                var endPage = Math.min(tp, startPage + 4);
+                if (endPage - startPage < 4) startPage = Math.max(1, endPage - 4);
+
+                for (var p = startPage; p <= endPage; p++) {
+                    html += '<button class="page-btn' + (p === currentPage ? ' active' : '') + '" data-action="page" data-page="' + p + '">' + p + '</button>';
+                }
+
+                html += '<button class="page-btn' + (currentPage >= tp ? ' disabled' : '') + '" data-action="next">&gt;</button>';
+                html += '</div>';
+
+                paginationDiv.innerHTML = html;
+            }
+
+            // Event delegation
+            paginationDiv.addEventListener('click', function(e) {
+                var btn = e.target.closest('[data-action]');
+                if (!btn) return;
+                var action = btn.getAttribute('data-action');
+                if (action === 'prev' && currentPage > 1) { currentPage--; render(); }
+                else if (action === 'next' && currentPage < totalPages()) { currentPage++; render(); }
+                else if (action === 'page') { currentPage = parseInt(btn.getAttribute('data-page')); render(); }
+            });
+
+            paginationDiv.addEventListener('change', function(e) {
+                if (e.target.getAttribute('data-action') === 'pagesize') {
+                    pageSize = parseInt(e.target.value);
+                    currentPage = 1;
+                    render();
+                }
+            });
+
+            render();
+        });
+    })();
     </script>
 </body>
 

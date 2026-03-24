@@ -2,8 +2,12 @@
 require_once '../app/config/config.php';
 
 $pageTitle = "Blog & News";
-$pageDescription = "Stay updated with the latest news, articles, and spiritual insights from Durga Saptashati Foundation. Read about our community impact, divine teachings, and charitable activities.";
-$pageKeywords = "Durga Saptashati blog, news, articles, spiritual insights, community impact, charity updates";
+$pageDescription = "Stay updated with the latest news, articles, and insights from Durga Saptashati Foundation.";
+$pageKeywords = "Durga Saptashati blog, news, articles, community impact, charity updates";
+
+$stmt = $pdo->prepare("SELECT * FROM blogs WHERE status = 'published' ORDER BY created_at DESC");
+$stmt->execute();
+$allBlogs = $stmt->fetchAll();
 
 include '../app/views/layout/header.php';
 ?>
@@ -13,7 +17,7 @@ include '../app/views/layout/header.php';
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h2>From Blog</h2>
+                <h2>Our Blog</h2>
             </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
@@ -24,137 +28,69 @@ include '../app/views/layout/header.php';
 </div>
 <!-- Page Header End -->
 
+<!-- Blog Listing Start -->
+<div class="container-fluid">
+    <div class="container py-3">
+        <div class="text-center mb-5">
+            <h6 class="text-uppercase mb-1" style="color:#f26522;letter-spacing:3px;font-weight:600;">From Our Blog</h6>
+            <h1 style="color:#1a1b2e;">Latest <span style="color:#f26522;">News & Articles</span></h1>
+        </div>
 
-<!-- Blog Start -->
-<div class="blog">
-    <div class="container-fluid">
-        <div class="section-header text-center">
-            <p>Our Blog</p>
-            <h2>Latest news & spiritual insights from our foundation</h2>
+        <?php if (empty($allBlogs)): ?>
+        <div class="text-center" style="padding:60px 0;">
+            <i class="fas fa-newspaper" style="font-size:3rem;color:#ddd;margin-bottom:15px;"></i>
+            <p style="color:#999;font-size:1rem;">No blog posts published yet. Check back soon!</p>
         </div>
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="blog-item">
-                    <div class="blog-img">
-                        <img src="<?= asset('img/blog-1.jpg') ?>" alt="The Power of Saptashati Path">
+        <?php else: ?>
+        <div class="row" style="display:flex;flex-wrap:wrap;">
+            <?php foreach ($allBlogs as $idx => $bp): ?>
+            <div class="col-lg-4 col-md-6 mb-4 d-flex">
+                <a href="<?= url('blog/' . $bp['slug']) ?>" class="d-flex flex-column"
+                    style="border-radius:12px;overflow:hidden;box-shadow:0 5px 25px rgba(0,0,0,0.08);transition:all 0.4s;background:#fff;width:100%;text-decoration:none;color:inherit;cursor:pointer;"
+                    onmouseover="this.style.transform='translateY(-8px)';this.style.boxShadow='0 15px 40px rgba(0,0,0,0.15)'"
+                    onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 5px 25px rgba(0,0,0,0.08)'">
+                    <div style="position:relative;overflow:hidden;">
+                        <?php $blogImg = $bp['image'] ? asset('uploads/blogs/' . $bp['image']) : asset('img/blog-' . (($idx % 3) + 1) . '.jpg'); ?>
+                        <img class="w-100" src="<?= $blogImg ?>" alt="<?= htmlspecialchars($bp['title']) ?>"
+                            style="height:220px;object-fit:cover;transition:transform 0.5s;"
+                            onmouseover="this.style.transform='scale(1.05)'"
+                            onmouseout="this.style.transform='scale(1)'">
+                        <?php if (!empty($bp['category'])): ?>
+                        <div
+                            style="position:absolute;top:15px;left:15px;background:#f26522;color:#fff;padding:5px 14px;border-radius:20px;font-size:0.75rem;font-weight:600;">
+                            <i class="fas fa-tag mr-1"></i> <?= htmlspecialchars($bp['category']) ?>
+                        </div>
+                        <?php endif; ?>
                     </div>
-                    <div class="blog-text">
-                        <h3><a href="<?= url('single.php') ?>">The Power of Saptashati Path</a></h3>
-                        <p>
-                            Discover the spiritual significance and transformative benefits of reciting the Durga
-                            Saptashati for personal growth and divine blessings
-                        </p>
+                    <div class="p-4 d-flex flex-column flex-grow-1">
+                        <div class="d-flex align-items-center mb-3" style="gap:15px;">
+                            <small style="color:#999;"><i class="far fa-calendar-alt mr-1" style="color:#f26522;"></i>
+                                <?= date('M d, Y', strtotime($bp['created_at'])) ?></small>
+                            <small style="color:#999;"><i class="far fa-user mr-1" style="color:#f26522;"></i>
+                                <?= htmlspecialchars($bp['author'] ?? 'Admin') ?></small>
+                            <?php
+                                $ccStmt = $pdo->prepare("SELECT COUNT(*) FROM blog_comments WHERE blog_id = ? AND status = 'approved'");
+                                $ccStmt->execute([$bp['id']]);
+                                $ccCount = $ccStmt->fetchColumn();
+                                ?>
+                            <small style="color:#999;"><i class="far fa-comment mr-1" style="color:#f26522;"></i>
+                                <?= $ccCount ?></small>
+                        </div>
+                        <h5 class="font-weight-bold mb-2" style="color:#1a1b2e;font-size:1.1rem;line-height:1.4;">
+                            <?= htmlspecialchars($bp['title']) ?></h5>
+                        <p class="flex-grow-1" style="color:#666;font-size:0.9rem;line-height:1.7;">
+                            <?= htmlspecialchars(mb_strimwidth(strip_tags($bp['content'] ?? ''), 0, 150, '...')) ?></p>
+                        <span style="color:#f26522;font-weight:600;font-size:0.9rem;display:inline-flex;align-items:center;">
+                            Read More <i class="fa fa-long-arrow-alt-right ml-2"></i>
+                        </span>
                     </div>
-                    <div class="blog-meta">
-                        <p><i class="fa fa-user"></i><a href="#">Admin</a></p>
-                        <p><i class="fa fa-comments"></i><a href="#">12 Comments</a></p>
-                    </div>
-                </div>
+                </a>
             </div>
-            <div class="col-lg-4">
-                <div class="blog-item">
-                    <div class="blog-img">
-                        <img src="<?= asset('img/blog-2.jpg') ?>" alt="Community Service and Spiritual Growth">
-                    </div>
-                    <div class="blog-text">
-                        <h3><a href="<?= url('single.php') ?>">Community Service and Spiritual Growth</a></h3>
-                        <p>
-                            Learn how serving others through charitable activities leads to spiritual development and
-                            inner peace through divine grace
-                        </p>
-                    </div>
-                    <div class="blog-meta">
-                        <p><i class="fa fa-user"></i><a href="#">Admin</a></p>
-                        <p><i class="fa fa-comments"></i><a href="#">8 Comments</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="blog-item">
-                    <div class="blog-img">
-                        <img src="<?= asset('img/blog-3.jpg') ?>" alt="Healthcare for All: Our Mission">
-                    </div>
-                    <div class="blog-text">
-                        <h3><a href="<?= url('single.php') ?>">Healthcare for All: Our Mission</a></h3>
-                        <p>
-                            Read about our ongoing healthcare initiatives and how we're working to provide medical
-                            assistance to underserved communities
-                        </p>
-                    </div>
-                    <div class="blog-meta">
-                        <p><i class="fa fa-user"></i><a href="#">Admin</a></p>
-                        <p><i class="fa fa-comments"></i><a href="#">15 Comments</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="blog-item">
-                    <div class="blog-img">
-                        <img src="<?= asset('img/blog-1.jpg') ?>" alt="Women Empowerment Through Divine Strength">
-                    </div>
-                    <div class="blog-text">
-                        <h3><a href="<?= url('single.php') ?>">Women Empowerment Through Divine Strength</a></h3>
-                        <p>
-                            Explore how the divine feminine energy of Durga Ma inspires and empowers women in our
-                            community programs and initiatives
-                        </p>
-                    </div>
-                    <div class="blog-meta">
-                        <p><i class="fa fa-user"></i><a href="#">Admin</a></p>
-                        <p><i class="fa fa-comments"></i><a href="#">10 Comments</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="blog-item">
-                    <div class="blog-img">
-                        <img src="<?= asset('img/blog-2.jpg') ?>" alt="Education as Divine Service">
-                    </div>
-                    <div class="blog-text">
-                        <h3><a href="<?= url('single.php') ?>">Education as Divine Service</a></h3>
-                        <p>
-                            Understanding how providing education to underprivileged children aligns with our spiritual
-                            mission and creates lasting impact
-                        </p>
-                    </div>
-                    <div class="blog-meta">
-                        <p><i class="fa fa-user"></i><a href="#">Admin</a></p>
-                        <p><i class="fa fa-comments"></i><a href="#">18 Comments</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="blog-item">
-                    <div class="blog-img">
-                        <img src="<?= asset('img/blog-3.jpg') ?>" alt="Celebrating Navratri with the Community">
-                    </div>
-                    <div class="blog-text">
-                        <h3><a href="<?= url('single.php') ?>">Celebrating Navratri with the Community</a></h3>
-                        <p>
-                            Join us as we celebrate the nine divine nights of Navratri with community prayers, cultural
-                            programs, and charitable activities
-                        </p>
-                    </div>
-                    <div class="blog-meta">
-                        <p><i class="fa fa-user"></i><a href="#">Admin</a></p>
-                        <p><i class="fa fa-comments"></i><a href="#">22 Comments</a></p>
-                    </div>
-                </div>
-            </div>
+            <?php endforeach; ?>
         </div>
-        <div class="row">
-            <div class="col-12">
-                <ul class="pagination justify-content-center">
-                    <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                </ul>
-            </div>
-        </div>
+        <?php endif; ?>
     </div>
 </div>
-<!-- Blog End -->
+<!-- Blog Listing End -->
 
 <?php include '../app/views/layout/footer.php'; ?>

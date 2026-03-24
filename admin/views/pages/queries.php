@@ -3,7 +3,7 @@
         <h4><i class="fas fa-comments" style="color:#d97706;margin-right:8px;"></i> Contact Queries</h4>
         <span class="status-badge status-pending">5 Pending</span>
     </div>
-    <table class="data-table">
+    <table class="data-table paginated-table">
         <thead>
             <tr>
                 <th>#</th>
@@ -12,7 +12,7 @@
                 <th>Subject</th>
                 <th>Date</th>
                 <th>Status</th>
-                <th>Actions</th>
+                <th style="text-align:right;">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -23,9 +23,16 @@
                 <td>Volunteer Inquiry</td>
                 <td><?= date('M d, Y') ?></td>
                 <td><span class="status-badge status-new">New</span></td>
-                <td>
-                    <button class="btn-admin btn-sm btn-outline"><i class="fas fa-eye"></i> View</button>
-                    <button class="btn-admin btn-sm btn-success"><i class="fas fa-reply"></i></button>
+                <td style="text-align:right;">
+                    <div class="action-wrap">
+                        <button class="action-trigger" onclick="toggleActionMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+                        <div class="action-menu">
+                            <a href="#"><i class="fas fa-eye"></i> View</a>
+                            <a href="#"><i class="fas fa-reply"></i> Reply</a>
+                            <div class="action-divider"></div>
+                            <button class="action-delete"><i class="fas fa-trash"></i> Delete</button>
+                        </div>
+                    </div>
                 </td>
             </tr>
             <tr>
@@ -35,9 +42,16 @@
                 <td>Donation Query</td>
                 <td><?= date('M d, Y', strtotime('-1 day')) ?></td>
                 <td><span class="status-badge status-new">New</span></td>
-                <td>
-                    <button class="btn-admin btn-sm btn-outline"><i class="fas fa-eye"></i> View</button>
-                    <button class="btn-admin btn-sm btn-success"><i class="fas fa-reply"></i></button>
+                <td style="text-align:right;">
+                    <div class="action-wrap">
+                        <button class="action-trigger" onclick="toggleActionMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+                        <div class="action-menu">
+                            <a href="#"><i class="fas fa-eye"></i> View</a>
+                            <a href="#"><i class="fas fa-reply"></i> Reply</a>
+                            <div class="action-divider"></div>
+                            <button class="action-delete"><i class="fas fa-trash"></i> Delete</button>
+                        </div>
+                    </div>
                 </td>
             </tr>
             <tr>
@@ -47,9 +61,16 @@
                 <td>Partnership Opportunity</td>
                 <td><?= date('M d, Y', strtotime('-2 days')) ?></td>
                 <td><span class="status-badge status-pending">Pending</span></td>
-                <td>
-                    <button class="btn-admin btn-sm btn-outline"><i class="fas fa-eye"></i> View</button>
-                    <button class="btn-admin btn-sm btn-success"><i class="fas fa-reply"></i></button>
+                <td style="text-align:right;">
+                    <div class="action-wrap">
+                        <button class="action-trigger" onclick="toggleActionMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+                        <div class="action-menu">
+                            <a href="#"><i class="fas fa-eye"></i> View</a>
+                            <a href="#"><i class="fas fa-reply"></i> Reply</a>
+                            <div class="action-divider"></div>
+                            <button class="action-delete"><i class="fas fa-trash"></i> Delete</button>
+                        </div>
+                    </div>
                 </td>
             </tr>
             <tr>
@@ -59,9 +80,16 @@
                 <td>Self-defence Classes</td>
                 <td><?= date('M d, Y', strtotime('-3 days')) ?></td>
                 <td><span class="status-badge status-pending">Pending</span></td>
-                <td>
-                    <button class="btn-admin btn-sm btn-outline"><i class="fas fa-eye"></i> View</button>
-                    <button class="btn-admin btn-sm btn-success"><i class="fas fa-reply"></i></button>
+                <td style="text-align:right;">
+                    <div class="action-wrap">
+                        <button class="action-trigger" onclick="toggleActionMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+                        <div class="action-menu">
+                            <a href="#"><i class="fas fa-eye"></i> View</a>
+                            <a href="#"><i class="fas fa-reply"></i> Reply</a>
+                            <div class="action-divider"></div>
+                            <button class="action-delete"><i class="fas fa-trash"></i> Delete</button>
+                        </div>
+                    </div>
                 </td>
             </tr>
             <tr>
@@ -71,9 +99,16 @@
                 <td>Event Sponsorship</td>
                 <td><?= date('M d, Y', strtotime('-5 days')) ?></td>
                 <td><span class="status-badge status-active">Replied</span></td>
-                <td>
-                    <button class="btn-admin btn-sm btn-outline"><i class="fas fa-eye"></i> View</button>
-                    <button class="btn-admin btn-sm btn-success"><i class="fas fa-reply"></i></button>
+                <td style="text-align:right;">
+                    <div class="action-wrap">
+                        <button class="action-trigger" onclick="toggleActionMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+                        <div class="action-menu">
+                            <a href="#"><i class="fas fa-eye"></i> View</a>
+                            <a href="#"><i class="fas fa-reply"></i> Reply</a>
+                            <div class="action-divider"></div>
+                            <button class="action-delete"><i class="fas fa-trash"></i> Delete</button>
+                        </div>
+                    </div>
                 </td>
             </tr>
         </tbody>

@@ -3,7 +3,7 @@
         <h4><i class="fas fa-calendar-alt" style="color:#2563eb;margin-right:8px;"></i> Events</h4>
         <button class="btn-admin btn-primary"><i class="fas fa-plus"></i> Add Event</button>
     </div>
-    <table class="data-table">
+    <table class="data-table paginated-table">
         <thead>
             <tr>
                 <th>#</th>
@@ -12,7 +12,7 @@
                 <th>Time</th>
                 <th>Location</th>
                 <th>Status</th>
-                <th>Actions</th>
+                <th style="text-align:right;">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -23,9 +23,16 @@
                 <td>11:00 AM - 3:00 PM</td>
                 <td>Dwarka, Delhi</td>
                 <td><span class="status-badge status-active">Completed</span></td>
-                <td>
-                    <button class="btn-admin btn-sm btn-outline"><i class="fas fa-edit"></i> Edit</button>
-                    <button class="btn-admin btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                <td style="text-align:right;">
+                    <div class="action-wrap">
+                        <button class="action-trigger" onclick="toggleActionMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+                        <div class="action-menu">
+                            <a href="#"><i class="fas fa-eye"></i> View</a>
+                            <a href="#"><i class="fas fa-edit"></i> Edit</a>
+                            <div class="action-divider"></div>
+                            <button class="action-delete"><i class="fas fa-trash"></i> Delete</button>
+                        </div>
+                    </div>
                 </td>
             </tr>
             <tr>
@@ -35,9 +42,16 @@
                 <td>5:00 PM - 7:30 PM</td>
                 <td>Dwarka, Delhi</td>
                 <td><span class="status-badge status-active">Completed</span></td>
-                <td>
-                    <button class="btn-admin btn-sm btn-outline"><i class="fas fa-edit"></i> Edit</button>
-                    <button class="btn-admin btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                <td style="text-align:right;">
+                    <div class="action-wrap">
+                        <button class="action-trigger" onclick="toggleActionMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+                        <div class="action-menu">
+                            <a href="#"><i class="fas fa-eye"></i> View</a>
+                            <a href="#"><i class="fas fa-edit"></i> Edit</a>
+                            <div class="action-divider"></div>
+                            <button class="action-delete"><i class="fas fa-trash"></i> Delete</button>
+                        </div>
+                    </div>
                 </td>
             </tr>
             <tr>
@@ -47,9 +61,16 @@
                 <td>5:00 PM - 7:30 PM</td>
                 <td>Dwarka, Delhi</td>
                 <td><span class="status-badge status-active">Completed</span></td>
-                <td>
-                    <button class="btn-admin btn-sm btn-outline"><i class="fas fa-edit"></i> Edit</button>
-                    <button class="btn-admin btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                <td style="text-align:right;">
+                    <div class="action-wrap">
+                        <button class="action-trigger" onclick="toggleActionMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+                        <div class="action-menu">
+                            <a href="#"><i class="fas fa-eye"></i> View</a>
+                            <a href="#"><i class="fas fa-edit"></i> Edit</a>
+                            <div class="action-divider"></div>
+                            <button class="action-delete"><i class="fas fa-trash"></i> Delete</button>
+                        </div>
+                    </div>
                 </td>
             </tr>
             <tr>
@@ -59,9 +80,16 @@
                 <td>5:00 AM - 10:00 AM</td>
                 <td>Dwarka, Delhi</td>
                 <td><span class="status-badge status-active">Completed</span></td>
-                <td>
-                    <button class="btn-admin btn-sm btn-outline"><i class="fas fa-edit"></i> Edit</button>
-                    <button class="btn-admin btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                <td style="text-align:right;">
+                    <div class="action-wrap">
+                        <button class="action-trigger" onclick="toggleActionMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
+                        <div class="action-menu">
+                            <a href="#"><i class="fas fa-eye"></i> View</a>
+                            <a href="#"><i class="fas fa-edit"></i> Edit</a>
+                            <div class="action-divider"></div>
+                            <button class="action-delete"><i class="fas fa-trash"></i> Delete</button>
+                        </div>
+                    </div>
                 </td>
             </tr>
         </tbody>

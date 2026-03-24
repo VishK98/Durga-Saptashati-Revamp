@@ -814,6 +814,11 @@ document.addEventListener('keydown', function(e) {
 
 
 <!-- Blog Section Start -->
+<?php
+$blogStmt = $pdo->prepare("SELECT * FROM blogs WHERE status = 'published' ORDER BY created_at DESC LIMIT 3");
+$blogStmt->execute();
+$latestBlogs = $blogStmt->fetchAll();
+?>
 <div class="container-fluid py-5" style="background:#f8f9fa;">
     <div class="container py-4">
         <div class="text-center mb-5" data-aos="fade-up">
@@ -821,72 +826,45 @@ document.addEventListener('keydown', function(e) {
             <h1 style="color:#1a1b2e;">Latest <span style="color:#f26522;">News & Articles</span></h1>
         </div>
         <div class="row" style="display:flex;flex-wrap:wrap;">
-            <div class="col-lg-4 col-md-6 mb-4 d-flex" data-aos="fade-up" data-aos-delay="100">
-                <div class="d-flex flex-column" style="border-radius:12px;overflow:hidden;box-shadow:0 5px 25px rgba(0,0,0,0.08);transition:all 0.4s;background:#fff;width:100;" onmouseover="this.style.transform='translateY(-8px)';this.style.boxShadow='0 15px 40px rgba(0,0,0,0.15)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 5px 25px rgba(0,0,0,0.08)'">
-                    <div style="position:relative;overflow:hidden;">
-                        <img class="w-100" src="<?php echo asset('img/blog-1.jpg') ?>" alt="Women Empowerment" style="height:220px;object-fit:cover;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                        <div style="position:absolute;top:15px;left:15px;background:#f26522;color:#fff;padding:5px 14px;border-radius:20px;font-size:0.75rem;font-weight:600;">
-                            <i class="fas fa-female mr-1"></i> Empowerment
-                        </div>
-                    </div>
-                    <div class="p-4 d-flex flex-column flex-grow-1">
-                        <div class="d-flex align-items-center mb-3" style="gap:15px;">
-                            <small style="color:#999;"><i class="far fa-calendar-alt mr-1" style="color:#f26522;"></i> Jan 01, 2021</small>
-                            <small style="color:#999;"><i class="far fa-user mr-1" style="color:#f26522;"></i> Admin</small>
-                            <small style="color:#999;"><i class="far fa-comments mr-1" style="color:#f26522;"></i> 12 Comments</small>
-                        </div>
-                        <h5 class="font-weight-bold mb-2" style="color:#1a1b2e;font-size:1.1rem;line-height:1.4;">Women Empowerment Initiatives in Dwarka</h5>
-                        <p class="flex-grow-1" style="color:#666;font-size:0.9rem;line-height:1.7;">Discover how our self-defence classes and skill development programmes are transforming lives of women in Dwarka, Delhi.</p>
-                        <a href="<?php echo url('blog.php') ?>" style="color:#f26522;font-weight:600;font-size:0.9rem;display:inline-flex;align-items:center;transition:all 0.3s;" onmouseover="this.style.gap='10px'" onmouseout="this.style.gap='5px'">
-                            Read More <i class="fa fa-long-arrow-alt-right ml-2"></i>
+            <?php if (empty($latestBlogs)): ?>
+                <div class="col-12 text-center"><p style="color:#999;">No blog posts published yet.</p></div>
+            <?php else: ?>
+                <?php $delays = [100, 200, 300]; $idx = 0; ?>
+                <?php foreach ($latestBlogs as $bp): ?>
+                    <div class="col-lg-4 col-md-6 mb-4 d-flex" data-aos="fade-up" data-aos-delay="<?= $delays[$idx] ?? 100 ?>">
+                        <a href="<?= url('blog/' . $bp['slug']) ?>" class="d-flex flex-column" style="border-radius:12px;overflow:hidden;box-shadow:0 5px 25px rgba(0,0,0,0.08);transition:all 0.4s;background:#fff;width:100%;text-decoration:none;color:inherit;cursor:pointer;" onmouseover="this.style.transform='translateY(-8px)';this.style.boxShadow='0 15px 40px rgba(0,0,0,0.15)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 5px 25px rgba(0,0,0,0.08)'">
+                            <div style="position:relative;overflow:hidden;">
+                                <?php
+                                $blogImg = $bp['image'] ? asset('uploads/blogs/' . $bp['image']) : asset('img/blog-' . (($idx % 3) + 1) . '.jpg');
+                                ?>
+                                <img class="w-100" src="<?= $blogImg ?>" alt="<?= htmlspecialchars($bp['title']) ?>" style="height:220px;object-fit:cover;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                                <?php if (!empty($bp['category'])): ?>
+                                <div style="position:absolute;top:15px;left:15px;background:#f26522;color:#fff;padding:5px 14px;border-radius:20px;font-size:0.75rem;font-weight:600;">
+                                    <?= htmlspecialchars($bp['category']) ?>
+                                </div>
+                                <?php endif; ?>
+                            </div>
+                            <div class="p-4 d-flex flex-column flex-grow-1">
+                                <div class="d-flex align-items-center mb-3" style="gap:15px;">
+                                    <small style="color:#999;"><i class="far fa-calendar-alt mr-1" style="color:#f26522;"></i> <?= date('M d, Y', strtotime($bp['created_at'])) ?></small>
+                                    <small style="color:#999;"><i class="far fa-user mr-1" style="color:#f26522;"></i> <?= htmlspecialchars($bp['author'] ?? 'Admin') ?></small>
+                                    <?php
+                                    $hcStmt = $pdo->prepare("SELECT COUNT(*) FROM blog_comments WHERE blog_id = ? AND status = 'approved'");
+                                    $hcStmt->execute([$bp['id']]);
+                                    $hcCount = $hcStmt->fetchColumn();
+                                    ?>
+                                    <small style="color:#999;"><i class="far fa-comment mr-1" style="color:#f26522;"></i> <?= $hcCount ?></small>
+                                </div>
+                                <h5 class="font-weight-bold mb-2" style="color:#1a1b2e;font-size:1.1rem;line-height:1.4;"><?= htmlspecialchars($bp['title']) ?></h5>
+                                <p class="flex-grow-1" style="color:#666;font-size:0.9rem;line-height:1.7;"><?= htmlspecialchars(mb_strimwidth(strip_tags($bp['content'] ?? ''), 0, 150, '...')) ?></p>
+                                <span style="color:#f26522;font-weight:600;font-size:0.9rem;display:inline-flex;align-items:center;">
+                                    Read More <i class="fa fa-long-arrow-alt-right ml-2"></i>
+                                </span>
+                            </div>
                         </a>
                     </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-4 d-flex" data-aos="fade-up" data-aos-delay="200">
-                <div class="d-flex flex-column" style="border-radius:12px;overflow:hidden;box-shadow:0 5px 25px rgba(0,0,0,0.08);transition:all 0.4s;background:#fff;width:100%;" onmouseover="this.style.transform='translateY(-8px)';this.style.boxShadow='0 15px 40px rgba(0,0,0,0.15)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 5px 25px rgba(0,0,0,0.08)'">
-                    <div style="position:relative;overflow:hidden;">
-                        <img class="w-100" src="<?php echo asset('img/blog-2.jpg') ?>" alt="Food Donation" style="height:220px;object-fit:cover;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                        <div style="position:absolute;top:15px;left:15px;background:#f26522;color:#fff;padding:5px 14px;border-radius:20px;font-size:0.75rem;font-weight:600;">
-                            <i class="fas fa-utensils mr-1"></i> Food Drive
-                        </div>
-                    </div>
-                    <div class="p-4 d-flex flex-column flex-grow-1">
-                        <div class="d-flex align-items-center mb-3" style="gap:15px;">
-                            <small style="color:#999;"><i class="far fa-calendar-alt mr-1" style="color:#f26522;"></i> Feb 15, 2021</small>
-                            <small style="color:#999;"><i class="far fa-user mr-1" style="color:#f26522;"></i> Admin</small>
-                            <small style="color:#999;"><i class="far fa-comments mr-1" style="color:#f26522;"></i> 12 Comments</small>
-                        </div>
-                        <h5 class="font-weight-bold mb-2" style="color:#1a1b2e;font-size:1.1rem;line-height:1.4;">Food Donation Drive Success Story</h5>
-                        <p class="flex-grow-1" style="color:#666;font-size:0.9rem;line-height:1.7;">Our latest food donation drive reached over 200 families in Dwarka, providing nutritious meals and essential supplies.</p>
-                        <a href="<?php echo url('blog.php') ?>" style="color:#f26522;font-weight:600;font-size:0.9rem;display:inline-flex;align-items:center;transition:all 0.3s;" onmouseover="this.style.gap='10px'" onmouseout="this.style.gap='5px'">
-                            Read More <i class="fa fa-long-arrow-alt-right ml-2"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-4 d-flex" data-aos="fade-up" data-aos-delay="300">
-                <div class="d-flex flex-column" style="border-radius:12px;overflow:hidden;box-shadow:0 5px 25px rgba(0,0,0,0.08);transition:all 0.4s;background:#fff;width:100%;" onmouseover="this.style.transform='translateY(-8px)';this.style.boxShadow='0 15px 40px rgba(0,0,0,0.15)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 5px 25px rgba(0,0,0,0.08)'">
-                    <div style="position:relative;overflow:hidden;">
-                        <img class="w-100" src="<?php echo asset('img/blog-3.jpg') ?>" alt="Education" style="height:220px;object-fit:cover;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                        <div style="position:absolute;top:15px;left:15px;background:#f26522;color:#fff;padding:5px 14px;border-radius:20px;font-size:0.75rem;font-weight:600;">
-                            <i class="fas fa-graduation-cap mr-1"></i> Education
-                        </div>
-                    </div>
-                    <div class="p-4 d-flex flex-column flex-grow-1">
-                        <div class="d-flex align-items-center mb-3" style="gap:15px;">
-                            <small style="color:#999;"><i class="far fa-calendar-alt mr-1" style="color:#f26522;"></i> Mar 08, 2021</small>
-                            <small style="color:#999;"><i class="far fa-user mr-1" style="color:#f26522;"></i> Admin</small>
-                            <small style="color:#999;"><i class="far fa-comments mr-1" style="color:#f26522;"></i> 12 Comments</small>
-                        </div>
-                        <h5 class="font-weight-bold mb-2" style="color:#1a1b2e;font-size:1.1rem;line-height:1.4;">Education For All: Changing Lives</h5>
-                        <p class="flex-grow-1" style="color:#666;font-size:0.9rem;line-height:1.7;">Learn how our education programmes and after-school tuition classes are helping underprivileged children achieve their dreams.</p>
-                        <a href="<?php echo url('blog.php') ?>" style="color:#f26522;font-weight:600;font-size:0.9rem;display:inline-flex;align-items:center;transition:all 0.3s;" onmouseover="this.style.gap='10px'" onmouseout="this.style.gap='5px'">
-                            Read More <i class="fa fa-long-arrow-alt-right ml-2"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
+                <?php $idx++; endforeach; ?>
+            <?php endif; ?>
         </div>
     </div>
 </div>
