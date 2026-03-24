@@ -1,0 +1,731 @@
+/* Women's Day Page - Empowerment & Equality Design */
+
+/* CSS Variables - Site Theme Colors */
+:root {
+  --primary-orange: #f26522;
+  --deep-blue: #0d0e14;
+  --accent-light-orange: #ff8c42;
+  --accent-dark-blue: #1a1b2e;
+  --soft-pink: #ffebf0;
+  --text-dark: #2c3e50;
+  --text-light: #ffffff;
+  --text-muted: #6c757d;
+  --background-light: #f8f9fa;
+  --background-white: #ffffff;
+  --shadow-soft: rgba(0, 0, 0, 0.08);
+  --shadow-medium: rgba(0, 0, 0, 0.12);
+  --shadow-deep: rgba(0, 0, 0, 0.16);
+  --gradient-primary: linear-gradient(135deg, #f26522 0%, #ff8c42 100%);
+  --gradient-secondary: linear-gradient(135deg, #0d0e14 0%, #1a1b2e 100%);
+  --gradient-soft: linear-gradient(135deg, #ffebf0 0%, #fff5f0 100%);
+}
+
+/* Global Styles */
+.min-vh-100 {
+  min-height: 100vh;
+}
+
+/* Float Animation */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* Hero Section - Women's Empowerment Theme */
+.womens-hero-section {
+  position: relative;
+  padding: 40px 0;
+  background: var(--gradient-soft);
+  overflow: hidden;
+}
+
+.hero-background-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(242, 101, 34, 0.03) 0%,
+    rgba(13, 14, 20, 0.05) 100%
+  );
+  z-index: 1;
+}
+
+.floating-elements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+}
+
+.floating-icon {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: rgba(242, 101, 34, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: var(--primary-orange);
+  animation: float 3s ease-in-out infinite;
+}
+
+.floating-icon.icon-1 {
+  top: 10%;
+  left: 8%;
+  animation-delay: 0s;
+}
+
+.floating-icon.icon-2 {
+  top: 20%;
+  right: 12%;
+  animation-delay: 0.5s;
+}
+
+.floating-icon.icon-3 {
+  bottom: 30%;
+  left: 5%;
+  animation-delay: 1s;
+}
+
+.floating-icon.icon-4 {
+  bottom: 15%;
+  right: 8%;
+  animation-delay: 1.5s;
+}
+
+.hero-content-womens {
+  position: relative;
+  z-index: 3;
+  padding: 40px 0;
+}
+
+.empowerment-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--gradient-primary);
+  color: var(--text-light);
+  padding: 12px 25px;
+  border-radius: 30px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 25px;
+  box-shadow: 0 8px 25px rgba(242, 101, 34, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.empowerment-badge i {
+  font-size: 1.2rem;
+}
+
+.hero-title-womens {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 800;
+  color: var(--deep-blue);
+  line-height: 1.1;
+  margin-bottom: 25px;
+  letter-spacing: -0.02em;
+}
+
+.text-gradient-womens {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+
+.hero-description-womens {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 40px;
+  max-width: 600px;
+}
+
+.hero-actions-womens {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+}
+
+.btn-womens-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--gradient-primary);
+  color: var(--text-light);
+  padding: 15px 30px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(242, 101, 34, 0.3);
+}
+
+.btn-womens-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(242, 101, 34, 0.4);
+  color: var(--text-light);
+  text-decoration: none;
+}
+
+.btn-womens-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--gradient-secondary);
+  color: var(--text-light);
+  padding: 15px 30px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(13, 14, 20, 0.3);
+}
+
+.btn-womens-secondary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(13, 14, 20, 0.4);
+  color: var(--text-light);
+  text-decoration: none;
+}
+
+.btn-womens-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  color: var(--primary-orange);
+  padding: 15px 30px;
+  border: 2px solid var(--primary-orange);
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.btn-womens-outline:hover {
+  background: var(--primary-orange);
+  color: var(--text-light);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+.hero-stats-womens {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--primary-orange);
+  line-height: 1;
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin-top: 5px;
+}
+
+.hero-visual-womens {
+  position: relative;
+  z-index: 3;
+}
+
+.main-image-container {
+  position: relative;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.hero-main-image {
+  width: 100%;
+  height: auto;
+  border-radius: 25px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.hero-main-image:hover {
+  transform: scale(1.05);
+}
+
+.image-overlay-elements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.overlay-card {
+  position: absolute;
+  background: var(--background-white);
+  padding: 15px 20px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--deep-blue);
+  animation: float 4s ease-in-out infinite;
+}
+
+.overlay-card i {
+  color: var(--primary-orange);
+  font-size: 1.2rem;
+}
+
+.overlay-card.card-1 {
+  top: 15%;
+  left: -10%;
+  animation-delay: 0.5s;
+}
+
+.overlay-card.card-2 {
+  top: 45%;
+  right: -15%;
+  animation-delay: 1s;
+}
+
+.overlay-card.card-3 {
+  bottom: 20%;
+  left: -5%;
+  animation-delay: 1.5s;
+}
+
+/* Section Headers */
+.section-header-womens {
+  margin-bottom: 60px;
+}
+
+.section-badge-womens {
+  display: inline-block;
+  background: var(--gradient-primary);
+  color: var(--text-light);
+  padding: 8px 20px;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.section-title-womens {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 800;
+  color: var(--deep-blue);
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.section-description-womens {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* Mission Section */
+.mission-womens-section {
+  padding: 40px 0;
+  background: var(--background-white);
+  position: relative;
+}
+
+.mission-content-womens {
+  position: relative;
+}
+
+.mission-pillars {
+  margin-top: 60px;
+}
+
+.pillar-card {
+  text-align: center;
+  padding: 40px 30px;
+  background: var(--background-white);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  height: 100%;
+  border: 1px solid rgba(242, 101, 34, 0.1);
+}
+
+.pillar-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(242, 101, 34, 0.15);
+}
+
+.pillar-icon {
+  width: 80px;
+  height: 80px;
+  background: var(--gradient-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 25px;
+  font-size: 2rem;
+  color: var(--text-light);
+  box-shadow: 0 10px 25px rgba(242, 101, 34, 0.3);
+}
+
+.pillar-card h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--deep-blue);
+  margin-bottom: 15px;
+}
+
+.pillar-card p {
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Stories Section */
+.stories-womens-section {
+  padding: 40px 0;
+  background: var(--background-white);
+  position: relative;
+}
+
+.stories-showcase {
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+.story-content {
+  padding: 40px;
+}
+
+.story-quote {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.quote-icon {
+  font-size: 3rem;
+  color: var(--primary-orange);
+  opacity: 0.3;
+  position: absolute;
+  top: -20px;
+  left: -10px;
+}
+
+.story-quote blockquote {
+  font-size: 1.3rem;
+  line-height: 1.7;
+  color: var(--text-dark);
+  font-style: italic;
+  margin: 0;
+  padding-left: 40px;
+  position: relative;
+}
+
+.story-author {
+  margin-top: 30px;
+}
+
+.author-info h4 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--deep-blue);
+  margin-bottom: 5px;
+}
+
+.author-info > span {
+  color: var(--primary-orange);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.author-achievements {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.achievement {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.achievement i {
+  color: var(--primary-orange);
+}
+
+.story-visual {
+  position: relative;
+  text-align: center;
+}
+
+.story-image {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.story-image:hover {
+  transform: scale(1.05);
+}
+
+.story-metrics {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+}
+
+.metric-card {
+  background: var(--gradient-primary);
+  color: var(--text-light);
+  padding: 15px 20px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(242, 101, 34, 0.3);
+  min-width: 100px;
+}
+
+.metric-number {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.metric-label {
+  display: block;
+  font-size: 0.8rem;
+  margin-top: 5px;
+  opacity: 0.9;
+}
+
+.mini-story-card {
+  background: var(--background-white);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  text-align: center;
+  border: 1px solid rgba(242, 101, 34, 0.08);
+}
+
+.mini-story-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(242, 101, 34, 0.15);
+}
+
+.mini-story-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.mini-story-card:hover img {
+  transform: scale(1.1);
+}
+
+.mini-story-content {
+  padding: 25px;
+}
+
+.mini-story-content h5 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--deep-blue);
+  margin-bottom: 5px;
+}
+
+.mini-story-content span {
+  color: var(--primary-orange);
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.mini-story-content p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Impact Statistics Section */
+.impact-womens-section {
+  padding: 80px 0;
+  background: var(--gradient-secondary);
+  color: var(--text-light);
+  position: relative;
+}
+
+.impact-stat {
+  text-align: center;
+  padding: 30px 20px;
+}
+
+.stat-icon {
+  width: 80px;
+  height: 80px;
+  background: rgba(242, 101, 34, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 25px;
+  font-size: 2rem;
+  color: var(--primary-orange);
+}
+
+.impact-stat .stat-number {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--text-light);
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.stat-description {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+}
+
+/* Get Involved Section */
+.involvement-womens-section {
+  padding: 40px 0 !important;
+  background: var(--gradient-soft);
+  position: relative;
+}
+
+.involvement-content {
+  padding: 40px;
+}
+
+.involvement-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  color: var(--deep-blue);
+  margin-bottom: 25px;
+}
+
+.involvement-description {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 40px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.involvement-actions {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .floating-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+
+  .hero-actions-womens {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn-womens-primary,
+  .btn-womens-secondary,
+  .btn-womens-outline {
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+  }
+
+  .hero-stats-womens {
+    justify-content: center;
+    gap: 30px;
+  }
+
+  .overlay-card {
+    position: relative;
+    margin: 10px 0;
+  }
+
+  .overlay-card.card-1,
+  .overlay-card.card-2,
+  .overlay-card.card-3 {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    display: inline-flex;
+    margin: 5px;
+  }
+
+  .story-metrics {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    justify-content: center;
+    margin-top: 30px;
+  }
+
+  .involvement-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .mission-pillars .row > div {
+    margin-bottom: 30px;
+  }
+}
