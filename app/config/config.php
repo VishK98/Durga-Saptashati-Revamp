@@ -29,16 +29,20 @@ function loadEnv($file)
 // Load .env file
 loadEnv(__DIR__ . '/../../.env');
 
-// Database Configuration
-define('DB_HOST', $_ENV['DB_HOST'] ?? 'localhost');
-define('DB_NAME', $_ENV['DB_NAME'] ?? 'db_durga_saptashati');
-define('DB_USER', $_ENV['DB_USER'] ?? 'root');
-define('DB_PASS', $_ENV['DB_PASS'] ?? '');
+// Detect environment
+define('APP_ENV', $_ENV['APP_ENV'] ?? 'development');
+$isLocal = (APP_ENV === 'development');
+// $isLocal = (APP_ENV === 'production ');
+
+// Database Configuration (switches based on APP_ENV)
+define('DB_HOST', $isLocal ? ($_ENV['DB_LOCAL_HOST'] ?? 'localhost') : ($_ENV['DB_PROD_HOST'] ?? 'localhost'));
+define('DB_NAME', $isLocal ? ($_ENV['DB_LOCAL_NAME'] ?? 'durga_saptashati') : ($_ENV['DB_PROD_NAME'] ?? 'durga_saptashati'));
+define('DB_USER', $isLocal ? ($_ENV['DB_LOCAL_USER'] ?? 'root') : ($_ENV['DB_PROD_USER'] ?? 'root'));
+define('DB_PASS', $isLocal ? ($_ENV['DB_LOCAL_PASS'] ?? '') : ($_ENV['DB_PROD_PASS'] ?? ''));
 
 // Application Configuration
-define('APP_NAME', $_ENV['APP_NAME'] ?? 'Durga Saptashati Foundation');
-define('APP_URL', $_ENV['APP_URL'] ?? 'http://localhost/durga-saptashati');
-define('APP_ENV', $_ENV['APP_ENV'] ?? 'development');
+define('APP_NAME', trim($_ENV['APP_NAME'] ?? 'Durga Saptashati Foundation', '"'));
+define('APP_URL', $isLocal ? ($_ENV['APP_LOCAL_URL'] ?? 'http://localhost/Durga-Saptashati-Revamp') : ($_ENV['APP_PROD_URL'] ?? 'https://wavebroadcast.in/durga-saptashati'));
 
 // Paths
 define('ROOT_PATH', dirname(dirname(__DIR__)));
