@@ -41,14 +41,6 @@ $stmt = $pdo->query("SELECT * FROM blogs ORDER BY created_at DESC");
 $blogs = $stmt->fetchAll();
 ?>
 
-<?php if (!empty($_SESSION['blog_success'])): ?>
-    <div style="background:#d4edda;color:#155724;padding:12px 20px;border-radius:8px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;">
-        <span><?= htmlspecialchars($_SESSION['blog_success']) ?></span>
-        <button onclick="this.parentElement.remove()" style="background:none;border:none;font-size:18px;cursor:pointer;color:#155724;">&times;</button>
-    </div>
-    <?php unset($_SESSION['blog_success']); ?>
-<?php endif; ?>
-
 <div class="data-panel">
     <div class="data-panel-header">
         <h4><i class="fas fa-blog" style="color:var(--accent);margin-right:8px;"></i> Blog Posts</h4>

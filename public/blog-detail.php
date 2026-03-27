@@ -16,24 +16,6 @@ if (!$blog) {
     exit;
 }
 
-// Handle comment submission
-$commentMsg = '';
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_comment'])) {
-    $cName = trim($_POST['comment_name'] ?? '');
-    $cEmail = trim($_POST['comment_email'] ?? '');
-    $cText = trim($_POST['comment_text'] ?? '');
-
-    if (!empty($cName) && !empty($cEmail) && !empty($cText)) {
-        $stmt = $pdo->prepare("INSERT INTO blog_comments (blog_id, name, email, comment, status) VALUES (?, ?, ?, ?, 'pending')");
-        $stmt->execute([$blog['id'], $cName, $cEmail, $cText]);
-        header('Location: ' . url('blog/' . $blog['slug']) . '?comment=success');
-        exit;
-    }
-}
-
-if (isset($_GET['comment']) && $_GET['comment'] === 'success') {
-    $commentMsg = 'success';
-}
 
 $pageTitle = $blog['title'];
 $pageDescription = $blog['meta_description'] ?? mb_strimwidth(strip_tags($blog['content']), 0, 160, '...');
@@ -151,13 +133,6 @@ include '../app/views/layout/header.php';
                         Comment<?= $commentCount !== 1 ? 's' : '' ?>
                     </h4>
 
-                    <?php if ($commentMsg === 'success'): ?>
-                    <div
-                        style="background:#d4edda;color:#155724;padding:14px 20px;border-radius:8px;margin-bottom:20px;font-size:0.9rem;">
-                        <i class="fas fa-check-circle" style="margin-right:6px;"></i> Your comment has been submitted
-                        and is awaiting approval.
-                    </div>
-                    <?php endif; ?>
 
                     <?php if (empty($comments)): ?>
                     <p style="color:#999;font-size:0.9rem;margin-bottom:0;">No comments yet. Be the first to share your
@@ -192,50 +167,71 @@ include '../app/views/layout/header.php';
                         <i class="fas fa-pen" style="color:#f26522;margin-right:8px;font-size:0.9rem;"></i>Leave a
                         Comment
                     </h4>
-                    <form method="POST" action="" id="commentForm">
-                        <input type="hidden" name="add_comment" value="1">
+                    <form id="commentForm" onsubmit="return false;">
+                        <input type="hidden" name="blog_id" value="<?= $blog['id'] ?>">
                         <div style="display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-bottom:15px;">
                             <div>
-                                <label
-                                    style="display:block;margin-bottom:5px;font-weight:600;font-size:0.85rem;color:#333;">Name
-                                    *</label>
-                                <input type="text" name="comment_name" required placeholder="Your name"
-                                    style="width:100%;padding:11px 14px;border:1px solid #ddd;border-radius:8px;font-size:0.9rem;font-family:inherit;transition:border-color 0.2s;"
-                                    onfocus="this.style.borderColor='#f26522'" onblur="this.style.borderColor='#ddd'">
+                                <label style="display:block;margin-bottom:5px;font-weight:600;font-size:0.85rem;color:#333;">Name *</label>
+                                <input type="text" name="name" required placeholder="Your name" style="width:100%;padding:11px 14px;border:1px solid #ddd;border-radius:8px;font-size:0.9rem;font-family:inherit;transition:border-color 0.2s;" onfocus="this.style.borderColor='#f26522'" onblur="this.style.borderColor='#ddd'">
                             </div>
                             <div>
-                                <label
-                                    style="display:block;margin-bottom:5px;font-weight:600;font-size:0.85rem;color:#333;">Email
-                                    *</label>
-                                <input type="email" name="comment_email" required placeholder="Your email"
-                                    style="width:100%;padding:11px 14px;border:1px solid #ddd;border-radius:8px;font-size:0.9rem;font-family:inherit;transition:border-color 0.2s;"
-                                    onfocus="this.style.borderColor='#f26522'" onblur="this.style.borderColor='#ddd'">
+                                <label style="display:block;margin-bottom:5px;font-weight:600;font-size:0.85rem;color:#333;">Email *</label>
+                                <input type="email" name="email" required placeholder="Your email" style="width:100%;padding:11px 14px;border:1px solid #ddd;border-radius:8px;font-size:0.9rem;font-family:inherit;transition:border-color 0.2s;" onfocus="this.style.borderColor='#f26522'" onblur="this.style.borderColor='#ddd'">
                             </div>
                         </div>
                         <div style="margin-bottom:15px;">
-                            <label
-                                style="display:block;margin-bottom:5px;font-weight:600;font-size:0.85rem;color:#333;">Comment
-                                *</label>
-                            <textarea name="comment_text" required rows="5" placeholder="Write your comment..."
-                                style="width:100%;padding:11px 14px;border:1px solid #ddd;border-radius:8px;font-size:0.9rem;font-family:inherit;resize:vertical;transition:border-color 0.2s;"
-                                onfocus="this.style.borderColor='#f26522'"
-                                onblur="this.style.borderColor='#ddd'"></textarea>
+                            <label style="display:block;margin-bottom:5px;font-weight:600;font-size:0.85rem;color:#333;">Comment *</label>
+                            <textarea name="comment" required rows="5" placeholder="Write your comment..." style="width:100%;padding:11px 14px;border:1px solid #ddd;border-radius:8px;font-size:0.9rem;font-family:inherit;resize:vertical;transition:border-color 0.2s;" onfocus="this.style.borderColor='#f26522'" onblur="this.style.borderColor='#ddd'"></textarea>
                         </div>
-                        <button type="submit" id="commentSubmitBtn"
-                            style="background:#f26522;color:#fff;border:none;padding:12px 30px;border-radius:8px;font-size:0.9rem;font-weight:600;cursor:pointer;font-family:inherit;transition:background 0.2s;"
-                            onmouseover="this.style.background='#d9551a'" onmouseout="this.style.background='#f26522'">
-                            <span id="commentBtnText">Post Comment</span>
-                            <span id="commentBtnSpinner" style="display:none;"><i class="fas fa-spinner fa-spin"></i>
-                                Submitting...</span>
+                        <button type="button" id="commentSubmitBtn" onclick="submitComment()" style="background:#f26522;color:#fff;border:none;padding:12px 30px;border-radius:8px;font-size:0.9rem;font-weight:600;cursor:pointer;font-family:inherit;transition:background 0.2s;min-width:150px;" onmouseover="this.style.background='#d9551a'" onmouseout="this.style.background='#f26522'">
+                            Post Comment
                         </button>
                     </form>
                     <script>
-                    document.getElementById('commentForm').addEventListener('submit', function() {
-                        document.getElementById('commentBtnText').style.display = 'none';
-                        document.getElementById('commentBtnSpinner').style.display = 'inline';
-                        document.getElementById('commentSubmitBtn').disabled = true;
-                    });
+                    function submitComment() {
+                        var form = document.getElementById('commentForm');
+                        var btn = document.getElementById('commentSubmitBtn');
+                        var name = form.querySelector('[name="name"]').value.trim();
+                        var email = form.querySelector('[name="email"]').value.trim();
+                        var comment = form.querySelector('[name="comment"]').value.trim();
+
+                        if (!name || !email || !comment) {
+                            showToast('Please fill in all required fields.', 'error');
+                            return;
+                        }
+
+                        var originalText = btn.innerHTML;
+                        btn.disabled = true;
+                        btn.innerHTML = '<span style="display:inline-block;width:18px;height:18px;border:3px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:cmtSpin 0.6s linear infinite;vertical-align:middle;"></span>';
+
+                        var formData = new FormData(form);
+                        var xhr = new XMLHttpRequest();
+                        xhr.open('POST', '<?= url("api/comment.php") ?>');
+                        xhr.onload = function() {
+                            btn.disabled = false;
+                            btn.innerHTML = originalText;
+                            try {
+                                var res = JSON.parse(xhr.responseText);
+                                if (res.success) {
+                                    showToast(res.message, 'success');
+                                    form.reset();
+                                    form.querySelector('[name="blog_id"]').value = '<?= $blog['id'] ?>';
+                                } else {
+                                    showToast(res.message, 'error');
+                                }
+                            } catch(e) {
+                                showToast('Something went wrong. Please try again.', 'error');
+                            }
+                        };
+                        xhr.onerror = function() {
+                            btn.disabled = false;
+                            btn.innerHTML = originalText;
+                            showToast('Network error. Please check your connection.', 'error');
+                        };
+                        xhr.send(formData);
+                    }
                     </script>
+                    <style>@keyframes cmtSpin { to { transform: rotate(360deg); } }</style>
                 </div>
             </div>
 

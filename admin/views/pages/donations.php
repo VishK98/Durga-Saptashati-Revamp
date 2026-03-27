@@ -6,14 +6,6 @@ $completedCount = $pdo->query("SELECT COUNT(*) FROM donations WHERE status = 'co
 $pendingCount = $pdo->query("SELECT COUNT(*) FROM donations WHERE status = 'pending'")->fetchColumn();
 ?>
 
-<?php if (!empty($_SESSION['donation_success'])): ?>
-    <div style="background:#d4edda;color:#155724;padding:12px 20px;border-radius:8px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;">
-        <span><?= htmlspecialchars($_SESSION['donation_success']) ?></span>
-        <button onclick="this.parentElement.remove()" style="background:none;border:none;font-size:18px;cursor:pointer;color:#155724;">&times;</button>
-    </div>
-    <?php unset($_SESSION['donation_success']); ?>
-<?php endif; ?>
-
 <!-- Stats Row -->
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;margin-bottom:25px;">
     <div class="stat-card">

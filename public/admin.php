@@ -285,6 +285,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'delet
     exit;
 }
 
+// Handle mark read query
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'mark_read_query') {
+    $pdo->prepare("UPDATE contact_queries SET status = 'read' WHERE id = ?")->execute([(int)$_POST['query_id']]);
+    $_SESSION['query_success'] = 'Query marked as read.';
+    header('Location: admin.php?page=queries');
+    exit;
+}
+
+// Handle mark replied query
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'mark_replied_query') {
+    $pdo->prepare("UPDATE contact_queries SET status = 'replied' WHERE id = ?")->execute([(int)$_POST['query_id']]);
+    $_SESSION['query_success'] = 'Query marked as replied.';
+    header('Location: admin.php?page=queries');
+    exit;
+}
+
+// Handle delete query
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'delete_query') {
+    $pdo->prepare("DELETE FROM contact_queries WHERE id = ?")->execute([(int)$_POST['query_id']]);
+    $_SESSION['query_success'] = 'Query deleted.';
+    header('Location: admin.php?page=queries');
+    exit;
+}
+
 // Route to correct page
 $page = $_GET['page'] ?? 'dashboard';
 $allowedPages = ['dashboard', 'blogs', 'queries', 'subscribers', 'events', 'causes', 'gallery', 'settings', 'comments', 'donations'];

@@ -683,6 +683,67 @@ if (window.jQuery && typeof $().tooltip === 'function') {
     });
 }
 </script>
+
+<!-- Global Toaster -->
+<div id="toasterContainer" style="position:fixed;top:20px;right:20px;z-index:999999;display:flex;flex-direction:column;gap:10px;pointer-events:none;"></div>
+<style>
+.toaster{pointer-events:all;display:flex;align-items:center;gap:12px;padding:14px 20px;border-radius:10px;background:#fff;box-shadow:0 10px 40px rgba(0,0,0,0.15);font-size:0.9rem;font-family:inherit;min-width:300px;max-width:420px;transform:translateX(120%);animation:toastIn 0.4s ease forwards;border-left:4px solid #10b981;}
+.toaster.toast-success{border-left-color:#10b981;}.toaster.toast-success .toast-icon{color:#10b981;}
+.toaster.toast-error{border-left-color:#ef4444;}.toaster.toast-error .toast-icon{color:#ef4444;}
+.toaster.toast-info{border-left-color:#3b82f6;}.toaster.toast-info .toast-icon{color:#3b82f6;}
+.toaster .toast-icon{font-size:1.2rem;flex-shrink:0;}
+.toaster .toast-body{flex:1;}
+.toaster .toast-body strong{display:block;color:#1a1b2e;font-size:0.88rem;margin-bottom:2px;}
+.toaster .toast-body span{color:#666;font-size:0.82rem;}
+.toaster .toast-close{background:none;border:none;color:#999;font-size:1.1rem;cursor:pointer;padding:0 0 0 8px;flex-shrink:0;transition:color 0.2s;}
+.toaster .toast-close:hover{color:#333;}
+.toaster .toast-progress{position:absolute;bottom:0;left:0;height:3px;border-radius:0 0 0 10px;animation:toastProgress 3s linear forwards;}
+.toaster.toast-success .toast-progress{background:#10b981;}
+.toaster.toast-error .toast-progress{background:#ef4444;}
+.toaster.toast-info .toast-progress{background:#3b82f6;}
+.toaster.removing{animation:toastOut 0.3s ease forwards;}
+@keyframes toastIn{from{transform:translateX(120%);opacity:0;}to{transform:translateX(0);opacity:1;}}
+@keyframes toastOut{from{transform:translateX(0);opacity:1;}to{transform:translateX(120%);opacity:0;}}
+@keyframes toastProgress{from{width:100%;}to{width:0%;}}
+</style>
+<script>
+function showToast(message, type, title) {
+    type = type || 'success';
+    title = title || (type === 'success' ? 'Success' : type === 'error' ? 'Error' : 'Info');
+    var icons = {success:'fa-check-circle', error:'fa-exclamation-circle', info:'fa-info-circle'};
+    var container = document.getElementById('toasterContainer');
+    var toast = document.createElement('div');
+    toast.className = 'toaster toast-' + type;
+    toast.style.position = 'relative';
+    toast.style.overflow = 'hidden';
+    toast.innerHTML = '<i class="fas ' + icons[type] + ' toast-icon"></i>' +
+        '<div class="toast-body"><strong>' + title + '</strong><span>' + message + '</span></div>' +
+        '<button class="toast-close" onclick="removeToast(this.parentElement)">&times;</button>' +
+        '<div class="toast-progress"></div>';
+    container.appendChild(toast);
+    setTimeout(function(){ removeToast(toast); }, 3000);
+}
+function removeToast(el) {
+    if (!el || el.classList.contains('removing')) return;
+    el.classList.add('removing');
+    setTimeout(function(){ if(el.parentElement) el.parentElement.removeChild(el); }, 300);
+}
+</script>
+
+<?php
+// Auto-show toasters from session flash messages
+$toastTypes = [
+    'toast_success' => 'success',
+    'toast_error' => 'error',
+    'toast_info' => 'info'
+];
+foreach ($toastTypes as $key => $type) {
+    if (!empty($_SESSION[$key])) {
+        echo "<script>document.addEventListener('DOMContentLoaded',function(){showToast('" . addslashes(htmlspecialchars($_SESSION[$key])) . "','" . $type . "');});</script>";
+        unset($_SESSION[$key]);
+    }
+}
+?>
 </body>
 
 </html>
