@@ -65,8 +65,6 @@
 
     <!-- Enhanced Navbar JavaScript -->
     <script src="<?= asset('js/navbar-enhanced.js') ?>" defer></script>
-    <!-- Hero Slider JavaScript -->
-    <script src="<?= asset('js/hero-slider.js') ?>" defer></script>
 </head>
 
 <body>
@@ -360,6 +358,10 @@
                                         <a class="dropdown-item" href="<?= url('cultural-programs.php') ?>">
                                             <i class="fas fa-theater-masks"></i> Cultural Programs
                                             <span class="item-description">Celebrating our heritage</span>
+                                        </a>
+                                        <a class="dropdown-item" href="<?= url('hearing-aids-camp.php') ?>">
+                                            <i class="fas fa-assistive-listening-systems"></i> Hearing Aids Camp
+                                            <span class="item-description">Free hearing aid distribution</span>
                                         </a>
                                     </div>
                                     <div class="col-lg-3">

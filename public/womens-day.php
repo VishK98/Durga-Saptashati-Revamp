@@ -1,16 +1,14 @@
 <?php
 require_once '../app/config/config.php';
-$pageTitle = "International Women's Day - Durga Saptashati Foundation";
-$pageKeywords = "women's day, women empowerment, gender equality, women's rights, empowerment programs, leadership development, skill training, women support";
-$pageDescription = "Join Durga Saptashati Foundation's International Women's Day celebration - empowering women through education, skill development, and leadership programs for a more inclusive society.";
-
+$pageTitle = "International Women's Day";
+$pageDescription = "Join Durga Saptashati Foundation's International Women's Day celebration — empowering women through education, skill development, and community programs.";
+$pageKeywords = "women's day, women empowerment, gender equality, empowerment programs, Durga Saptashati Foundation";
 include '../app/views/layout/header.php';
 ?>
 
-<!-- Custom CSS for Women's Day Page -->
+<!-- Custom CSS -->
 <link rel="stylesheet" href="<?= url('assets/css/events/womens-day.css') ?>">
 
-<!-- Page Header Start -->
 <div class="page-header">
     <div class="container-fluid">
         <div class="row">
@@ -19,13 +17,12 @@ include '../app/views/layout/header.php';
             </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
-                <a href="<?= url('events.php') ?>">Events</a>
-                <a href="<?= url('womens-day.php') ?>">International Women's Day</a>
+                <a href="<?= url('event.php') ?>">Events</a>
+                <a href="<?= url('womens-day.php') ?>">Women's Day</a>
             </div>
         </div>
     </div>
 </div>
-<!-- Page Header End -->
 
 <!-- Hero Section -->
 <section class="womens-hero-section">
@@ -39,67 +36,87 @@ include '../app/views/layout/header.php';
 
     <div class="container-fluid">
         <div class="row min-vh-100 align-items-center">
-            <div class="col-lg-6 order-2 order-lg-1" data-aos="fade-right" data-aos-duration="1000">
+            <div class="col-12 text-center mb-4" data-aos="fade-down" data-aos-duration="800">
+                <div class="empowerment-badge">
+                    <i class="fas fa-female"></i>
+                    <span>Empowerment & Equality</span>
+                </div>
+                <h1 class="hero-title-womens">
+                    Celebrating
+                    <span class="text-gradient-womens">Women's</span>
+                    Strength & Vision
+                </h1>
+            </div>
+            <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
                 <div class="hero-content-womens">
-                    <div class="empowerment-badge">
-                        <i class="fas fa-female"></i>
-                        <span>Empowerment & Equality</span>
+                    <div class="yoga-date-banner"
+                        style="background:linear-gradient(135deg,rgba(242,101,34,0.1),rgba(242,101,34,0.05));border:1px solid rgba(242,101,34,0.15);border-radius:16px;padding:20px;display:flex;align-items:center;gap:20px;margin-bottom:25px;">
+                        <div style="min-width:60px;text-align:center;">
+                            <div style="font-size:2.2rem;font-weight:800;color:#f26522;line-height:1;">8</div>
+                            <div style="font-size:0.8rem;color:#f26522;font-weight:600;">March</div>
+                            <div style="font-size:0.75rem;color:#999;">2025</div>
+                        </div>
+                        <div>
+                            <h4 style="margin:0 0 4px;color:#1a1b2e;font-weight:700;font-size:1.1rem;">"Inspire
+                                Inclusion"</h4>
+                            <p style="margin:0;color:#888;font-size:0.88rem;">Empowering women to lead, innovate, and
+                                inspire change</p>
+                        </div>
                     </div>
-                    <h1 class="hero-title-womens">
-                        Celebrating
-                        <span class="text-gradient-womens">Women's</span>
-                        Strength & Vision
-                    </h1>
-                    <p class="hero-description-womens">
+
+                    <p style="color:#666;line-height:1.8;margin-bottom:25px;">
                         Join us in honoring the incredible achievements, resilience, and contributions of women
-                        worldwide. Together, we build a future where every woman has the opportunity to lead,
-                        innovate, and inspire positive change in their communities.
+                        worldwide. Together, we build a future where every woman has the opportunity to lead, innovate,
+                        and inspire positive change.
                     </p>
-                    <div class="hero-actions-womens">
-                        <a href="#programs" class="btn-womens-primary">
-                            <i class="fas fa-rocket"></i>
-                            Explore Programs
-                        </a>
-                        <a href="#stories" class="btn-womens-secondary">
-                            <i class="fas fa-users"></i>
-                            Success Stories
-                        </a>
-                    </div>
-                    <div class="hero-stats-womens">
-                        <div class="stat-item">
-                            <span class="stat-number" data-counter="500">0</span>
-                            <span class="stat-label">Women Empowered</span>
+
+                    <div class="hero-stats-womens"
+                        style="display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-bottom:25px;">
+                        <div
+                            style="text-align:center;padding:15px 10px;background:#fff;border-radius:12px;box-shadow:0 3px 15px rgba(0,0,0,0.06);">
+                            <div style="font-size:1.5rem;font-weight:800;color:#f26522;" data-counter="200">0</div>
+                            <div style="font-size:0.72rem;color:#888;font-weight:500;">Women Empowered</div>
                         </div>
-                        <div class="stat-item">
-                            <span class="stat-number" data-counter="15">0</span>
-                            <span class="stat-label">Skills Programs</span>
+                        <div
+                            style="text-align:center;padding:15px 10px;background:#fff;border-radius:12px;box-shadow:0 3px 15px rgba(0,0,0,0.06);">
+                            <div style="font-size:1.5rem;font-weight:800;color:#f26522;" data-counter="8">0</div>
+                            <div style="font-size:0.72rem;color:#888;font-weight:500;">Programs Conducted</div>
                         </div>
-                        <div class="stat-item">
-                            <span class="stat-number" data-counter="98">0</span>
-                            <span class="stat-label">Success Rate</span>
+                        <div
+                            style="text-align:center;padding:15px 10px;background:#fff;border-radius:12px;box-shadow:0 3px 15px rgba(0,0,0,0.06);">
+                            <div style="font-size:1.5rem;font-weight:800;color:#f26522;" data-counter="5">0</div>
+                            <div style="font-size:0.72rem;color:#888;font-weight:500;">Workshops</div>
+                        </div>
+                        <div
+                            style="text-align:center;padding:15px 10px;background:#fff;border-radius:12px;box-shadow:0 3px 15px rgba(0,0,0,0.06);">
+                            <div style="font-size:1.5rem;font-weight:800;color:#f26522;" data-counter="12">0</div>
+                            <div style="font-size:0.72rem;color:#888;font-weight:500;">Expert Speakers</div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="300" data-aos-duration="1000">
-                <div class="hero-visual-womens">
-                    <div class="main-image-container">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&h=700&fit=crop&crop=faces"
-                            alt="Empowered Woman Leader" class="hero-main-image">
-                        <div class="image-overlay-elements">
-                            <div class="overlay-card card-1">
-                                <i class="fas fa-graduation-cap"></i>
-                                <span>Education First</span>
-                            </div>
-                            <div class="overlay-card card-2">
-                                <i class="fas fa-briefcase"></i>
-                                <span>Career Growth</span>
-                            </div>
-                            <div class="overlay-card card-3">
-                                <i class="fas fa-balance-scale"></i>
-                                <span>Equal Rights</span>
-                            </div>
+            <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300" data-aos-duration="1000">
+                <div class="hero-visual-womens" style="position:relative;">
+                    <div style="border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(242,101,34,0.2);">
+                        <img src="<?= url('assets/images/yoga-day/yoga.jpeg') ?>" alt="Women's Day Celebration"
+                            style="width:100%;height:450px;object-fit:cover;display:block;">
+                    </div>
+                    <div style="position:absolute;bottom:20px;left:20px;right:20px;display:flex;gap:10px;">
+                        <div
+                            style="background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);padding:12px 16px;border-radius:12px;display:flex;align-items:center;gap:8px;box-shadow:0 5px 20px rgba(0,0,0,0.1);">
+                            <i class="fas fa-graduation-cap" style="color:#f26522;"></i>
+                            <span style="font-size:0.8rem;font-weight:600;color:#1a1b2e;">Education First</span>
+                        </div>
+                        <div
+                            style="background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);padding:12px 16px;border-radius:12px;display:flex;align-items:center;gap:8px;box-shadow:0 5px 20px rgba(0,0,0,0.1);">
+                            <i class="fas fa-briefcase" style="color:#f26522;"></i>
+                            <span style="font-size:0.8rem;font-weight:600;color:#1a1b2e;">Career Growth</span>
+                        </div>
+                        <div
+                            style="background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);padding:12px 16px;border-radius:12px;display:flex;align-items:center;gap:8px;box-shadow:0 5px 20px rgba(0,0,0,0.1);">
+                            <i class="fas fa-balance-scale" style="color:#f26522;"></i>
+                            <span style="font-size:0.8rem;font-weight:600;color:#1a1b2e;">Equal Rights</span>
                         </div>
                     </div>
                 </div>
@@ -108,421 +125,173 @@ include '../app/views/layout/header.php';
     </div>
 </section>
 
-<!-- Mission Statement Section -->
-<section class="mission-womens-section">
-    <div class="container-fluid">
-        <div class="row justify-content-center">
-            <div class="col-lg-10">
-                <div class="mission-content-womens" data-aos="fade-up">
-                    <div class="section-header-womens text-center">
-                        <span class="section-badge-womens">Our Mission</span>
-                        <h2 class="section-title-womens">Breaking Barriers, Building Futures</h2>
-                        <p class="section-description-womens">
-                            We are dedicated to creating an inclusive world where women from all backgrounds have equal
-                            access to opportunities, resources, and platforms to achieve their full potential and drive
-                            meaningful change in society.
-                        </p>
-                    </div>
-                    <div class="mission-pillars">
-                        <div class="row">
-                            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                                <div class="pillar-card">
-                                    <div class="pillar-icon">
-                                        <i class="fas fa-lightbulb"></i>
-                                    </div>
-                                    <h3>Innovation & Leadership</h3>
-                                    <p>Fostering creative thinking and leadership skills to help women become
-                                        changemakers in their fields.</p>
-                                </div>
-                            </div>
-                            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                                <div class="pillar-card">
-                                    <div class="pillar-icon">
-                                        <i class="fas fa-hands-helping"></i>
-                                    </div>
-                                    <h3>Community Support</h3>
-                                    <p>Building strong support networks that uplift and empower women through mentorship
-                                        and collaboration.</p>
-                                </div>
-                            </div>
-                            <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-                                <div class="pillar-card">
-                                    <div class="pillar-icon">
-                                        <i class="fas fa-chart-line"></i>
-                                    </div>
-                                    <h3>Economic Independence</h3>
-                                    <p>Providing skills training and entrepreneurship opportunities for sustainable
-                                        financial empowerment.</p>
-                                </div>
-                            </div>
+<!-- Gallery Section -->
+<section style="padding:80px 0;background:linear-gradient(165deg,#f8f9fa,#fff);" id="gallery">
+    <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <h6 class="text-uppercase mb-2" style="color:#f26522;letter-spacing:3px;font-weight:600;">Gallery</h6>
+            <h2 style="color:#1a1b2e;font-weight:700;">Women's Day in Action</h2>
+            <p style="color:#888;max-width:600px;margin:10px auto 0;">Moments from our Women's Day celebrations,
+                workshops, and empowerment programs.</p>
+        </div>
+
+        <?php
+        $wdImages = [
+            ['file' => 'yoga.jpeg', 'title' => "Women's Day Celebration"],
+            ['file' => 'yoga-1.jpeg', 'title' => 'Empowerment Workshop'],
+            ['file' => 'yoga-2.jpeg', 'title' => 'Panel Discussion'],
+            ['file' => 'yoga-3.jpeg', 'title' => 'Felicitation Ceremony'],
+            ['file' => 'yoga-4.jpeg', 'title' => 'Skill Development'],
+            ['file' => 'yoga-5.jpeg', 'title' => 'Community Program'],
+            ['file' => 'yoga-6.jpeg', 'title' => 'Awards & Recognition'],
+        ];
+        ?>
+        <div class="wd-gallery-grid-3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+            <?php foreach ($wdImages as $i => $img): ?>
+            <div data-aos="fade-up" data-aos-delay="<?= ($i % 3) * 50 ?>"
+                style="cursor:pointer;border-radius:14px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.06);transition:all 0.3s;background:#fff;"
+                onclick="openWdLightbox(<?= $i ?>)"
+                onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 12px 35px rgba(0,0,0,0.12)'"
+                onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.06)'">
+                <div style="position:relative;overflow:hidden;">
+                    <img src="<?= url('assets/images/yoga-day/' . $img['file']) ?>"
+                        alt="<?= htmlspecialchars($img['title']) ?>"
+                        style="width:100%;height:220px;object-fit:cover;display:block;transition:transform 0.4s;"
+                        onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                    <div
+                        style="position:absolute;top:12px;left:12px;background:rgba(242,101,34,0.85);color:#fff;padding:4px 12px;border-radius:15px;font-size:0.72rem;font-weight:600;backdrop-filter:blur(4px);">
+                        Women's Day</div>
+                    <div style="position:absolute;inset:0;background:rgba(0,0,0,0.3);opacity:0;transition:opacity 0.3s;display:flex;align-items:center;justify-content:center;"
+                        onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0'">
+                        <div
+                            style="width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;">
+                            <i class="fas fa-search-plus" style="color:#f26522;font-size:1.2rem;"></i>
                         </div>
                     </div>
                 </div>
+                <div style="padding:14px 16px;">
+                    <h6 style="color:#1a1b2e;font-weight:600;font-size:0.9rem;margin:0;">
+                        <?= htmlspecialchars($img['title']) ?></h6>
+                </div>
             </div>
+            <?php endforeach; ?>
         </div>
     </div>
 </section>
 
+<style>
+@media(max-width:991px){.wd-gallery-grid-3{grid-template-columns:repeat(2,1fr)!important;}}
+@media(max-width:575px){.wd-gallery-grid-3{grid-template-columns:1fr!important;}}
+</style>
 
-<!-- Success Stories Section -->
-<section class="stories-womens-section" id="stories">
-    <div class="container-fluid">
-        <div class="section-header-womens text-center" data-aos="fade-up">
-            <span class="section-badge-womens">Success Stories</span>
-            <h2 class="section-title-womens">Inspiring Journeys of Transformation</h2>
-            <p class="section-description-womens">
-                Meet the remarkable women who have transformed their lives and communities through our empowerment
-                programs.
-            </p>
-        </div>
-
-        <div class="stories-showcase">
-            <div class="row align-items-center">
-                <div class="col-lg-6" data-aos="fade-right">
-                    <div class="story-content">
-                        <div class="story-quote">
-                            <i class="fas fa-quote-left quote-icon"></i>
-                            <blockquote>
-                                "The Women in Leadership program didn't just teach me skills – it transformed my entire
-                                perspective.
-                                Today, I lead a team of 50+ employees and have launched initiatives that impact
-                                thousands of women
-                                in rural communities. This program gave me the confidence to dream bigger and achieve
-                                more."
-                            </blockquote>
-                        </div>
-                        <div class="story-author">
-                            <div class="author-info">
-                                <h4>Dr. Priya Mehta</h4>
-                                <span>CEO, Rural Innovation Solutions</span>
-                                <div class="author-achievements">
-                                    <span class="achievement"><i class="fas fa-award"></i> Women Entrepreneur Award
-                                        2023</span>
-                                    <span class="achievement"><i class="fas fa-users"></i> Empowered 5000+ Women</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6" data-aos="fade-left">
-                    <div class="story-visual">
-                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&h=500&fit=crop&crop=faces"
-                            alt="Dr. Priya Mehta" class="story-image">
-                        <div class="story-metrics">
-                            <div class="metric-card">
-                                <span class="metric-number">50+</span>
-                                <span class="metric-label">Team Members</span>
-                            </div>
-                            <div class="metric-card">
-                                <span class="metric-number">5000+</span>
-                                <span class="metric-label">Women Impacted</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Additional Story Cards -->
-        <div class="row mt-5">
-            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                <div class="mini-story-card">
-                    <img src="https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?w=300&h=300&fit=crop&crop=faces"
-                        alt="Success Story">
-                    <div class="mini-story-content">
-                        <h5>Sarah Ahmed</h5>
-                        <span>Tech Entrepreneur</span>
-                        <p>"From learning basic coding to launching my AI startup – the journey has been incredible!"
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                <div class="mini-story-card">
-                    <img src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=300&h=300&fit=crop&crop=faces"
-                        alt="Success Story">
-                    <div class="mini-story-content">
-                        <h5>Maya Sharma</h5>
-                        <span>Financial Advisor</span>
-                        <p>"The financial empowerment program helped me build a successful consulting practice."</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-                <div class="mini-story-card">
-                    <img src="https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?w=300&h=300&fit=crop&crop=faces"
-                        alt="Success Story">
-                    <div class="mini-story-content">
-                        <h5>Lisa Chen</h5>
-                        <span>Community Leader</span>
-                        <p>"Leadership training empowered me to advocate for women's rights in my community."</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Impact Statistics Section -->
-<section class="impact-womens-section">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12">
-                <div class="impact-content" data-aos="fade-up">
-                    <div class="row text-center">
-                        <div class="col-lg-3 col-md-6">
-                            <div class="impact-stat">
-                                <div class="stat-icon">
-                                    <i class="fas fa-female"></i>
-                                </div>
-                                <h3 class="stat-number" data-counter="1250">0</h3>
-                                <p class="stat-description">Women Empowered</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6">
-                            <div class="impact-stat">
-                                <div class="stat-icon">
-                                    <i class="fas fa-graduation-cap"></i>
-                                </div>
-                                <h3 class="stat-number" data-counter="25">0</h3>
-                                <p class="stat-description">Training Programs</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6">
-                            <div class="impact-stat">
-                                <div class="stat-icon">
-                                    <i class="fas fa-briefcase"></i>
-                                </div>
-                                <h3 class="stat-number" data-counter="850">0</h3>
-                                <p class="stat-description">Career Placements</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6">
-                            <div class="impact-stat">
-                                <div class="stat-icon">
-                                    <i class="fas fa-rocket"></i>
-                                </div>
-                                <h3 class="stat-number" data-counter="120">0</h3>
-                                <p class="stat-description">Startups Launched</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Get Involved Section -->
-<section class="involvement-womens-section">
-    <div class="container-fluid">
-        <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <div class="involvement-content text-center" data-aos="fade-up">
-                    <h2 class="involvement-title">Ready to Make a Difference?</h2>
-                    <p class="involvement-description">
-                        Join our community of empowered women and changemakers. Whether you're looking to develop new
-                        skills,
-                        advance your career, or make an impact in your community, we have the perfect program for you.
-                    </p>
-                    <div class="involvement-actions">
-                        <a href="#" class="btn-womens-primary">
-                            <i class="fas fa-user-plus"></i>
-                            Join a Program
-                        </a>
-                        <a href="#" class="btn-womens-outline">
-                            <i class="fas fa-hands-helping"></i>
-                            Become a Mentor
-                        </a>
-                        <a href="#" class="btn-womens-outline">
-                            <i class="fas fa-heart"></i>
-                            Support the Cause
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Gallery Modal -->
-<div class="modal fade" id="galleryModal" tabindex="-1" aria-labelledby="galleryModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content gallery-modal-content">
-            <div class="modal-header gallery-modal-header">
-                <h5 class="modal-title" id="galleryModalLabel">Program Details</h5>
-                <button type="button" class="btn-close gallery-modal-close" data-bs-dismiss="modal" aria-label="Close">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body gallery-modal-body">
-                <img src="" alt="" class="gallery-modal-image" id="modalImage">
-                <div class="gallery-modal-info">
-                    <h4 id="modalTitle">Program Title</h4>
-                    <p id="modalDescription">Program description will appear here.</p>
-                    <div class="modal-actions">
-                        <a href="#" class="btn-womens-primary modal-btn">
-                            <i class="fas fa-user-plus"></i>
-                            Join Program
-                        </a>
-                        <a href="#" class="btn-womens-outline modal-btn">
-                            <i class="fas fa-info-circle"></i>
-                            Learn More
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!-- Lightbox -->
+<div id="wdLightbox"
+    style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.92);z-index:99999;align-items:center;justify-content:center;backdrop-filter:blur(8px);">
+    <button onclick="closeWdLightbox()"
+        style="position:absolute;top:20px;right:20px;background:rgba(255,255,255,0.1);border:none;width:44px;height:44px;border-radius:50%;cursor:pointer;color:#fff;font-size:1.3rem;z-index:10;display:flex;align-items:center;justify-content:center;transition:all 0.2s;"
+        onmouseover="this.style.background='rgba(255,255,255,0.2)'"
+        onmouseout="this.style.background='rgba(255,255,255,0.1)'">&times;</button>
+    <button onclick="wdPrev()"
+        style="position:absolute;left:20px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.1);border:none;width:50px;height:50px;border-radius:50%;cursor:pointer;color:#fff;font-size:1.2rem;z-index:10;display:flex;align-items:center;justify-content:center;transition:all 0.2s;"
+        onmouseover="this.style.background='rgba(255,255,255,0.2)'"
+        onmouseout="this.style.background='rgba(255,255,255,0.1)'"><i class="fas fa-chevron-left"></i></button>
+    <button onclick="wdNext()"
+        style="position:absolute;right:20px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.1);border:none;width:50px;height:50px;border-radius:50%;cursor:pointer;color:#fff;font-size:1.2rem;z-index:10;display:flex;align-items:center;justify-content:center;transition:all 0.2s;"
+        onmouseover="this.style.background='rgba(255,255,255,0.2)'"
+        onmouseout="this.style.background='rgba(255,255,255,0.1)'"><i class="fas fa-chevron-right"></i></button>
+    <div style="text-align:center;max-width:90%;max-height:85vh;">
+        <img id="wdLbImg" src="" alt=""
+            style="max-width:100%;max-height:78vh;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,0.5);object-fit:contain;">
+        <h5 id="wdLbTitle" style="color:#fff;font-weight:600;font-size:1rem;margin:14px 0 0;"></h5>
     </div>
 </div>
 
-<!-- AOS Library -->
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
-<!-- JavaScript for Interactive Features -->
 <script>
-// Initialize AOS
-AOS.init({
-    duration: 1000,
-    easing: 'ease-out-back',
-    once: true
+var wdData = <?= json_encode(array_map(function ($img) {
+        return ['src' => url('assets/images/yoga-day/' . $img['file']), 'title' => $img['title']]; }, $wdImages)) ?>;
+var wdIdx = 0;
+
+function openWdLightbox(i) {
+    wdIdx = i;
+    updateWdLb();
+    document.getElementById('wdLightbox').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeWdLightbox() {
+    document.getElementById('wdLightbox').style.display = 'none';
+    document.body.style.overflow = '';
+}
+
+function updateWdLb() {
+    document.getElementById('wdLbImg').src = wdData[wdIdx].src;
+    document.getElementById('wdLbTitle').textContent = wdData[wdIdx].title;
+}
+
+function wdPrev() {
+    wdIdx = (wdIdx - 1 + wdData.length) % wdData.length;
+    updateWdLb();
+}
+
+function wdNext() {
+    wdIdx = (wdIdx + 1) % wdData.length;
+    updateWdLb();
+}
+document.getElementById('wdLightbox').addEventListener('click', function(e) {
+    if (e.target === this) closeWdLightbox();
+});
+document.addEventListener('keydown', function(e) {
+    if (document.getElementById('wdLightbox').style.display !== 'flex') return;
+    if (e.key === 'Escape') closeWdLightbox();
+    if (e.key === 'ArrowLeft') wdPrev();
+    if (e.key === 'ArrowRight') wdNext();
+});
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+        e.preventDefault();
+        var t = document.querySelector(this.getAttribute('href'));
+        if (t) t.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    });
 });
 
 // Counter Animation
 document.addEventListener('DOMContentLoaded', function() {
-    const counters = document.querySelectorAll('[data-counter]');
-    const observerOptions = {
-        threshold: 0.7
-    };
-
-    const counterObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
+    var counters = document.querySelectorAll('[data-counter]');
+    var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
             if (entry.isIntersecting) {
-                const counter = entry.target;
-                const target = parseInt(counter.getAttribute('data-counter'));
-                let current = 0;
-                const increment = target / 50;
-                const timer = setInterval(() => {
-                    current += increment;
+                var c = entry.target,
+                    target = parseInt(c.getAttribute('data-counter')),
+                    current = 0,
+                    inc = target / 60;
+                var timer = setInterval(function() {
+                    current += inc;
                     if (current >= target) {
-                        counter.textContent = target + (counter.textContent.includes(
-                            '%') ? '%' : '+');
+                        c.textContent = target;
                         clearInterval(timer);
                     } else {
-                        counter.textContent = Math.floor(current) + (counter.textContent
-                            .includes('%') ? '%' : '+');
+                        c.textContent = Math.floor(current);
                     }
-                }, 30);
-                counterObserver.unobserve(counter);
+                }, 25);
+                obs.unobserve(c);
             }
         });
-    }, observerOptions);
-
-    counters.forEach(counter => counterObserver.observe(counter));
-});
-
-// Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
+    }, {
+        threshold: 0.7
     });
-});
-
-// Floating elements animation
-function animateFloatingElements() {
-    const floatingIcons = document.querySelectorAll('.floating-icon');
-    floatingIcons.forEach((icon, index) => {
-        icon.style.animation = `float 3s ease-in-out infinite`;
-        icon.style.animationDelay = `${index * 0.5}s`;
-    });
-}
-
-// Initialize floating animations
-document.addEventListener('DOMContentLoaded', animateFloatingElements);
-
-// Program card hover effects
-document.querySelectorAll('.program-card').forEach(card => {
-    card.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-10px) scale(1.02)';
+    counters.forEach(function(c) {
+        obs.observe(c);
     });
 
-    card.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(0) scale(1)';
-    });
-});
-
-// Gallery Filter Functionality
-document.addEventListener('DOMContentLoaded', function() {
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const galleryItems = document.querySelectorAll('.gallery-item');
-    
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-            // Remove active class from all buttons
-            filterBtns.forEach(b => b.classList.remove('active'));
-            // Add active class to clicked button
-            this.classList.add('active');
-            
-            const filter = this.getAttribute('data-filter');
-            
-            galleryItems.forEach(item => {
-                const category = item.getAttribute('data-category');
-                const parent = item.closest('.col-lg-4, .col-md-6');
-                
-                if (filter === 'all' || category === filter) {
-                    parent.style.display = 'block';
-                    setTimeout(() => {
-                        item.style.opacity = '1';
-                        item.style.transform = 'scale(1)';
-                    }, 50);
-                } else {
-                    item.style.opacity = '0';
-                    item.style.transform = 'scale(0.8)';
-                    setTimeout(() => {
-                        parent.style.display = 'none';
-                    }, 300);
-                }
-            });
-        });
-    });
-    
-    // Gallery Modal Functionality
-    const galleryModal = document.getElementById('galleryModal');
-    const modalImage = document.getElementById('modalImage');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalDescription = document.getElementById('modalDescription');
-    
-    if (galleryModal && modalImage && modalTitle && modalDescription) {
-        document.querySelectorAll('.gallery-view-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const imageSrc = this.getAttribute('data-image');
-                const title = this.getAttribute('data-title');
-                const description = this.getAttribute('data-description');
-                
-                modalImage.src = imageSrc;
-                modalImage.alt = title;
-                modalTitle.textContent = title;
-                modalDescription.textContent = description;
-            });
-        });
-    }
-    
-    // Gallery item hover effects
-    document.querySelectorAll('.gallery-item').forEach(item => {
-        item.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-8px)';
-        });
-        
-        item.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0)';
-        });
+    // Floating icons
+    document.querySelectorAll('.floating-icon').forEach(function(icon, i) {
+        icon.style.animation = 'float 3s ease-in-out infinite';
+        icon.style.animationDelay = (i * 0.5) + 's';
     });
 });
 </script>

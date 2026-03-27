@@ -572,7 +572,7 @@
 
 <!-- Template Javascript -->
 <script src="<?php echo asset('js/main.js'); ?>"></script>
-<script src="<?php echo asset('js/navbar-enhanced.js'); ?>"></script>
+<script src="<?php echo asset('js/hero-slider.js'); ?>"></script>
 
 <!-- AOS (Animate On Scroll) JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
