@@ -185,7 +185,7 @@
                                     <div class="col-lg-4">
                                         <h6 class="dropdown-header">Transparency</h6>
                                         <a class="dropdown-item" href="<?= url('our-investors.php') ?>">
-                                            <i class="fas fa-chart-line"></i> Our Investors & Partners
+                                            <i class="fas fa-chart-line"></i> Our Investors
                                             <span class="item-description">Major donors and supporters</span>
                                         </a>
                                     </div>

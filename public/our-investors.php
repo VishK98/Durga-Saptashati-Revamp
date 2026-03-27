@@ -1,9 +1,9 @@
 <?php
 require_once '../app/config/config.php';
 
-$pageTitle = "Our Investors & Partners";
-$pageDescription = "Meet our valued investors and partners who believe in our mission to create lasting social impact through sustainable initiatives and community empowerment.";
-$pageKeywords = "investors, partners, stakeholders, social impact, funding, collaboration, Durga Saptashati Foundation";
+$pageTitle = "Our Investors";
+$pageDescription = "Meet our valued investors who believe in our mission to create lasting social impact through sustainable initiatives and community empowerment.";
+$pageKeywords = "investors, stakeholders, social impact, funding, Durga Saptashati Foundation";
 
 include '../app/views/layout/header.php';
 ?>
@@ -16,7 +16,7 @@ include '../app/views/layout/header.php';
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h2>Our Investors & Partners</h2>
+                <h2>Our Investors</h2>
             </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
@@ -35,251 +35,130 @@ include '../app/views/layout/header.php';
             <div class="row justify-content-center">
                 <div class="col-lg-10 text-center">
                     <h1 class="hero-title" data-aos="fade-up">Building Tomorrow Together</h1>
-                    <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">Partnering with visionary investors
-                        and strategic allies to drive innovation and sustainable growth across industries.</p>
+                    <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">Backed by visionary investors who
+                        share our commitment to driving innovation and sustainable social impact across communities.</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Strategic Partners Section -->
-<section class="strategic-partners py-5">
-    <div class="container">
-        <div class="section-header text-center mb-5" data-aos="fade-up">
-            <span class="section-tag">Strategic Alliance</span>
-            <h2 class="section-title">Our Principal Partners</h2>
-            <p class="section-subtitle">
-                Leading organizations that drive our mission forward through strategic collaboration and shared values
-            </p>
-        </div>
-
-        <div class="row g-4">
-            <!-- Partner Card 1 -->
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                <div class="partner-card premium">
-                    <div class="partner-logo">
-                        <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=100&q=80"
-                            alt="Global Impact Ventures">
-                    </div>
-                    <div class="partner-info">
-                        <h3>Global Impact Ventures</h3>
-                        <span class="partner-type">Lead Investor</span>
-                        <p class="partner-description">
-                            A leading impact investment firm focused on scalable solutions for social and environmental
-                            challenges across emerging markets.
-                        </p>
-                        <div class="partner-stats">
-                            <div class="stat">
-                                <i class="fas fa-chart-line"></i>
-                                <span>₹25 Cr Investment</span>
-                            </div>
-                            <div class="stat">
-                                <i class="fas fa-calendar"></i>
-                                <span>Since 2018</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="partner-badge">Premium Partner</div>
-                </div>
-            </div>
-
-            <!-- Partner Card 2 -->
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                <div class="partner-card premium">
-                    <div class="partner-logo">
-                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=100&q=80"
-                            alt="Social Innovation Fund">
-                    </div>
-                    <div class="partner-info">
-                        <h3>Social Innovation Fund</h3>
-                        <span class="partner-type">Strategic Partner</span>
-                        <p class="partner-description">
-                            Pioneering social innovation through technology and sustainable development initiatives
-                            across India and Southeast Asia.
-                        </p>
-                        <div class="partner-stats">
-                            <div class="stat">
-                                <i class="fas fa-chart-line"></i>
-                                <span>₹20 Cr Investment</span>
-                            </div>
-                            <div class="stat">
-                                <i class="fas fa-calendar"></i>
-                                <span>Since 2019</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="partner-badge">Premium Partner</div>
-                </div>
-            </div>
-
-            <!-- Partner Card 3 -->
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                <div class="partner-card premium">
-                    <div class="partner-logo">
-                        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=100&q=80"
-                            alt="Future Foundation">
-                    </div>
-                    <div class="partner-info">
-                        <h3>Future Foundation</h3>
-                        <span class="partner-type">Impact Investor</span>
-                        <p class="partner-description">
-                            Committed to building sustainable communities through education, healthcare, and economic
-                            empowerment programs.
-                        </p>
-                        <div class="partner-stats">
-                            <div class="stat">
-                                <i class="fas fa-chart-line"></i>
-                                <span>₹15 Cr Investment</span>
-                            </div>
-                            <div class="stat">
-                                <i class="fas fa-calendar"></i>
-                                <span>Since 2020</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="partner-badge">Premium Partner</div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Investment Journey Section -->
-<section class="investment-journey">
-    <div class="container">
-        <div class="section-header text-center mb-5" data-aos="fade-up">
-            <span class="section-tag">Growth Story</span>
-            <h2 class="section-title">Our Investment Journey</h2>
-            <p class="section-subtitle">
-                Building sustainable impact through strategic funding and partnerships
-            </p>
-        </div>
-
-        <div class="journey-grid">
-            <!-- Journey Card 1 -->
-            <div class="journey-card" data-aos="zoom-in" data-aos-delay="100">
-                <span class="journey-year">2018</span>
-                <div class="journey-icon">
-                    <i class="fas fa-rocket"></i>
-                </div>
-                <h3 class="journey-title">Foundation Year</h3>
-                <div class="journey-amount">₹10 Cr</div>
-                <p class="journey-description">
-                    Angel investors believed in our vision to transform communities through education and empowerment.
-                </p>
-                <ul class="journey-achievements">
-                    <li>Launched flagship programs</li>
-                    <li>Established 5 centers</li>
-                    <li>Impacted 10,000+ lives</li>
-                </ul>
-            </div>
-
-            <!-- Journey Card 2 -->
-            <div class="journey-card" data-aos="zoom-in" data-aos-delay="200">
-                <span class="journey-year">2019</span>
-                <div class="journey-icon">
-                    <i class="fas fa-chart-line"></i>
-                </div>
-                <h3 class="journey-title">Expansion Phase</h3>
-                <div class="journey-amount">₹25 Cr</div>
-                <p class="journey-description">
-                    Series B funding enabled us to scale operations and reach underserved communities across India.
-                </p>
-                <ul class="journey-achievements">
-                    <li>Expanded to 5 new states</li>
-                    <li>Doubled our team size</li>
-                    <li>Launched skill programs</li>
-                </ul>
-            </div>
-
-            <!-- Journey Card 3 -->
-            <div class="journey-card" data-aos="zoom-in" data-aos-delay="300">
-                <span class="journey-year">2020</span>
-                <div class="journey-icon">
-                    <i class="fas fa-globe"></i>
-                </div>
-                <h3 class="journey-title">Global Partnership</h3>
-                <div class="journey-amount">₹30 Cr</div>
-                <p class="journey-description">
-                    International foundations joined our mission, supporting pandemic relief and recovery programs.
-                </p>
-                <ul class="journey-achievements">
-                    <li>COVID-19 relief efforts</li>
-                    <li>Healthcare initiatives</li>
-                    <li>Digital education launch</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Investor Categories -->
+<!-- Financial Reports Section -->
 <section class="investor-categories py-5">
     <div class="container">
         <div class="section-header text-center mb-5" data-aos="fade-up">
-            <span class="section-tag">Partnership Ecosystem</span>
-            <h2 class="section-title">Our Investor Network</h2>
+            <span class="section-tag">Transparency</span>
+            <h2 class="section-title">Financial Reports</h2>
             <p class="section-subtitle">
-                A diverse network of partners contributing to sustainable social impact
+                We believe in complete transparency. View and download our audited financial reports.
             </p>
         </div>
 
-        <div class="row g-5 justify-content-center">
-            <!-- Category 1 -->
-            <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="100">
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-building"></i>
+        <div class="row g-4 justify-content-center">
+            <?php
+            $reports = [
+                ['title' => 'Financials AY. 2021-22', 'file' => 'DSF - Audit Report 21-22.pdf', 'icon' => 'fa-file-pdf', 'delay' => 100],
+                ['title' => 'Financials AY. 2022-23', 'file' => 'DSF - Audit Report 22-23.pdf', 'icon' => 'fa-file-invoice-dollar', 'delay' => 200],
+                ['title' => 'Financials AY. 2023-24', 'file' => 'DSF - Audit Report 23-24.pdf', 'icon' => 'fa-balance-scale', 'delay' => 300],
+                ['title' => 'Financials AY. 2024-25', 'file' => 'DSF - Audit Report 24-25.pdf', 'icon' => 'fa-receipt', 'delay' => 400],
+            ];
+            foreach ($reports as $i => $report):
+            ?>
+            <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="<?= $report['delay'] ?>">
+                <div onclick="openPdfModal('<?= url('assets/reports/' . rawurlencode($report['file'])) ?>', '<?= addslashes($report['title']) ?>')"
+                    style="cursor:pointer;background:rgba(255,255,255,0.06);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:35px 25px;text-align:center;transition:all 0.4s ease;height:100%;"
+                    onmouseover="this.style.transform='translateY(-8px)';this.style.borderColor='#f26522';this.style.background='rgba(255,255,255,0.1)'"
+                    onmouseout="this.style.transform='translateY(0)';this.style.borderColor='rgba(255,255,255,0.1)';this.style.background='rgba(255,255,255,0.06)'">
+                    <div
+                        style="width:70px;height:70px;margin:0 auto 20px;background:linear-gradient(145deg,#c94a0f,#f26522);border-radius:18px;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(242,101,34,0.3);">
+                        <i class="fas <?= $report['icon'] ?>" style="font-size:1.8rem;color:#fff;"></i>
                     </div>
-                    <h3>Corporate Partners</h3>
-                    <div class="category-count">15+</div>
-                    <ul class="category-list">
-                        <li>Tech Giants</li>
-                        <li>Financial Institutions</li>
-                        <li>Manufacturing Leaders</li>
-                        <li>Retail Chains</li>
-                    </ul>
+                    <h5 style="color:#fff;font-weight:700;font-size:1rem;margin-bottom:8px;">
+                        <?= htmlspecialchars($report['title']) ?></h5>
+                    <p style="color:rgba(255,255,255,0.6);font-size:0.85rem;margin-bottom:15px;">Audit Report</p>
+                    <span
+                        style="display:inline-flex;align-items:center;gap:6px;color:#f26522;font-size:0.85rem;font-weight:600;">
+                        <i class="fas fa-eye"></i> View PDF
+                    </span>
                 </div>
             </div>
-
-            <!-- Category 2 -->
-            <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-hand-holding-heart"></i>
-                    </div>
-                    <h3>Foundations</h3>
-                    <div class="category-count">20+</div>
-                    <ul class="category-list">
-                        <li>Family Foundations</li>
-                        <li>Community Trusts</li>
-                        <li>Religious Organizations</li>
-                        <li>Educational Endowments</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Category 3 -->
-            <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="300">
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>Individual Donors</h3>
-                    <div class="category-count">500+</div>
-                    <ul class="category-list">
-                        <li>Philanthropists</li>
-                        <li>Angel Investors</li>
-                        <li>Industry Leaders</li>
-                        <li>Community Champions</li>
-                    </ul>
-                </div>
-            </div>
-
+            <?php endforeach; ?>
         </div>
     </div>
 </section>
+
+<!-- PDF Viewer Modal -->
+<div id="pdfModal"
+    style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:99999;align-items:center;justify-content:center;backdrop-filter:blur(6px);">
+    <div
+        style="background:#1a1b2e;border-radius:16px;width:95%;max-width:1000px;height:90vh;display:flex;flex-direction:column;position:relative;box-shadow:0 25px 60px rgba(0,0,0,0.5);animation:pdfModalIn 0.3s ease;">
+        <!-- Modal Header -->
+        <div
+            style="padding:18px 24px;border-bottom:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <div
+                    style="width:40px;height:40px;background:linear-gradient(145deg,#c94a0f,#f26522);border-radius:10px;display:flex;align-items:center;justify-content:center;">
+                    <i class="fas fa-file-pdf" style="color:#fff;font-size:1.1rem;"></i>
+                </div>
+                <div>
+                    <h5 id="pdfModalTitle" style="color:#fff;font-weight:700;margin:0;font-size:1rem;">Document</h5>
+                    <small style="color:rgba(255,255,255,0.5);font-size:0.78rem;">Durga Saptashati Foundation</small>
+                </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;">
+                <a id="pdfDownloadBtn" href="#" download
+                    style="display:inline-flex;align-items:center;gap:8px;background:#f26522;color:#fff;padding:10px 22px;border-radius:10px;font-size:0.85rem;font-weight:600;text-decoration:none;transition:all 0.2s;"
+                    onmouseover="this.style.background='#d4541a'" onmouseout="this.style.background='#f26522'">
+                    <i class="fas fa-download"></i> Download
+                </a>
+                <button onclick="closePdfModal()"
+                    style="background:rgba(255,255,255,0.1);border:none;width:40px;height:40px;border-radius:10px;cursor:pointer;color:#fff;font-size:1.2rem;display:flex;align-items:center;justify-content:center;transition:all 0.2s;"
+                    onmouseover="this.style.background='rgba(239,68,68,0.3)'"
+                    onmouseout="this.style.background='rgba(255,255,255,0.1)'">&times;</button>
+            </div>
+        </div>
+        <!-- PDF Viewer -->
+        <div style="flex:1;overflow:hidden;border-radius:0 0 16px 16px;">
+            <iframe id="pdfViewer" src="" style="width:100%;height:100%;border:none;background:#fff;"></iframe>
+        </div>
+    </div>
+</div>
+
+<style>
+@keyframes pdfModalIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+</style>
+
+<script>
+function openPdfModal(url, title) {
+    document.getElementById('pdfModalTitle').textContent = title;
+    document.getElementById('pdfViewer').src = url;
+    document.getElementById('pdfDownloadBtn').href = url;
+    document.getElementById('pdfModal').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+
+function closePdfModal() {
+    document.getElementById('pdfModal').style.display = 'none';
+    document.getElementById('pdfViewer').src = '';
+    document.body.style.overflow = '';
+}
+document.getElementById('pdfModal').addEventListener('click', function(e) {
+    if (e.target === this) closePdfModal();
+});
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closePdfModal();
+});
+</script>
 
 <!-- Impact Metrics -->
 <section class="impact-metrics py-5">
@@ -287,7 +166,7 @@ include '../app/views/layout/header.php';
         <div class="row align-items-center">
             <div class="col-lg-6" data-aos="fade-right">
                 <div class="metrics-content">
-                    <span class="section-tag text-white-50">Impact at Scale</span>
+                    <span class="section-tag">Impact at Scale</span>
                     <h2 class="mb-4">Transforming Lives Through Strategic Investment</h2>
                     <p class="mb-5">
                         Every investment creates a ripple effect of positive change, touching thousands of lives
@@ -296,39 +175,31 @@ include '../app/views/layout/header.php';
 
                     <div class="metric-grid">
                         <div class="metric-item">
-                            <div class="metric-icon">
-                                <i class="fas fa-graduation-cap"></i>
-                            </div>
+                            <div class="metric-icon"><i class="fas fa-graduation-cap"></i></div>
                             <div class="metric-info">
                                 <h4>Education</h4>
-                                <p>50,000+ students educated</p>
+                                <p>50+ students educated</p>
                             </div>
                         </div>
                         <div class="metric-item">
-                            <div class="metric-icon">
-                                <i class="fas fa-heartbeat"></i>
-                            </div>
+                            <div class="metric-icon"><i class="fas fa-heartbeat"></i></div>
                             <div class="metric-info">
                                 <h4>Healthcare</h4>
-                                <p>100,000+ lives impacted</p>
+                                <p>100+ lives impacted</p>
                             </div>
                         </div>
                         <div class="metric-item">
-                            <div class="metric-icon">
-                                <i class="fas fa-home"></i>
-                            </div>
+                            <div class="metric-icon"><i class="fas fa-home"></i></div>
                             <div class="metric-info">
                                 <h4>Livelihood</h4>
-                                <p>25,000+ jobs created</p>
+                                <p>10+ jobs created</p>
                             </div>
                         </div>
                         <div class="metric-item">
-                            <div class="metric-icon">
-                                <i class="fas fa-seedling"></i>
-                            </div>
+                            <div class="metric-icon"><i class="fas fa-seedling"></i></div>
                             <div class="metric-info">
                                 <h4>Environment</h4>
-                                <p>1M+ trees planted</p>
+                                <p>500+ trees planted</p>
                             </div>
                         </div>
                     </div>
@@ -341,147 +212,48 @@ include '../app/views/layout/header.php';
                             <h3>Impact Distribution</h3>
                             <p>How we transform communities</p>
                         </div>
-                        
                         <div class="progress-chart">
                             <div class="progress-item" data-aos="fade-left" data-aos-delay="100">
-                                <div class="progress-info">
-                                    <span class="progress-label">Education</span>
-                                    <span class="progress-value">30%</span>
-                                </div>
+                                <div class="progress-info"><span class="progress-label">Education</span><span
+                                        class="progress-value">30%</span></div>
                                 <div class="progress-bar">
                                     <div class="progress-fill" style="width: 30%; background: #f26522;"></div>
                                 </div>
-                                <small>50,000+ students educated</small>
+                                <small>50+ students educated</small>
                             </div>
-                            
                             <div class="progress-item" data-aos="fade-left" data-aos-delay="200">
-                                <div class="progress-info">
-                                    <span class="progress-label">Healthcare</span>
-                                    <span class="progress-value">25%</span>
-                                </div>
+                                <div class="progress-info"><span class="progress-label">Healthcare</span><span
+                                        class="progress-value">25%</span></div>
                                 <div class="progress-bar">
                                     <div class="progress-fill" style="width: 25%; background: #c94a0f;"></div>
                                 </div>
-                                <small>100,000+ lives impacted</small>
+                                <small>100+ lives impacted</small>
                             </div>
-                            
                             <div class="progress-item" data-aos="fade-left" data-aos-delay="300">
-                                <div class="progress-info">
-                                    <span class="progress-label">Livelihood</span>
-                                    <span class="progress-value">20%</span>
-                                </div>
+                                <div class="progress-info"><span class="progress-label">Livelihood</span><span
+                                        class="progress-value">20%</span></div>
                                 <div class="progress-bar">
                                     <div class="progress-fill" style="width: 20%; background: #ff8c42;"></div>
                                 </div>
-                                <small>25,000+ jobs created</small>
+                                <small>10+ jobs created</small>
                             </div>
-                            
                             <div class="progress-item" data-aos="fade-left" data-aos-delay="400">
-                                <div class="progress-info">
-                                    <span class="progress-label">Environment</span>
-                                    <span class="progress-value">15%</span>
-                                </div>
+                                <div class="progress-info"><span class="progress-label">Environment</span><span
+                                        class="progress-value">15%</span></div>
                                 <div class="progress-bar">
                                     <div class="progress-fill" style="width: 15%; background: #0d0e14;"></div>
                                 </div>
-                                <small>1M+ trees planted</small>
+                                <small>500+ trees planted</small>
                             </div>
-                            
                             <div class="progress-item" data-aos="fade-left" data-aos-delay="500">
-                                <div class="progress-info">
-                                    <span class="progress-label">Women Empowerment</span>
-                                    <span class="progress-value">10%</span>
-                                </div>
+                                <div class="progress-info"><span class="progress-label">Women Empowerment</span><span
+                                        class="progress-value">10%</span></div>
                                 <div class="progress-bar">
                                     <div class="progress-fill" style="width: 10%; background: #6c757d;"></div>
                                 </div>
-                                <small>15,000+ women empowered</small>
+                                <small>20+ women empowered</small>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Testimonials -->
-<section class="investor-testimonials py-5">
-    <div class="container">
-        <div class="section-header text-center mb-5" data-aos="fade-up">
-            <span class="section-tag">Voices of Support</span>
-            <h2 class="section-title">What Our Partners Say</h2>
-            <p class="section-subtitle">
-                Hear from our investors about their experience partnering with us
-            </p>
-        </div>
-
-        <div class="testimonial-carousel owl-carousel owl-theme">
-            <!-- Testimonial 1 -->
-            <div class="testimonial-card">
-                <div class="testimonial-rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <p class="testimonial-text">
-                    "Partnering with Durga Saptashati Foundation has been transformative. Their transparency,
-                    impact metrics, and dedication to sustainable change make them an ideal investment partner."
-                </p>
-                <div class="testimonial-author">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=60&h=60&q=80"
-                        alt="Rajesh Kumar">
-                    <div class="author-info">
-                        <h4>Rajesh Kumar</h4>
-                        <span>CEO, Global Impact Ventures</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Testimonial 2 -->
-            <div class="testimonial-card">
-                <div class="testimonial-rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <p class="testimonial-text">
-                    "The foundation's innovative approach to social challenges and their ability to scale
-                    impact efficiently makes them stand out in the social sector."
-                </p>
-                <div class="testimonial-author">
-                    <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=60&h=60&q=80"
-                        alt="Sarah Johnson">
-                    <div class="author-info">
-                        <h4>Sarah Johnson</h4>
-                        <span>Director, Social Innovation Fund</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Testimonial 3 -->
-            <div class="testimonial-card">
-                <div class="testimonial-rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <p class="testimonial-text">
-                    "We've seen remarkable returns on our social investment. The foundation's work creates
-                    lasting change that benefits entire communities."
-                </p>
-                <div class="testimonial-author">
-                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=60&h=60&q=80"
-                        alt="Michael Chen">
-                    <div class="author-info">
-                        <h4>Michael Chen</h4>
-                        <span>Partner, Future Foundation</span>
                     </div>
                 </div>
             </div>
@@ -495,14 +267,14 @@ include '../app/views/layout/header.php';
         <div class="cta-wrapper" data-aos="zoom-in">
             <div class="row align-items-center">
                 <div class="col-lg-8">
-                    <h2 class="cta-title">Become a Partner in Change</h2>
+                    <h2 class="cta-title">Invest in Change</h2>
                     <p class="cta-subtitle">
-                        Join our mission to create sustainable social impact and transform communities worldwide
+                        Join our mission to create sustainable social impact and transform communities across India
                     </p>
                 </div>
                 <div class="col-lg-4 text-lg-end">
                     <a href="<?= url('contact.php') ?>" class="btn btn-cta">
-                        <span>Partner With Us</span>
+                        <span>Get in Touch</span>
                         <i class="fas fa-arrow-right ms-2"></i>
                     </a>
                 </div>
@@ -511,90 +283,26 @@ include '../app/views/layout/header.php';
     </div>
 </section>
 
-<!-- Scripts -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-
 <script>
-// Initialize AOS
-AOS.init({
-    duration: 1000,
-    once: true,
-    offset: 100
-});
-
-
-// Counter Animation
-const counters = document.querySelectorAll('[data-counter]');
-const observerOptions = {
-    threshold: 0.5
-};
-
-const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const counter = entry.target;
-            const target = parseInt(counter.getAttribute('data-counter'));
-            let current = 0;
-            const increment = target / 100;
-
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    counter.textContent = target;
-                    clearInterval(timer);
-                } else {
-                    counter.textContent = Math.floor(current);
-                }
-            }, 20);
-
-            counterObserver.unobserve(counter);
-        }
-    });
-}, observerOptions);
-
-counters.forEach(counter => counterObserver.observe(counter));
-
 // Animated Progress Bars
-const progressBars = document.querySelectorAll('.progress-fill');
-const progressObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
+var progressBars = document.querySelectorAll('.progress-fill');
+var progressObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
         if (entry.isIntersecting) {
-            const progressFill = entry.target;
-            const targetWidth = progressFill.style.width;
-            
-            // Reset width to 0 and animate to target
-            progressFill.style.width = '0%';
-            setTimeout(() => {
-                progressFill.style.width = targetWidth;
+            var fill = entry.target;
+            var target = fill.style.width;
+            fill.style.width = '0%';
+            setTimeout(function() {
+                fill.style.width = target;
             }, 200);
-            
-            progressObserver.unobserve(progressFill);
+            progressObserver.unobserve(fill);
         }
     });
-}, { threshold: 0.5 });
-
-progressBars.forEach(bar => progressObserver.observe(bar));
-
-// Testimonial Carousel
-$('.testimonial-carousel').owlCarousel({
-    loop: true,
-    margin: 30,
-    nav: false,
-    dots: true,
-    autoplay: true,
-    autoplayTimeout: 5000,
-    responsive: {
-        0: {
-            items: 1
-        },
-        768: {
-            items: 2
-        },
-        1024: {
-            items: 3
-        }
-    }
+}, {
+    threshold: 0.5
+});
+progressBars.forEach(function(bar) {
+    progressObserver.observe(bar);
 });
 </script>
 
