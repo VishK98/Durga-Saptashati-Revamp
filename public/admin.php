@@ -285,6 +285,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'delet
     exit;
 }
 
+// Handle approve volunteer
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'approve_volunteer') {
+    $pdo->prepare("UPDATE volunteers SET status = 'approved' WHERE id = ?")->execute([(int)$_POST['volunteer_id']]);
+    $_SESSION['volunteer_success'] = 'Volunteer approved successfully.';
+    header('Location: admin.php?page=volunteers');
+    exit;
+}
+
+// Handle reject volunteer
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'reject_volunteer') {
+    $pdo->prepare("UPDATE volunteers SET status = 'rejected' WHERE id = ?")->execute([(int)$_POST['volunteer_id']]);
+    $_SESSION['volunteer_success'] = 'Volunteer rejected.';
+    header('Location: admin.php?page=volunteers');
+    exit;
+}
+
+// Handle delete volunteer
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'delete_volunteer') {
+    $pdo->prepare("DELETE FROM volunteers WHERE id = ?")->execute([(int)$_POST['volunteer_id']]);
+    $_SESSION['volunteer_success'] = 'Volunteer deleted.';
+    header('Location: admin.php?page=volunteers');
+    exit;
+}
+
 // Handle mark read query
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'mark_read_query') {
     $pdo->prepare("UPDATE contact_queries SET status = 'read' WHERE id = ?")->execute([(int)$_POST['query_id']]);
@@ -309,9 +333,61 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'delet
     exit;
 }
 
+// Handle create career
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'create_career') {
+    $stmt = $pdo->prepare("INSERT INTO careers (title, department, location, type, description, requirements) VALUES (?, ?, ?, ?, ?, ?)");
+    $stmt->execute([trim($_POST['title']), trim($_POST['department'] ?? ''), trim($_POST['location'] ?? ''), $_POST['type'] ?? 'full-time', trim($_POST['description'] ?? ''), trim($_POST['requirements'] ?? '')]);
+    $_SESSION['career_success'] = 'Job opening created.';
+    header('Location: admin.php?page=careers');
+    exit;
+}
+
+// Handle toggle career status
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'toggle_career') {
+    $pdo->prepare("UPDATE careers SET status = IF(status='active','closed','active') WHERE id = ?")->execute([(int)$_POST['career_id']]);
+    $_SESSION['career_success'] = 'Career status updated.';
+    header('Location: admin.php?page=careers');
+    exit;
+}
+
+// Handle delete career
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'delete_career') {
+    $pdo->prepare("DELETE FROM careers WHERE id = ?")->execute([(int)$_POST['career_id']]);
+    $_SESSION['career_success'] = 'Job opening deleted.';
+    header('Location: admin.php?page=careers');
+    exit;
+}
+
+// Handle update application status
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'update_application') {
+    $valid = ['new','reviewed','shortlisted','rejected'];
+    $s = $_POST['status'] ?? 'new';
+    if (in_array($s, $valid)) {
+        $pdo->prepare("UPDATE career_applications SET status = ? WHERE id = ?")->execute([$s, (int)$_POST['app_id']]);
+    }
+    $_SESSION['career_success'] = 'Application status updated.';
+    header('Location: admin.php?page=careers');
+    exit;
+}
+
+// Handle delete application
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'delete_application') {
+    $stmt = $pdo->prepare("SELECT resume FROM career_applications WHERE id = ?");
+    $stmt->execute([(int)$_POST['app_id']]);
+    $app = $stmt->fetch();
+    if ($app && $app['resume']) {
+        $path = __DIR__ . '/assets/uploads/resumes/' . $app['resume'];
+        if (file_exists($path)) unlink($path);
+    }
+    $pdo->prepare("DELETE FROM career_applications WHERE id = ?")->execute([(int)$_POST['app_id']]);
+    $_SESSION['career_success'] = 'Application deleted.';
+    header('Location: admin.php?page=careers');
+    exit;
+}
+
 // Route to correct page
 $page = $_GET['page'] ?? 'dashboard';
-$allowedPages = ['dashboard', 'blogs', 'queries', 'subscribers', 'events', 'causes', 'gallery', 'settings', 'comments', 'donations'];
+$allowedPages = ['dashboard', 'blogs', 'queries', 'subscribers', 'events', 'causes', 'gallery', 'settings', 'comments', 'donations', 'volunteers', 'careers'];
 
 if (!in_array($page, $allowedPages)) {
     $page = 'dashboard';

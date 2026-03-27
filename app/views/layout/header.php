@@ -508,13 +508,6 @@
                                                 <small>Join our volunteer network</small>
                                             </div>
                                         </a>
-                                        <a class="dropdown-item" href="<?= url('membership-program.php') ?>">
-                                            <i class="fas fa-id-card"></i>
-                                            <div>
-                                                <strong>Membership Program</strong>
-                                                <small>Be part of our family</small>
-                                            </div>
-                                        </a>
                                         <a class="dropdown-item" href="<?= url('career-opportunities.php') ?>">
                                             <i class="fas fa-briefcase"></i>
                                             <div>
@@ -530,20 +523,6 @@
                                             <div>
                                                 <strong>Make a Donation</strong>
                                                 <small>Every contribution matters</small>
-                                            </div>
-                                        </a>
-                                        <a class="dropdown-item" href="<?= url('corporate-partnership.php') ?>">
-                                            <i class="fas fa-handshake"></i>
-                                            <div>
-                                                <strong>Corporate Partnership</strong>
-                                                <small>Collaborate for impact</small>
-                                            </div>
-                                        </a>
-                                        <a class="dropdown-item" href="<?= url('sponsor-programs.php') ?>">
-                                            <i class="fas fa-star"></i>
-                                            <div>
-                                                <strong>Sponsor Programs</strong>
-                                                <small>Fund specific initiatives</small>
                                             </div>
                                         </a>
                                     </div>

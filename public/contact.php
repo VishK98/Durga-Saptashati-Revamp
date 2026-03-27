@@ -178,6 +178,7 @@ include '../app/views/layout/header.php';
                                 if (res.success) {
                                     showToast(res.message, 'success');
                                     form.reset();
+                                    window.scrollTo({top:0,behavior:'smooth'});
                                 } else {
                                     showToast(res.message, 'error');
                                 }

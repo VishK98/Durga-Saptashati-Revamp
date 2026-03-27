@@ -57,6 +57,21 @@
                     <?php if ($donationCount > 0): ?><span class="badge-count"><?= $donationCount ?></span><?php endif; ?>
                 </a>
 
+                <?php
+                try { $pendingVolunteers = $pdo->query("SELECT COUNT(*) FROM volunteers WHERE status = 'pending'")->fetchColumn(); } catch(Exception $e) { $pendingVolunteers = 0; }
+                ?>
+
+                <a href="admin.php?page=volunteers" class="sidebar-item <?= $currentPage === 'volunteers' ? 'active' : '' ?>">
+                    <i class="fas fa-user-plus"></i> <span>Volunteers</span>
+                    <?php if ($pendingVolunteers > 0): ?><span class="badge-count"><?= $pendingVolunteers ?></span><?php endif; ?>
+                </a>
+
+                <?php try { $newAppsCount = $pdo->query("SELECT COUNT(*) FROM career_applications WHERE status = 'new'")->fetchColumn(); } catch(Exception $e) { $newAppsCount = 0; } ?>
+                <a href="admin.php?page=careers" class="sidebar-item <?= $currentPage === 'careers' ? 'active' : '' ?>">
+                    <i class="fas fa-briefcase"></i> <span>Careers</span>
+                    <?php if ($newAppsCount > 0): ?><span class="badge-count"><?= $newAppsCount ?></span><?php endif; ?>
+                </a>
+
                 <div class="sidebar-menu-label">Content</div>
 
                 <a href="admin.php?page=events" class="sidebar-item <?= $currentPage === 'events' ? 'active' : '' ?>">
@@ -348,6 +363,7 @@
     $adminToasts = [
         'blog_success' => 'success', 'donation_success' => 'success', 'query_success' => 'success',
         'comment_success' => 'success', 'settings_success' => 'success',
+        'volunteer_success' => 'success', 'career_success' => 'success',
         'settings_error' => 'error', 'toast_success' => 'success', 'toast_error' => 'error'
     ];
     foreach ($adminToasts as $key => $type) {
