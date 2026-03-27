@@ -51,7 +51,6 @@
         'our-story' => 'about-us/our-story.css',
         'leadership' => 'about-us/leadership.css',
         'vision-mission' => 'about-us/vision-mission.css',
-        'annual-reports' => 'about-us/annual-reports.css',
         // Program Pages
         'school-support' => 'programs/school-support.css',
         'adult-literacy' => 'programs/adult-literacy.css',
@@ -185,19 +184,6 @@
                                     </div>
                                     <div class="col-lg-4">
                                         <h6 class="dropdown-header">Transparency</h6>
-                                        <a class="dropdown-item" href="<?= url('annual-reports.php') ?>">
-                                            <i class="fas fa-file-alt"></i> Annual Reports
-                                            <span class="item-description">Detailed yearly activity and impact
-                                                reports</span>
-                                        </a>
-                                        <a class="dropdown-item" href="<?= url('certifications.php') ?>">
-                                            <i class="fas fa-certificate"></i> Certifications
-                                            <span class="item-description">Government approvals and compliance</span>
-                                        </a>
-                                        <!-- <a class="dropdown-item" href="<?= url('our-partners.php') ?>">
-                                            <i class="fas fa-handshake"></i> Our Partners
-                                            <span class="item-description">Organizations supporting our cause</span>
-                                        </a> -->
                                         <a class="dropdown-item" href="<?= url('our-investors.php') ?>">
                                             <i class="fas fa-chart-line"></i> Our Investors & Partners
                                             <span class="item-description">Major donors and supporters</span>
@@ -484,72 +470,11 @@
                         </div>
                     </li>
 
-                    <!-- News Mega Dropdown -->
-                    <li class="nav-item dropdown mega-dropdown">
-                        <a class="nav-link dropdown-toggle" href="<?= url('blog.php') ?>" id="newsDropdown"
-                            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="nav-text">News</span>
-                            <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    <!-- Blogs -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= url('blog.php') ?>">
+                            <span class="nav-text">Blogs</span>
                         </a>
-                        <div class="dropdown-menu mega-dropdown-menu news-mega" aria-labelledby="newsDropdown">
-                            <div class="mega-dropdown-content">
-                                <div class="row">
-                                    <div class="col-lg-4">
-                                        <h6 class="dropdown-header">Latest Updates</h6>
-                                        <a class="dropdown-item featured" href="<?= url('blog.php') ?>">
-                                            <i class="fas fa-newspaper"></i> Our Blogs
-                                            <span class="feature-badge hot">NEW</span>
-                                            <span class="item-description">Inspiring insights and stories.</span>
-
-                                        </a>
-                                        <a class="dropdown-item" href="<?= url('announcements.php') ?>">
-                                            <i class="fas fa-bullhorn"></i> Announcements
-                                            <span class="item-description">Important updates and notices</span>
-                                        </a>
-                                        <a class="dropdown-item" href="<?= url('press-releases.php') ?>">
-                                            <i class="fas fa-file-alt"></i> Press Releases
-                                            <span class="item-description">Official statements and news</span>
-                                        </a>
-                                        <a class="dropdown-item" href="<?= url('media-coverage.php') ?>">
-                                            <i class="fas fa-tv"></i> Media Coverage
-                                            <span class="item-description">Featured in news outlets</span>
-                                        </a>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <h6 class="dropdown-header">Stories & Impact</h6>
-                                        <a class="dropdown-item" href="<?= url('success-stories.php') ?>">
-                                            <i class="fas fa-star"></i> Success Stories
-                                            <span class="item-description">Lives we've changed</span>
-                                        </a>
-                                        <a class="dropdown-item" href="<?= url('testimonials.php') ?>">
-                                            <i class="fas fa-quote-left"></i> Testimonials
-                                            <span class="item-description">What people say</span>
-                                        </a>
-                                        <a class="dropdown-item" href="<?= url('impact-reports.php') ?>">
-                                            <i class="fas fa-chart-line"></i> Impact Reports
-                                            <span class="item-description">Quarterly updates</span>
-                                        </a>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <h6 class="dropdown-header">Stay Connected</h6>
-                                        <a class="dropdown-item" href="<?= url('newsletter-news.php') ?>">
-                                            <i class="fas fa-envelope-open"></i> Newsletter
-                                            <span class="item-description">Monthly updates in your inbox</span>
-                                        </a>
-                                        <a class="dropdown-item" href="<?= url('social-media.php') ?>">
-                                            <i class="fas fa-share-alt"></i> Social Media
-                                            <span class="item-description">Follow us on social platforms</span>
-                                        </a>
-                                        <div class="mega-featured-section mt-3">
-                                            <h5><i class="fas fa-rss"></i> Subscribe</h5>
-                                            <p class="small">Get latest updates delivered to your inbox</p>
-                                            <a href="<?= url('subscribe.php') ?>"
-                                                class="btn btn-sm btn-primary btn-block">Subscribe Now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </li>
 
 
