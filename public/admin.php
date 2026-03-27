@@ -385,6 +385,58 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'delet
     exit;
 }
 
+// Auto-create gallery table
+try {
+    $pdo->exec("CREATE TABLE IF NOT EXISTS gallery (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        title VARCHAR(255) DEFAULT '',
+        category VARCHAR(100) DEFAULT 'General',
+        image VARCHAR(255) NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )");
+} catch (Exception $e) {}
+
+// Handle gallery upload
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'upload_gallery') {
+    $title = trim($_POST['title'] ?? '');
+    $category = trim($_POST['category'] ?? 'General');
+    $uploadDir = __DIR__ . '/assets/uploads/gallery/';
+    if (!is_dir($uploadDir)) mkdir($uploadDir, 0777, true);
+
+    $uploaded = 0;
+    if (!empty($_FILES['images']['name'][0])) {
+        foreach ($_FILES['images']['tmp_name'] as $i => $tmp) {
+            if ($_FILES['images']['error'][$i] !== UPLOAD_ERR_OK) continue;
+            $ext = strtolower(pathinfo($_FILES['images']['name'][$i], PATHINFO_EXTENSION));
+            if (!in_array($ext, ['jpg','jpeg','png','gif','webp'])) continue;
+            $filename = 'gallery_' . time() . '_' . $i . '.' . $ext;
+            if (move_uploaded_file($tmp, $uploadDir . $filename)) {
+                $imgTitle = $title ?: pathinfo($_FILES['images']['name'][$i], PATHINFO_FILENAME);
+                $pdo->prepare("INSERT INTO gallery (title, category, image) VALUES (?, ?, ?)")->execute([$imgTitle, $category, $filename]);
+                $uploaded++;
+            }
+        }
+    }
+    $_SESSION['gallery_success'] = $uploaded . ' photo(s) uploaded successfully.';
+    header('Location: admin.php?page=gallery');
+    exit;
+}
+
+// Handle gallery delete
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'delete_gallery') {
+    $stmt = $pdo->prepare("SELECT image FROM gallery WHERE id = ?");
+    $stmt->execute([(int)$_POST['gallery_id']]);
+    $img = $stmt->fetch();
+    if ($img) {
+        $path = __DIR__ . '/assets/uploads/gallery/' . $img['image'];
+        if (file_exists($path)) unlink($path);
+        $pdo->prepare("DELETE FROM gallery WHERE id = ?")->execute([(int)$_POST['gallery_id']]);
+    }
+    $_SESSION['gallery_success'] = 'Photo deleted.';
+    header('Location: admin.php?page=gallery');
+    exit;
+}
+
 // Route to correct page
 $page = $_GET['page'] ?? 'dashboard';
 $allowedPages = ['dashboard', 'blogs', 'queries', 'subscribers', 'events', 'causes', 'gallery', 'settings', 'comments', 'donations', 'volunteers', 'careers'];

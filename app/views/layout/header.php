@@ -299,89 +299,6 @@
                         </div>
                     </li>
 
-                    <!-- Causes Mega Dropdown -->
-                    <li class="nav-item dropdown mega-dropdown">
-                        <a class="nav-link dropdown-toggle" href="<?= url('causes.php') ?>" id="causesDropdown"
-                            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="nav-text">Causes</span>
-                            <i class="fas fa-chevron-down dropdown-arrow"></i>
-                        </a>
-                        <div class="dropdown-menu mega-dropdown-menu causes-mega" aria-labelledby="causesDropdown">
-                            <div class="mega-dropdown-content">
-                                <div class="row">
-                                    <div class="col-lg-3">
-                                        <div class="mega-featured-section">
-                                            <h5><i class="fas fa-fire"></i> Urgent Causes</h5>
-                                            <a class="dropdown-item featured" href="<?= url('urgent-causes.php') ?>">
-                                                <i class="fas fa-exclamation-triangle"></i> Emergency Relief
-                                                <span class="feature-badge hot">URGENT</span>
-                                            </a>
-                                            <a class="dropdown-item featured"
-                                                href="<?= url('medical-emergencies.php') ?>">
-                                                <i class="fas fa-heartbeat"></i> Medical Emergencies
-                                                <span class="item-description">Critical healthcare support needed</span>
-                                            </a>
-                                            <a class="dropdown-item featured"
-                                                href="<?= url('disaster-response.php') ?>">
-                                                <i class="fas fa-house-damage"></i> Disaster Response
-                                                <span class="item-description">Immediate relief for affected
-                                                    families</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <h6 class="dropdown-header">Active Campaigns</h6>
-                                        <a class="dropdown-item" href="<?= url('education-for-all.php') ?>">
-                                            <i class="fas fa-graduation-cap"></i> Education for All
-                                            <span class="item-description">Help 500 children get quality
-                                                education</span>
-                                        </a>
-                                        <a class="dropdown-item" href="<?= url('zero-hunger.php') ?>">
-                                            <i class="fas fa-utensils"></i> Zero Hunger
-                                            <span class="item-description">Daily meals for 1000+ families</span>
-                                        </a>
-                                        <a class="dropdown-item" href="<?= url('clean-water-project.php') ?>">
-                                            <i class="fas fa-tint"></i> Clean Water Project
-                                            <span class="item-description">Providing clean water to villages</span>
-                                        </a>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <h6 class="dropdown-header">Long-term Goals</h6>
-                                        <a class="dropdown-item" href="<?= url('women-empowerment-causes.php') ?>">
-                                            <i class="fas fa-female"></i> Women Empowerment
-                                            <span class="item-description">Creating equal opportunities</span>
-                                        </a>
-                                        <a class="dropdown-item" href="<?= url('healthcare-access.php') ?>">
-                                            <i class="fas fa-hospital"></i> Healthcare Access
-                                            <span class="item-description">Medical facilities for all</span>
-                                        </a>
-                                        <a class="dropdown-item" href="<?= url('environmental-protection.php') ?>">
-                                            <i class="fas fa-leaf"></i> Environmental Protection
-                                            <span class="item-description">Sustainable future initiatives</span>
-                                        </a>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <div class="mega-cta-card">
-                                            <h4>Make a Difference</h4>
-                                            <p>Your donation can change lives. Every contribution matters.</p>
-                                            <div class="dropdown-stats">
-                                                <div class="stat">
-                                                    <span class="stat-value">₹50L+</span>
-                                                    <span class="stat-label">Raised</span>
-                                                </div>
-                                                <div class="stat">
-                                                    <span class="stat-value">5000+</span>
-                                                    <span class="stat-label">Helped</span>
-                                                </div>
-                                            </div>
-                                            <a href="<?= url('donate.php') ?>" class="btn-white">Donate Now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-
                     <!-- Events Mega Dropdown -->
                     <li class="nav-item dropdown mega-dropdown">
                         <a class="nav-link dropdown-toggle" href="<?= url('event.php') ?>" id="eventsDropdown"
@@ -401,10 +318,10 @@
                                                 <p>Be part of the change</p>
                                             </div>
                                         </div>
-                                        <h6 class="dropdown-header">Upcoming Events</h6>
-                                        <a class="dropdown-item featured" href="<?= url('event.php') ?>">
-                                            <i class="fas fa-calendar-check"></i> This Month
-                                            <span class="feature-badge new">5 NEW</span>
+                                        <h6 class="dropdown-header">Our Gallery</h6>
+                                        <a class="dropdown-item" href="<?= url('event-gallery.php') ?>">
+                                            <i class="fas fa-images"></i> Event Gallery
+                                            <span class="item-description">Browse photos from past events</span>
                                         </a>
                                     </div>
                                     <div class="col-lg-3">
@@ -446,37 +363,33 @@
                                         </a>
                                     </div>
                                     <div class="col-lg-3">
-                                        <h6 class="dropdown-header">Get Involved</h6>
-                                        <a class="dropdown-item" href="<?= url('volunteer-events.php') ?>">
-                                            <i class="fas fa-hands-helping"></i> Volunteer at Events
-                                            <span class="item-description">Join us in making events successful</span>
+                                        <h6 class="dropdown-header">Our Causes</h6>
+                                        <a class="dropdown-item" href="<?= url('womens-empowerment.php') ?>">
+                                            <i class="fas fa-female"></i> Women's Empowerment
+                                            <span class="item-description">Creating equal opportunities</span>
                                         </a>
-                                        <a class="dropdown-item" href="<?= url('organize-event.php') ?>">
-                                            <i class="fas fa-calendar-plus"></i> Organize an Event
-                                            <span class="item-description">Host an event in your area</span>
+                                        <a class="dropdown-item" href="<?= url('no-people-hungry.php') ?>">
+                                            <i class="fas fa-utensils"></i> No People Hungry
+                                            <span class="item-description">Meals for those in need</span>
                                         </a>
-                                        <a class="dropdown-item" href="<?= url('sponsor-events.php') ?>">
-                                            <i class="fas fa-handshake"></i> Sponsor Events
-                                            <span class="item-description">Support our initiatives financially</span>
+                                        <a class="dropdown-item" href="<?= url('education-for-every-kids.php') ?>">
+                                            <i class="fas fa-graduation-cap"></i> Education For Every Kids
+                                            <span class="item-description">Quality education for all</span>
+                                        </a>
+                                        <a class="dropdown-item" href="<?= url('livelihood.php') ?>">
+                                            <i class="fas fa-briefcase"></i> Livelihood
+                                            <span class="item-description">Skills & employment support</span>
                                         </a>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="<?= url('event-gallery.php') ?>">
-                                            <i class="fas fa-images"></i> Event Gallery
-                                            <span class="item-description">Browse photos from past events</span>
+                                        <a class="dropdown-item" href="<?= url('causes.php') ?>">
+                                            <i class="fas fa-arrow-right"></i> View More Causes
+                                            <span class="item-description">Explore all our initiatives</span>
                                         </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </li>
-
-                    <!-- Blogs -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= url('blog.php') ?>">
-                            <span class="nav-text">Blogs</span>
-                        </a>
-                    </li>
-
 
                     <!-- Get Involved Mega Dropdown -->
                     <li class="nav-item dropdown mega-dropdown">
@@ -529,6 +442,13 @@
                                 </div>
                             </div>
                         </div>
+                    </li>
+
+                    <!-- Blogs -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= url('blog.php') ?>">
+                            <span class="nav-text">Blogs</span>
+                        </a>
                     </li>
                 </ul>
 

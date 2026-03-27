@@ -363,7 +363,7 @@
     $adminToasts = [
         'blog_success' => 'success', 'donation_success' => 'success', 'query_success' => 'success',
         'comment_success' => 'success', 'settings_success' => 'success',
-        'volunteer_success' => 'success', 'career_success' => 'success',
+        'volunteer_success' => 'success', 'career_success' => 'success', 'gallery_success' => 'success',
         'settings_error' => 'error', 'toast_success' => 'success', 'toast_error' => 'error'
     ];
     foreach ($adminToasts as $key => $type) {

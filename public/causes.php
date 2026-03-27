@@ -1,20 +1,26 @@
 <?php
 require_once '../app/config/config.php';
-
 $pageTitle = "Our Causes";
-$pageDescription = "Discover the various causes and charitable initiatives supported by Durga Saptashati Foundation. Learn about our education, healthcare, women empowerment, and community development programs.";
-$pageKeywords = "charity causes, education programs, healthcare initiatives, women empowerment, community development, Durga Saptashati";
-
+$pageDescription = "Discover the various causes and initiatives supported by Durga Saptashati Foundation — education, women empowerment, livelihood, and cultural programs.";
+$pageKeywords = "charity causes, education, women empowerment, livelihood, yoga day, cultural programme, Durga Saptashati Foundation";
 include '../app/views/layout/header.php';
+
+$causes = [
+    ['title' => "Women's Empowerment", 'icon' => 'fa-female', 'color' => '#e91e63', 'url' => 'womens-empowerment.php', 'desc' => 'Empowering women through skill development, self-defense training, and awareness campaigns.'],
+    ['title' => 'No People Hungry', 'icon' => 'fa-utensils', 'color' => '#ff9800', 'url' => 'no-people-hungry.php', 'desc' => 'Providing nutritious meals to underprivileged families through community kitchens and food drives.'],
+    ['title' => 'Education For Every Kids', 'icon' => 'fa-graduation-cap', 'color' => '#2196f3', 'url' => 'education-for-every-kids.php', 'desc' => 'Supporting quality education through scholarships, learning materials, and digital literacy.'],
+    ['title' => 'Livelihood', 'icon' => 'fa-briefcase', 'color' => '#4caf50', 'url' => 'livelihood.php', 'desc' => 'Creating sustainable livelihood through vocational training and employment support.'],
+    ['title' => 'Yoga Day', 'icon' => 'fa-om', 'color' => '#9c27b0', 'url' => 'yoga-day.php', 'desc' => 'Promoting physical and mental well-being through yoga sessions and health awareness.'],
+    ['title' => "International Women's Day", 'icon' => 'fa-venus', 'color' => '#f44336', 'url' => 'international-womens-day.php', 'desc' => "Celebrating women's achievements through events, felicitations, and workshops."],
+    ['title' => 'Painting Competition', 'icon' => 'fa-palette', 'color' => '#ff5722', 'url' => 'painting-competition.php', 'desc' => 'Nurturing creativity in children through competitions, workshops, and exhibitions.'],
+    ['title' => 'Cultural Programme', 'icon' => 'fa-music', 'color' => '#795548', 'url' => 'cultural-programme.php', 'desc' => 'Preserving Indian cultural heritage through dance, music, drama, and community events.'],
+];
 ?>
 
-<!-- Page Header Start -->
 <div class="page-header">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12">
-                <h2>Popular Causes</h2>
-            </div>
+            <div class="col-12"><h2>Our Causes</h2></div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
                 <a href="<?= url('causes.php') ?>">Causes</a>
@@ -22,210 +28,34 @@ include '../app/views/layout/header.php';
         </div>
     </div>
 </div>
-<!-- Page Header End -->
 
-
-<!-- Service Start -->
-<div class="service">
-    <div class="container-fluid">
-        <div class="section-header text-center">
-            <p>What We Do?</p>
-            <h2>We believe that we can transform more lives with your support</h2>
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <h6 class="text-uppercase mb-2" style="color:#f26522;letter-spacing:3px;font-weight:600;">What We Do</h6>
+            <h2 style="color:#1a1b2e;font-weight:700;">We believe we can transform lives with your support</h2>
+            <p style="color:#888;max-width:650px;margin:10px auto 0;">Our causes span education, empowerment, livelihood, and cultural preservation — each one creating lasting impact in communities across India.</p>
         </div>
-        <div class="row">
-            <div class="col-lg-4 col-md-6">
-                <div class="service-item">
-                    <div class="service-icon">
-                        <i class="flaticon-diet"></i>
+
+        <div class="row g-4">
+            <?php foreach ($causes as $i => $cause): ?>
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="<?= ($i % 4) * 100 ?>">
+                <a href="<?= url($cause['url']) ?>" style="text-decoration:none;display:block;height:100%;">
+                    <div style="background:#fff;border-radius:16px;padding:30px 24px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,0.06);transition:all 0.3s;height:100%;border-bottom:4px solid transparent;" onmouseover="this.style.transform='translateY(-8px)';this.style.boxShadow='0 12px 35px rgba(0,0,0,0.12)';this.style.borderBottomColor='<?= $cause['color'] ?>'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.06)';this.style.borderBottomColor='transparent'">
+                        <div style="width:70px;height:70px;margin:0 auto 18px;background:<?= $cause['color'] ?>;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px <?= $cause['color'] ?>30;">
+                            <i class="fas <?= $cause['icon'] ?>" style="font-size:1.6rem;color:#fff;"></i>
+                        </div>
+                        <h5 style="color:#1a1b2e;font-weight:700;font-size:1rem;margin-bottom:10px;"><?= htmlspecialchars($cause['title']) ?></h5>
+                        <p style="color:#888;font-size:0.85rem;line-height:1.6;margin-bottom:15px;"><?= htmlspecialchars($cause['desc']) ?></p>
+                        <span style="display:inline-flex;align-items:center;gap:6px;color:<?= $cause['color'] ?>;font-size:0.85rem;font-weight:600;">
+                            Learn More <i class="fas fa-arrow-right" style="font-size:0.75rem;"></i>
+                        </span>
                     </div>
-                    <div class="service-text">
-                        <h3>Nutritious Food</h3>
-                        <p>Providing healthy meals and nutrition programs for underprivileged families and children
-                            through our community kitchens and feeding initiatives</p>
-                    </div>
-                </div>
+                </a>
             </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="service-item">
-                    <div class="service-icon">
-                        <i class="flaticon-water"></i>
-                    </div>
-                    <div class="service-text">
-                        <h3>Clean Water</h3>
-                        <p>Ensuring access to safe drinking water through well construction, water purification systems,
-                            and sanitation programs in rural areas</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="service-item">
-                    <div class="service-icon">
-                        <i class="flaticon-healthcare"></i>
-                    </div>
-                    <div class="service-text">
-                        <h3>Healthcare Services</h3>
-                        <p>Providing medical assistance, health camps, preventive care, and health awareness programs
-                            for communities in need</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="service-item">
-                    <div class="service-icon">
-                        <i class="flaticon-education"></i>
-                    </div>
-                    <div class="service-text">
-                        <h3>Quality Education</h3>
-                        <p>Supporting education through scholarships, learning centers, educational materials, and skill
-                            development programs for children and adults</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="service-item">
-                    <div class="service-icon">
-                        <i class="flaticon-home"></i>
-                    </div>
-                    <div class="service-text">
-                        <h3>Shelter & Housing</h3>
-                        <p>Providing safe shelter and temporary housing assistance for homeless individuals and families
-                            affected by disasters or hardships</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="service-item">
-                    <div class="service-icon">
-                        <i class="flaticon-social-care"></i>
-                    </div>
-                    <div class="service-text">
-                        <h3>Community Development</h3>
-                        <p>Offering counseling, emotional support, women empowerment programs, and holistic community
-                            development initiatives</p>
-                    </div>
-                </div>
-            </div>
+            <?php endforeach; ?>
         </div>
     </div>
 </div>
-<!-- Service End -->
-
-
-<!-- Causes Start -->
-<div class="causes">
-    <div class="container-fluid">
-        <div class="section-header text-center">
-            <p>Popular Causes</p>
-            <h2>Support our divine mission to serve humanity</h2>
-        </div>
-        <div class="owl-carousel causes-carousel">
-            <div class="causes-item">
-                <div class="causes-img">
-                    <img src="<?= asset('img/causes-1.jpg') ?>" alt="Education for Underprivileged Children">
-                </div>
-                <div class="causes-progress">
-                    <div class="progress">
-                        <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0"
-                            aria-valuemax="100">
-                            <span>85%</span>
-                        </div>
-                    </div>
-                    <div class="progress-text">
-                        <p><strong>Raised:</strong> ₹85,000</p>
-                        <p><strong>Goal:</strong> ₹1,00,000</p>
-                    </div>
-                </div>
-                <div class="causes-text">
-                    <h3>Education for Underprivileged Children</h3>
-                    <p>Supporting the education of children from disadvantaged backgrounds through scholarships, books,
-                        and learning materials to build a brighter future</p>
-                </div>
-                <div class="causes-btn">
-                    <a class="btn btn-custom" href="<?= url('causes.php') ?>">Learn More</a>
-                    <a class="btn btn-custom" href="<?= url('donate.php') ?>">Donate Now</a>
-                </div>
-            </div>
-            <div class="causes-item">
-                <div class="causes-img">
-                    <img src="<?= asset('img/causes-2.jpg') ?>" alt="Healthcare for Rural Communities">
-                </div>
-                <div class="causes-progress">
-                    <div class="progress">
-                        <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0"
-                            aria-valuemax="100">
-                            <span>70%</span>
-                        </div>
-                    </div>
-                    <div class="progress-text">
-                        <p><strong>Raised:</strong> ₹70,000</p>
-                        <p><strong>Goal:</strong> ₹1,00,000</p>
-                    </div>
-                </div>
-                <div class="causes-text">
-                    <h3>Healthcare for Rural Communities</h3>
-                    <p>Providing medical assistance, free health checkups, medicines, and health awareness programs in
-                        remote villages and underserved areas</p>
-                </div>
-                <div class="causes-btn">
-                    <a class="btn btn-custom" href="<?= url('causes.php') ?>">Learn More</a>
-                    <a class="btn btn-custom" href="<?= url('donate.php') ?>">Donate Now</a>
-                </div>
-            </div>
-            <div class="causes-item">
-                <div class="causes-img">
-                    <img src="<?= asset('img/causes-3.jpg') ?>" alt="Food Security Program">
-                </div>
-                <div class="causes-progress">
-                    <div class="progress">
-                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0"
-                            aria-valuemax="100">
-                            <span>60%</span>
-                        </div>
-                    </div>
-                    <div class="progress-text">
-                        <p><strong>Raised:</strong> ₹60,000</p>
-                        <p><strong>Goal:</strong> ₹1,00,000</p>
-                    </div>
-                </div>
-                <div class="causes-text">
-                    <h3>Food Security & Nutrition</h3>
-                    <p>Ensuring nutritious meals for hungry families and children through our community kitchen
-                        initiatives and food distribution programs</p>
-                </div>
-                <div class="causes-btn">
-                    <a class="btn btn-custom" href="<?= url('causes.php') ?>">Learn More</a>
-                    <a class="btn btn-custom" href="<?= url('donate.php') ?>">Donate Now</a>
-                </div>
-            </div>
-            <div class="causes-item">
-                <div class="causes-img">
-                    <img src="<?= asset('img/causes-4.jpg') ?>" alt="Clean Water Initiative">
-                </div>
-                <div class="causes-progress">
-                    <div class="progress">
-                        <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0"
-                            aria-valuemax="100">
-                            <span>90%</span>
-                        </div>
-                    </div>
-                    <div class="progress-text">
-                        <p><strong>Raised:</strong> ₹90,000</p>
-                        <p><strong>Goal:</strong> ₹1,00,000</p>
-                    </div>
-                </div>
-                <div class="causes-text">
-                    <h3>Clean Water Initiative</h3>
-                    <p>Providing access to clean and safe drinking water through well construction, water purification
-                        systems, and sanitation facilities</p>
-                </div>
-                <div class="causes-btn">
-                    <a class="btn btn-custom" href="<?= url('causes.php') ?>">Learn More</a>
-                    <a class="btn btn-custom" href="<?= url('donate.php') ?>">Donate Now</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Causes End -->
 
 <?php include '../app/views/layout/footer.php'; ?>

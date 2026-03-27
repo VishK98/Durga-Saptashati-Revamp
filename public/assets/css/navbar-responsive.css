@@ -521,7 +521,7 @@ body {
 
 .navbar.navbar-modern .nav-item {
   position: relative;
-  margin: 0 2px;
+  margin: 0 6px;
   display: flex;
   align-items: center;
   height: 100%;
@@ -529,7 +529,7 @@ body {
 
 .navbar.navbar-modern .nav-link {
   color: rgba(255, 255, 255, 0.95) !important;
-  padding: 0 16px !important;
+  padding: 0 20px !important;
   font-size: 15px !important;
   font-weight: 600 !important;
   letter-spacing: 0.3px;
@@ -1525,6 +1525,17 @@ body {
 /* Smooth navbar transitions */
 .navbar.navbar-modern {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Tablet-desktop nav spacing adjustment */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .navbar.navbar-modern .nav-item {
+    margin: 0 3px;
+  }
+  .navbar.navbar-modern .nav-link {
+    padding: 0 14px !important;
+    font-size: 14px !important;
+  }
 }
 
 /* Desktop specific fixes */

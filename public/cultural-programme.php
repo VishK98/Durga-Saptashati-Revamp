@@ -1,0 +1,51 @@
+<?php
+require_once '../app/config/config.php';
+$pageTitle = "Cultural Programme";
+$pageDescription = "Preserving and promoting Indian cultural heritage through dance, music, drama, and cultural events.";
+$pageKeywords = "cultural programme, heritage, dance, music, drama, festivals, Durga Saptashati Foundation";
+include '../app/views/layout/header.php';
+?>
+
+<div class="page-header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12"><h2>Cultural Programme</h2></div>
+            <div class="col-12">
+                <a href="<?= url('index.php') ?>">Home</a>
+                <a href="<?= url('causes.php') ?>">Causes</a>
+                <a href="<?= url('cultural-programme.php') ?>">Cultural Programme</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="row align-items-center g-4 mb-5">
+            <div class="col-lg-6" data-aos="fade-right">
+                <div style="background:linear-gradient(135deg,rgba(121,85,72,0.1),rgba(121,85,72,0.04));border-radius:20px;padding:50px;text-align:center;">
+                    <div style="width:100px;height:100px;margin:0 auto 20px;background:#795548;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 15px 40px rgba(121,85,72,0.3);">
+                        <i class="fas fa-music" style="font-size:2.5rem;color:#fff;"></i>
+                    </div>
+                    <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:20px;">
+                        <span style="background:#fff;padding:8px 16px;border-radius:20px;font-size:0.8rem;color:#555;font-weight:500;box-shadow:0 2px 8px rgba(0,0,0,0.06);">Dance & Music</span>
+                        <span style="background:#fff;padding:8px 16px;border-radius:20px;font-size:0.8rem;color:#555;font-weight:500;box-shadow:0 2px 8px rgba(0,0,0,0.06);">Drama & Theater</span>
+                        <span style="background:#fff;padding:8px 16px;border-radius:20px;font-size:0.8rem;color:#555;font-weight:500;box-shadow:0 2px 8px rgba(0,0,0,0.06);">Festival Celebrations</span>
+                        <span style="background:#fff;padding:8px 16px;border-radius:20px;font-size:0.8rem;color:#555;font-weight:500;box-shadow:0 2px 8px rgba(0,0,0,0.06);">Heritage Awareness</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6" data-aos="fade-left">
+                <h6 class="text-uppercase mb-2" style="color:#795548;letter-spacing:3px;font-weight:600;">Our Initiative</h6>
+                <h2 style="color:#1a1b2e;font-weight:700;">Preserving Cultural Heritage</h2>
+                <p style="color:#666;line-height:1.8;margin:15px 0;">Our cultural programmes celebrate the rich diversity of Indian heritage through dance, music, drama, and community events that bring people together and preserve traditions for future generations.</p>
+                <p style="color:#666;line-height:1.8;">From festival celebrations to heritage awareness events, we create spaces where communities can connect with their roots, share their culture, and pass on timeless traditions to the younger generation.</p>
+                <a href="<?= url('make-donation.php') ?>" style="display:inline-flex;align-items:center;gap:8px;background:#f26522;color:#fff;padding:12px 28px;border-radius:10px;font-size:0.9rem;font-weight:600;text-decoration:none;transition:all 0.3s;margin-top:15px;" onmouseover="this.style.background='#d4541a'" onmouseout="this.style.background='#f26522'">
+                    <i class="fas fa-heart"></i> Support This Cause
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php include '../app/views/layout/footer.php'; ?>
