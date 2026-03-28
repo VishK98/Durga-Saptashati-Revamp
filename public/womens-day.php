@@ -144,6 +144,11 @@ include '../app/views/layout/header.php';
             ['file' => 'woman-4.jpeg', 'title' => 'Skill Development'],
             ['file' => 'woman-5.jpeg', 'title' => 'Community Program'],
             ['file' => 'woman-6.jpeg', 'title' => 'Awards & Recognition'],
+            ['file' => 'woman-10.png', 'title' => 'Leadership Summit'],
+            ['file' => 'woman-11.png', 'title' => 'Inspirational Talks'],
+            ['file' => 'woman-12.png', 'title' => 'Cultural Performance'],
+            ['file' => 'woman-13.png', 'title' => 'Group Celebration'],
+            ['file' => 'woman-14.png', 'title' => 'Closing Ceremony'],
         ];
         ?>
         <div class="wd-gallery-grid-3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
@@ -171,7 +176,8 @@ include '../app/views/layout/header.php';
                 </div>
                 <div style="padding:14px 16px;">
                     <h6 style="color:#1a1b2e;font-weight:600;font-size:0.9rem;margin:0;">
-                        <?= htmlspecialchars($img['title']) ?></h6>
+                        <?= htmlspecialchars($img['title']) ?>
+                    </h6>
                 </div>
             </div>
             <?php endforeach; ?>
@@ -204,7 +210,8 @@ include '../app/views/layout/header.php';
 
 <script>
 var wdData = <?= json_encode(array_map(function ($img) {
-        return ['src' => url('assets/images/woman-day/' . $img['file']), 'title' => $img['title']]; }, $wdImages)) ?>;
+        return ['src' => url('assets/images/woman-day/' . $img['file']), 'title' => $img['title']];
+    }, $wdImages)) ?>;
 var wdIdx = 0;
 
 function openWdLightbox(i) {

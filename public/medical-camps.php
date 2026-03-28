@@ -20,7 +20,7 @@ include '../app/views/layout/header.php';
             </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
-                <a href="<?= url('service.php') ?>">Programs</a>
+                <a href="<?= url('programs.php') ?>">Programs</a>
                 <a href="<?= url('medical-camps.php') ?>">Medical Camps</a>
             </div>
         </div>

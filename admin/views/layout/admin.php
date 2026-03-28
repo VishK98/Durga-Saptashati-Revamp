@@ -78,10 +78,6 @@
                     <i class="fas fa-calendar-alt"></i> <span>Events</span>
                 </a>
 
-                <a href="admin.php?page=causes" class="sidebar-item <?= $currentPage === 'causes' ? 'active' : '' ?>">
-                    <i class="fas fa-hand-holding-heart"></i> <span>Causes</span>
-                </a>
-
                 <a href="admin.php?page=gallery" class="sidebar-item <?= $currentPage === 'gallery' ? 'active' : '' ?>">
                     <i class="fas fa-images"></i> <span>Gallery</span>
                 </a>

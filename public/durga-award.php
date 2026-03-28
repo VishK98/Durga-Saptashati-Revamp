@@ -115,7 +115,7 @@ include '../app/views/layout/header.php';
                 <div class="hero-visual-award">
                     <div class="award-showcase">
                         <div class="showcase-card main-showcase">
-                            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&h=400&fit=crop"
+                            <img src="<?= url('assets/images/durga-award/durga-award.jpeg') ?>"
                                 alt="Durga Award Ceremony" class="showcase-image">
                             <div class="showcase-overlay">
                                 <span class="showcase-name">Annual Ceremony</span>
@@ -125,12 +125,12 @@ include '../app/views/layout/header.php';
 
                         <div class="floating-showcases">
                             <div class="mini-showcase showcase-1">
-                                <img src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?w=150&h=150&fit=crop"
-                                    alt="Award trophy">
+                                <img src="<?= url('assets/images/durga-award/durga-award-1.jpeg') ?>"
+                                    alt="Award Felicitation">
                             </div>
                             <div class="mini-showcase showcase-2">
-                                <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=150&h=150&fit=crop"
-                                    alt="Award ceremony">
+                                <img src="<?= url('assets/images/durga-award/durga-award-2.jpeg') ?>"
+                                    alt="Award Ceremony">
                             </div>
                         </div>
 
@@ -168,15 +168,47 @@ include '../app/views/layout/header.php';
         </div>
 
         <?php
-        // Using yoga images as placeholder — will be updated later
         $awardImages = [
-            ['file' => 'yoga.jpeg', 'title' => 'Award Ceremony 2024'],
-            ['file' => 'yoga-1.jpeg', 'title' => 'Felicitation Moment'],
-            ['file' => 'yoga-2.jpeg', 'title' => 'Guest of Honour'],
-            ['file' => 'yoga-3.jpeg', 'title' => 'Awardee Speech'],
-            ['file' => 'yoga-4.jpeg', 'title' => 'Community Leaders'],
-            ['file' => 'yoga-5.jpeg', 'title' => 'Cultural Performance'],
-            ['file' => 'yoga-6.jpeg', 'title' => 'Group Photo'],
+            ['file' => 'durga-award-5.jpeg', 'title' => 'Cultural Performance'],
+            ['file' => 'durga-award-27.jpeg', 'title' => 'Graceful Moves'],
+            ['file' => 'durga-award.jpeg', 'title' => 'Award Ceremony'],
+            ['file' => 'durga-award-13.jpeg', 'title' => 'Opening Act'],
+            ['file' => 'durga-award-3.jpeg', 'title' => 'Awardee Speech'],
+            ['file' => 'durga-award-35.jpeg', 'title' => 'Group Performance'],
+            ['file' => 'durga-award-9.jpeg', 'title' => 'Inspiring Moments'],
+            ['file' => 'durga-award-21.jpeg', 'title' => 'Elegant Performance'],
+            ['file' => 'durga-award-15.jpeg', 'title' => 'Stage Spotlight'],
+            ['file' => 'durga-award-1.jpeg', 'title' => 'Felicitation Moment'],
+            ['file' => 'durga-award-30.jpeg', 'title' => 'Colourful Celebration'],
+            ['file' => 'durga-award-17.jpeg', 'title' => 'Joyful Expressions'],
+            ['file' => 'durga-award-7.jpeg', 'title' => 'Award Presentation'],
+            ['file' => 'durga-award-24.jpeg', 'title' => 'Traditional Flair'],
+            ['file' => 'durga-award-38.jpeg', 'title' => 'Grand Finale'],
+            ['file' => 'durga-award-11.jpeg', 'title' => 'Recognition Ceremony'],
+            ['file' => 'durga-award-19.jpeg', 'title' => 'Stage Highlight'],
+            ['file' => 'durga-award-4.jpeg', 'title' => 'Community Leaders'],
+            ['file' => 'durga-award-33.jpeg', 'title' => 'Energetic Showcase'],
+            ['file' => 'durga-award-14.jpeg', 'title' => 'Artistic Expression'],
+            ['file' => 'durga-award-8.jpeg', 'title' => 'Honourable Guests'],
+            ['file' => 'durga-award-22.jpeg', 'title' => 'Cultural Moment'],
+            ['file' => 'durga-award-36.jpeg', 'title' => 'Festive Spirit'],
+            ['file' => 'durga-award-16.jpeg', 'title' => 'Rhythmic Harmony'],
+            ['file' => 'durga-award-2.jpeg', 'title' => 'Guest of Honour'],
+            ['file' => 'durga-award-29.jpeg', 'title' => 'Vibrant Moves'],
+            ['file' => 'durga-award-18.jpeg', 'title' => 'Ensemble Act'],
+            ['file' => 'durga-award-10.jpeg', 'title' => 'Stage Programme'],
+            ['file' => 'durga-award-25.jpeg', 'title' => 'Soulful Performance'],
+            ['file' => 'durga-award-39.jpeg', 'title' => 'Curtain Call'],
+            ['file' => 'durga-award-20.jpeg', 'title' => 'Team Performance'],
+            ['file' => 'durga-award-6.jpeg', 'title' => 'Group Photo'],
+            ['file' => 'durga-award-31.jpeg', 'title' => 'Lively Celebration'],
+            ['file' => 'durga-award-23.jpeg', 'title' => 'Captivating Moment'],
+            ['file' => 'durga-award-12.jpeg', 'title' => 'Celebration'],
+            ['file' => 'durga-award-37.jpeg', 'title' => 'Creative Showcase'],
+            ['file' => 'durga-award-26.jpeg', 'title' => 'Cultural Evening'],
+            ['file' => 'durga-award-34.jpeg', 'title' => 'Young Performers'],
+            ['file' => 'durga-award-28.jpeg', 'title' => 'Powerful Act'],
+            ['file' => 'durga-award-32.jpeg', 'title' => 'Heritage Tribute'],
         ];
         ?>
         <div class="award-gallery-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
@@ -187,7 +219,7 @@ include '../app/views/layout/header.php';
                 onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 12px 35px rgba(0,0,0,0.12)'"
                 onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.06)'">
                 <div style="position:relative;overflow:hidden;">
-                    <img src="<?= url('assets/images/yoga-day/' . $img['file']) ?>"
+                    <img src="<?= url('assets/images/durga-award/' . $img['file']) ?>"
                         alt="<?= htmlspecialchars($img['title']) ?>"
                         style="width:100%;height:220px;object-fit:cover;display:block;transition:transform 0.4s;"
                         onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
@@ -237,7 +269,7 @@ include '../app/views/layout/header.php';
 <!-- JavaScript -->
 <script>
 var awardData =
-    <?= json_encode(array_map(function($img) { return ['src' => url('assets/images/yoga-day/' . $img['file']), 'title' => $img['title']]; }, $awardImages)) ?>;
+    <?= json_encode(array_map(function($img) { return ['src' => url('assets/images/durga-award/' . $img['file']), 'title' => $img['title']]; }, $awardImages)) ?>;
 var awardIdx = 0;
 
 function openAwardLightbox(i) {

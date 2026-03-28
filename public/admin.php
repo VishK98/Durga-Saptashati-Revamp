@@ -439,7 +439,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'delet
 
 // Route to correct page
 $page = $_GET['page'] ?? 'dashboard';
-$allowedPages = ['dashboard', 'blogs', 'queries', 'subscribers', 'events', 'causes', 'gallery', 'settings', 'comments', 'donations', 'volunteers', 'careers'];
+$allowedPages = ['dashboard', 'blogs', 'queries', 'subscribers', 'events', 'gallery', 'settings', 'comments', 'donations', 'volunteers', 'careers'];
 
 if (!in_array($page, $allowedPages)) {
     $page = 'dashboard';

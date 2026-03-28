@@ -27,7 +27,6 @@ try { $dSubCount = $pdo->query("SELECT COUNT(*) FROM subscribers")->fetchColumn(
 try { $dDonationTotal = $pdo->query("SELECT COALESCE(SUM(amount),0) FROM donations WHERE status='completed'")->fetchColumn(); } catch(Exception $e) { $dDonationTotal = 0; }
 try { $dDonationCount = $pdo->query("SELECT COUNT(*) FROM donations")->fetchColumn(); } catch(Exception $e) { $dDonationCount = 0; }
 try { $dEventCount = $pdo->query("SELECT COUNT(*) FROM events")->fetchColumn(); } catch(Exception $e) { $dEventCount = 0; }
-try { $dCauseCount = $pdo->query("SELECT COUNT(*) FROM causes")->fetchColumn(); } catch(Exception $e) { $dCauseCount = 0; }
 ?>
 
 <!-- Stat Cards -->
@@ -59,10 +58,6 @@ try { $dCauseCount = $pdo->query("SELECT COUNT(*) FROM causes")->fetchColumn(); 
     <div class="stat-card">
         <div class="stat-icon" style="background:rgba(14,165,233,0.1);color:#0ea5e9;"><i class="fas fa-calendar-alt"></i></div>
         <div class="stat-info"><h3><?= $dEventCount ?></h3><p>Events</p></div>
-    </div>
-    <div class="stat-card">
-        <div class="stat-icon" style="background:rgba(234,88,12,0.1);color:#ea580c;"><i class="fas fa-hand-holding-heart"></i></div>
-        <div class="stat-info"><h3><?= $dCauseCount ?></h3><p>Causes</p></div>
     </div>
 </div>
 

@@ -15,7 +15,7 @@ include '../app/views/layout/header.php';
             </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
-                <a href="<?= url('service.php') ?>">Programs</a>
+                <a href="<?= url('programs.php') ?>">Programs</a>
                 <a href="<?= url('rural-development.php') ?>">Rural Development</a>
             </div>
         </div>
@@ -39,7 +39,7 @@ include '../app/views/layout/header.php';
                         water supply systems, sanitation facilities, road connectivity, and community centers
                         to improve living conditions in villages and rural areas.
                     </p>
-                    <a href="<?php echo url('service.php'); ?>" class="coming-soon-btn">
+                    <a href="<?php echo url('programs.php'); ?>" class="coming-soon-btn">
                         <i class="fas fa-arrow-left"></i> Back to Programs
                     </a>
                 </div>

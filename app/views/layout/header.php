@@ -151,110 +151,6 @@
                         </a>
                     </li>
 
-                    <!-- Programs & Services Mega Dropdown -->
-                    <li class="nav-item dropdown mega-dropdown">
-                        <a class="nav-link dropdown-toggle" href="<?= url('service.php') ?>" id="programsDropdown"
-                            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="nav-text">Programs</span>
-                            <i class="fas fa-chevron-down dropdown-arrow"></i>
-                        </a>
-                        <div class="dropdown-menu mega-dropdown-menu programs-mega" aria-labelledby="programsDropdown">
-                            <div class="mega-dropdown-content">
-                                <div class="row">
-                                    <div class="col-lg-3">
-                                        <div class="mega-image">
-                                            <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=250&h=180&fit=crop"
-                                                alt="Education Programs" class="img-fluid rounded">
-                                            <div class="mega-image-overlay">
-                                                <h6>Education</h6>
-                                            </div>
-                                        </div>
-                                        <h6 class="dropdown-header">Education</h6>
-                                        <a class="dropdown-item" href="<?= url('school-support.php') ?>">
-                                            <i class="fas fa-graduation-cap"></i> School Support
-                                            <span class="item-description">Scholarships and school infrastructure</span>
-                                        </a>
-                                        <a class="dropdown-item" href="<?= url('adult-literacy.php') ?>">
-                                            <i class="fas fa-book"></i> Adult Literacy
-                                            <span class="item-description">Teaching reading and writing to adults</span>
-                                        </a>
-                                        <a class="dropdown-item" href="<?= url('digital-learning.php') ?>">
-                                            <i class="fas fa-laptop"></i> Digital Learning
-                                            <span class="item-description">Computer education and online
-                                                resources</span>
-                                        </a>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <div class="mega-image">
-                                            <img src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=250&h=180&fit=crop"
-                                                alt="Healthcare Services" class="img-fluid rounded">
-                                            <div class="mega-image-overlay">
-                                                <h6>Healthcare</h6>
-                                            </div>
-                                        </div>
-                                        <h6 class="dropdown-header">Healthcare</h6>
-                                        <a class="dropdown-item" href="<?= url('medical-camps.php') ?>">
-                                            <i class="fas fa-heartbeat"></i> Medical Camps
-                                            <span class="item-description">Free health checkups and treatments</span>
-                                        </a>
-                                        <a class="dropdown-item" href="<?= url('maternal-care.php') ?>">
-                                            <i class="fas fa-baby"></i> Maternal Care
-                                            <span class="item-description">Supporting mothers and newborns</span>
-                                        </a>
-                                        <a class="dropdown-item" href="<?= url('health-awareness.php') ?>">
-                                            <i class="fas fa-user-md"></i> Health Awareness
-                                            <span class="item-description">Preventive healthcare education</span>
-                                        </a>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <div class="mega-image">
-                                            <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?w=250&h=180&fit=crop"
-                                                alt="Women Empowerment" class="img-fluid rounded">
-                                            <div class="mega-image-overlay">
-                                                <h6>Empowerment</h6>
-                                            </div>
-                                        </div>
-                                        <h6 class="dropdown-header">Women Empowerment</h6>
-                                        <a class="dropdown-item" href="<?= url('womens-rights.php') ?>">
-                                            <i class="fas fa-venus"></i> Women's Rights
-                                            <span class="item-description">Legal aid and awareness programs</span>
-                                        </a>
-                                        <a class="dropdown-item" href="<?= url('skill-development.php') ?>">
-                                            <i class="fas fa-briefcase"></i> Skill Development
-                                            <span class="item-description">Vocational training for employment</span>
-                                        </a>
-                                        <a class="dropdown-item" href="<?= url('self-help-groups.php') ?>">
-                                            <i class="fas fa-coins"></i> Self Help Groups
-                                            <span class="item-description">Financial independence initiatives</span>
-                                        </a>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <div class="mega-image">
-                                            <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=250&h=180&fit=crop"
-                                                alt="Community Development" class="img-fluid rounded">
-                                            <div class="mega-image-overlay">
-                                                <h6>Community</h6>
-                                            </div>
-                                        </div>
-                                        <h6 class="dropdown-header">Community Development</h6>
-                                        <a class="dropdown-item" href="<?= url('rural-development.php') ?>">
-                                            <i class="fas fa-home"></i> Rural Development
-                                            <span class="item-description">Infrastructure and facilities for
-                                                villages</span>
-                                        </a>
-                                        <a class="dropdown-item" href="<?= url('environment-care.php') ?>">
-                                            <i class="fas fa-tree"></i> Environment Care
-                                            <span class="item-description">Tree plantation and conservation</span>
-                                        </a>
-                                        <a class="dropdown-item" href="<?= url('disaster-relief.php') ?>">
-                                            <i class="fas fa-hands-helping"></i> Disaster Relief
-                                            <span class="item-description">Emergency response and rehabilitation</span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
 
                     <!-- Events Mega Dropdown -->
                     <li class="nav-item dropdown mega-dropdown">
@@ -266,28 +162,13 @@
                         <div class="dropdown-menu mega-dropdown-menu events-mega" aria-labelledby="eventsDropdown">
                             <div class="mega-dropdown-content">
                                 <div class="row">
-                                    <div class="col-lg-3">
-                                        <div class="mega-image">
-                                            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=300&h=200&fit=crop"
-                                                alt="Events" class="img-fluid rounded">
-                                            <div class="mega-image-overlay">
-                                                <h6>Join Our Events</h6>
-                                                <p>Be part of the change</p>
-                                            </div>
-                                        </div>
-                                        <h6 class="dropdown-header">Our Gallery</h6>
-                                        <a class="dropdown-item" href="<?= url('event-gallery.php') ?>">
-                                            <i class="fas fa-images"></i> Event Gallery
-                                            <span class="item-description">Browse photos from past events</span>
-                                        </a>
-                                    </div>
-                                    <div class="col-lg-3">
+                                    <div class="col-lg-4">
                                         <h6 class="dropdown-header">Annual Programs</h6>
                                         <a class="dropdown-item" href="<?= url('durga-award.php') ?>">
                                             <i class="fas fa-trophy"></i> Durga Award
                                             <span class="item-description">Honouring the change makers</span>
                                         </a>
-                                        <a class="dropdown-item" href="<?= url('international-yoga-day.php') ?>">
+                                        <a class="dropdown-item" href="<?= url('yoga-day.php') ?>">
                                             <i class="fas fa-spa"></i> International Yoga Day
                                             <span class="item-description">June 21st - Join thousands</span>
                                         </a>
@@ -299,61 +180,52 @@
                                             <i class="fas fa-flag"></i> Independence Day
                                             <span class="item-description">August 15th - Patriotic celebrations</span>
                                         </a>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <h6 class="dropdown-header">Festivals & Celebrations</h6>
                                         <a class="dropdown-item" href="<?= url('ganpati-celebration.php') ?>">
-                                            <i class="fas fa-star"></i> Ganpati Celebration
+                                            <i class="fas fa-pray"></i> Ganpati Celebration
                                             <span class="item-description">Festival of Ganesha</span>
                                         </a>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <h6 class="dropdown-header">Community Events</h6>
-                                        <a class="dropdown-item" href="<?= url('health-camps-events.php') ?>">
-                                            <i class="fas fa-heartbeat"></i> Health Camps
-                                            <span class="item-description">Free medical checkup camps</span>
-                                        </a>
-                                        <a class="dropdown-item" href="<?= url('blood-donation-drives.php') ?>">
-                                            <i class="fas fa-tint"></i> Blood Donation Drives
-                                            <span class="item-description">Save lives by donating blood</span>
-                                        </a>
-                                        <a class="dropdown-item" href="<?= url('education-workshops.php') ?>">
-                                            <i class="fas fa-book"></i> Education Workshops
-                                            <span class="item-description">Skills and career guidance</span>
+                                        <a class="dropdown-item" href="<?= url('diwali-celebration.php') ?>">
+                                            <i class="fas fa-fire"></i> Diwali Celebration
+                                            <span class="item-description">Festival of lights</span>
                                         </a>
                                         <a class="dropdown-item" href="<?= url('cultural-programs.php') ?>">
                                             <i class="fas fa-theater-masks"></i> Cultural Programs
                                             <span class="item-description">Celebrating our heritage</span>
                                         </a>
+                                        <a class="dropdown-item" href="<?= url('saree-run.php') ?>">
+                                            <i class="fas fa-running"></i> Saree Run
+                                            <span class="item-description">Celebrating strength & culture</span>
+                                        </a>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <h6 class="dropdown-header">Community Events</h6>
                                         <a class="dropdown-item" href="<?= url('hearing-aids-camp.php') ?>">
                                             <i class="fas fa-assistive-listening-systems"></i> Hearing Aids Camp
                                             <span class="item-description">Free hearing aid distribution</span>
                                         </a>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <h6 class="dropdown-header">Our Causes</h6>
-                                        <a class="dropdown-item" href="<?= url('womens-empowerment.php') ?>">
-                                            <i class="fas fa-female"></i> Women's Empowerment
-                                            <span class="item-description">Creating equal opportunities</span>
-                                        </a>
-                                        <a class="dropdown-item" href="<?= url('no-people-hungry.php') ?>">
-                                            <i class="fas fa-utensils"></i> No People Hungry
-                                            <span class="item-description">Meals for those in need</span>
-                                        </a>
-                                        <a class="dropdown-item" href="<?= url('education-for-every-kids.php') ?>">
-                                            <i class="fas fa-graduation-cap"></i> Education For Every Kids
-                                            <span class="item-description">Quality education for all</span>
-                                        </a>
-                                        <a class="dropdown-item" href="<?= url('livelihood.php') ?>">
-                                            <i class="fas fa-briefcase"></i> Livelihood
-                                            <span class="item-description">Skills & employment support</span>
+                                        <a class="dropdown-item" href="<?= url('painting-competition.php') ?>">
+                                            <i class="fas fa-palette"></i> Painting Competition
+                                            <span class="item-description">Nurturing young creativity</span>
                                         </a>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="<?= url('causes.php') ?>">
-                                            <i class="fas fa-arrow-right"></i> View More Causes
-                                            <span class="item-description">Explore all our initiatives</span>
+                                        <a class="dropdown-item" href="<?= url('event.php') ?>">
+                                            <i class="fas fa-arrow-right"></i> View All Events
+                                            <span class="item-description">Explore all our events</span>
                                         </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </li>
+
+                    <!-- Programs -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= url('programs.php') ?>">
+                            <span class="nav-text">Programs</span>
+                        </a>
                     </li>
 
                     <!-- Get Involved Mega Dropdown -->
@@ -413,6 +285,14 @@
                     <li class="nav-item">
                         <a class="nav-link" href="<?= url('blog.php') ?>">
                             <span class="nav-text">Blogs</span>
+                        </a>
+                    </li>
+
+
+                    <!-- Gallery -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= url('event-gallery.php') ?>">
+                            <span class="nav-text">Gallery</span>
                         </a>
                     </li>
                 </ul>

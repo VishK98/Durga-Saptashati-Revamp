@@ -301,83 +301,6 @@ function switchAboutTab(btn, tab) {
     </div>
 </div>
 
-<!-- Our Causes Section Start -->
-<div class="container-fluid py-4" style="background:#f8f9fa;">
-    <div class="container py-3">
-        <div class="text-center mb-4" data-aos="fade-up">
-            <h6 class="text-uppercase mb-1" style="color:#f26522;letter-spacing:3px;font-weight:600;">What We Do</h6>
-            <h1 style="color:#1a1b2e;">Our <span style="color:#f26522;">Causes</span></h1>
-        </div>
-        <div class="row">
-            <div class="col-lg-4 col-md-6 mb-3" data-aos="fade-up" data-aos-delay="100">
-                <div class="causes-card"
-                    style="border-radius:10px;overflow:hidden;box-shadow:0 3px 15px rgba(0,0,0,0.08);transition:all 0.4s;background:#fff;height:100%;border-bottom:3px solid #f26522;">
-                    <div style="position:relative;overflow:hidden;">
-                        <img src="<?php echo asset('img/causes-1.jpg') ?>" alt="Women Empowerment & Safety"
-                            style="width:100%;height:200px;object-fit:cover;transition:transform 0.5s;">
-                        <div
-                            style="position:absolute;top:12px;left:12px;background:#f26522;color:#fff;padding:4px 12px;border-radius:20px;font-size:0.75rem;font-weight:600;">
-                            <i class="fas fa-female mr-1"></i> Empowerment
-                        </div>
-                    </div>
-                    <div style="padding:18px 18px 15px;">
-                        <h5 style="color:#1a1b2e;font-weight:700;font-size:1.05rem;margin-bottom:10px;">Women
-                            Empowerment & Safety</h5>
-                        <p style="color:#666;font-size:0.88rem;line-height:1.65;margin:0;">Empowered and safe women are
-                            the catalysts for social growth and progress. At Durga Saptashati, we provide free
-                            self-defence classes in Dwarka, ensuring that women have the tools and knowledge to protect
-                            themselves. Additionally, we offer judicial protection aid for women and arrange skill
-                            development classes and awareness drives.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-3" data-aos="fade-up" data-aos-delay="200">
-                <div class="causes-card"
-                    style="border-radius:10px;overflow:hidden;box-shadow:0 3px 15px rgba(0,0,0,0.08);transition:all 0.4s;background:#fff;height:100%;border-bottom:3px solid #f26522;">
-                    <div style="position:relative;overflow:hidden;">
-                        <img src="<?php echo asset('img/causes-2.jpg') ?>" alt="Hunger Reduction / Food Donation"
-                            style="width:100%;height:200px;object-fit:cover;transition:transform 0.5s;">
-                        <div
-                            style="position:absolute;top:12px;left:12px;background:#f26522;color:#fff;padding:4px 12px;border-radius:20px;font-size:0.75rem;font-weight:600;">
-                            <i class="fas fa-utensils mr-1"></i> Food Drive
-                        </div>
-                    </div>
-                    <div style="padding:18px 18px 15px;">
-                        <h5 style="color:#1a1b2e;font-weight:700;font-size:1.05rem;margin-bottom:10px;">Hunger Reduction
-                            / Food Donation</h5>
-                        <p style="color:#666;font-size:0.88rem;line-height:1.65;margin:0;">In the battle against hunger,
-                            we refuse to retreat. Through our 'Hunger Reduction' initiative, we organise frequent food
-                            donation drives in Dwarka, health and hygiene awareness campaigns, and run a free kitchen,
-                            ensuring that no one in our community goes to bed hungry.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-3" data-aos="fade-up" data-aos-delay="300">
-                <div class="causes-card"
-                    style="border-radius:10px;overflow:hidden;box-shadow:0 3px 15px rgba(0,0,0,0.08);transition:all 0.4s;background:#fff;height:100%;border-bottom:3px solid #f26522;">
-                    <div style="position:relative;overflow:hidden;">
-                        <img src="<?php echo asset('img/causes-3.jpg') ?>" alt="Education For Everyone"
-                            style="width:100%;height:200px;object-fit:cover;transition:transform 0.5s;">
-                        <div
-                            style="position:absolute;top:12px;left:12px;background:#f26522;color:#fff;padding:4px 12px;border-radius:20px;font-size:0.75rem;font-weight:600;">
-                            <i class="fas fa-graduation-cap mr-1"></i> Education
-                        </div>
-                    </div>
-                    <div style="padding:18px 18px 15px;">
-                        <h5 style="color:#1a1b2e;font-weight:700;font-size:1.05rem;margin-bottom:10px;">Education For
-                            Everyone</h5>
-                        <p style="color:#666;font-size:0.88rem;line-height:1.65;margin:0;">The transformative power of
-                            education is not a hidden fact. But still, many children are deprived of it because of
-                            financial conditions. That's why Durga Saptashati NGO in Dwarka is committed to providing
-                            access to quality education for all. Our NGO founder, Sandhya Singh, also helps EWS children
-                            in Dwarka get admission to schools using their quota privileges.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Our Causes Section End -->
 
 <!-- Sanskrit Quote Section Start -->
 <div class="sanskrit-section" style="background: url('<?php echo asset('img/facts.jpg') ?>') center center/cover no-repeat fixed;">
@@ -473,57 +396,46 @@ function switchAboutTab(btn, tab) {
 <!-- Facts/Counter Section End -->
 
 <!-- Events Section Start -->
-<div class="container-fluid py-5">
-    <div class="container py-5">
-        <div class="text-center mb-5" data-aos="fade-up">
-            <h6 class="text-uppercase" style="color:#f26522;letter-spacing:3px;font-weight:600;">What's Happening</h6>
+<div class="container-fluid py-4" style="background:#fff;">
+    <div class="container py-3">
+        <div class="text-center mb-4" data-aos="fade-up">
+            <h6 class="text-uppercase mb-1" style="color:#f26522;letter-spacing:3px;font-weight:600;">What's Happening</h6>
             <h1 style="color:#1a1b2e;">Upcoming & Past <span style="color:#f26522;">Events</span></h1>
         </div>
-        <div class="owl-carousel events-carousel" data-aos="fade-up" data-aos-delay="200">
-            <div class="event-card d-flex">
-                <div class="event-date d-flex flex-column align-items-center justify-content-center">
-                    <span class="day">8</span>
-                    <span class="month">Mar</span>
-                </div>
-                <div class="event-info">
-                    <h5>International Women's Day 2021</h5>
-                    <p><i class="fa fa-clock mr-2"></i>11:00 AM - 3:00 PM</p>
-                    <p><i class="fa fa-map-marker-alt mr-2"></i>Dwarka, Delhi</p>
-                </div>
+        <div class="row" style="row-gap:30px;">
+            <?php
+            $homeEvents = [
+                ['title' => 'Durga Award Ceremony', 'icon' => 'fa-trophy', 'url' => 'durga-award.php', 'img' => 'durga-award/durga-award.jpeg', 'desc' => 'Honouring exceptional individuals and organisations making outstanding contributions to social welfare and community development.', 'tag' => 'Award'],
+                ['title' => 'International Yoga Day', 'icon' => 'fa-spa', 'url' => 'yoga-day.php', 'img' => 'yoga-day/yoga.jpeg', 'desc' => 'Celebrating the transformative power of yoga through mass sessions, mindfulness workshops, and community wellness programs.', 'tag' => 'Wellness'],
+                ['title' => 'Ganpati Celebration', 'icon' => 'fa-pray', 'url' => 'ganpati-celebration.php', 'img' => 'ganpati/ganpati.jpeg', 'desc' => 'Celebrating the auspicious festival of Ganesh Chaturthi with devotion, cultural performances, and community gatherings.', 'tag' => 'Festival'],
+            ];
+            foreach ($homeEvents as $i => $event): ?>
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="<?= ($i + 1) * 100 ?>">
+                <a href="<?= url($event['url']) ?>" style="text-decoration:none;display:block;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 15px rgba(0,0,0,0.06);transition:all 0.4s;height:100%;border:1px solid rgba(0,0,0,0.05);"
+                    onmouseover="this.style.transform='translateY(-8px)';this.style.boxShadow='0 18px 45px rgba(0,0,0,0.12)'"
+                    onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 2px 15px rgba(0,0,0,0.06)'">
+                    <div style="position:relative;overflow:hidden;height:240px;">
+                        <img src="<?= url('assets/images/' . $event['img']) ?>" alt="<?= htmlspecialchars($event['title']) ?>"
+                            style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s;"
+                            onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'">
+                        <span style="position:absolute;top:16px;left:16px;background:#f26522;color:#fff;padding:6px 16px;border-radius:25px;font-size:0.75rem;font-weight:600;display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 12px rgba(242,101,34,0.3);">
+                            <i class="fas <?= $event['icon'] ?>" style="font-size:0.7rem;"></i> <?= $event['tag'] ?>
+                        </span>
+                    </div>
+                    <div style="padding:24px 24px 28px;">
+                        <h5 style="color:#1a1b2e;font-weight:700;font-size:1.15rem;margin:0 0 12px;line-height:1.3;"><?= htmlspecialchars($event['title']) ?></h5>
+                        <p style="color:#666;font-size:0.88rem;line-height:1.7;margin:0;"><?= htmlspecialchars($event['desc']) ?></p>
+                    </div>
+                </a>
             </div>
-            <div class="event-card d-flex">
-                <div class="event-date d-flex flex-column align-items-center justify-content-center">
-                    <span class="day">28</span>
-                    <span class="month">Feb</span>
-                </div>
-                <div class="event-info">
-                    <h5>Cultural Programme</h5>
-                    <p><i class="fa fa-clock mr-2"></i>5:00 PM - 7:30 PM</p>
-                    <p><i class="fa fa-map-marker-alt mr-2"></i>Dwarka, Delhi</p>
-                </div>
-            </div>
-            <div class="event-card d-flex">
-                <div class="event-date d-flex flex-column align-items-center justify-content-center">
-                    <span class="day">14</span>
-                    <span class="month">Jan</span>
-                </div>
-                <div class="event-info">
-                    <h5>Cultural Programme</h5>
-                    <p><i class="fa fa-clock mr-2"></i>5:00 PM - 7:30 PM</p>
-                    <p><i class="fa fa-map-marker-alt mr-2"></i>Dwarka, Delhi</p>
-                </div>
-            </div>
-            <div class="event-card d-flex">
-                <div class="event-date d-flex flex-column align-items-center justify-content-center">
-                    <span class="day">21</span>
-                    <span class="month">Jun</span>
-                </div>
-                <div class="event-info">
-                    <h5>Yoga Day 2021</h5>
-                    <p><i class="fa fa-clock mr-2"></i>5:00 AM - 10:00 AM</p>
-                    <p><i class="fa fa-map-marker-alt mr-2"></i>Dwarka, Delhi</p>
-                </div>
-            </div>
+            <?php endforeach; ?>
+        </div>
+        <div class="text-center mt-4" data-aos="fade-up">
+            <a href="<?= url('event.php') ?>" style="display:inline-flex;align-items:center;gap:8px;background:#f26522;color:#fff;padding:12px 30px;border-radius:50px;font-size:0.9rem;font-weight:600;text-decoration:none;transition:all 0.3s;box-shadow:0 6px 20px rgba(242,101,34,0.25);"
+                onmouseover="this.style.background='#d4541a';this.style.transform='translateY(-2px)'"
+                onmouseout="this.style.background='#f26522';this.style.transform='translateY(0)'">
+                View All Events <i class="fas fa-arrow-right" style="font-size:0.8rem;"></i>
+            </a>
         </div>
     </div>
 </div>
@@ -541,7 +453,7 @@ function switchAboutTab(btn, tab) {
             <p class="text-white mx-auto mb-4" style="max-width:600px;opacity:0.9;">Join our community of dedicated
                 volunteers and help us create lasting change in the lives of women, children, senior citizens, and
                 people with disabilities.</p>
-            <a href="<?php echo url('contact') ?>" class="btn btn-lg px-5 py-3"
+            <a href="<?php echo url('become-volunteer.php') ?>" class="btn btn-lg px-5 py-3"
                 style="background:#fff;color:#f26522;border-radius:30px;font-weight:600;">Join Now <i
                     class="fa fa-arrow-right ml-2"></i></a>
         </div>
@@ -549,114 +461,51 @@ function switchAboutTab(btn, tab) {
 </div>
 <!-- Volunteer / Join Us Section End -->
 
-<!-- Gallery Section Start -->
-<div class="container-fluid py-4 gallery-section" style="background:#f8f9fa;">
+<!-- Our Causes Section Start -->
+<div class="container-fluid py-4" style="background:#f8f9fa;">
     <div class="container py-3">
         <div class="text-center mb-4" data-aos="fade-up">
             <h6 class="text-uppercase mb-1" style="color:#f26522;letter-spacing:3px;font-weight:600;">See Our Work</h6>
-            <h1 style="color:#1a1b2e;">Our Campaign / <span style="color:#f26522;">Causes Gallery</span></h1>
+            <h1 style="color:#1a1b2e;">Our Campaign / <span style="color:#f26522;">Causes</span></h1>
         </div>
-        <div class="row no-gutters">
+        <div class="row" style="row-gap:30px;">
             <?php
-            $galleryImages = [
-                ['src' => 'img/causes-1.jpg', 'alt' => 'Women Empowerment', 'caption' => 'Women Empowerment'],
-                ['src' => 'img/causes-2.jpg', 'alt' => 'Food Donation', 'caption' => 'Food Donation Drive'],
-                ['src' => 'img/causes-3.jpg', 'alt' => 'Education', 'caption' => 'Education For All'],
-                ['src' => 'img/causes-4.jpg', 'alt' => 'Community Support', 'caption' => 'Community Support'],
-                ['src' => 'img/event-1.jpg', 'alt' => 'Events', 'caption' => 'Community Events'],
-                ['src' => 'img/event-2.jpg', 'alt' => 'Health Camp', 'caption' => 'Health Camps'],
+            $homeCauses = [
+                ['title' => 'Women Empowerment & Safety', 'icon' => 'fa-female', 'url' => 'womens-empowerment.php', 'img' => 'womens-empowerment/womens-empowerment.webp', 'desc' => 'We provide free self-defence classes, skill development workshops, and judicial protection aid for women in Dwarka.', 'tag' => 'Empowerment'],
+                ['title' => 'Hunger Reduction / Food Donation', 'icon' => 'fa-utensils', 'url' => 'no-people-hungry.php', 'img' => 'hungary/hungary.webp', 'desc' => 'We organise frequent food donation drives, health and hygiene awareness campaigns, and run a free kitchen in Dwarka.', 'tag' => 'Food Drive'],
+                ['title' => 'Education For Everyone', 'icon' => 'fa-graduation-cap', 'url' => 'education-for-every-kids.php', 'img' => 'education-for/education-for.webp', 'desc' => 'Durga Saptashati NGO is committed to providing access to quality education for all underprivileged children.', 'tag' => 'Education'],
             ];
-            foreach ($galleryImages as $i => $img): ?>
-            <div class="col-lg-4 col-md-6 p-1" data-aos="fade-up" data-aos-delay="<?php echo ($i % 3 + 1) * 100; ?>">
-                <div class="gallery-item" onclick="openGallery(<?php echo $i; ?>)" style="cursor:pointer;">
-                    <img src="<?php echo asset($img['src']); ?>" alt="<?php echo $img['alt']; ?>">
-                    <div class="gallery-overlay">
-                        <div class="text-center text-white">
-                            <i class="fa fa-search-plus mb-2" style="font-size:1.5rem;"></i>
-                            <p class="mb-0 font-weight-bold" style="font-size:0.9rem;"><?php echo $img['caption']; ?>
-                            </p>
-                        </div>
+            foreach ($homeCauses as $i => $cause): ?>
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="<?= ($i + 1) * 100 ?>">
+                <a href="<?= url($cause['url']) ?>" style="text-decoration:none;display:block;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 15px rgba(0,0,0,0.06);transition:all 0.4s;height:100%;border:1px solid rgba(0,0,0,0.05);"
+                    onmouseover="this.style.transform='translateY(-8px)';this.style.boxShadow='0 18px 45px rgba(0,0,0,0.12)'"
+                    onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 2px 15px rgba(0,0,0,0.06)'">
+                    <div style="position:relative;overflow:hidden;height:240px;">
+                        <img src="<?= url('assets/images/' . $cause['img']) ?>" alt="<?= htmlspecialchars($cause['title']) ?>"
+                            style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s;"
+                            onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'">
+                        <span style="position:absolute;top:16px;left:16px;background:#f26522;color:#fff;padding:6px 16px;border-radius:25px;font-size:0.75rem;font-weight:600;display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 12px rgba(242,101,34,0.3);">
+                            <i class="fas <?= $cause['icon'] ?>" style="font-size:0.7rem;"></i> <?= $cause['tag'] ?>
+                        </span>
                     </div>
-                </div>
+                    <div style="padding:24px 24px 28px;">
+                        <h5 style="color:#1a1b2e;font-weight:700;font-size:1.15rem;margin:0 0 12px;line-height:1.3;"><?= htmlspecialchars($cause['title']) ?></h5>
+                        <p style="color:#666;font-size:0.88rem;line-height:1.7;margin:0;"><?= htmlspecialchars($cause['desc']) ?></p>
+                    </div>
+                </a>
             </div>
             <?php endforeach; ?>
         </div>
+        <div class="text-center mt-4" data-aos="fade-up">
+            <a href="<?= url('causes.php') ?>" style="display:inline-flex;align-items:center;gap:8px;background:#f26522;color:#fff;padding:12px 30px;border-radius:50px;font-size:0.9rem;font-weight:600;text-decoration:none;transition:all 0.3s;box-shadow:0 6px 20px rgba(242,101,34,0.25);"
+                onmouseover="this.style.background='#d4541a';this.style.transform='translateY(-2px)'"
+                onmouseout="this.style.background='#f26522';this.style.transform='translateY(0)'">
+                View All Causes <i class="fas fa-arrow-right" style="font-size:0.8rem;"></i>
+            </a>
+        </div>
     </div>
 </div>
-
-<!-- Gallery Lightbox Modal -->
-<div id="galleryModal"
-    style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.92);z-index:99999;align-items:center;justify-content:center;">
-    <button onclick="closeGallery()"
-        style="position:absolute;top:20px;right:25px;background:none;border:none;color:#fff;font-size:2.5rem;cursor:pointer;z-index:10;opacity:0.8;transition:opacity 0.3s;"
-        onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">&times;</button>
-    <button onclick="prevImage()"
-        style="position:absolute;left:15px;top:50%;transform:translateY(-50%);background:rgba(242,101,34,0.8);border:none;color:#fff;font-size:1.5rem;width:50px;height:50px;border-radius:50%;cursor:pointer;transition:background 0.3s;"
-        onmouseover="this.style.background='#f26522'" onmouseout="this.style.background='rgba(242,101,34,0.8)'"><i
-            class="fas fa-chevron-left"></i></button>
-    <button onclick="nextImage()"
-        style="position:absolute;right:15px;top:50%;transform:translateY(-50%);background:rgba(242,101,34,0.8);border:none;color:#fff;font-size:1.5rem;width:50px;height:50px;border-radius:50%;cursor:pointer;transition:background 0.3s;"
-        onmouseover="this.style.background='#f26522'" onmouseout="this.style.background='rgba(242,101,34,0.8)'"><i
-            class="fas fa-chevron-right"></i></button>
-    <div style="text-align:center;max-width:90%;max-height:85vh;">
-        <img id="galleryModalImg" src="" alt=""
-            style="max-width:100%;max-height:78vh;border-radius:6px;box-shadow:0 10px 50px rgba(0,0,0,0.5);object-fit:contain;">
-        <p id="galleryModalCaption"
-            style="color:#fff;margin-top:12px;font-size:1rem;font-weight:600;letter-spacing:1px;"></p>
-        <p id="galleryModalCounter" style="color:rgba(255,255,255,0.5);font-size:0.85rem;margin-top:4px;"></p>
-    </div>
-</div>
-
-<script>
-var galleryImages = [
-    <?php foreach ($galleryImages as $img): ?> {
-        src: '<?php echo asset($img["src"]); ?>',
-        caption: '<?php echo $img["caption"]; ?>'
-    },
-    <?php endforeach; ?>
-];
-var currentImg = 0;
-
-function openGallery(index) {
-    currentImg = index;
-    showImage();
-    document.getElementById('galleryModal').style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-}
-
-function closeGallery() {
-    document.getElementById('galleryModal').style.display = 'none';
-    document.body.style.overflow = '';
-}
-
-function showImage() {
-    document.getElementById('galleryModalImg').src = galleryImages[currentImg].src;
-    document.getElementById('galleryModalCaption').textContent = galleryImages[currentImg].caption;
-    document.getElementById('galleryModalCounter').textContent = (currentImg + 1) + ' / ' + galleryImages.length;
-}
-
-function nextImage() {
-    currentImg = (currentImg + 1) % galleryImages.length;
-    showImage();
-}
-
-function prevImage() {
-    currentImg = (currentImg - 1 + galleryImages.length) % galleryImages.length;
-    showImage();
-}
-
-document.getElementById('galleryModal').addEventListener('click', function(e) {
-    if (e.target === this) closeGallery();
-});
-document.addEventListener('keydown', function(e) {
-    if (document.getElementById('galleryModal').style.display === 'flex') {
-        if (e.key === 'Escape') closeGallery();
-        if (e.key === 'ArrowRight') nextImage();
-        if (e.key === 'ArrowLeft') prevImage();
-    }
-});
-</script>
-<!-- Gallery Section End -->
+<!-- Our Causes Section End -->
 
 <!-- Activities Section Start -->
 <div class="container-fluid py-5" style="background:#fff;">
@@ -665,62 +514,132 @@ document.addEventListener('keydown', function(e) {
             <h6 class="text-uppercase mb-1" style="color:#f26522;letter-spacing:3px;font-weight:600;">How We Help</h6>
             <h1 style="color:#1a1b2e;">Our <span style="color:#f26522;">Activities</span></h1>
         </div>
+        <?php
+        $activities = [
+            ['icon' => 'fa-first-aid', 'title' => 'Covid 19 Products', 'desc' => 'Distributing essential safety products including masks, sanitizers, and medical supplies to communities in need.', 'num' => '01'],
+            ['icon' => 'fa-hands-helping', 'title' => 'Serve People', 'desc' => 'Dedicated to serving the underprivileged through food drives, healthcare camps, and community welfare programmes.', 'num' => '02'],
+            ['icon' => 'fa-donate', 'title' => 'Donation', 'desc' => 'Every contribution matters. Your generous donations help us sustain our initiatives and reach more people in need.', 'num' => '03'],
+            ['icon' => 'fa-people-carry', 'title' => 'Community Support', 'desc' => 'Building stronger communities through awareness campaigns, skill development, and grassroots support programmes.', 'num' => '04'],
+        ];
+        ?>
         <div class="row">
-            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
-                <div style="background:#fff;border:1px solid #eee;border-radius:16px;padding:35px 25px;text-align:center;height:100%;transition:all 0.4s ease;box-shadow:0 4px 20px rgba(0,0,0,0.06);"
-                    onmouseover="this.style.transform='translateY(-10px)';this.style.boxShadow='0 12px 35px rgba(242,101,34,0.15)';this.style.borderColor='#f26522'"
-                    onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.06)';this.style.borderColor='#eee'">
-                    <div
-                        style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#f26522,#ff8a50);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:1.8rem;color:#fff;box-shadow:0 8px 25px rgba(242,101,34,0.3);">
-                        <i class="fas fa-first-aid"></i>
+            <?php foreach ($activities as $i => $act): ?>
+            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="<?= ($i + 1) * 100 ?>">
+                <div class="act-card">
+                    <div class="act-top-bar"></div>
+                    <div class="act-num"><?= $act['num'] ?></div>
+                    <div class="act-icon-wrap">
+                        <div class="act-icon">
+                            <i class="fas <?= $act['icon'] ?>"></i>
+                        </div>
                     </div>
-                    <h5 class="font-weight-bold mb-3" style="color:#1a1b2e;">Covid 19 Products</h5>
-                    <p style="color:#666;font-size:0.9rem;line-height:1.7;margin:0;">Distributing essential Covid-19
-                        safety products including masks, sanitizers, and medical supplies to communities in need.</p>
+                    <h5 class="act-title"><?= $act['title'] ?></h5>
+                    <p class="act-desc"><?= $act['desc'] ?></p>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
-                <div style="background:#fff;border:1px solid #eee;border-radius:16px;padding:35px 25px;text-align:center;height:100%;transition:all 0.4s ease;box-shadow:0 4px 20px rgba(0,0,0,0.06);"
-                    onmouseover="this.style.transform='translateY(-10px)';this.style.boxShadow='0 12px 35px rgba(242,101,34,0.15)';this.style.borderColor='#f26522'"
-                    onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.06)';this.style.borderColor='#eee'">
-                    <div
-                        style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#f26522,#ff8a50);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:1.8rem;color:#fff;box-shadow:0 8px 25px rgba(242,101,34,0.3);">
-                        <i class="fas fa-hands-helping"></i>
-                    </div>
-                    <h5 class="font-weight-bold mb-3" style="color:#1a1b2e;">Serve People</h5>
-                    <p style="color:#666;font-size:0.9rem;line-height:1.7;margin:0;">Dedicated to serving the
-                        underprivileged through food drives, healthcare camps, and community welfare programmes.</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
-                <div style="background:#fff;border:1px solid #eee;border-radius:16px;padding:35px 25px;text-align:center;height:100%;transition:all 0.4s ease;box-shadow:0 4px 20px rgba(0,0,0,0.06);"
-                    onmouseover="this.style.transform='translateY(-10px)';this.style.boxShadow='0 12px 35px rgba(242,101,34,0.15)';this.style.borderColor='#f26522'"
-                    onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.06)';this.style.borderColor='#eee'">
-                    <div
-                        style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#f26522,#ff8a50);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:1.8rem;color:#fff;box-shadow:0 8px 25px rgba(242,101,34,0.3);">
-                        <i class="fas fa-donate"></i>
-                    </div>
-                    <h5 class="font-weight-bold mb-3" style="color:#1a1b2e;">Donation</h5>
-                    <p style="color:#666;font-size:0.9rem;line-height:1.7;margin:0;">Every contribution matters. Your
-                        generous donations help us sustain our initiatives and reach more people in need.</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
-                <div style="background:#fff;border:1px solid #eee;border-radius:16px;padding:35px 25px;text-align:center;height:100%;transition:all 0.4s ease;box-shadow:0 4px 20px rgba(0,0,0,0.06);"
-                    onmouseover="this.style.transform='translateY(-10px)';this.style.boxShadow='0 12px 35px rgba(242,101,34,0.15)';this.style.borderColor='#f26522'"
-                    onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.06)';this.style.borderColor='#eee'">
-                    <div
-                        style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#f26522,#ff8a50);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:1.8rem;color:#fff;box-shadow:0 8px 25px rgba(242,101,34,0.3);">
-                        <i class="fas fa-people-carry"></i>
-                    </div>
-                    <h5 class="font-weight-bold mb-3" style="color:#1a1b2e;">Community Support</h5>
-                    <p style="color:#666;font-size:0.9rem;line-height:1.7;margin:0;">Building stronger communities
-                        through awareness campaigns, skill development, and grassroots support programmes.</p>
-                </div>
-            </div>
+            <?php endforeach; ?>
         </div>
     </div>
 </div>
+
+<style>
+.act-card {
+    background: #fff;
+    border-radius: 18px;
+    padding: 0 28px 30px;
+    text-align: center;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.05);
+    box-shadow: 0 4px 18px rgba(0,0,0,0.05);
+    transition: all 0.4s ease;
+}
+.act-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(242,101,34,0.12);
+    border-color: rgba(242,101,34,0.15);
+}
+.act-top-bar {
+    height: 4px;
+    background: linear-gradient(90deg, #f26522, #ff8a50);
+    border-radius: 0 0 4px 4px;
+    margin: 0 -28px 0;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+.act-card:hover .act-top-bar {
+    opacity: 1;
+}
+.act-num {
+    position: absolute;
+    top: 14px;
+    right: 18px;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: rgba(242,101,34,0.06);
+    line-height: 1;
+    pointer-events: none;
+    transition: color 0.4s ease;
+}
+.act-card:hover .act-num {
+    color: rgba(242,101,34,0.12);
+}
+.act-icon-wrap {
+    margin: 28px auto 20px;
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+.act-icon-wrap::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    background: rgba(242,101,34,0.06);
+    transition: transform 0.4s ease;
+}
+.act-card:hover .act-icon-wrap::before {
+    transform: scale(1.15);
+    background: rgba(242,101,34,0.1);
+}
+.act-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 22px;
+    background: linear-gradient(135deg, #f26522, #ff8a50);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.7rem;
+    color: #fff;
+    box-shadow: 0 10px 28px rgba(242,101,34,0.3);
+    position: relative;
+    z-index: 1;
+    transition: all 0.4s ease;
+}
+.act-card:hover .act-icon {
+    border-radius: 50%;
+    transform: rotate(-8deg) scale(1.08);
+    box-shadow: 0 14px 35px rgba(242,101,34,0.35);
+}
+.act-title {
+    font-weight: 700;
+    color: #1a1b2e;
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    transition: color 0.3s ease;
+}
+.act-card:hover .act-title {
+    color: #f26522;
+}
+.act-desc {
+    color: #777;
+    font-size: 0.85rem;
+    line-height: 1.75;
+    margin: 0;
+}
+</style>
 <!-- Activities Section End -->
 
 <!-- Donate Section Start -->

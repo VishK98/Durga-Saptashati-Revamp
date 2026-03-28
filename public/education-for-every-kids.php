@@ -1,10 +1,14 @@
 <?php
 require_once '../app/config/config.php';
+
 $pageTitle = "Education For Every Kids";
-$pageDescription = "Supporting quality education for every child through scholarships, learning materials, and digital literacy programs.";
-$pageKeywords = "education, children, scholarships, learning, digital literacy, Durga Saptashati Foundation";
+$pageDescription = "Durga Saptashati Foundation's Education For Every Kids initiative - Lighting the path of knowledge through scholarships, school support, and learning programs for underprivileged children.";
+$pageKeywords = "education for all, children education, scholarships, school support, learning programs, digital literacy, Durga Saptashati Foundation";
+
 include '../app/views/layout/header.php';
 ?>
+
+<link rel="stylesheet" href="<?= url('assets/css/events/education-for-every-kids.css') ?>">
 
 <div class="page-header">
     <div class="container-fluid">
@@ -19,33 +23,205 @@ include '../app/views/layout/header.php';
     </div>
 </div>
 
-<div class="container-fluid py-5">
-    <div class="container">
-        <div class="row align-items-center g-4 mb-5">
-            <div class="col-lg-6" data-aos="fade-right">
-                <div style="background:linear-gradient(135deg,rgba(33,150,243,0.1),rgba(33,150,243,0.04));border-radius:20px;padding:50px;text-align:center;">
-                    <div style="width:100px;height:100px;margin:0 auto 20px;background:#2196f3;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 15px 40px rgba(33,150,243,0.3);">
-                        <i class="fas fa-graduation-cap" style="font-size:2.5rem;color:#fff;"></i>
-                    </div>
-                    <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:20px;">
-                        <span style="background:#fff;padding:8px 16px;border-radius:20px;font-size:0.8rem;color:#555;font-weight:500;box-shadow:0 2px 8px rgba(0,0,0,0.06);">Free Tuition Centers</span>
-                        <span style="background:#fff;padding:8px 16px;border-radius:20px;font-size:0.8rem;color:#555;font-weight:500;box-shadow:0 2px 8px rgba(0,0,0,0.06);">Scholarship Programs</span>
-                        <span style="background:#fff;padding:8px 16px;border-radius:20px;font-size:0.8rem;color:#555;font-weight:500;box-shadow:0 2px 8px rgba(0,0,0,0.06);">Learning Materials</span>
-                        <span style="background:#fff;padding:8px 16px;border-radius:20px;font-size:0.8rem;color:#555;font-weight:500;box-shadow:0 2px 8px rgba(0,0,0,0.06);">Digital Literacy</span>
-                    </div>
-                </div>
+<!-- Hero: Centered Title + Image Banner + Overlapping Content -->
+<section class="edu-hero">
+    <!-- Top: Centered intro -->
+    <div class="edu-hero-top">
+        <div class="container-fluid text-center">
+            <div class="edu-badge" data-aos="fade-down">
+                <i class="fas fa-graduation-cap"></i>
+                <span>Education For All</span>
             </div>
-            <div class="col-lg-6" data-aos="fade-left">
-                <h6 class="text-uppercase mb-2" style="color:#2196f3;letter-spacing:3px;font-weight:600;">Our Cause</h6>
-                <h2 style="color:#1a1b2e;font-weight:700;">Every Child Deserves Quality Education</h2>
-                <p style="color:#666;line-height:1.8;margin:15px 0;">Education is the most powerful tool for change. We support quality education for every child through free tuition centers, scholarship programs, and distribution of learning materials to those who need it most.</p>
-                <p style="color:#666;line-height:1.8;">Our digital literacy classes prepare children for the future, while our mentorship programs ensure they have the guidance and support needed to succeed academically and personally.</p>
-                <a href="<?= url('make-donation.php') ?>" style="display:inline-flex;align-items:center;gap:8px;background:#f26522;color:#fff;padding:12px 28px;border-radius:10px;font-size:0.9rem;font-weight:600;text-decoration:none;transition:all 0.3s;margin-top:15px;" onmouseover="this.style.background='#d4541a'" onmouseout="this.style.background='#f26522'">
-                    <i class="fas fa-heart"></i> Support This Cause
-                </a>
+            <h1 class="edu-hero-title" data-aos="fade-up" data-aos-delay="100">
+                Education For <span class="edu-gradient">Every Kids</span>
+            </h1>
+            <p class="edu-hero-subtitle" data-aos="fade-up" data-aos-delay="200">
+                Lighting the path of knowledge — every child deserves access to quality education
+            </p>
+
+            <!-- Horizontal Stats -->
+            <div class="edu-stats-bar" data-aos="fade-up" data-aos-delay="300">
+                <div class="edu-stat">
+                    <div class="edu-stat-num" data-counter="500">0</div>
+                    <div class="edu-stat-txt">Students Supported</div>
+                </div>
+                <div class="edu-stat">
+                    <div class="edu-stat-num" data-counter="10">0</div>
+                    <div class="edu-stat-txt">Partner Schools</div>
+                </div>
+                <div class="edu-stat">
+                    <div class="edu-stat-num" data-counter="200">0</div>
+                    <div class="edu-stat-txt">Scholarships</div>
+                </div>
+                <div class="edu-stat">
+                    <div class="edu-stat-num" data-counter="15">0</div>
+                    <div class="edu-stat-txt">Programs</div>
+                </div>
             </div>
         </div>
     </div>
+
+    <!-- Image Banner -->
+    <div class="edu-image-banner" data-aos="fade-up" data-aos-delay="350">
+        <div class="container-fluid">
+            <div class="edu-banner-wrap">
+                <img src="<?= url('assets/images/education-for/education-for.webp') ?>" alt="Education For Every Kids" class="edu-banner-img">
+                <div class="edu-banner-overlay"></div>
+
+                <!-- Overlapping Content Card -->
+                <div class="edu-overlap-card">
+                    <div class="row align-items-center">
+                        <div class="col-lg-7">
+                            <h3>Transforming Lives Through Education</h3>
+                            <p>We believe education is the most powerful tool for transforming lives. Our initiative provides scholarships, school supplies, digital literacy programs, and mentorship to underprivileged children, ensuring every child has access to quality education.</p>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="edu-feature-list">
+                                <div class="edu-feature">
+                                    <i class="fas fa-book-open"></i>
+                                    <span>Scholarships & Support</span>
+                                </div>
+                                <div class="edu-feature">
+                                    <i class="fas fa-laptop"></i>
+                                    <span>Digital Literacy</span>
+                                </div>
+                                <div class="edu-feature">
+                                    <i class="fas fa-chalkboard-teacher"></i>
+                                    <span>Mentorship Programs</span>
+                                </div>
+                                <div class="edu-feature">
+                                    <i class="fas fa-school"></i>
+                                    <span>School Infrastructure</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Gallery Section -->
+<section class="edu-gallery-section" id="gallery">
+    <div class="container-fluid">
+        <div class="edu-section-header text-center" data-aos="fade-up">
+            <span class="edu-section-badge">Gallery</span>
+            <h2 class="edu-section-title">Education in Action</h2>
+            <p class="edu-section-desc">
+                See how our education programs are transforming young minds and creating opportunities
+                for children who dream of a brighter future.
+            </p>
+        </div>
+
+        <?php
+        $eduImages = [
+            ['file' => 'education-for.webp', 'title' => 'Classroom Session'],
+            ['file' => 'education-for-1.webp', 'title' => 'Learning Together'],
+            ['file' => 'education-for-2.webp', 'title' => 'Digital Literacy Program'],
+            ['file' => 'education-for-3.webp', 'title' => 'Scholarship Ceremony'],
+            ['file' => 'education-for-4.webp', 'title' => 'Creative Workshop'],
+        ];
+        ?>
+        <div class="edu-gallery-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+            <?php foreach ($eduImages as $i => $img): ?>
+            <div data-aos="fade-up" data-aos-delay="<?= ($i % 3) * 50 ?>"
+                style="cursor:pointer;border-radius:14px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.06);transition:all 0.3s;background:#fff;"
+                onclick="openEduLightbox(<?= $i ?>)"
+                onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 12px 35px rgba(0,0,0,0.12)'"
+                onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.06)'">
+                <div style="position:relative;overflow:hidden;">
+                    <img src="<?= url('assets/images/education-for/' . $img['file']) ?>"
+                        alt="<?= htmlspecialchars($img['title']) ?>"
+                        style="width:100%;height:220px;object-fit:cover;display:block;transition:transform 0.4s;"
+                        onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                    <div style="position:absolute;top:12px;left:12px;background:rgba(0,0,0,0.6);color:#fff;padding:4px 12px;border-radius:15px;font-size:0.72rem;font-weight:600;backdrop-filter:blur(4px);">
+                        Education</div>
+                    <div style="position:absolute;inset:0;background:rgba(0,0,0,0.3);opacity:0;transition:opacity 0.3s;display:flex;align-items:center;justify-content:center;"
+                        onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0'">
+                        <div style="width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;">
+                            <i class="fas fa-search-plus" style="color:#f26522;font-size:1.2rem;"></i>
+                        </div>
+                    </div>
+                </div>
+                <div style="padding:14px 16px;">
+                    <h6 style="color:#1a1b2e;font-weight:600;font-size:0.9rem;margin:0;">
+                        <?= htmlspecialchars($img['title']) ?></h6>
+                </div>
+            </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</section>
+
+<!-- Lightbox -->
+<div id="eduLightbox"
+    style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.92);z-index:99999;align-items:center;justify-content:center;backdrop-filter:blur(8px);">
+    <button onclick="closeEduLightbox()"
+        style="position:absolute;top:20px;right:20px;background:rgba(255,255,255,0.1);border:none;width:44px;height:44px;border-radius:50%;cursor:pointer;color:#fff;font-size:1.3rem;z-index:10;display:flex;align-items:center;justify-content:center;transition:all 0.2s;"
+        onmouseover="this.style.background='rgba(255,255,255,0.2)'"
+        onmouseout="this.style.background='rgba(255,255,255,0.1)'">&times;</button>
+    <button onclick="eduPrev()"
+        style="position:absolute;left:20px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.1);border:none;width:50px;height:50px;border-radius:50%;cursor:pointer;color:#fff;font-size:1.2rem;z-index:10;display:flex;align-items:center;justify-content:center;transition:all 0.2s;"
+        onmouseover="this.style.background='rgba(255,255,255,0.2)'"
+        onmouseout="this.style.background='rgba(255,255,255,0.1)'"><i class="fas fa-chevron-left"></i></button>
+    <button onclick="eduNext()"
+        style="position:absolute;right:20px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.1);border:none;width:50px;height:50px;border-radius:50%;cursor:pointer;color:#fff;font-size:1.2rem;z-index:10;display:flex;align-items:center;justify-content:center;transition:all 0.2s;"
+        onmouseover="this.style.background='rgba(255,255,255,0.2)'"
+        onmouseout="this.style.background='rgba(255,255,255,0.1)'"><i class="fas fa-chevron-right"></i></button>
+    <div style="text-align:center;max-width:90%;max-height:85vh;">
+        <img id="eduLbImg" src="" alt=""
+            style="max-width:100%;max-height:78vh;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,0.5);object-fit:contain;">
+        <h5 id="eduLbTitle" style="color:#fff;font-weight:600;font-size:1rem;margin:14px 0 0;"></h5>
+    </div>
 </div>
+
+<script>
+var eduData = <?= json_encode(array_map(function($img) { return ['src' => url('assets/images/education-for/' . $img['file']), 'title' => $img['title']]; }, $eduImages)) ?>;
+var eduIdx = 0;
+
+function openEduLightbox(i) {
+    eduIdx = i;
+    updateEduLb();
+    document.getElementById('eduLightbox').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+function closeEduLightbox() {
+    document.getElementById('eduLightbox').style.display = 'none';
+    document.body.style.overflow = '';
+}
+function updateEduLb() {
+    document.getElementById('eduLbImg').src = eduData[eduIdx].src;
+    document.getElementById('eduLbTitle').textContent = eduData[eduIdx].title;
+}
+function eduPrev() { eduIdx = (eduIdx - 1 + eduData.length) % eduData.length; updateEduLb(); }
+function eduNext() { eduIdx = (eduIdx + 1) % eduData.length; updateEduLb(); }
+document.getElementById('eduLightbox').addEventListener('click', function(e) { if (e.target === this) closeEduLightbox(); });
+document.addEventListener('keydown', function(e) {
+    if (document.getElementById('eduLightbox').style.display !== 'flex') return;
+    if (e.key === 'Escape') closeEduLightbox();
+    if (e.key === 'ArrowLeft') eduPrev();
+    if (e.key === 'ArrowRight') eduNext();
+});
+
+// Counter
+document.addEventListener('DOMContentLoaded', function() {
+    var counters = document.querySelectorAll('[data-counter]');
+    var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                var c = entry.target, target = parseInt(c.getAttribute('data-counter')), current = 0, inc = target / 60;
+                var timer = setInterval(function() {
+                    current += inc;
+                    if (current >= target) { c.textContent = target.toLocaleString() + '+'; clearInterval(timer); }
+                    else { c.textContent = Math.floor(current).toLocaleString(); }
+                }, 25);
+                obs.unobserve(c);
+            }
+        });
+    }, { threshold: 0.7 });
+    counters.forEach(function(c) { obs.observe(c); });
+});
+</script>
 
 <?php include '../app/views/layout/footer.php'; ?>

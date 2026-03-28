@@ -17,7 +17,7 @@ include '../app/views/layout/header.php';
             </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
-                <a href="<?= url('service.php') ?>">Programs</a>
+                <a href="<?= url('programs.php') ?>">Programs</a>
                 <a href="<?= url('health-awareness.php') ?>">Health Awareness</a>
             </div>
         </div>
@@ -42,7 +42,7 @@ include '../app/views/layout/header.php';
                         hygiene practices, nutrition guidance, vaccination awareness, and disease prevention. 
                         Empowering communities with knowledge for better health outcomes.
                     </p>
-                    <a href="<?php echo url('service.php'); ?>" class="coming-soon-btn">
+                    <a href="<?php echo url('programs.php'); ?>" class="coming-soon-btn">
                         <i class="fas fa-arrow-left"></i> Back to Programs
                     </a>
                 </div>
