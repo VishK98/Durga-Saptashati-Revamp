@@ -157,10 +157,7 @@ include '../app/views/layout/header.php';
     </div>
 </div>
 
-<style>
-@keyframes careerSpin { to { transform: rotate(360deg); } }
-@keyframes modalSlideIn { from { opacity:0; transform:translateY(-30px) scale(0.95); } to { opacity:1; transform:translateY(0) scale(1); } }
-</style>
+
 <script>
 function openApplyModal(id, title) {
     document.getElementById('careerId').value = id;

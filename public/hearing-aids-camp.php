@@ -207,19 +207,6 @@ include '../app/views/layout/header.php';
     </div>
 </section>
 
-<style>
-@media(max-width:991px) {
-    .ha-gallery-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-    }
-}
-
-@media(max-width:575px) {
-    .ha-gallery-grid {
-        grid-template-columns: 1fr !important;
-    }
-}
-</style>
 
 <!-- Lightbox -->
 <div id="haLightbox"

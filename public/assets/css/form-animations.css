@@ -1,0 +1,33 @@
+/* ===== Shared Form/Modal Animations ===== */
+
+/* Form spinner (used by contact, volunteer, donation, blog comment forms) */
+@keyframes formSpin {
+    to { transform: rotate(360deg); }
+}
+
+/* Comment spinner (blog detail) */
+@keyframes cmtSpin {
+    to { transform: rotate(360deg); }
+}
+
+/* Contact form spinner */
+@keyframes contactSpin {
+    to { transform: rotate(360deg); }
+}
+
+/* Career form spinner */
+@keyframes careerSpin {
+    to { transform: rotate(360deg); }
+}
+
+/* Career modal slide-in */
+@keyframes modalSlideIn {
+    from { opacity: 0; transform: translateY(-30px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* PDF modal animation (our-investors) */
+@keyframes pdfModalIn {
+    from { opacity: 0; transform: scale(0.95) translateY(20px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}

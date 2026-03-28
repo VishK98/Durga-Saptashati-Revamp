@@ -1,0 +1,40 @@
+/* ===== Gallery Grid Responsive (shared across gallery pages) ===== */
+
+/* Hearing Aids Camp */
+@media (max-width: 991px) {
+    .ha-gallery-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+@media (max-width: 575px) {
+    .ha-gallery-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* Yoga Day */
+@media (max-width: 991px) {
+    .yoga-gallery-grid-3 {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+@media (max-width: 575px) {
+    .yoga-gallery-grid-3 {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* Women's Day */
+@media (max-width: 991px) {
+    .wd-gallery-grid-3 {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+@media (max-width: 575px) {
+    .wd-gallery-grid-3 {
+        grid-template-columns: 1fr !important;
+    }
+}

@@ -45,7 +45,7 @@ include '../app/views/layout/header.php';
         <div class="row align-items-center min-vh-100">
             <div class="col-12 text-center mb-4" data-aos="fade-down" data-aos-duration="800">
                 <div class="spiritual-badge">
-                    <i class="fas fa-om"></i>
+                    <i class="fas fa-spa"></i>
                     <span>Inner Peace & Wellness</span>
                 </div>
 
@@ -211,10 +211,6 @@ include '../app/views/layout/header.php';
     </div>
 </section>
 
-<style>
-@media(max-width:991px){.yoga-gallery-grid-3{grid-template-columns:repeat(2,1fr)!important;}}
-@media(max-width:575px){.yoga-gallery-grid-3{grid-template-columns:1fr!important;}}
-</style>
 
 <!-- Lightbox -->
 <div id="yogaLightbox"

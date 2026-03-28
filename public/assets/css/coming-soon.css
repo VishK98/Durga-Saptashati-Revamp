@@ -1,4 +1,14 @@
 
+.coming-soon-section {
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 0;
+    background: #ffffff;
+    position: relative;
+}
+
 .coming-soon-card {
     background: white;
     border-radius: 15px;

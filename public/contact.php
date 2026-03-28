@@ -194,9 +194,7 @@ include '../app/views/layout/header.php';
                         xhr.send(formData);
                     });
                     </script>
-                    <style>
-                    @keyframes contactSpin { to { transform: rotate(360deg); } }
-                    </style>
+
                 </div>
             </div>
 

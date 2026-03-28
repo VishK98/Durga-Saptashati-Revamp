@@ -99,7 +99,7 @@ include '../app/views/layout/header.php';
             <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300" data-aos-duration="1000">
                 <div class="hero-visual-womens" style="position:relative;">
                     <div style="border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(242,101,34,0.2);">
-                        <img src="<?= url('assets/images/yoga-day/yoga.jpeg') ?>" alt="Women's Day Celebration"
+                        <img src="<?= url('assets/images/woman-day/woman.jpeg') ?>" alt="Women's Day Celebration"
                             style="width:100%;height:450px;object-fit:cover;display:block;">
                     </div>
                     <div style="position:absolute;bottom:20px;left:20px;right:20px;display:flex;gap:10px;">
@@ -137,13 +137,13 @@ include '../app/views/layout/header.php';
 
         <?php
         $wdImages = [
-            ['file' => 'yoga.jpeg', 'title' => "Women's Day Celebration"],
-            ['file' => 'yoga-1.jpeg', 'title' => 'Empowerment Workshop'],
-            ['file' => 'yoga-2.jpeg', 'title' => 'Panel Discussion'],
-            ['file' => 'yoga-3.jpeg', 'title' => 'Felicitation Ceremony'],
-            ['file' => 'yoga-4.jpeg', 'title' => 'Skill Development'],
-            ['file' => 'yoga-5.jpeg', 'title' => 'Community Program'],
-            ['file' => 'yoga-6.jpeg', 'title' => 'Awards & Recognition'],
+            ['file' => 'woman.jpeg', 'title' => "Women's Day Celebration"],
+            ['file' => 'woman-1.jpeg', 'title' => 'Empowerment Workshop'],
+            ['file' => 'woman-2.jpeg', 'title' => 'Panel Discussion'],
+            ['file' => 'woman-3.jpeg', 'title' => 'Felicitation Ceremony'],
+            ['file' => 'woman-4.jpeg', 'title' => 'Skill Development'],
+            ['file' => 'woman-5.jpeg', 'title' => 'Community Program'],
+            ['file' => 'woman-6.jpeg', 'title' => 'Awards & Recognition'],
         ];
         ?>
         <div class="wd-gallery-grid-3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
@@ -154,7 +154,7 @@ include '../app/views/layout/header.php';
                 onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 12px 35px rgba(0,0,0,0.12)'"
                 onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.06)'">
                 <div style="position:relative;overflow:hidden;">
-                    <img src="<?= url('assets/images/yoga-day/' . $img['file']) ?>"
+                    <img src="<?= url('assets/images/woman-day/' . $img['file']) ?>"
                         alt="<?= htmlspecialchars($img['title']) ?>"
                         style="width:100%;height:220px;object-fit:cover;display:block;transition:transform 0.4s;"
                         onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
@@ -179,10 +179,6 @@ include '../app/views/layout/header.php';
     </div>
 </section>
 
-<style>
-@media(max-width:991px){.wd-gallery-grid-3{grid-template-columns:repeat(2,1fr)!important;}}
-@media(max-width:575px){.wd-gallery-grid-3{grid-template-columns:1fr!important;}}
-</style>
 
 <!-- Lightbox -->
 <div id="wdLightbox"
@@ -208,7 +204,7 @@ include '../app/views/layout/header.php';
 
 <script>
 var wdData = <?= json_encode(array_map(function ($img) {
-        return ['src' => url('assets/images/yoga-day/' . $img['file']), 'title' => $img['title']]; }, $wdImages)) ?>;
+        return ['src' => url('assets/images/woman-day/' . $img['file']), 'title' => $img['title']]; }, $wdImages)) ?>;
 var wdIdx = 0;
 
 function openWdLightbox(i) {

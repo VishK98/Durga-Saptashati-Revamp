@@ -25,7 +25,7 @@ include '../app/views/layout/header.php';
             <div class="col-lg-6" data-aos="fade-right">
                 <div style="background:linear-gradient(135deg,rgba(156,39,176,0.1),rgba(156,39,176,0.04));border-radius:20px;padding:50px;text-align:center;">
                     <div style="width:100px;height:100px;margin:0 auto 20px;background:#9c27b0;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 15px 40px rgba(156,39,176,0.3);">
-                        <i class="fas fa-om" style="font-size:2.5rem;color:#fff;"></i>
+                        <i class="fas fa-spa" style="font-size:2.5rem;color:#fff;"></i>
                     </div>
                     <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:20px;">
                         <span style="background:#fff;padding:8px 16px;border-radius:20px;font-size:0.8rem;color:#555;font-weight:500;box-shadow:0 2px 8px rgba(0,0,0,0.06);">Mass Yoga Sessions</span>

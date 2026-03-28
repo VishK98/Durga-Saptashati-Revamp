@@ -1,0 +1,224 @@
+/* ===== Home Page (index.php) Styles ===== */
+
+/* Sanskrit Section */
+.sanskrit-section {
+    position: relative;
+    padding: 100px 0;
+    color: #fff;
+}
+
+.sanskrit-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(26, 27, 46, 0.85);
+}
+
+.sanskrit-text {
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.sanskrit-translation {
+    font-size: 1.2rem;
+    font-style: italic;
+    opacity: 0.9;
+}
+
+/* Gallery Section */
+.gallery-section .gallery-item {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 30px;
+    border-radius: 8px;
+}
+
+.gallery-section .gallery-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.gallery-section .gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.gallery-section .gallery-item .gallery-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(242, 101, 34, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.gallery-section .gallery-item:hover .gallery-overlay {
+    opacity: 1;
+}
+
+.gallery-overlay a {
+    color: #fff;
+    font-size: 2rem;
+    width: 50px;
+    height: 50px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.gallery-overlay a:hover {
+    background: #fff;
+    color: #f26522;
+}
+
+/* Activities Section */
+.activities-section .activity-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 40px 25px;
+    text-align: center;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s ease;
+    height: 100%;
+}
+
+.activities-section .activity-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 40px rgba(242, 101, 34, 0.2);
+}
+
+.activities-section .activity-card .icon-wrap {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(242, 101, 34, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 2rem;
+    color: #f26522;
+    transition: all 0.4s;
+}
+
+.activities-section .activity-card:hover .icon-wrap {
+    background: #f26522;
+    color: #fff;
+}
+
+.section-title span {
+    color: #f26522;
+}
+
+/* Causes Card (Home Page) */
+.causes-card {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s;
+    background: #fff;
+    height: 100%;
+}
+
+.causes-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+.causes-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.causes-card .causes-body {
+    padding: 25px;
+}
+
+.causes-card .causes-body h5 {
+    color: #1a1b2e;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.causes-card .causes-body p {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+/* Event Card */
+.event-card {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s;
+}
+
+.event-card:hover {
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.15);
+}
+
+.event-card .event-date {
+    background: #f26522;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+    min-width: 100px;
+}
+
+.event-card .event-date .day {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.event-card .event-date .month {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+.event-card .event-info {
+    padding: 20px;
+}
+
+.event-card .event-info h5 {
+    font-weight: 700;
+    color: #1a1b2e;
+    margin-bottom: 10px;
+}
+
+.event-card .event-info p {
+    color: #888;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+/* Tabs Section */
+.tab-content-section .nav-tabs .nav-link {
+    color: #4a4c70;
+    font-weight: 600;
+    border: none;
+    border-bottom: 3px solid transparent;
+    padding: 10px 25px;
+}
+
+.tab-content-section .nav-tabs .nav-link.active {
+    color: #f26522;
+    border-bottom-color: #f26522;
+    background: transparent;
+}

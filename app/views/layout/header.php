@@ -42,20 +42,25 @@
     <link href="<?= asset('css/typography-overrides.css') ?>" rel="stylesheet">
     <!-- Coming Soon Pages Stylesheet -->
     <link href="<?= asset('css/coming-soon.css') ?>" rel="stylesheet">
+    <!-- Shared Form/Modal Animations -->
+    <link href="<?= asset('css/form-animations.css') ?>" rel="stylesheet">
+    <!-- Gallery Lightbox Responsive -->
+    <link href="<?= asset('css/gallery-lightbox.css') ?>" rel="stylesheet">
     <!-- Page-Specific Stylesheets -->
     <?php
     $currentPage = basename($_SERVER['PHP_SELF'], '.php');
     $pageSpecificCSS = [
-        // About Us Pages
-        'achievements' => 'about-us/achievements.css',
-        'our-story' => 'about-us/our-story.css',
-        'leadership' => 'about-us/leadership.css',
-        'vision-mission' => 'about-us/vision-mission.css',
+        // About Us
+        'about' => 'about.css',
         // Program Pages
         'school-support' => 'programs/school-support.css',
         'adult-literacy' => 'programs/adult-literacy.css',
         'digital-learning' => 'programs/digital-learning.css',
-        'medical-camps' => 'programs/medical-camps.css'
+        'medical-camps' => 'programs/medical-camps.css',
+        // Main Pages
+        'index' => 'home.css',
+        'causes' => 'causes.css',
+        'blog-detail' => 'blog-detail.css',
     ];
 
     if (isset($pageSpecificCSS[$currentPage])) {
@@ -139,57 +144,11 @@
                     </button>
                 </div>
                 <ul class="navbar-nav mx-auto">
-                    <!-- About Mega Dropdown -->
-                    <li class="nav-item dropdown mega-dropdown">
-                        <a class="nav-link dropdown-toggle" href="<?= url('about.php') ?>" id="aboutDropdown"
-                            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <!-- About Us -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= url('about.php') ?>">
                             <span class="nav-text">About Us</span>
-                            <i class="fas fa-chevron-down dropdown-arrow"></i>
                         </a>
-                        <div class="dropdown-menu mega-dropdown-menu about-mega" aria-labelledby="aboutDropdown">
-                            <div class="mega-dropdown-content">
-                                <div class="row">
-                                    <div class="col-lg-4">
-                                        <div class="mega-image">
-                                            <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=300&h=200&fit=crop"
-                                                alt="About Durga Saptashati Foundation" class="img-fluid rounded">
-                                            <div class="mega-image-overlay">
-                                                <h6>Our Mission</h6>
-                                                <p>Empowering communities since inception</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <h6 class="dropdown-header">Organization</h6>
-                                        <a class="dropdown-item" href="<?= url('our-story.php') ?>">
-                                            <i class="fas fa-heart"></i> Our Story & History
-                                            <span class="item-description">Learn about our journey and founding
-                                                principles</span>
-                                        </a>
-                                        <a class="dropdown-item" href="<?= url('vision-mission.php') ?>">
-                                            <i class="fas fa-eye"></i> Vision & Mission
-                                            <span class="item-description">Our goals for a better tomorrow</span>
-                                        </a>
-                                        <a class="dropdown-item" href="<?= url('leadership.php') ?>">
-                                            <i class="fas fa-users"></i> Leadership Team
-                                            <span class="item-description">Meet the people behind our mission</span>
-                                        </a>
-                                        <a class="dropdown-item" href="<?= url('achievements.php') ?>">
-                                            <i class="fas fa-award"></i> Our Achievements
-                                            <span class="item-description">Milestones and recognition over the
-                                                years</span>
-                                        </a>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <h6 class="dropdown-header">Transparency</h6>
-                                        <a class="dropdown-item" href="<?= url('our-investors.php') ?>">
-                                            <i class="fas fa-chart-line"></i> Our Investors
-                                            <span class="item-description">Major donors and supporters</span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </li>
 
                     <!-- Programs & Services Mega Dropdown -->
@@ -324,8 +283,12 @@
                                     </div>
                                     <div class="col-lg-3">
                                         <h6 class="dropdown-header">Annual Programs</h6>
+                                        <a class="dropdown-item" href="<?= url('durga-award.php') ?>">
+                                            <i class="fas fa-trophy"></i> Durga Award
+                                            <span class="item-description">Honouring the change makers</span>
+                                        </a>
                                         <a class="dropdown-item" href="<?= url('international-yoga-day.php') ?>">
-                                            <i class="fas fa-om"></i> International Yoga Day
+                                            <i class="fas fa-spa"></i> International Yoga Day
                                             <span class="item-description">June 21st - Join thousands</span>
                                         </a>
                                         <a class="dropdown-item" href="<?= url('womens-day.php') ?>">

@@ -231,7 +231,7 @@ include '../app/views/layout/header.php';
                         xhr.send(formData);
                     }
                     </script>
-                    <style>@keyframes cmtSpin { to { transform: rotate(360deg); } }</style>
+
                 </div>
             </div>
 
@@ -345,44 +345,5 @@ include '../app/views/layout/header.php';
 </div>
 <!-- Blog Detail End -->
 
-<style>
-.blog-content img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin: 15px 0;
-}
-
-.blog-content h1,
-.blog-content h2,
-.blog-content h3 {
-    color: #1a1b2e;
-    margin: 20px 0 10px;
-}
-
-.blog-content p {
-    margin-bottom: 15px;
-}
-
-.blog-content ul,
-.blog-content ol {
-    margin-bottom: 15px;
-    padding-left: 25px;
-}
-
-.blog-content blockquote {
-    border-left: 4px solid #f26522;
-    padding: 15px 20px;
-    margin: 20px 0;
-    background: #f8f9fa;
-    border-radius: 0 8px 8px 0;
-    font-style: italic;
-    color: #555;
-}
-
-.blog-content a {
-    color: #f26522;
-}
-</style>
 
 <?php include '../app/views/layout/footer.php'; ?>
