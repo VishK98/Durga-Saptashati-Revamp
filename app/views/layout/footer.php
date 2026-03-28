@@ -570,6 +570,21 @@
 <script src="<?php echo asset('lib/counterup/counterup.min.js'); ?>"></script>
 <script src="<?php echo asset('lib/parallax/parallax.min.js'); ?>"></script>
 
+<!-- Video Modal Handler -->
+<script>
+$(document).ready(function() {
+    $('#videoModal').on('show.bs.modal', function(e) {
+        var src = $(e.relatedTarget).data('src');
+        if (src) {
+            $(this).find('iframe').attr('src', src + '?autoplay=1');
+        }
+    });
+    $('#videoModal').on('hidden.bs.modal', function() {
+        $(this).find('iframe').attr('src', '');
+    });
+});
+</script>
+
 <!-- Template Javascript -->
 <script src="<?php echo asset('js/main.js'); ?>"></script>
 <script src="<?php echo asset('js/hero-slider.js'); ?>"></script>

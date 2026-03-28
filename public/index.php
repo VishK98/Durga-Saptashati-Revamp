@@ -43,7 +43,7 @@ include '../app/views/layout/header.php';
                     <div class="carousel-btn" data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000">
                         <a class="btn btn-custom" href="<?php echo url('about.php'); ?>">Learn More</a>
                         <a class="btn btn-custom btn-play" data-toggle="modal"
-                            data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-target="#videoModal">Watch
+                            data-src="https://www.youtube.com/embed/-VtO2d-zJ4k" data-target="#videoModal">Watch
                             Video</a>
                     </div>
                 </div>
@@ -90,23 +90,7 @@ include '../app/views/layout/header.php';
 <!-- Carousel End -->
 
 <!-- Video Modal Start -->
-<div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <div class="embed-responsive embed-responsive-16by9">
-                    <iframe class="embed-responsive-item" src="" id="video" allowscriptaccess="always"
-                        allow="autoplay"></iframe>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Video Modal End -->
+<!-- Video Modal moved below about section -->
 
 <!-- About Section Start -->
 <div class="container-fluid py-5" id="about">
@@ -117,8 +101,10 @@ include '../app/views/layout/header.php';
                     style="border-radius:12px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,0.12);">
                     <img src="<?php echo asset('img/about.jpg') ?>" alt="About Durga Saptashati"
                         style="width:100%;height:100%;object-fit:cover;display:block;">
-                    <a class="position-absolute d-flex align-items-center justify-content-center" href=""
+                    <a class="position-absolute d-flex align-items-center justify-content-center" href="#"
                         data-toggle="modal" data-target="#videoModal"
+                        data-src="https://www.youtube.com/embed/-VtO2d-zJ4k"
+                        onclick="event.preventDefault();"
                         style="top:0;left:0;right:0;bottom:0;background:linear-gradient(to top,rgba(0,0,0,0.5),rgba(0,0,0,0.1));">
                         <div style="width:70px;height:70px;border-radius:50%;background:rgba(242,101,34,0.9);display:flex;align-items:center;justify-content:center;transition:all 0.3s;box-shadow:0 5px 25px rgba(242,101,34,0.4);"
                             onmouseover="this.style.transform='scale(1.1)';this.style.background='#f26522'"
@@ -798,33 +784,5 @@ $latestBlogs = $blogStmt->fetchAll();
 </div>
 <!-- Blog Section End -->
 
-<!-- Owl Carousel & AOS Initialization -->
-<script>
-$(document).ready(function() {
-    // Events Carousel
-    $(".events-carousel").owlCarousel({
-        autoplay: true,
-        smartSpeed: 1000,
-        margin: 30,
-        dots: true,
-        loop: true,
-        nav: false,
-        responsive: {
-            0: {
-                items: 1
-            },
-            576: {
-                items: 1
-            },
-            768: {
-                items: 2
-            },
-            992: {
-                items: 3
-            }
-        }
-    });
-});
-</script>
 
 <?php include '../app/views/layout/footer.php'; ?>
