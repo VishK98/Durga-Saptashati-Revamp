@@ -1,0 +1,333 @@
+/* Flood Relief Campaign — Split Content + Diagonal Image */
+
+:root {
+  --primary-color: #f26522;
+  --secondary-color: #0d0e14;
+  --text-muted: #666;
+  --gradient-primary: linear-gradient(135deg, #f26522 0%, #ff8c42 100%);
+}
+
+/* Page Header Custom BG */
+.flood-page-header {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(../../images/food-relief-campaign/food-relief-campaign.webp) !important;
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+/* Hero */
+.frc-hero {
+  padding: 70px 0 60px;
+  background: linear-gradient(160deg, #fff 0%, #fff7f2 50%, #f8f9fa 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.frc-hero-bg-shape {
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(242, 101, 34, 0.04) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.frc-hero-row {
+  min-height: 75vh;
+}
+
+/* Content */
+.frc-hero-content {
+  padding-right: 20px;
+}
+
+.frc-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--gradient-primary);
+  color: #fff;
+  padding: 10px 22px;
+  border-radius: 50px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 25px rgba(242, 101, 34, 0.3);
+}
+
+.frc-badge i { font-size: 1.1rem; }
+
+.frc-title {
+  font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+  font-weight: 800;
+  color: var(--secondary-color);
+  line-height: 1.1;
+  margin-bottom: 18px;
+  letter-spacing: -0.02em;
+}
+
+.frc-gradient {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.frc-desc {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+  margin-bottom: 25px;
+}
+
+/* Features */
+.frc-features {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 25px;
+}
+
+.frc-feature {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #fff;
+  padding: 14px 18px;
+  border-radius: 14px;
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  transition: all 0.3s ease;
+}
+
+.frc-feature:hover {
+  transform: translateX(6px);
+  box-shadow: 0 6px 22px rgba(242, 101, 34, 0.1);
+  border-color: rgba(242, 101, 34, 0.12);
+}
+
+.frc-feature-icon {
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  background: var(--gradient-primary);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1rem;
+  box-shadow: 0 4px 12px rgba(242, 101, 34, 0.25);
+}
+
+.frc-feature strong {
+  display: block;
+  color: var(--secondary-color);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.frc-feature span {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+/* Inline Stats */
+.frc-stats-inline {
+  display: flex;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.frc-si {
+  text-align: center;
+}
+
+.frc-si strong {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--primary-color);
+  line-height: 1;
+}
+
+.frc-si span {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Image Block */
+.frc-image-block {
+  position: relative;
+  padding: 20px;
+}
+
+.frc-img-main {
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.14);
+  transform: rotate(2deg);
+  transition: transform 0.4s ease;
+}
+
+.frc-img-main:hover {
+  transform: rotate(0deg);
+}
+
+.frc-img-main img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.frc-img-main:hover img {
+  transform: scale(1.04);
+}
+
+.frc-img-small {
+  position: absolute;
+  bottom: 0;
+  left: -10px;
+  width: 45%;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+  border: 5px solid #fff;
+  transform: rotate(-3deg);
+  z-index: 2;
+  transition: transform 0.4s ease;
+}
+
+.frc-img-small:hover {
+  transform: rotate(0deg);
+}
+
+.frc-img-small img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+.frc-img-badge {
+  position: absolute;
+  top: 30px;
+  right: 0;
+  background: #fff;
+  padding: 12px 20px;
+  border-radius: 14px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 3;
+  animation: frcBadgeBounce 3s ease-in-out infinite;
+}
+
+.frc-img-badge i {
+  color: var(--primary-color);
+  font-size: 1.1rem;
+}
+
+.frc-img-badge span {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--secondary-color);
+}
+
+@keyframes frcBadgeBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* Gallery */
+.frc-gallery-section {
+  padding: 60px 0;
+  background: linear-gradient(135deg, #f8f9fa 0%, rgba(242, 101, 34, 0.02) 100%);
+}
+
+.frc-section-header { margin-bottom: 50px; }
+
+.frc-section-badge {
+  display: inline-block;
+  background: var(--gradient-primary);
+  color: #fff;
+  padding: 8px 20px;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.frc-section-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  color: var(--secondary-color);
+  line-height: 1.2;
+}
+
+.frc-section-desc {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .frc-hero-content { padding-right: 0; }
+
+  .frc-image-block { margin-top: 40px; }
+
+  .frc-img-main img { height: 320px; }
+
+  .frc-gallery-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .frc-hero { padding: 50px 0 40px; }
+
+  .frc-hero-row { min-height: auto; }
+
+  .frc-title { font-size: 1.8rem; }
+
+  .frc-img-main { transform: rotate(0deg); }
+
+  .frc-img-main img { height: 260px; }
+
+  .frc-img-small { display: none; }
+
+  .frc-img-badge { display: none; }
+
+  .frc-stats-inline { gap: 18px; }
+
+  .frc-si strong { font-size: 1.2rem; }
+
+  .frc-gallery-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .frc-title { font-size: 1.6rem; }
+
+  .frc-section-header { margin-bottom: 35px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

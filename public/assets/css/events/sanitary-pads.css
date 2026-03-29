@@ -1,0 +1,333 @@
+/* Sanitary Pads Distribution — Card Layout Hero */
+
+:root {
+  --primary-color: #f26522;
+  --secondary-color: #0d0e14;
+  --text-muted: #666;
+  --gradient-primary: linear-gradient(135deg, #f26522 0%, #ff8c42 100%);
+}
+
+/* Page Header Custom BG */
+.spd-page-header {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(../../images/sanitary-pads-distribution/sanitary-pads-distribution-3.webp) !important;
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+/* Hero */
+.spd-hero {
+  padding: 60px 0;
+  background: linear-gradient(160deg, #f8f9fa 0%, #fff7f2 50%, #fff 100%);
+}
+
+/* Hero Card */
+.spd-hero-card {
+  background: #fff;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 15px 60px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+/* Image Side */
+.spd-hero-img {
+  position: relative;
+  height: 100%;
+  min-height: 520px;
+  overflow: hidden;
+}
+
+.spd-hero-img > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.spd-hero-img:hover > img {
+  transform: scale(1.04);
+}
+
+.spd-hero-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.4) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.spd-overlay-badge {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: var(--gradient-primary);
+  color: #fff;
+  padding: 8px 18px;
+  border-radius: 25px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 4px 15px rgba(242, 101, 34, 0.35);
+}
+
+/* Mini floating image */
+.spd-mini-img {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 130px;
+  height: 130px;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 4px solid #fff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+  animation: spdMiniBounce 3s ease-in-out infinite;
+}
+
+.spd-mini-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@keyframes spdMiniBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* Content Side */
+.spd-hero-content {
+  padding: 45px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.spd-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--gradient-primary);
+  color: #fff;
+  padding: 8px 18px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 18px;
+  box-shadow: 0 6px 20px rgba(242, 101, 34, 0.25);
+  align-self: flex-start;
+}
+
+.spd-badge i { font-size: 0.9rem; }
+
+.spd-title {
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  font-weight: 800;
+  color: var(--secondary-color);
+  line-height: 1.15;
+  margin-bottom: 14px;
+}
+
+.spd-gradient {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.spd-desc {
+  font-size: 0.92rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+  margin-bottom: 25px;
+}
+
+/* Stats Grid */
+.spd-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.spd-stat-box {
+  text-align: center;
+  padding: 14px 8px;
+  background: rgba(242, 101, 34, 0.04);
+  border-radius: 14px;
+  border: 1px solid rgba(242, 101, 34, 0.08);
+  transition: all 0.3s ease;
+}
+
+.spd-stat-box:hover {
+  background: rgba(242, 101, 34, 0.08);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(242, 101, 34, 0.1);
+}
+
+.spd-stat-icon {
+  width: 36px;
+  height: 36px;
+  background: var(--gradient-primary);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 8px;
+  color: #fff;
+  font-size: 0.85rem;
+  box-shadow: 0 3px 10px rgba(242, 101, 34, 0.2);
+}
+
+.spd-stat-num {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--primary-color);
+  line-height: 1;
+}
+
+.spd-stat-label {
+  font-size: 0.62rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  margin-top: 3px;
+}
+
+/* Tags */
+.spd-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.spd-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(242, 101, 34, 0.07);
+  color: var(--primary-color);
+  padding: 6px 14px;
+  border-radius: 25px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border: 1px solid rgba(242, 101, 34, 0.1);
+  transition: all 0.3s ease;
+}
+
+.spd-tag:hover {
+  background: var(--primary-color);
+  color: #fff;
+  border-color: var(--primary-color);
+}
+
+.spd-tag i { font-size: 0.68rem; }
+
+/* Gallery */
+.spd-gallery-section {
+  padding: 60px 0;
+  background: linear-gradient(135deg, #f8f9fa 0%, rgba(242, 101, 34, 0.02) 100%);
+}
+
+.spd-section-header { margin-bottom: 50px; }
+
+.spd-section-badge {
+  display: inline-block;
+  background: var(--gradient-primary);
+  color: #fff;
+  padding: 8px 20px;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.spd-section-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  color: var(--secondary-color);
+  line-height: 1.2;
+}
+
+.spd-section-desc {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .spd-hero-img {
+    min-height: 350px;
+  }
+
+  .spd-hero-content {
+    padding: 30px 25px;
+  }
+
+  .spd-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .spd-gallery-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .spd-hero {
+    padding: 40px 0;
+  }
+
+  .spd-hero-img {
+    min-height: 280px;
+  }
+
+  .spd-mini-img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .spd-title {
+    font-size: 1.6rem;
+  }
+
+  .spd-hero-content {
+    padding: 25px 20px;
+  }
+
+  .spd-gallery-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .spd-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .spd-stat-num {
+    font-size: 1.1rem;
+  }
+
+  .spd-section-header {
+    margin-bottom: 35px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
