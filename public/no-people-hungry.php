@@ -12,10 +12,12 @@ include '../app/views/layout/header.php';
 <link rel="stylesheet" href="<?= url('assets/css/events/no-people-hungry.css') ?>">
 
 <!-- Page Header Start -->
-<div class="page-header">
+<div class="page-header hungary-page-header">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12"><h2>No People Hungry</h2></div>
+            <div class="col-12">
+                <h2>No People Hungry</h2>
+            </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
                 <a href="<?= url('causes.php') ?>">Causes</a>
@@ -170,7 +172,8 @@ include '../app/views/layout/header.php';
 
 <!-- JavaScript -->
 <script>
-var hungerData = <?= json_encode(array_map(function($img) { return ['src' => url('assets/images/hungary/' . $img['file']), 'title' => $img['title']]; }, $hungerImages)) ?>;
+var hungerData =
+    <?= json_encode(array_map(function($img) { return ['src' => url('assets/images/hungary/' . $img['file']), 'title' => $img['title']]; }, $hungerImages)) ?>;
 var hungerIdx = 0;
 
 function openHungerLightbox(i) {

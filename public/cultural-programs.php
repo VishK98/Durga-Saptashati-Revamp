@@ -9,10 +9,12 @@ include '../app/views/layout/header.php';
 <link rel="stylesheet" href="<?= url('assets/css/events/womens-empowerment.css') ?>">
 
 <!-- Page Header -->
-<div class="page-header">
+<div class="page-header cultural-page-header">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12"><h2>Cultural Programs</h2></div>
+            <div class="col-12">
+                <h2>Cultural Programs</h2>
+            </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
                 <a href="<?= url('event.php') ?>">Events</a>
@@ -154,11 +156,13 @@ include '../app/views/layout/header.php';
                         alt="<?= htmlspecialchars($img['title']) ?>"
                         style="width:100%;height:220px;object-fit:cover;display:block;transition:transform 0.4s;"
                         onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                    <div style="position:absolute;top:12px;left:12px;background:rgba(0,0,0,0.6);color:#fff;padding:4px 12px;border-radius:15px;font-size:0.72rem;font-weight:600;backdrop-filter:blur(4px);">
+                    <div
+                        style="position:absolute;top:12px;left:12px;background:rgba(0,0,0,0.6);color:#fff;padding:4px 12px;border-radius:15px;font-size:0.72rem;font-weight:600;backdrop-filter:blur(4px);">
                         Cultural Program</div>
                     <div style="position:absolute;inset:0;background:rgba(0,0,0,0.3);opacity:0;transition:opacity 0.3s;display:flex;align-items:center;justify-content:center;"
                         onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0'">
-                        <div style="width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;">
+                        <div
+                            style="width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;">
                             <i class="fas fa-search-plus" style="color:#f26522;font-size:1.2rem;"></i>
                         </div>
                     </div>
@@ -196,14 +200,39 @@ include '../app/views/layout/header.php';
 </div>
 
 <script>
-var culturalData = <?= json_encode(array_map(function($img) { return ['src' => url('assets/images/cultural/' . $img['file']), 'title' => $img['title']]; }, $culturalImages)) ?>;
+var culturalData =
+    <?= json_encode(array_map(function($img) { return ['src' => url('assets/images/cultural/' . $img['file']), 'title' => $img['title']]; }, $culturalImages)) ?>;
 var culturalIdx = 0;
-function openCulturalLb(i) { culturalIdx = i; updateCulturalLb(); document.getElementById('culturalLb').style.display = 'flex'; document.body.style.overflow = 'hidden'; }
-function closeCulturalLb() { document.getElementById('culturalLb').style.display = 'none'; document.body.style.overflow = ''; }
-function updateCulturalLb() { document.getElementById('culturalLbImg').src = culturalData[culturalIdx].src; document.getElementById('culturalLbTitle').textContent = culturalData[culturalIdx].title; }
-function culturalPrev() { culturalIdx = (culturalIdx - 1 + culturalData.length) % culturalData.length; updateCulturalLb(); }
-function culturalNext() { culturalIdx = (culturalIdx + 1) % culturalData.length; updateCulturalLb(); }
-document.getElementById('culturalLb').addEventListener('click', function(e) { if (e.target === this) closeCulturalLb(); });
+
+function openCulturalLb(i) {
+    culturalIdx = i;
+    updateCulturalLb();
+    document.getElementById('culturalLb').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeCulturalLb() {
+    document.getElementById('culturalLb').style.display = 'none';
+    document.body.style.overflow = '';
+}
+
+function updateCulturalLb() {
+    document.getElementById('culturalLbImg').src = culturalData[culturalIdx].src;
+    document.getElementById('culturalLbTitle').textContent = culturalData[culturalIdx].title;
+}
+
+function culturalPrev() {
+    culturalIdx = (culturalIdx - 1 + culturalData.length) % culturalData.length;
+    updateCulturalLb();
+}
+
+function culturalNext() {
+    culturalIdx = (culturalIdx + 1) % culturalData.length;
+    updateCulturalLb();
+}
+document.getElementById('culturalLb').addEventListener('click', function(e) {
+    if (e.target === this) closeCulturalLb();
+});
 document.addEventListener('keydown', function(e) {
     if (document.getElementById('culturalLb').style.display !== 'flex') return;
     if (e.key === 'Escape') closeCulturalLb();
@@ -217,17 +246,28 @@ document.addEventListener('DOMContentLoaded', function() {
     var obs = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
             if (entry.isIntersecting) {
-                var c = entry.target, target = parseInt(c.getAttribute('data-counter')), current = 0, inc = target / 60;
+                var c = entry.target,
+                    target = parseInt(c.getAttribute('data-counter')),
+                    current = 0,
+                    inc = target / 60;
                 var timer = setInterval(function() {
                     current += inc;
-                    if (current >= target) { c.textContent = target + '+'; clearInterval(timer); }
-                    else { c.textContent = Math.floor(current); }
+                    if (current >= target) {
+                        c.textContent = target + '+';
+                        clearInterval(timer);
+                    } else {
+                        c.textContent = Math.floor(current);
+                    }
                 }, 25);
                 obs.unobserve(c);
             }
         });
-    }, { threshold: 0.7 });
-    counters.forEach(function(c) { obs.observe(c); });
+    }, {
+        threshold: 0.7
+    });
+    counters.forEach(function(c) {
+        obs.observe(c);
+    });
 });
 </script>
 

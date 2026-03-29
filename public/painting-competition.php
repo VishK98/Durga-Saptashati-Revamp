@@ -12,7 +12,7 @@ include '../app/views/layout/header.php';
 <link rel="stylesheet" href="<?= url('assets/css/events/painting-competition.css') ?>">
 
 <!-- Page Header Start -->
-<div class="page-header">
+<div class="page-header painting-page-header">
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">

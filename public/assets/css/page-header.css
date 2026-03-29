@@ -1,0 +1,167 @@
+.page-header {
+  position: relative;
+  margin-bottom: 45px;
+  padding: 210px 0 90px 0;
+  text-align: center;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(../images/durga-award/durga-award-1.jpeg);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.durga-page-header {
+  position: relative;
+  margin-bottom: 45px;
+  padding: 210px 0 90px 0;
+  text-align: center;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(../images/durga-award/durga-award.jpeg);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.yoga-page-header {
+  position: relative;
+  margin-bottom: 45px;
+  padding: 210px 0 90px 0;
+  text-align: center;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(../images/yoga-day/yoga-2.jpeg);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.saree-page-header {
+  position: relative;
+  margin-bottom: 45px;
+  padding: 210px 0 90px 0;
+  text-align: center;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(../images/saree/saree-7.webp);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.ganpati-page-header {
+  position: relative;
+  margin-bottom: 45px;
+  padding: 210px 0 90px 0;
+  text-align: center;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(../images/ganpati/ganpati-6.jpeg);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.cultural-page-header {
+  position: relative;
+  margin-bottom: 45px;
+  padding: 210px 0 90px 0;
+  text-align: center;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(../images/cultural/cultural-12.webp);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.woman-page-header {
+  position: relative;
+  margin-bottom: 45px;
+  padding: 210px 0 90px 0;
+  text-align: center;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(../images/woman-day/woman-14.png);
+  background-attachment: fixed;
+  background-position: center 200%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.hearing-page-header {
+  position: relative;
+  margin-bottom: 45px;
+  padding: 210px 0 90px 0;
+  text-align: center;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(../images/hearing/hearing-7.jpeg);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.painting-page-header {
+  position: relative;
+  margin-bottom: 45px;
+  padding: 210px 0 90px 0;
+  text-align: center;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(../images/painting/painting.webp);
+  background-attachment: fixed;
+  background-position: center 65%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.education-page-header {
+  position: relative;
+  margin-bottom: 45px;
+  padding: 210px 0 90px 0;
+  text-align: center;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(../images/education-for/education-for-4.webp);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.women-empowerment-page-header {
+  position: relative;
+  margin-bottom: 45px;
+  padding: 210px 0 90px 0;
+  text-align: center;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(../images/womens-empowerment/womens-empowerment-5.webp);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.hungary-page-header {
+  position: relative;
+  margin-bottom: 45px;
+  padding: 210px 0 90px 0;
+  text-align: center;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(../images/hungary/hungary-3.webp);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

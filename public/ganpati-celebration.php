@@ -11,11 +11,11 @@ include '../app/views/layout/header.php';
 <link rel="stylesheet" href="<?= url('assets/css/events/ganpati-celebration.css') ?>">
 
 <!-- Page Header Start -->
-<div class="page-header">
+<div class="page-header ganpati-page-header">
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h2>Ganpati Festival Celebration</h2>
+                <h2>Ganpati Celebration</h2>
             </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
@@ -95,8 +95,8 @@ include '../app/views/layout/header.php';
                 <div class="hero-visual-ganpati">
                     <div class="ganpati-shrine">
                         <div class="shrine-main-image">
-                            <img src="<?= url('assets/images/ganpati/ganpati.jpeg') ?>"
-                                alt="Ganpati Celebration" style="width:100%;height:400px;object-fit:cover;border-radius:24px;box-shadow:0 20px 50px rgba(0,0,0,0.15);">
+                            <img src="<?= url('assets/images/ganpati/ganesh.jpg') ?>" alt="Ganpati Celebration"
+                                style="width:95%;height:510px;object-fit:fill;border-radius:24px;box-shadow:0 20px 50px rgba(0,0,0,0.15);">
                         </div>
 
                         <div class="shrine-decorations">
@@ -206,7 +206,8 @@ include '../app/views/layout/header.php';
 </div>
 
 <script>
-var ganpatiData = <?= json_encode(array_map(function($img) { return ['src' => url('assets/images/ganpati/' . $img['file']), 'title' => $img['title']]; }, $ganpatiImages)) ?>;
+var ganpatiData =
+    <?= json_encode(array_map(function($img) { return ['src' => url('assets/images/ganpati/' . $img['file']), 'title' => $img['title']]; }, $ganpatiImages)) ?>;
 var ganpatiIdx = 0;
 
 function openGanpatiLightbox(i) {
@@ -215,17 +216,29 @@ function openGanpatiLightbox(i) {
     document.getElementById('ganpatiLightbox').style.display = 'flex';
     document.body.style.overflow = 'hidden';
 }
+
 function closeGanpatiLightbox() {
     document.getElementById('ganpatiLightbox').style.display = 'none';
     document.body.style.overflow = '';
 }
+
 function updateGanpatiLb() {
     document.getElementById('ganpatiLbImg').src = ganpatiData[ganpatiIdx].src;
     document.getElementById('ganpatiLbTitle').textContent = ganpatiData[ganpatiIdx].title;
 }
-function ganpatiPrev() { ganpatiIdx = (ganpatiIdx - 1 + ganpatiData.length) % ganpatiData.length; updateGanpatiLb(); }
-function ganpatiNext() { ganpatiIdx = (ganpatiIdx + 1) % ganpatiData.length; updateGanpatiLb(); }
-document.getElementById('ganpatiLightbox').addEventListener('click', function(e) { if (e.target === this) closeGanpatiLightbox(); });
+
+function ganpatiPrev() {
+    ganpatiIdx = (ganpatiIdx - 1 + ganpatiData.length) % ganpatiData.length;
+    updateGanpatiLb();
+}
+
+function ganpatiNext() {
+    ganpatiIdx = (ganpatiIdx + 1) % ganpatiData.length;
+    updateGanpatiLb();
+}
+document.getElementById('ganpatiLightbox').addEventListener('click', function(e) {
+    if (e.target === this) closeGanpatiLightbox();
+});
 document.addEventListener('keydown', function(e) {
     if (document.getElementById('ganpatiLightbox').style.display !== 'flex') return;
     if (e.key === 'Escape') closeGanpatiLightbox();

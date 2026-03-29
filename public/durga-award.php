@@ -12,7 +12,7 @@ include '../app/views/layout/header.php';
 <link rel="stylesheet" href="<?= url('assets/css/events/durga-award.css') ?>">
 
 <!-- Page Header Start -->
-<div class="page-header">
+<div class="durga-page-header page-header">
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">

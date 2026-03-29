@@ -17,7 +17,7 @@ include '../app/views/layout/header.php';
             </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
-                <a href="<?= url('programs.php') ?>">Programs</a>
+                <a href="<?= url('causes.php') ?>">Programs</a>
                 <a href="<?= url('womens-rights.php') ?>">Women's Rights</a>
             </div>
         </div>
@@ -42,7 +42,7 @@ include '../app/views/layout/header.php';
                         protection services, and advocacy for gender equality. Empowering women through 
                         education about their rights and providing support systems.
                     </p>
-                    <a href="<?php echo url('programs.php'); ?>" class="coming-soon-btn">
+                    <a href="<?php echo url('causes.php'); ?>" class="coming-soon-btn">
                         <i class="fas fa-arrow-left"></i> Back to Programs
                     </a>
                 </div>

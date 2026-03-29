@@ -10,10 +10,12 @@ include '../app/views/layout/header.php';
 
 <link rel="stylesheet" href="<?= url('assets/css/events/education-for-every-kids.css') ?>">
 
-<div class="page-header">
+<div class="page-header education-page-header">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12"><h2>Education For Every Kids</h2></div>
+            <div class="col-12">
+                <h2>Education For Every Kids</h2>
+            </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
                 <a href="<?= url('causes.php') ?>">Causes</a>
@@ -65,7 +67,8 @@ include '../app/views/layout/header.php';
     <div class="edu-image-banner" data-aos="fade-up" data-aos-delay="350">
         <div class="container-fluid">
             <div class="edu-banner-wrap">
-                <img src="<?= url('assets/images/education-for/education-for.webp') ?>" alt="Education For Every Kids" class="edu-banner-img">
+                <img src="<?= url('assets/images/education-for/education-for.webp') ?>" alt="Education For Every Kids"
+                    class="edu-banner-img">
                 <div class="edu-banner-overlay"></div>
 
                 <!-- Overlapping Content Card -->
@@ -73,7 +76,9 @@ include '../app/views/layout/header.php';
                     <div class="row align-items-center">
                         <div class="col-lg-7">
                             <h3>Transforming Lives Through Education</h3>
-                            <p>We believe education is the most powerful tool for transforming lives. Our initiative provides scholarships, school supplies, digital literacy programs, and mentorship to underprivileged children, ensuring every child has access to quality education.</p>
+                            <p>We believe education is the most powerful tool for transforming lives. Our initiative
+                                provides scholarships, school supplies, digital literacy programs, and mentorship to
+                                underprivileged children, ensuring every child has access to quality education.</p>
                         </div>
                         <div class="col-lg-5">
                             <div class="edu-feature-list">
@@ -135,11 +140,13 @@ include '../app/views/layout/header.php';
                         alt="<?= htmlspecialchars($img['title']) ?>"
                         style="width:100%;height:220px;object-fit:cover;display:block;transition:transform 0.4s;"
                         onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                    <div style="position:absolute;top:12px;left:12px;background:rgba(0,0,0,0.6);color:#fff;padding:4px 12px;border-radius:15px;font-size:0.72rem;font-weight:600;backdrop-filter:blur(4px);">
+                    <div
+                        style="position:absolute;top:12px;left:12px;background:rgba(0,0,0,0.6);color:#fff;padding:4px 12px;border-radius:15px;font-size:0.72rem;font-weight:600;backdrop-filter:blur(4px);">
                         Education</div>
                     <div style="position:absolute;inset:0;background:rgba(0,0,0,0.3);opacity:0;transition:opacity 0.3s;display:flex;align-items:center;justify-content:center;"
                         onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0'">
-                        <div style="width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;">
+                        <div
+                            style="width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;">
                             <i class="fas fa-search-plus" style="color:#f26522;font-size:1.2rem;"></i>
                         </div>
                     </div>
@@ -177,7 +184,8 @@ include '../app/views/layout/header.php';
 </div>
 
 <script>
-var eduData = <?= json_encode(array_map(function($img) { return ['src' => url('assets/images/education-for/' . $img['file']), 'title' => $img['title']]; }, $eduImages)) ?>;
+var eduData =
+    <?= json_encode(array_map(function($img) { return ['src' => url('assets/images/education-for/' . $img['file']), 'title' => $img['title']]; }, $eduImages)) ?>;
 var eduIdx = 0;
 
 function openEduLightbox(i) {
@@ -186,17 +194,29 @@ function openEduLightbox(i) {
     document.getElementById('eduLightbox').style.display = 'flex';
     document.body.style.overflow = 'hidden';
 }
+
 function closeEduLightbox() {
     document.getElementById('eduLightbox').style.display = 'none';
     document.body.style.overflow = '';
 }
+
 function updateEduLb() {
     document.getElementById('eduLbImg').src = eduData[eduIdx].src;
     document.getElementById('eduLbTitle').textContent = eduData[eduIdx].title;
 }
-function eduPrev() { eduIdx = (eduIdx - 1 + eduData.length) % eduData.length; updateEduLb(); }
-function eduNext() { eduIdx = (eduIdx + 1) % eduData.length; updateEduLb(); }
-document.getElementById('eduLightbox').addEventListener('click', function(e) { if (e.target === this) closeEduLightbox(); });
+
+function eduPrev() {
+    eduIdx = (eduIdx - 1 + eduData.length) % eduData.length;
+    updateEduLb();
+}
+
+function eduNext() {
+    eduIdx = (eduIdx + 1) % eduData.length;
+    updateEduLb();
+}
+document.getElementById('eduLightbox').addEventListener('click', function(e) {
+    if (e.target === this) closeEduLightbox();
+});
 document.addEventListener('keydown', function(e) {
     if (document.getElementById('eduLightbox').style.display !== 'flex') return;
     if (e.key === 'Escape') closeEduLightbox();
@@ -210,17 +230,28 @@ document.addEventListener('DOMContentLoaded', function() {
     var obs = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
             if (entry.isIntersecting) {
-                var c = entry.target, target = parseInt(c.getAttribute('data-counter')), current = 0, inc = target / 60;
+                var c = entry.target,
+                    target = parseInt(c.getAttribute('data-counter')),
+                    current = 0,
+                    inc = target / 60;
                 var timer = setInterval(function() {
                     current += inc;
-                    if (current >= target) { c.textContent = target.toLocaleString() + '+'; clearInterval(timer); }
-                    else { c.textContent = Math.floor(current).toLocaleString(); }
+                    if (current >= target) {
+                        c.textContent = target.toLocaleString() + '+';
+                        clearInterval(timer);
+                    } else {
+                        c.textContent = Math.floor(current).toLocaleString();
+                    }
                 }, 25);
                 obs.unobserve(c);
             }
         });
-    }, { threshold: 0.7 });
-    counters.forEach(function(c) { obs.observe(c); });
+    }, {
+        threshold: 0.7
+    });
+    counters.forEach(function(c) {
+        obs.observe(c);
+    });
 });
 </script>
 

@@ -33,6 +33,7 @@
 
     <!-- Template Stylesheet -->
     <link href="<?= asset('css/style.css') ?>" rel="stylesheet">
+    <link href="<?= asset('css/page-header.css') ?>" rel="stylesheet">
     <link href="<?= asset('css/navbar-responsive.css') ?>" rel="stylesheet">
     <link href="<?= asset('css/mobile-navbar.css') ?>" rel="stylesheet">
     <link href="<?= asset('css/hero-slider.css') ?>" rel="stylesheet">
@@ -151,7 +152,6 @@
                         </a>
                     </li>
 
-
                     <!-- Events Mega Dropdown -->
                     <li class="nav-item dropdown mega-dropdown">
                         <a class="nav-link dropdown-toggle" href="<?= url('event.php') ?>" id="eventsDropdown"
@@ -221,10 +221,10 @@
                         </div>
                     </li>
 
-                    <!-- Programs -->
+                    <!-- Causes -->
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= url('programs.php') ?>">
-                            <span class="nav-text">Programs</span>
+                        <a class="nav-link" href="<?= url('causes.php') ?>">
+                            <span class="nav-text">Our Causes</span>
                         </a>
                     </li>
 
@@ -295,6 +295,7 @@
                             <span class="nav-text">Gallery</span>
                         </a>
                     </li>
+
                 </ul>
 
                 <!-- Mobile CTA Button - Inside Mobile Menu -->

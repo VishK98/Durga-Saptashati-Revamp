@@ -8,7 +8,7 @@ include '../app/views/layout/header.php';
 
 <link rel="stylesheet" href="<?= url('assets/css/events/international-yoga-day.css') ?>">
 
-<div class="page-header">
+<div class="page-header hearing-page-header">
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">

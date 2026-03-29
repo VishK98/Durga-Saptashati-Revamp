@@ -12,7 +12,7 @@ include '../app/views/layout/header.php';
 <link rel="stylesheet" href="<?= url('assets/css/events/international-yoga-day.css') ?>">
 
 <!-- Page Header Start -->
-<div class="page-header">
+<div class="yoga-page-header page-header">
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
@@ -115,8 +115,8 @@ include '../app/views/layout/header.php';
                 <div class="hero-visual-yoga">
                     <div class="yoga-pose-showcase">
                         <div class="pose-card main-pose">
-                            <img src="<?= url('assets/images/yoga-day/yoga.jpeg') ?>"
-                                alt="Yoga Day Celebration" class="pose-image">
+                            <img src="<?= url('assets/images/yoga-day/yoga.jpeg') ?>" alt="Yoga Day Celebration"
+                                class="pose-image">
                             <div class="pose-overlay">
                                 <span class="pose-name">Yoga Day</span>
                                 <span class="pose-benefit">Community Wellness</span>
@@ -125,12 +125,10 @@ include '../app/views/layout/header.php';
 
                         <div class="floating-poses">
                             <div class="mini-pose pose-1">
-                                <img src="<?= url('assets/images/yoga-day/yoga-1.jpeg') ?>"
-                                    alt="Morning Meditation">
+                                <img src="<?= url('assets/images/yoga-day/yoga-1.jpeg') ?>" alt="Morning Meditation">
                             </div>
                             <div class="mini-pose pose-2">
-                                <img src="<?= url('assets/images/yoga-day/yoga-2.jpeg') ?>"
-                                    alt="Group Yoga">
+                                <img src="<?= url('assets/images/yoga-day/yoga-2.jpeg') ?>" alt="Group Yoga">
                             </div>
                         </div>
 

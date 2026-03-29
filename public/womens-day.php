@@ -9,7 +9,7 @@ include '../app/views/layout/header.php';
 <!-- Custom CSS -->
 <link rel="stylesheet" href="<?= url('assets/css/events/womens-day.css') ?>">
 
-<div class="page-header">
+<div class="page-header woman-page-header">
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">

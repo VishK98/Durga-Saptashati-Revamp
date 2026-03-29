@@ -10,10 +10,6 @@ $causes = [
     ['title' => 'Hunger Reduction / Food Donation', 'icon' => 'fa-utensils', 'url' => 'no-people-hungry.php', 'img' => 'hungary/hungary.webp', 'desc' => 'We organise frequent food donation drives, health and hygiene awareness campaigns, and run a free kitchen in Dwarka.', 'tag' => 'Food Drive'],
     ['title' => 'Education For Everyone', 'icon' => 'fa-graduation-cap', 'url' => 'education-for-every-kids.php', 'img' => 'education-for/education-for.webp', 'desc' => 'Durga Saptashati NGO is committed to providing access to quality education for all underprivileged children.', 'tag' => 'Education'],
     ['title' => 'Sustainable Livelihood', 'icon' => 'fa-briefcase', 'url' => 'livelihood.php', 'img' => 'livelihood/livelihood.webp', 'desc' => 'Empowering individuals with vocational training, skill development, and employment support for dignified lives.', 'tag' => 'Employment'],
-    ['title' => 'International Yoga Day', 'icon' => 'fa-spa', 'url' => 'yoga-day.php', 'img' => 'yoga-day/yoga.jpeg', 'desc' => 'Promoting physical and mental well-being through mass yoga sessions, health awareness, and community fitness.', 'tag' => 'Wellness'],
-    ['title' => "International Women's Day", 'icon' => 'fa-venus', 'url' => 'womens-day.php', 'img' => 'woman-day/woman.jpeg', 'desc' => "Celebrating women's achievements through felicitation events, empowerment workshops, and community programs.", 'tag' => 'Celebration'],
-    ['title' => 'Painting Competition', 'icon' => 'fa-palette', 'url' => 'painting-competition.php', 'img' => 'painting/painting.webp', 'desc' => 'Nurturing creativity in children through inter-school painting competitions, workshops, and exhibitions.', 'tag' => 'Arts & Culture'],
-    ['title' => 'Cultural Programme', 'icon' => 'fa-music', 'url' => 'cultural-programme.php', 'img' => 'yoga-day/yoga-7.webp', 'desc' => 'Preserving Indian cultural heritage through dance, music, drama, and community events.', 'tag' => 'Heritage'],
 ];
 ?>
 
@@ -64,7 +60,8 @@ $causes = [
             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="<?= ($i % 3) * 80 ?>">
                 <a href="<?= url($cause['url']) ?>" class="cause-card">
                     <div class="card-img-wrap">
-                        <img src="<?= url('assets/images/' . $cause['img']) ?>" alt="<?= htmlspecialchars($cause['title']) ?>">
+                        <img src="<?= url('assets/images/' . $cause['img']) ?>"
+                            alt="<?= htmlspecialchars($cause['title']) ?>">
                         <span class="card-tag"><i class="fas <?= $cause['icon'] ?>"></i> <?= $cause['tag'] ?></span>
                     </div>
                     <div class="card-content">

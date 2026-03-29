@@ -17,7 +17,7 @@ include '../app/views/layout/header.php';
             </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
-                <a href="<?= url('programs.php') ?>">Programs</a>
+                <a href="<?= url('causes.php') ?>">Programs</a>
                 <a href="<?= url('maternal-care.php') ?>">Maternal Care</a>
             </div>
         </div>
@@ -42,7 +42,7 @@ include '../app/views/layout/header.php';
                         postnatal care, and newborn health services. Our initiative includes nutrition support 
                         for expecting mothers and healthcare education for healthy families.
                     </p>
-                    <a href="<?php echo url('programs.php'); ?>" class="coming-soon-btn">
+                    <a href="<?php echo url('causes.php'); ?>" class="coming-soon-btn">
                         <i class="fas fa-arrow-left"></i> Back to Programs
                     </a>
                 </div>

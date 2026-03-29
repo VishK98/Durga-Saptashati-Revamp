@@ -12,7 +12,7 @@ include '../app/views/layout/header.php';
 <link rel="stylesheet" href="<?= url('assets/css/events/womens-empowerment.css') ?>">
 
 <!-- Page Header Start -->
-<div class="page-header">
+<div class="page-header women-empowerment-page-header">
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
@@ -36,13 +36,16 @@ include '../app/views/layout/header.php';
             <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
                 <div class="we-image-stack">
                     <div class="we-img-main">
-                        <img src="<?= url('assets/images/womens-empowerment/womens-empowerment.webp') ?>" alt="Women's Empowerment">
+                        <img src="<?= url('assets/images/womens-empowerment/womens-empowerment.webp') ?>"
+                            alt="Women's Empowerment">
                     </div>
                     <div class="we-img-secondary">
-                        <img src="<?= url('assets/images/womens-empowerment/womens-empowerment-1.webp') ?>" alt="Skill Development">
+                        <img src="<?= url('assets/images/womens-empowerment/womens-empowerment-1.webp') ?>"
+                            alt="Skill Development">
                     </div>
                     <div class="we-img-accent">
-                        <img src="<?= url('assets/images/womens-empowerment/womens-empowerment-2.webp') ?>" alt="Awareness Campaign">
+                        <img src="<?= url('assets/images/womens-empowerment/womens-empowerment-2.webp') ?>"
+                            alt="Awareness Campaign">
                     </div>
                     <!-- Floating stat on image -->
                     <div class="we-float-stat we-float-stat-1" data-aos="zoom-in" data-aos-delay="400">
@@ -167,7 +170,8 @@ include '../app/views/layout/header.php';
                 </div>
                 <div style="padding:14px 16px;">
                     <h6 style="color:#1a1b2e;font-weight:600;font-size:0.9rem;margin:0;">
-                        <?= htmlspecialchars($img['title']) ?></h6>
+                        <?= htmlspecialchars($img['title']) ?>
+                    </h6>
                 </div>
             </div>
             <?php endforeach; ?>
@@ -201,7 +205,8 @@ include '../app/views/layout/header.php';
 <!-- JavaScript -->
 <script>
 var weData =
-    <?= json_encode(array_map(function($img) { return ['src' => url('assets/images/womens-empowerment/' . $img['file']), 'title' => $img['title']]; }, $weImages)) ?>;
+    <?= json_encode(array_map(function ($img) {
+            return ['src' => url('assets/images/womens-empowerment/' . $img['file']), 'title' => $img['title']]; }, $weImages)) ?>;
 var weIdx = 0;
 
 function openWeLightbox(i) {

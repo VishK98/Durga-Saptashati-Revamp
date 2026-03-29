@@ -1,5 +1,229 @@
 /* ===== Home Page (index.php) Styles ===== */
 
+/* Foundation Name */
+.home-foundation-name {
+    background: linear-gradient(135deg, #f26522, #ff8c42);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 5px;
+    font-weight: 800;
+    font-size: clamp(1.05rem, 2vw, 1.35rem);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    display: inline-block;
+}
+
+/* Tagline */
+.home-tagline {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+}
+
+.home-tagline span {
+    color: #1a1b2e;
+    font-weight: 600;
+    font-size: 0.72rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    position: relative;
+    padding: 0 14px;
+}
+
+.home-tagline span:first-child {
+    padding-left: 0;
+}
+
+.home-tagline span:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5px;
+    height: 5px;
+    background: #f26522;
+    border-radius: 50%;
+}
+
+/* Commitment Title */
+.home-commitment-title {
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    font-weight: 800;
+    color: #1a1b2e;
+    margin-bottom: 22px;
+    line-height: 1.15;
+    position: relative;
+    padding-bottom: 15px;
+    white-space: nowrap;
+}
+
+.home-commitment-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #f26522, #ff8c42);
+    border-radius: 2px;
+}
+
+.home-commitment-title::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 120px;
+    height: 4px;
+    background: rgba(242, 101, 34, 0.12);
+    border-radius: 2px;
+}
+
+.home-commitment-title span {
+    background: linear-gradient(135deg, #f26522, #ff8c42);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Stats Overlay on Image */
+.home-stats-overlay {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+}
+
+.home-stats-bar {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    border-radius: 14px;
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.home-stat-item {
+    text-align: center;
+    flex: 1;
+    position: relative;
+    padding: 0 15px;
+}
+
+.home-stat-item:not(.home-stat-last)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 35px;
+    background: linear-gradient(180deg, transparent, rgba(242, 101, 34, 0.2), transparent);
+}
+
+.home-stat-item h4 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin: 0;
+    background: linear-gradient(135deg, #f26522, #ff8c42);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+}
+
+.home-stat-item small {
+    color: #555;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 4px;
+    display: block;
+}
+
+/* About Description */
+.home-about-desc {
+    color: #555;
+    line-height: 1.85;
+    font-size: 0.95rem;
+}
+
+.home-about-desc strong {
+    color: #1a1b2e;
+}
+
+/* Quote Box */
+.home-quote-box {
+    background: linear-gradient(135deg, rgba(242, 101, 34, 0.08), rgba(242, 101, 34, 0.03));
+    border-left: 4px solid #f26522;
+    border-radius: 0 12px 12px 0;
+    padding: 18px 22px;
+    margin-bottom: 25px;
+}
+
+.home-quote-box p {
+    color: #1a1b2e;
+    line-height: 1.8;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin: 0;
+    font-style: italic;
+}
+
+/* Learn More Button */
+.home-learn-more-btn {
+    display: inline-block;
+    background: #f26522;
+    color: #fff;
+    padding: 10px 28px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    box-shadow: 0 5px 20px rgba(242, 101, 34, 0.3);
+    transition: all 0.3s ease;
+}
+
+.home-learn-more-btn:hover {
+    box-shadow: 0 8px 30px rgba(242, 101, 34, 0.45);
+    transform: translateY(-2px);
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .home-commitment-title {
+        white-space: normal;
+        font-size: clamp(1.1rem, 4vw, 1.5rem);
+    }
+
+    .home-stats-bar {
+        padding: 14px 10px;
+    }
+
+    .home-stat-item h4 {
+        font-size: 1.2rem;
+    }
+
+    .home-stat-item small {
+        font-size: 0.6rem;
+    }
+
+    .home-tagline span {
+        font-size: 0.6rem;
+        padding: 0 8px;
+    }
+}
+
 /* Sanskrit Section */
 .sanskrit-section {
     position: relative;

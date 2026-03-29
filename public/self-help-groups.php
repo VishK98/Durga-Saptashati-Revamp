@@ -13,7 +13,7 @@ include '../app/views/layout/header.php';
             <div class="col-12"><h2>Self Help Groups</h2></div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
-                <a href="<?= url('programs.php') ?>">Programs</a>
+                <a href="<?= url('causes.php') ?>">Programs</a>
                 <a href="<?= url('self-help-groups.php') ?>">Self Help Groups</a>
             </div>
         </div>
@@ -37,7 +37,7 @@ include '../app/views/layout/header.php';
                         savings programs, collective lending, and entrepreneurship support. Building sustainable 
                         financial systems for community development and women's economic independence.
                     </p>
-                    <a href="<?php echo url('programs.php'); ?>" class="coming-soon-btn">
+                    <a href="<?php echo url('causes.php'); ?>" class="coming-soon-btn">
                         <i class="fas fa-arrow-left"></i> Back to Programs
                     </a>
                 </div>

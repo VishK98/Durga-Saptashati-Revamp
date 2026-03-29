@@ -46,9 +46,6 @@
                             <a href="<?php echo url('about.php'); ?>" class="footer-link">
                                 <i class="fas fa-chevron-right"></i>About Us
                             </a>
-                            <a href="<?php echo url('programs.php'); ?>" class="footer-link">
-                                <i class="fas fa-chevron-right"></i>Our Programs
-                            </a>
                             <a href="<?php echo url('causes.php'); ?>" class="footer-link">
                                 <i class="fas fa-chevron-right"></i>Our Causes
                             </a>
