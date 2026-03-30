@@ -437,6 +437,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'delet
     exit;
 }
 
+// Auto-create membership_plans table
+try {
+    $pdo->exec("CREATE TABLE IF NOT EXISTS membership_plans (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        slug VARCHAR(50) NOT NULL UNIQUE,
+        name VARCHAR(100) NOT NULL,
+        description VARCHAR(255) DEFAULT '',
+        price DECIMAL(10,2) NOT NULL,
+        duration_label VARCHAR(100) DEFAULT '',
+        icon VARCHAR(50) DEFAULT 'fa-id-card',
+        is_best_value TINYINT(1) DEFAULT 0,
+        sort_order INT DEFAULT 0,
+        is_active TINYINT(1) DEFAULT 1,
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    )");
+    // Seed default plans if empty
+    $planCount = $pdo->query("SELECT COUNT(*) FROM membership_plans")->fetchColumn();
+    if ($planCount == 0) {
+        $pdo->exec("INSERT INTO membership_plans (slug, name, description, price, duration_label, icon, is_best_value, sort_order) VALUES
+            ('1-year', '1-Year Membership', 'Annual contribution', 501.00, '1 Year', 'fa-calendar-alt', 0, 1),
+            ('6-year', '6-Year Membership', 'Extended commitment', 2500.00, '6 Years', 'fa-calendar-check', 0, 2),
+            ('lifetime', 'Lifetime Membership', 'One-time commitment', 11000.00, 'Lifetime', 'fa-infinity', 1, 3)
+        ");
+    }
+} catch (Exception $e) {}
+
 // Auto-create members table
 try {
     $pdo->exec("CREATE TABLE IF NOT EXISTS members (
@@ -447,13 +473,90 @@ try {
         address TEXT,
         email VARCHAR(255),
         mobile VARCHAR(20),
-        membership_type ENUM('1-year','6-year','lifetime') NOT NULL,
-        payment_mode ENUM('Bank Transfer','UPI','Cash') NOT NULL,
+        membership_type VARCHAR(50) NOT NULL,
+        payment_mode VARCHAR(50) NOT NULL DEFAULT 'N/A',
         payment_screenshot VARCHAR(255) DEFAULT NULL,
         status ENUM('pending','approved','rejected') DEFAULT 'pending',
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )");
+    // Alter membership_type column if it's still ENUM (migration)
+    try {
+        $pdo->exec("ALTER TABLE members MODIFY membership_type VARCHAR(50) NOT NULL");
+        $pdo->exec("ALTER TABLE members MODIFY payment_mode VARCHAR(50) NOT NULL DEFAULT 'N/A'");
+    } catch (Exception $e) {}
 } catch (Exception $e) {}
+
+// Handle update membership plan
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'update_membership_plan') {
+    $stmt = $pdo->prepare("UPDATE membership_plans SET name = ?, description = ?, price = ?, duration_label = ?, icon = ?, is_best_value = ?, is_active = ?, sort_order = ? WHERE id = ?");
+    $stmt->execute([
+        trim($_POST['plan_name']), trim($_POST['plan_description']), (float)$_POST['plan_price'],
+        trim($_POST['plan_duration_label']), trim($_POST['plan_icon']),
+        isset($_POST['plan_is_best_value']) ? 1 : 0, isset($_POST['plan_is_active']) ? 1 : 0,
+        (int)$_POST['plan_sort_order'], (int)$_POST['plan_id']
+    ]);
+    $_SESSION['member_success'] = 'Membership plan updated successfully.';
+    header('Location: admin.php?page=members');
+    exit;
+}
+
+// Handle add membership plan
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'add_membership_plan') {
+    $slug = strtolower(trim(preg_replace('/[^a-zA-Z0-9-]/', '-', $_POST['plan_slug'])));
+    $stmt = $pdo->prepare("INSERT INTO membership_plans (slug, name, description, price, duration_label, icon, is_best_value, sort_order, is_active) VALUES (?, ?, ?, ?, ?, ?, ?, ?, 1)");
+    $stmt->execute([
+        $slug, trim($_POST['plan_name']), trim($_POST['plan_description']),
+        (float)$_POST['plan_price'], trim($_POST['plan_duration_label']),
+        trim($_POST['plan_icon']), isset($_POST['plan_is_best_value']) ? 1 : 0,
+        (int)$_POST['plan_sort_order']
+    ]);
+    $_SESSION['member_success'] = 'New membership plan added.';
+    header('Location: admin.php?page=members');
+    exit;
+}
+
+// Handle delete membership plan
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'delete_membership_plan') {
+    $pdo->prepare("DELETE FROM membership_plans WHERE id = ?")->execute([(int)$_POST['plan_id']]);
+    $_SESSION['member_success'] = 'Membership plan deleted.';
+    header('Location: admin.php?page=members');
+    exit;
+}
+
+// Handle import members CSV
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'import_members') {
+    if (!empty($_FILES['csv_file']['tmp_name'])) {
+        $handle = fopen($_FILES['csv_file']['tmp_name'], 'r');
+        $header = fgetcsv($handle); // skip header row
+        $imported = 0;
+        $errors = 0;
+        $stmt = $pdo->prepare("INSERT INTO members (full_name, date_of_birth, gender, address, email, mobile, membership_type, payment_mode, status, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        while (($row = fgetcsv($handle)) !== false) {
+            if (count($row) < 2) continue; // skip empty rows
+            try {
+                $stmt->execute([
+                    trim($row[0] ?? ''),                          // full_name
+                    !empty($row[1]) ? $row[1] : null,             // date_of_birth
+                    trim($row[2] ?? 'Male'),                      // gender
+                    trim($row[3] ?? ''),                          // address
+                    trim($row[4] ?? ''),                          // email
+                    trim($row[5] ?? ''),                          // mobile
+                    trim($row[6] ?? ''),                          // membership_type (slug)
+                    trim($row[7] ?? 'N/A'),                       // payment_mode
+                    trim($row[8] ?? 'approved'),                  // status
+                    !empty($row[9]) ? $row[9] : date('Y-m-d H:i:s') // created_at
+                ]);
+                $imported++;
+            } catch (Exception $e) { $errors++; }
+        }
+        fclose($handle);
+        $_SESSION['member_success'] = "Imported $imported members successfully." . ($errors ? " $errors rows had errors." : '');
+    } else {
+        $_SESSION['member_success'] = 'No file uploaded.';
+    }
+    header('Location: admin.php?page=members');
+    exit;
+}
 
 // Handle approve member
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'approve_member') {
@@ -511,9 +614,75 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'submi
     exit;
 }
 
+// Auto-create financial_reports table
+try {
+    $pdo->exec("CREATE TABLE IF NOT EXISTS financial_reports (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        title VARCHAR(255) NOT NULL,
+        description VARCHAR(255) DEFAULT 'Audit Report',
+        icon VARCHAR(100) DEFAULT 'fa-file-pdf',
+        file VARCHAR(255) NOT NULL,
+        sort_order INT DEFAULT 0,
+        is_active TINYINT(1) DEFAULT 1,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )");
+} catch (Exception $e) {}
+
+// Upload financial report
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'upload_report') {
+    if (!empty($_FILES['report_file']['name'])) {
+        $uploadDir = __DIR__ . '/assets/reports/';
+        if (!is_dir($uploadDir)) mkdir($uploadDir, 0777, true);
+        $ext = strtolower(pathinfo($_FILES['report_file']['name'], PATHINFO_EXTENSION));
+        if ($ext === 'pdf' && $_FILES['report_file']['size'] <= 10*1024*1024) {
+            $filename = 'report_' . time() . '_' . preg_replace('/[^a-zA-Z0-9\-]/', '', $_POST['title']) . '.pdf';
+            if (move_uploaded_file($_FILES['report_file']['tmp_name'], $uploadDir . $filename)) {
+                $stmt = $pdo->prepare("INSERT INTO financial_reports (title, description, icon, file, sort_order) VALUES (?, ?, ?, ?, ?)");
+                $stmt->execute([
+                    trim($_POST['title']),
+                    trim($_POST['description'] ?: 'Audit Report'),
+                    trim($_POST['icon'] ?: 'fa-file-pdf'),
+                    $filename,
+                    (int)($_POST['sort_order'] ?? 0)
+                ]);
+                $_SESSION['toast_success'] = 'Financial report uploaded successfully.';
+            } else {
+                $_SESSION['toast_error'] = 'Failed to upload file.';
+            }
+        } else {
+            $_SESSION['toast_error'] = 'Only PDF files up to 10MB allowed.';
+        }
+    }
+    header('Location: admin.php?page=reports');
+    exit;
+}
+
+// Delete financial report
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'delete_report') {
+    $stmt = $pdo->prepare("SELECT file FROM financial_reports WHERE id = ?");
+    $stmt->execute([(int)$_POST['report_id']]);
+    $r = $stmt->fetch();
+    if ($r && $r['file']) {
+        $path = __DIR__ . '/assets/reports/' . $r['file'];
+        if (file_exists($path)) unlink($path);
+    }
+    $pdo->prepare("DELETE FROM financial_reports WHERE id = ?")->execute([(int)$_POST['report_id']]);
+    $_SESSION['toast_success'] = 'Report deleted.';
+    header('Location: admin.php?page=reports');
+    exit;
+}
+
+// Toggle report active/inactive
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'toggle_report') {
+    $pdo->prepare("UPDATE financial_reports SET is_active = NOT is_active WHERE id = ?")->execute([(int)$_POST['report_id']]);
+    $_SESSION['toast_success'] = 'Report status updated.';
+    header('Location: admin.php?page=reports');
+    exit;
+}
+
 // Route to correct page
 $page = $_GET['page'] ?? 'dashboard';
-$allowedPages = ['dashboard', 'blogs', 'queries', 'subscribers', 'events', 'gallery', 'settings', 'comments', 'donations', 'volunteers', 'careers', 'members'];
+$allowedPages = ['dashboard', 'blogs', 'queries', 'subscribers', 'events', 'gallery', 'settings', 'comments', 'donations', 'volunteers', 'careers', 'members', 'reports'];
 
 if (!in_array($page, $allowedPages)) {
     $page = 'dashboard';

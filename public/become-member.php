@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once '../app/config/config.php';
 $pageTitle = "Become a Member";
 $pageDescription = "Join Durga Saptashati Foundation as a member. Support our mission to empower underprivileged women and children through education, healthcare, and community development.";
@@ -8,6 +9,13 @@ include '../app/views/layout/header.php';
 $success = $_SESSION['membership_success'] ?? null;
 if ($success)
     unset($_SESSION['membership_success']);
+
+// Fetch active membership plans from DB
+try {
+    $membershipPlans = $pdo->query("SELECT * FROM membership_plans WHERE is_active = 1 ORDER BY sort_order ASC")->fetchAll();
+} catch (Exception $e) {
+    $membershipPlans = [];
+}
 ?>
 
 <link rel="stylesheet" href="<?= url('assets/css/become-member.css') ?>">
@@ -61,25 +69,17 @@ if ($success)
                     </div>
                     <h5 class="mbr-options-title">Membership Options</h5>
                     <div class="mbr-options">
+                        <?php foreach ($membershipPlans as $plan): ?>
                         <div class="mbr-option">
-                            <div><strong>1-Year Membership</strong>
-                                <p>Annual contribution</p>
-                            </div>
-                            <span class="mbr-price">&#8377;501</span>
-                        </div>
-                        <div class="mbr-option">
-                            <div><strong>6-Year Membership</strong>
-                                <p>Extended commitment</p>
-                            </div>
-                            <span class="mbr-price">&#8377;2,500</span>
-                        </div>
-                        <div class="mbr-option">
+                            <?php if ($plan['is_best_value']): ?>
                             <span class="mbr-best-value">BEST VALUE</span>
-                            <div><strong>Lifetime Membership</strong>
-                                <p>One-time commitment</p>
+                            <?php endif; ?>
+                            <div><strong><?= htmlspecialchars($plan['name']) ?></strong>
+                                <p><?= htmlspecialchars($plan['description']) ?></p>
                             </div>
-                            <span class="mbr-price">&#8377;11,000</span>
+                            <span class="mbr-price">&#8377;<?= number_format($plan['price'], 0) ?></span>
                         </div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
             </div>
@@ -144,18 +144,12 @@ if ($success)
                                         <i class="fas fa-chevron-down"></i>
                                     </div>
                                     <div class="cdd-options">
+                                        <?php foreach ($membershipPlans as $plan): ?>
                                         <div class="cdd-option"
-                                            onclick="selectCdd('membershipDd','1-year','1-Year Membership — ₹501','fa-calendar-alt')">
-                                            <i class="fas fa-calendar-alt"></i> 1-Year Membership — ₹501
+                                            onclick="selectCdd('membershipDd','<?= htmlspecialchars($plan['slug']) ?>','<?= htmlspecialchars($plan['name']) ?> — ₹<?= number_format($plan['price'], 0) ?>','<?= htmlspecialchars($plan['icon']) ?>')">
+                                            <i class="fas <?= htmlspecialchars($plan['icon']) ?>"></i> <?= htmlspecialchars($plan['name']) ?> — &#8377;<?= number_format($plan['price'], 0) ?>
                                         </div>
-                                        <div class="cdd-option"
-                                            onclick="selectCdd('membershipDd','6-year','6-Year Membership — ₹2,500','fa-calendar-check')">
-                                            <i class="fas fa-calendar-check"></i> 6-Year Membership — ₹2,500
-                                        </div>
-                                        <div class="cdd-option"
-                                            onclick="selectCdd('membershipDd','lifetime','Lifetime Membership — ₹11,000','fa-infinity')">
-                                            <i class="fas fa-infinity"></i> Lifetime Membership — ₹11,000
-                                        </div>
+                                        <?php endforeach; ?>
                                     </div>
                                 </div>
                             </div>

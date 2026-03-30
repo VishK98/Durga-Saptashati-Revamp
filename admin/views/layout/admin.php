@@ -78,6 +78,12 @@
                     <?php if ($newAppsCount > 0): ?><span class="badge-count"><?= $newAppsCount ?></span><?php endif; ?>
                 </a>
 
+                <?php try { $reportsCount = $pdo->query("SELECT COUNT(*) FROM financial_reports")->fetchColumn(); } catch(Exception $e) { $reportsCount = 0; } ?>
+                <a href="admin.php?page=reports" class="sidebar-item <?= $currentPage === 'reports' ? 'active' : '' ?>">
+                    <i class="fas fa-file-invoice-dollar"></i> <span>Reports</span>
+                    <?php if ($reportsCount > 0): ?><span class="badge-count"><?= $reportsCount ?></span><?php endif; ?>
+                </a>
+
                 <div class="sidebar-menu-label">Content</div>
 
                 <a href="admin.php?page=events" class="sidebar-item <?= $currentPage === 'events' ? 'active' : '' ?>">

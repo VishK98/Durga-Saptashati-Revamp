@@ -253,19 +253,6 @@ include '../app/views/layout/header.php';
 
             <!-- Sidebar -->
             <div class="col-lg-4">
-                <!-- About Widget -->
-                <div
-                    style="background:#fff;border-radius:14px;padding:25px;box-shadow:0 5px 25px rgba(0,0,0,0.06);margin-bottom:25px;">
-                    <h5
-                        style="color:#1a1b2e;font-weight:700;margin-bottom:15px;padding-bottom:12px;border-bottom:2px solid #f26522;display:inline-block;">
-                        About Us</h5>
-                    <p style="color:#666;font-size:0.88rem;line-height:1.7;">Durga Saptashati Foundation is a trusted
-                        charity organisation in Delhi working for the empowerment of women, deprived children, senior
-                        citizens, and people with disabilities.</p>
-                    <a href="<?= url('about.php') ?>" style="color:#f26522;font-weight:600;font-size:0.85rem;">Learn
-                        More <i class="fas fa-arrow-right ml-1"></i></a>
-                </div>
-
                 <!-- Recent Posts -->
                 <?php
                 $recentStmt = $pdo->prepare("SELECT title, slug, image, created_at FROM blogs WHERE status = 'published' AND id != ? ORDER BY created_at DESC LIMIT 5");
