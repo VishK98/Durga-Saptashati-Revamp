@@ -129,67 +129,148 @@ include '../app/views/layout/header.php';
     </div>
 </div>
 
-<!-- ============================================ -->
-<!-- SECTION 2: Vision & Mission                  -->
-<!-- ============================================ -->
-<section id="vision-mission" class="abt-section">
-    <div class="container-fluid">
-        <div class="abt-section-header text-center" data-aos="fade-up">
-            <div class="abt-section-label abt-section-label--center">
-                <i class="fas fa-bullseye"></i>
-                <span>Our Purpose</span>
-            </div>
-            <h2 class="abt-section-title">Vision & Mission</h2>
-            <p class="abt-section-subtitle">Guiding principles that drive every initiative we undertake</p>
-        </div>
 
-        <!-- Mission Content -->
-        <div class="abt-mission-block" data-aos="fade-up" data-aos-delay="100">
-            <div class="row align-items-center">
-                <div class="col-lg-7">
-                    <div class="abt-mission-text">
-                        <h3>Our <span class="abt-highlight">Mission</span> in Action</h3>
-                        <p>Widowed women, handicapped people, disabled people, have to struggle for their rights and are
-                            frequently
-                            victims of discrimination. At Saptashati Foundation, our team works towards empowering the
-                            widowed women
-                            of our Indian society and, we ensure that we reach every corner of India to uplift these
-                            widowed from
-                            their distressed state.</p>
-                    </div>
-                    <div class="row mt-4">
-                        <?php
-                        $focusAreas = [
-                            ['icon' => 'fa-female', 'title' => "Women's Empowerment", 'desc' => 'Supporting widowed women and single mothers'],
-                            ['icon' => 'fa-wheelchair', 'title' => 'Disability Support', 'desc' => 'Comprehensive care for disabled individuals'],
-                            ['icon' => 'fa-user-friends', 'title' => 'Senior Care', 'desc' => 'Dignified support for elderly citizens'],
-                        ];
-                        foreach ($focusAreas as $area):
-                            ?>
-                        <div class="col-md-4 mb-3">
-                            <div class="abt-focus-card">
-                                <div class="abt-focus-icon"><i class="fas <?= $area['icon'] ?>"></i></div>
-                                <strong><?= $area['title'] ?></strong>
-                                <p><?= $area['desc'] ?></p>
+<!-- ============================================ -->
+<!-- SECTION: Mission — Split with accent sidebar -->
+<!-- ============================================ -->
+<section style="padding:70px 0;background:#fff;overflow:hidden;">
+    <div class="container">
+        <div class="row align-items-start">
+            <!-- Left: Sticky accent card -->
+            <div class="col-lg-4 mb-4" data-aos="fade-right">
+                <div style="position:sticky;top:120px;">
+                    <div style="background:linear-gradient(135deg,#f26522,#ff8c42);border-radius:20px;padding:35px 28px;color:#fff;box-shadow:0 15px 40px rgba(242,101,34,0.25);">
+                        <i class="fas fa-bullseye" style="font-size:2.5rem;opacity:0.3;margin-bottom:15px;display:block;"></i>
+                        <h3 style="font-weight:800;font-size:1.6rem;margin-bottom:12px;">Our Mission</h3>
+                        <p style="opacity:0.9;line-height:1.7;font-size:0.9rem;margin-bottom:25px;">Empowering the voiceless, uplifting the vulnerable, and creating a just society through grassroots action.</p>
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+                            <div style="background:rgba(255,255,255,0.15);border-radius:12px;padding:14px;text-align:center;backdrop-filter:blur(6px);">
+                                <strong style="font-size:1.5rem;display:block;">5+</strong>
+                                <small style="font-size:0.68rem;opacity:0.85;">Years of Service</small>
+                            </div>
+                            <div style="background:rgba(255,255,255,0.15);border-radius:12px;padding:14px;text-align:center;backdrop-filter:blur(6px);">
+                                <strong style="font-size:1.5rem;display:block;">5K+</strong>
+                                <small style="font-size:0.68rem;opacity:0.85;">Lives Touched</small>
+                            </div>
+                            <div style="background:rgba(255,255,255,0.15);border-radius:12px;padding:14px;text-align:center;backdrop-filter:blur(6px);">
+                                <strong style="font-size:1.5rem;display:block;">50+</strong>
+                                <small style="font-size:0.68rem;opacity:0.85;">Programs Run</small>
+                            </div>
+                            <div style="background:rgba(255,255,255,0.15);border-radius:12px;padding:14px;text-align:center;backdrop-filter:blur(6px);">
+                                <strong style="font-size:1.5rem;display:block;">100+</strong>
+                                <small style="font-size:0.68rem;opacity:0.85;">Volunteers</small>
                             </div>
                         </div>
-                        <?php endforeach; ?>
-                    </div>
-                </div>
-                <div class="col-lg-5" data-aos="fade-left" data-aos-delay="200">
-                    <div class="abt-mission-stats-grid">
-                        <div class="abt-ms-item"><span class="abt-ms-num">15+</span><span class="abt-ms-label">Years
-                                Experience</span></div>
-                        <div class="abt-ms-item"><span class="abt-ms-num">100K+</span><span class="abt-ms-label">Lives
-                                Touched</span></div>
-                        <div class="abt-ms-item"><span class="abt-ms-num">15</span><span class="abt-ms-label">States
-                                Covered</span></div>
-                        <div class="abt-ms-item"><span class="abt-ms-num">500+</span><span class="abt-ms-label">Programs
-                                Run</span></div>
                     </div>
                 </div>
             </div>
+
+            <!-- Right: Mission content -->
+            <div class="col-lg-8" data-aos="fade-left">
+                <p style="color:#555;line-height:1.9;font-size:0.95rem;margin-bottom:20px;">
+                    Widowed women, handicapped people, disabled people, have to struggle for their rights and are frequently victims of discrimination. At Saptashati Foundation, our team works towards empowering the widowed women of our Indian society and we ensure that we reach every corner of India to uplift these widowed from their distressed state.
+                </p>
+                <p style="color:#555;line-height:1.9;font-size:0.95rem;margin-bottom:20px;">
+                    Widowed women and their children need our support and care. Saptashati Foundation was established with the aim to inspire a sense of welfare and bring a social revolution. Our purpose is to offer financial, social, and economic security to women who have endured the grief of widowhood.
+                </p>
+
+                <div style="background:linear-gradient(135deg,rgba(242,101,34,0.06),rgba(242,101,34,0.02));border-left:4px solid #f26522;border-radius:0 14px 14px 0;padding:20px 24px;margin:25px 0;">
+                    <p style="color:#1a1b2e;line-height:1.8;font-size:0.95rem;font-weight:600;margin:0;font-style:italic;">
+                        Saptashati Foundation's mission is to instill knowledge and skill development in the minds of widowed and less fortunate women — thus enabling them to become self-reliant and provide them with social, financial, and psychological support for a better life.</p>
+                </div>
+
+                <div style="display:flex;gap:16px;margin-top:30px;flex-wrap:wrap;">
+                    <?php
+                    $focusAreas = [
+                        ['icon' => 'fa-female', 'color' => '#f26522', 'title' => "Women's Empowerment", 'desc' => 'Supporting widowed women and single mothers'],
+                        ['icon' => 'fa-wheelchair', 'color' => '#ff8c42', 'title' => 'Disability Support', 'desc' => 'Comprehensive care for disabled individuals'],
+                        ['icon' => 'fa-user-friends', 'color' => '#c94a0f', 'title' => 'Senior Care', 'desc' => 'Dignified support for elderly citizens'],
+                    ];
+                    foreach ($focusAreas as $area):
+                    ?>
+                    <div style="flex:1;min-width:180px;background:#fff;border-radius:14px;padding:22px 18px;box-shadow:0 4px 18px rgba(0,0,0,0.06);border:1px solid rgba(0,0,0,0.04);text-align:center;transition:all 0.3s;"
+                        onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 30px rgba(242,101,34,0.12)'"
+                        onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 18px rgba(0,0,0,0.06)'">
+                        <div style="width:50px;height:50px;background:<?= $area['color'] ?>;border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;box-shadow:0 6px 18px <?= $area['color'] ?>33;">
+                            <i class="fas <?= $area['icon'] ?>" style="color:#fff;font-size:1.1rem;"></i>
+                        </div>
+                        <strong style="color:#1a1b2e;font-size:0.88rem;display:block;margin-bottom:4px;"><?= $area['title'] ?></strong>
+                        <small style="color:#888;font-size:0.78rem;"><?= $area['desc'] ?></small>
+                    </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
         </div>
+    </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SECTION: Vision — Dark with accent boxes     -->
+<!-- ============================================ -->
+<section style="padding:70px 0;background:linear-gradient(135deg,#1a1b2e 0%,#0d0e14 100%);overflow:hidden;position:relative;">
+    <div style="position:absolute;top:-50px;right:-50px;width:300px;height:300px;background:radial-gradient(circle,rgba(242,101,34,0.08),transparent 70%);border-radius:50%;"></div>
+    <div style="position:absolute;bottom:-80px;left:-80px;width:400px;height:400px;background:radial-gradient(circle,rgba(242,101,34,0.05),transparent 70%);border-radius:50%;"></div>
+
+    <div class="container position-relative" style="z-index:2;">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <div style="display:inline-flex;align-items:center;gap:10px;background:rgba(242,101,34,0.15);border:1px solid rgba(242,101,34,0.25);color:#ff8c42;padding:8px 20px;border-radius:50px;font-size:0.82rem;font-weight:600;margin-bottom:18px;">
+                <i class="fas fa-eye"></i> Our Vision
+            </div>
+            <h2 style="color:#fff;font-weight:800;font-size:clamp(1.8rem,3.5vw,2.4rem);">Shaping a Better <span style="color:#f26522;">Future</span></h2>
+        </div>
+
+        <div class="row" data-aos="fade-up">
+            <div class="col-lg-6 mb-4">
+                <p style="color:rgba(255,255,255,0.75);line-height:1.9;font-size:0.95rem;margin-bottom:18px;">
+                    Our vision focuses on the welfare of handicapped people, widows, and senior citizens. In a bid to empower them with equal opportunities, we help them live independently with pride, dignity and self-respect. We work towards the economic reform of these people, and help them provide the right skillset and exposure, so they may move forward in life.
+                </p>
+                <p style="color:rgba(255,255,255,0.75);line-height:1.9;font-size:0.95rem;">
+                    Every change on the planet starts with a new phase of consciousness, a new experience, and a new vision. We, at Durga Saptashati, create a new experience to set the motion for women's empowerment through various programs and events that we organize annually.
+                </p>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <p style="color:rgba(255,255,255,0.75);line-height:1.9;font-size:0.95rem;margin-bottom:18px;">
+                    Our vision is to start and promote such methods and actions where socially and economically stable women irrespective of age, class, color, or family are able to engage actively in the means of their community so that they are able to start a life of dignity and respect.
+                </p>
+
+                <div style="background:rgba(242,101,34,0.12);border:1px solid rgba(242,101,34,0.2);border-radius:14px;padding:22px 24px;margin-top:20px;">
+                    <i class="fas fa-quote-left" style="color:#f26522;font-size:1.2rem;margin-bottom:10px;display:block;opacity:0.6;"></i>
+                    <p style="color:#fff;line-height:1.8;font-size:0.95rem;font-weight:600;margin:0;font-style:italic;">
+                        Women comprise half the population of the globe and share one percent of the resources. We are here to bring about a positive change, offering equality to rural women and widows — thus changing society's outlook as a whole.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vision pillars -->
+        <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:20px;" data-aos="fade-up" data-aos-delay="200">
+            <?php
+            $pillars = [
+                ['icon' => 'fa-balance-scale', 'title' => 'Equality', 'desc' => 'Equal opportunities for all'],
+                ['icon' => 'fa-hand-holding-heart', 'title' => 'Dignity', 'desc' => 'Living with pride & respect'],
+                ['icon' => 'fa-fist-raised', 'title' => 'Empowerment', 'desc' => 'Self-reliance & independence'],
+                ['icon' => 'fa-shield-alt', 'title' => 'Protection', 'desc' => 'Against harassment & trafficking'],
+            ];
+            foreach ($pillars as $p):
+            ?>
+            <div style="flex:1;min-width:200px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:22px 18px;text-align:center;transition:all 0.3s;"
+                onmouseover="this.style.background='rgba(242,101,34,0.1)';this.style.borderColor='rgba(242,101,34,0.25)';this.style.transform='translateY(-4px)'"
+                onmouseout="this.style.background='rgba(255,255,255,0.04)';this.style.borderColor='rgba(255,255,255,0.08)';this.style.transform='translateY(0)'">
+                <div style="width:48px;height:48px;background:rgba(242,101,34,0.15);border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;">
+                    <i class="fas <?= $p['icon'] ?>" style="color:#f26522;font-size:1.1rem;"></i>
+                </div>
+                <strong style="color:#fff;font-size:0.9rem;display:block;margin-bottom:4px;"><?= $p['title'] ?></strong>
+                <small style="color:rgba(255,255,255,0.5);font-size:0.78rem;"><?= $p['desc'] ?></small>
+            </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SECTION: Founder & Leadership                -->
+<!-- ============================================ -->
+<section class="abt-section abt-section--alt">
+    <div class="container-fluid">
 
         <!-- Founder's Words -->
         <div class="abt-founder" data-aos="fade-up">
