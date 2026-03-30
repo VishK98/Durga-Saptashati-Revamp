@@ -108,6 +108,7 @@ if (isset($_SESSION['member_success'])) {
                 <th>Name</th>
                 <th>Email</th>
                 <th>Mobile</th>
+                <th>Profession</th>
                 <th>Type</th>
                 <th>Payment</th>
                 <th>Date</th>
@@ -117,7 +118,7 @@ if (isset($_SESSION['member_success'])) {
         </thead>
         <tbody>
             <?php if (empty($members)): ?>
-                <tr><td colspan="9" style="text-align:center;padding:40px;color:#999;">No membership applications yet.</td></tr>
+                <tr><td colspan="10" style="text-align:center;padding:40px;color:#999;">No membership applications yet.</td></tr>
             <?php else: ?>
                 <?php foreach ($members as $i => $m): ?>
                 <tr>
@@ -125,6 +126,7 @@ if (isset($_SESSION['member_success'])) {
                     <td><strong><?= htmlspecialchars($m['full_name']) ?></strong></td>
                     <td><?= htmlspecialchars($m['email'] ?? '-') ?></td>
                     <td><?= htmlspecialchars($m['mobile'] ?? '-') ?></td>
+                    <td><?= htmlspecialchars($m['profession'] ?? '-') ?></td>
                     <td>
                         <?php
                         if (isset($planMap[$m['membership_type']])) {
@@ -135,7 +137,15 @@ if (isset($_SESSION['member_success'])) {
                         }
                         ?>
                     </td>
-                    <td><?= htmlspecialchars($m['payment_mode']) ?></td>
+                    <td>
+                        <?php if ($m['payment_mode'] === 'Online'): ?>
+                        <span style="background:#dbeafe;color:#2563eb;padding:3px 10px;border-radius:12px;font-size:0.75rem;font-weight:600;"><i class="fas fa-globe"></i> Online</span>
+                        <?php elseif ($m['payment_mode'] === 'Cash'): ?>
+                        <span style="background:#fef3c7;color:#d97706;padding:3px 10px;border-radius:12px;font-size:0.75rem;font-weight:600;"><i class="fas fa-money-bill-wave"></i> Cash</span>
+                        <?php else: ?>
+                        <?= htmlspecialchars($m['payment_mode']) ?>
+                        <?php endif; ?>
+                    </td>
                     <td><?= date('M d, Y', strtotime($m['created_at'])) ?></td>
                     <td>
                         <span class="status-badge <?= $m['status'] === 'approved' ? 'status-active' : ($m['status'] === 'pending' ? 'status-pending' : 'status-new') ?>">
@@ -147,7 +157,7 @@ if (isset($_SESSION['member_success'])) {
                             <button class="action-trigger" onclick="toggleActionMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
                             <div class="action-menu">
                                 <a href="javascript:void(0)" onclick="viewMember(<?= $m['id'] ?>)"><i class="fas fa-eye"></i> View</a>
-                                <?php if ($m['status'] !== 'approved'): ?>
+                                <?php if ($m['status'] !== 'approved' && $m['payment_mode'] === 'Cash'): ?>
                                 <form method="POST" action="admin.php?page=members" style="display:contents;">
                                     <input type="hidden" name="action" value="approve_member">
                                     <input type="hidden" name="member_id" value="<?= $m['id'] ?>">
@@ -276,7 +286,7 @@ if (isset($_SESSION['member_success'])) {
         <h4 style="margin-bottom:10px;color:#1a1b2e;"><i class="fas fa-upload" style="color:#2563eb;"></i> Import Members from CSV</h4>
         <p style="color:#666;font-size:0.9rem;margin-bottom:15px;">Upload a CSV file with the following columns in order:</p>
         <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:12px;margin-bottom:20px;font-size:0.85rem;font-family:monospace;">
-            full_name, date_of_birth, gender, address, email, mobile, membership_type, payment_mode, status, created_at
+            full_name, gender, address, email, mobile, membership_type, profession, payment_mode, status, created_at
         </div>
         <p style="color:#666;font-size:0.85rem;margin-bottom:15px;">
             <strong>Notes:</strong><br>
@@ -302,9 +312,9 @@ if (isset($_SESSION['member_success'])) {
 var allMembers = <?= json_encode(array_map(function($m) {
     return [
         'id' => $m['id'], 'full_name' => $m['full_name'], 'email' => $m['email'],
-        'mobile' => $m['mobile'], 'date_of_birth' => $m['date_of_birth'], 'gender' => $m['gender'],
+        'mobile' => $m['mobile'], 'gender' => $m['gender'],
         'address' => $m['address'], 'membership_type' => $m['membership_type'],
-        'payment_mode' => $m['payment_mode'], 'payment_screenshot' => $m['payment_screenshot'],
+        'profession' => $m['profession'] ?? '', 'payment_mode' => $m['payment_mode'],
         'status' => $m['status'], 'created_at' => $m['created_at']
     ];
 }, $members)) ?>;
@@ -321,16 +331,18 @@ function viewMember(id) {
     }
     var html = '<table style="width:100%;border-collapse:collapse;">';
     var rows = [
-        ['Name', m.full_name], ['Email', m.email || '-'], ['Mobile', m.mobile || '-'],
-        ['Date of Birth', m.date_of_birth || '-'], ['Gender', m.gender || '-'],
-        ['Address', m.address || '-'], ['Membership', typeLabel],
-        ['Payment Mode', m.payment_mode], ['Status', '<span class="status-badge '+(m.status==='approved'?'status-active':m.status==='pending'?'status-pending':'status-new')+'">'+m.status.charAt(0).toUpperCase()+m.status.slice(1)+'</span>'],
-        ['Applied On', new Date(m.created_at).toLocaleDateString('en-IN',{year:'numeric',month:'long',day:'numeric'})]
+        ['Name', m.full_name],
+        ['Email', m.email],
+        ['Mobile', m.mobile],
+        ['Gender', m.gender],
+        ['Address', m.address],
+        ['Profession', m.profession],
+        ['Membership', typeLabel],
+        ['Payment Mode', m.payment_mode && m.payment_mode !== 'N/A' ? m.payment_mode : null],
+        ['Status', '<span class="status-badge '+(m.status==='approved'?'status-active':m.status==='pending'?'status-pending':'status-new')+'">'+m.status.charAt(0).toUpperCase()+m.status.slice(1)+'</span>'],
+        ['Applied On', m.created_at && m.created_at !== '0000-00-00 00:00:00' ? new Date(m.created_at).toLocaleDateString('en-IN',{year:'numeric',month:'long',day:'numeric'}) : null]
     ];
-    rows.forEach(function(r) { html += '<tr><td style="padding:8px 12px;font-weight:600;color:#666;width:40%;border-bottom:1px solid #f0f0f0;">'+r[0]+'</td><td style="padding:8px 12px;color:#1a1b2e;border-bottom:1px solid #f0f0f0;">'+r[1]+'</td></tr>'; });
-    if (m.payment_screenshot) {
-        html += '<tr><td style="padding:8px 12px;font-weight:600;color:#666;">Screenshot</td><td style="padding:8px 12px;"><img src="assets/uploads/members/'+m.payment_screenshot+'" style="max-width:200px;border-radius:8px;"></td></tr>';
-    }
+    rows.forEach(function(r) { if (r[1]) html += '<tr><td style="padding:10px 14px;font-weight:600;color:#666;width:40%;border-bottom:1px solid #f0f0f0;">'+r[0]+'</td><td style="padding:10px 14px;color:#1a1b2e;border-bottom:1px solid #f0f0f0;">'+r[1]+'</td></tr>'; });
     html += '</table>';
     document.getElementById('memberDetails').innerHTML = html;
     document.getElementById('memberModal').style.display = 'flex';
@@ -350,13 +362,13 @@ function editPlan(plan) {
 }
 
 function exportMembers() {
-    var headers = ['Full Name','Date of Birth','Gender','Address','Email','Mobile','Membership Type','Payment Mode','Status','Created At'];
+    var headers = ['Full Name','Gender','Address','Email','Mobile','Membership Type','Profession','Payment Mode','Status','Created At'];
     var rows = [headers.join(',')];
     allMembers.forEach(function(m) {
         rows.push([
-            '"'+(m.full_name||'')+'"', m.date_of_birth||'', m.gender||'',
+            '"'+(m.full_name||'')+'"', m.gender||'',
             '"'+(m.address||'').replace(/"/g,'""')+'"', m.email||'', m.mobile||'',
-            m.membership_type||'', m.payment_mode||'', m.status||'', m.created_at||''
+            '"'+(m.membership_type||'')+'"', '"'+(m.profession||'')+'"', m.payment_mode||'', m.status||'', m.created_at||''
         ].join(','));
     });
     var blob = new Blob([rows.join('\n')], {type:'text/csv'});

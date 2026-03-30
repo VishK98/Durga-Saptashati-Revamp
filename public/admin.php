@@ -530,20 +530,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'impor
         $header = fgetcsv($handle); // skip header row
         $imported = 0;
         $errors = 0;
-        $stmt = $pdo->prepare("INSERT INTO members (full_name, date_of_birth, gender, address, email, mobile, membership_type, payment_mode, status, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt = $pdo->prepare("INSERT INTO members (full_name, gender, address, email, mobile, membership_type, profession, payment_mode, status, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         while (($row = fgetcsv($handle)) !== false) {
             if (count($row) < 2) continue; // skip empty rows
             try {
+                $payMode = trim($row[7] ?? 'Cash');
+                $sts = trim($row[8] ?? ($payMode === 'Online' ? 'approved' : 'pending'));
                 $stmt->execute([
-                    trim($row[0] ?? ''),                          // full_name
-                    !empty($row[1]) ? $row[1] : null,             // date_of_birth
-                    trim($row[2] ?? 'Male'),                      // gender
-                    trim($row[3] ?? ''),                          // address
-                    trim($row[4] ?? ''),                          // email
-                    trim($row[5] ?? ''),                          // mobile
-                    trim($row[6] ?? ''),                          // membership_type (slug)
-                    trim($row[7] ?? 'N/A'),                       // payment_mode
-                    trim($row[8] ?? 'approved'),                  // status
+                    trim($row[0] ?? ''),                            // full_name
+                    trim($row[1] ?? ''),                            // gender
+                    trim($row[2] ?? ''),                            // address
+                    trim($row[3] ?? ''),                            // email
+                    trim($row[4] ?? ''),                            // mobile
+                    trim($row[5] ?? ''),                            // membership_type
+                    trim($row[6] ?? ''),                            // profession
+                    $payMode,                                       // payment_mode
+                    $sts,                                           // status
                     !empty($row[9]) ? $row[9] : date('Y-m-d H:i:s') // created_at
                 ]);
                 $imported++;
@@ -591,23 +593,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'delet
 
 // Handle membership submission (public form)
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'submit_membership') {
-    $screenshot = null;
-    if (!empty($_FILES['payment_screenshot']['name'])) {
-        $uploadDir = __DIR__ . '/assets/uploads/members/';
-        if (!is_dir($uploadDir)) mkdir($uploadDir, 0777, true);
-        $ext = strtolower(pathinfo($_FILES['payment_screenshot']['name'], PATHINFO_EXTENSION));
-        if (in_array($ext, ['jpg','jpeg','png','webp']) && $_FILES['payment_screenshot']['size'] <= 5*1024*1024) {
-            $filename = 'member_' . time() . '.' . $ext;
-            if (move_uploaded_file($_FILES['payment_screenshot']['tmp_name'], $uploadDir . $filename)) {
-                $screenshot = $filename;
-            }
-        }
-    }
-    $stmt = $pdo->prepare("INSERT INTO members (full_name, date_of_birth, gender, address, email, mobile, membership_type, payment_mode, payment_screenshot) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $paymentMode = $_POST['payment_mode'] ?? 'Cash';
+    $status = ($paymentMode === 'Online') ? 'approved' : 'pending';
+    $stmt = $pdo->prepare("INSERT INTO members (full_name, gender, address, email, mobile, membership_type, profession, payment_mode, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
     $stmt->execute([
-        trim($_POST['full_name']), $_POST['date_of_birth'], $_POST['gender'],
+        trim($_POST['full_name']), $_POST['gender'],
         trim($_POST['address'] ?? ''), trim($_POST['email'] ?? ''), trim($_POST['mobile'] ?? ''),
-        $_POST['membership_type'], $_POST['payment_mode'], $screenshot
+        $_POST['membership_type'], trim($_POST['profession'] ?? ''), $paymentMode, $status
     ]);
     $_SESSION['membership_success'] = 'Your membership application has been submitted successfully!';
     header('Location: ' . url('become-member.php'));
@@ -682,7 +674,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'toggl
 
 // Route to correct page
 $page = $_GET['page'] ?? 'dashboard';
-$allowedPages = ['dashboard', 'blogs', 'queries', 'subscribers', 'events', 'gallery', 'settings', 'comments', 'donations', 'volunteers', 'careers', 'members', 'reports'];
+$allowedPages = ['dashboard', 'blogs', 'queries', 'subscribers', 'gallery', 'settings', 'comments', 'donations', 'volunteers', 'careers', 'members', 'reports'];
 
 if (!in_array($page, $allowedPages)) {
     $page = 'dashboard';

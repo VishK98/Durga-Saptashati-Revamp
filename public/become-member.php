@@ -97,23 +97,16 @@ try {
                                 <input type="text" name="full_name" required class="mbr-input" placeholder="Enter your full name">
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label class="mbr-label">Date of Birth <span class="req">*</span></label>
-                                <input type="date" name="date_of_birth" required class="mbr-input">
+                                <label class="mbr-label">Email</label>
+                                <input type="email" name="email" class="mbr-input" placeholder="your@email.com">
                             </div>
                         </div>
 
                         <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label class="mbr-label">Email</label>
-                                <input type="email" name="email" class="mbr-input" placeholder="your@email.com">
-                            </div>
                             <div class="col-md-6 mb-3">
                                 <label class="mbr-label">Mobile Number</label>
                                 <input type="tel" name="mobile" class="mbr-input" placeholder="+91 XXXXX XXXXX">
                             </div>
-                        </div>
-
-                        <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label class="mbr-label">Gender <span class="req">*</span></label>
                                 <input type="hidden" name="gender" required>
@@ -153,6 +146,29 @@ try {
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="mbr-label">Payment Method <span class="req">*</span></label>
+                                <input type="hidden" name="payment_mode" required>
+                                <div class="cdd" id="paymentDd">
+                                    <div class="cdd-selected" onclick="toggleCdd('paymentDd')">
+                                        <span class="cdd-text">Select payment method</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                    <div class="cdd-options">
+                                        <div class="cdd-option" onclick="selectCdd('paymentDd','Online','Online','fa-globe')">
+                                            <i class="fas fa-globe"></i> Online
+                                        </div>
+                                        <div class="cdd-option" onclick="selectCdd('paymentDd','Cash','Cash','fa-money-bill-wave')">
+                                            <i class="fas fa-money-bill-wave"></i> Cash
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="mbr-label">Profession</label>
+                            <input type="text" name="profession" class="mbr-input" placeholder="e.g. Teacher, Engineer, Business">
                         </div>
 
                         <div class="mb-3">

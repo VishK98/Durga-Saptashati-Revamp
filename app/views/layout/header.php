@@ -187,10 +187,6 @@
                                             <i class="fas fa-pray"></i> Ganpati Celebration
                                             <span class="item-description">Festival of Ganesha</span>
                                         </a>
-                                        <a class="dropdown-item" href="<?= url('diwali-celebration.php') ?>">
-                                            <i class="fas fa-fire"></i> Diwali Celebration
-                                            <span class="item-description">Festival of lights</span>
-                                        </a>
                                         <a class="dropdown-item" href="<?= url('cultural-programs.php') ?>">
                                             <i class="fas fa-theater-masks"></i> Cultural Programs
                                             <span class="item-description">Celebrating our heritage</span>

@@ -541,7 +541,7 @@ include '../app/views/layout/header.php';
                     <i class="fas fa-hand-holding-heart"></i>
                     Volunteer With Us
                 </a>
-                <a href="<?= url('donate.php') ?>" class="btn-cta secondary">
+                <a href="<?= url('make-donation.php') ?>" class="btn-cta secondary">
                     <i class="fas fa-donate"></i>
                     Support Our Camps
                 </a>

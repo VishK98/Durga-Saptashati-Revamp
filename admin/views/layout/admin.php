@@ -86,10 +86,6 @@
 
                 <div class="sidebar-menu-label">Content</div>
 
-                <a href="admin.php?page=events" class="sidebar-item <?= $currentPage === 'events' ? 'active' : '' ?>">
-                    <i class="fas fa-calendar-alt"></i> <span>Events</span>
-                </a>
-
                 <a href="admin.php?page=gallery" class="sidebar-item <?= $currentPage === 'gallery' ? 'active' : '' ?>">
                     <i class="fas fa-images"></i> <span>Gallery</span>
                 </a>

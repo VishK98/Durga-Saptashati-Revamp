@@ -24,7 +24,7 @@ include '../app/views/layout/header.php';
                         Empowerment || Education || Equality || Empathy
                     </p>
                     <div class="carousel-btn" data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000">
-                        <a class="btn btn-custom" href="<?php echo url('donate.php'); ?>">Donate Now</a>
+                        <a class="btn btn-custom" href="<?php echo url('make-donation.php'); ?>">Donate Now</a>
                         <a class="btn btn-custom" href="<?php echo url('become-volunteer.php'); ?>">Join Us</a>
                     </div>
                 </div>
@@ -60,7 +60,7 @@ include '../app/views/layout/header.php';
                         through grassroots initiatives.
                     </p>
                     <div class="carousel-btn" data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000">
-                        <a class="btn btn-custom" href="<?php echo url('donate.php'); ?>">Donate Now</a>
+                        <a class="btn btn-custom" href="<?php echo url('make-donation.php'); ?>">Donate Now</a>
                         <a class="btn btn-custom" href="<?php echo url('contact.php'); ?>">Get Involved</a>
                     </div>
                 </div>
@@ -78,7 +78,7 @@ include '../app/views/layout/header.php';
                         through grassroots initiatives.
                     </p>
                     <div class="carousel-btn" data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000">
-                        <a class="btn btn-custom" href="<?php echo url('donate.php'); ?>">Donate Now</a>
+                        <a class="btn btn-custom" href="<?php echo url('make-donation.php'); ?>">Donate Now</a>
                         <a class="btn btn-custom" href="<?php echo url('contact.php'); ?>">Get Involved</a>
                     </div>
                 </div>
@@ -96,7 +96,7 @@ include '../app/views/layout/header.php';
                         through grassroots initiatives.
                     </p>
                     <div class="carousel-btn" data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000">
-                        <a class="btn btn-custom" href="<?php echo url('donate.php'); ?>">Donate Now</a>
+                        <a class="btn btn-custom" href="<?php echo url('make-donation.php'); ?>">Donate Now</a>
                         <a class="btn btn-custom" href="<?php echo url('contact.php'); ?>">Get Involved</a>
                     </div>
                 </div>
@@ -1249,7 +1249,7 @@ $mshipFeatures = [
                         <h3>Donate Now</h3>
                         <p>Every rupee makes a difference</p>
                     </div>
-                    <form action="<?= url('donate.php') ?>" method="GET">
+                    <form action="<?= url('make-donation.php') ?>" method="GET">
                         <div class="donate-field">
                             <div class="donate-field-icon"><i class="fas fa-user"></i></div>
                             <input type="text" name="name" placeholder="Full Name" required>

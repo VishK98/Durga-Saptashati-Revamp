@@ -23,7 +23,7 @@ include '../app/views/layout/header.php';
 </div>
 
 <!-- Why Invest Section -->
-<section style="background:#fff;padding:60px 0;">
+<section style="background:#fff;">
     <div class="container">
         <div class="text-center mb-5" data-aos="fade-up">
             <h6 class="text-uppercase mb-2" style="color:#f26522;letter-spacing:3px;font-weight:600;">Why Partner With
@@ -78,7 +78,8 @@ include '../app/views/layout/header.php';
             if (empty($reports)):
             ?>
             <div class="col-12 text-center" style="padding:40px;">
-                <i class="fas fa-file-pdf" style="font-size:2.5rem;color:rgba(255,255,255,0.2);margin-bottom:15px;display:block;"></i>
+                <i class="fas fa-file-pdf"
+                    style="font-size:2.5rem;color:rgba(255,255,255,0.2);margin-bottom:15px;display:block;"></i>
                 <p style="color:rgba(255,255,255,0.5);">Financial reports will be available soon.</p>
             </div>
             <?php else:
@@ -208,7 +209,8 @@ include '../app/views/layout/header.php';
                         transform the lives of underprivileged women, children, and communities across India.</p>
                 </div>
                 <div class="col-lg-4 text-lg-right">
-                    <a href="<?= url('donate.php') ?>" class="inv-cta-btn"><i class="fas fa-heart"></i> Donate Now</a>
+                    <a href="<?= url('make-donation.php') ?>" class="inv-cta-btn"><i class="fas fa-heart"></i> Donate
+                        Now</a>
                     <a href="<?= url('contact.php') ?>" class="inv-cta-btn inv-cta-btn-outline"><i
                             class="fas fa-phone-alt"></i> Contact Us</a>
                 </div>
