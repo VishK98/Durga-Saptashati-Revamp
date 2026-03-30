@@ -437,9 +437,83 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'delet
     exit;
 }
 
+// Auto-create members table
+try {
+    $pdo->exec("CREATE TABLE IF NOT EXISTS members (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        full_name VARCHAR(255) NOT NULL,
+        date_of_birth DATE,
+        gender ENUM('Male','Female','Prefer not to say') DEFAULT 'Male',
+        address TEXT,
+        email VARCHAR(255),
+        mobile VARCHAR(20),
+        membership_type ENUM('1-year','6-year','lifetime') NOT NULL,
+        payment_mode ENUM('Bank Transfer','UPI','Cash') NOT NULL,
+        payment_screenshot VARCHAR(255) DEFAULT NULL,
+        status ENUM('pending','approved','rejected') DEFAULT 'pending',
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )");
+} catch (Exception $e) {}
+
+// Handle approve member
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'approve_member') {
+    $pdo->prepare("UPDATE members SET status = 'approved' WHERE id = ?")->execute([(int)$_POST['member_id']]);
+    $_SESSION['member_success'] = 'Member approved successfully.';
+    header('Location: admin.php?page=members');
+    exit;
+}
+
+// Handle reject member
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'reject_member') {
+    $pdo->prepare("UPDATE members SET status = 'rejected' WHERE id = ?")->execute([(int)$_POST['member_id']]);
+    $_SESSION['member_success'] = 'Member rejected.';
+    header('Location: admin.php?page=members');
+    exit;
+}
+
+// Handle delete member
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'delete_member') {
+    $stmt = $pdo->prepare("SELECT payment_screenshot FROM members WHERE id = ?");
+    $stmt->execute([(int)$_POST['member_id']]);
+    $m = $stmt->fetch();
+    if ($m && $m['payment_screenshot']) {
+        $path = __DIR__ . '/assets/uploads/members/' . $m['payment_screenshot'];
+        if (file_exists($path)) unlink($path);
+    }
+    $pdo->prepare("DELETE FROM members WHERE id = ?")->execute([(int)$_POST['member_id']]);
+    $_SESSION['member_success'] = 'Member deleted.';
+    header('Location: admin.php?page=members');
+    exit;
+}
+
+// Handle membership submission (public form)
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'submit_membership') {
+    $screenshot = null;
+    if (!empty($_FILES['payment_screenshot']['name'])) {
+        $uploadDir = __DIR__ . '/assets/uploads/members/';
+        if (!is_dir($uploadDir)) mkdir($uploadDir, 0777, true);
+        $ext = strtolower(pathinfo($_FILES['payment_screenshot']['name'], PATHINFO_EXTENSION));
+        if (in_array($ext, ['jpg','jpeg','png','webp']) && $_FILES['payment_screenshot']['size'] <= 5*1024*1024) {
+            $filename = 'member_' . time() . '.' . $ext;
+            if (move_uploaded_file($_FILES['payment_screenshot']['tmp_name'], $uploadDir . $filename)) {
+                $screenshot = $filename;
+            }
+        }
+    }
+    $stmt = $pdo->prepare("INSERT INTO members (full_name, date_of_birth, gender, address, email, mobile, membership_type, payment_mode, payment_screenshot) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->execute([
+        trim($_POST['full_name']), $_POST['date_of_birth'], $_POST['gender'],
+        trim($_POST['address'] ?? ''), trim($_POST['email'] ?? ''), trim($_POST['mobile'] ?? ''),
+        $_POST['membership_type'], $_POST['payment_mode'], $screenshot
+    ]);
+    $_SESSION['membership_success'] = 'Your membership application has been submitted successfully!';
+    header('Location: ' . url('become-member.php'));
+    exit;
+}
+
 // Route to correct page
 $page = $_GET['page'] ?? 'dashboard';
-$allowedPages = ['dashboard', 'blogs', 'queries', 'subscribers', 'events', 'gallery', 'settings', 'comments', 'donations', 'volunteers', 'careers'];
+$allowedPages = ['dashboard', 'blogs', 'queries', 'subscribers', 'events', 'gallery', 'settings', 'comments', 'donations', 'volunteers', 'careers', 'members'];
 
 if (!in_array($page, $allowedPages)) {
     $page = 'dashboard';

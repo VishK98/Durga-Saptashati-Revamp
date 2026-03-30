@@ -23,6 +23,9 @@ $causes = [
     ['title' => 'Health Camps', 'icon' => 'fa-medkit', 'url' => 'health-camps-events.php', 'img' => 'yoga-day/yoga-14.webp', 'desc' => 'Free medical checkup camps providing healthcare access to underserved communities.', 'tag' => 'Health Camp'],
     ['title' => 'Rural Development', 'icon' => 'fa-home', 'url' => 'rural-development.php', 'img' => 'livelihood/livelihood-5.webp', 'desc' => 'Infrastructure development, sanitation, and facilities for rural villages.', 'tag' => 'Community'],
     ['title' => 'Environment Care', 'icon' => 'fa-tree', 'url' => 'environment-care.php', 'img' => 'yoga-day/yoga-15.webp', 'desc' => 'Tree plantation drives, conservation initiatives, and environmental awareness programs.', 'tag' => 'Environment'],
+    ['title' => 'Decorative Cover Making', 'icon' => 'fa-cut', 'url' => 'decorative.php', 'img' => 'decorative-cover/decorative-cover.webp', 'desc' => 'Empowering women with creative skills through handcrafted decorative covers and workshops.', 'tag' => 'Craft'],
+    ['title' => 'इंद्रप्रस्थ साहित्य महोत्सव', 'icon' => 'fa-book-open', 'url' => 'indraprastha-sahitya-mahotsav-2022.php', 'img' => 'indra/indra.webp', 'desc' => 'A grand literary festival celebrating Hindi literature, poetry, and cultural heritage.', 'tag' => 'Literary'],
+    ['title' => 'Junior Super Model', 'icon' => 'fa-star', 'url' => 'junior-super-model-pacific-mall-D21.php', 'img' => 'junior-super-modal/junior-super-modal.jpg', 'desc' => 'A platform for young talents to showcase confidence, creativity, and personality at Pacific Mall D21.', 'tag' => 'Talent'],
 ];
 ?>
 

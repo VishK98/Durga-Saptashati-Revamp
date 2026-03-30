@@ -1,0 +1,256 @@
+/* Indraprastha Sahitya Mahotsav */
+
+.indra-page-header {
+  background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+    url(../../images/indra/indra-2.webp) !important;
+  background-size: cover !important;
+  background-position: center 10% !important;
+}
+
+/* Hero — Asymmetric Split */
+.indra-hero {
+  padding: 70px 0 60px;
+  background: linear-gradient(160deg, #fdf8f4 0%, #fff5ee 40%, #f8f9fa 100%);
+  overflow: hidden;
+}
+
+.indra-hero-row { min-height: 78vh; }
+.indra-hero-content { padding-right: 20px; }
+
+.indra-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #f26522, #ff8c42);
+  color: #fff;
+  padding: 10px 22px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 22px;
+  box-shadow: 0 8px 25px rgba(242,101,34,0.3);
+}
+
+.indra-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  color: #0d0e14;
+  line-height: 1.15;
+  margin-bottom: 18px;
+}
+
+.indra-gradient {
+  background: linear-gradient(135deg, #f26522, #ff8c42);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.indra-desc {
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.85;
+  margin-bottom: 22px;
+}
+
+/* Highlights */
+.indra-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.indra-hl {
+  background: rgba(242,101,34,0.08);
+  color: #1a1b2e;
+  padding: 8px 16px;
+  border-radius: 25px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.indra-hl i { color: #f26522; font-size: 0.75rem; }
+
+/* Stats Inline */
+.indra-stats-inline {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.indra-si {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  padding: 16px 22px;
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+  border: 1px solid rgba(0,0,0,0.04);
+  flex: 1;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.indra-si:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(242,101,34,0.1);
+}
+
+.indra-si strong {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #f26522;
+  line-height: 1;
+}
+
+.indra-si span {
+  font-size: 0.72rem;
+  color: #888;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+/* Mosaic Grid */
+.indra-mosaic {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  grid-template-rows: 1fr 1fr 0.6fr;
+  gap: 14px;
+  height: 520px;
+  position: relative;
+}
+
+.indra-mosaic > div {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 22px rgba(0,0,0,0.08);
+}
+
+.indra-mosaic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.indra-mosaic > div:hover img { transform: scale(1.05); }
+
+.indra-mosaic-tall { grid-row: 1 / 3; }
+.indra-mosaic-top { grid-column: 2; grid-row: 1; }
+.indra-mosaic-bottom { grid-column: 2; grid-row: 2; }
+.indra-mosaic-wide { grid-column: 1 / 3; grid-row: 3; }
+
+/* Floating Quote */
+.indra-mosaic-quote {
+  position: absolute !important;
+  bottom: 90px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(12px);
+  padding: 14px 24px;
+  border-radius: 14px;
+  box-shadow: 0 10px 35px rgba(0,0,0,0.12) !important;
+  z-index: 5;
+  text-align: center;
+  white-space: nowrap;
+  animation: indraFloat 4s ease-in-out infinite;
+}
+
+.indra-mosaic-quote i {
+  color: #f26522;
+  font-size: 0.9rem;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.indra-mosaic-quote p {
+  color: #1a1b2e;
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin: 0;
+  font-style: italic;
+}
+
+@keyframes indraFloat {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-8px); }
+}
+
+/* Gallery */
+.indra-gallery-section {
+  padding: 60px 0;
+  background: linear-gradient(135deg, #f8f9fa 0%, rgba(242,101,34,0.02) 100%);
+}
+
+.indra-section-header { margin-bottom: 50px; }
+
+.indra-section-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #f26522, #ff8c42);
+  color: #fff;
+  padding: 8px 20px;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.indra-section-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  color: #0d0e14;
+  line-height: 1.2;
+}
+
+.indra-section-desc {
+  font-size: 1.05rem;
+  color: #666;
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .indra-hero-content { padding-right: 0; margin-bottom: 30px; }
+  .indra-mosaic { height: 400px; }
+  .indra-gallery-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+@media (max-width: 768px) {
+  .indra-hero { padding: 50px 0 40px; }
+  .indra-hero-row { min-height: auto; }
+  .indra-title { font-size: 1.6rem; }
+  .indra-mosaic {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    height: 320px;
+  }
+  .indra-mosaic-wide { display: none; }
+  .indra-mosaic-tall { grid-row: 1 / 3; }
+  .indra-mosaic-quote { display: none !important; }
+  .indra-stats-inline { gap: 10px; }
+  .indra-si { padding: 12px 14px; }
+  .indra-si strong { font-size: 1.4rem; }
+  .indra-gallery-grid { grid-template-columns: 1fr !important; }
+}
+
+@media (max-width: 576px) {
+  .indra-mosaic {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    height: auto;
+  }
+  .indra-mosaic-tall { grid-row: auto; height: 200px; }
+  .indra-mosaic-top, .indra-mosaic-bottom { height: 150px; }
+  .indra-highlights { gap: 6px; }
+  .indra-hl { font-size: 0.7rem; padding: 6px 12px; }
+}

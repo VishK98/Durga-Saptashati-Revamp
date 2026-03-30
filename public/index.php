@@ -116,7 +116,7 @@ include '../app/views/layout/header.php';
             <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right" data-aos-duration="1000">
                 <div class="position-relative h-100"
                     style="border-radius:12px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,0.12);">
-                    <img src="<?php echo asset('img/about.jpg') ?>" alt="About Durga Saptashati"
+                    <img src="<?php echo asset('images/about-us-durga.jpeg') ?>" alt="About Durga Saptashati"
                         style="width:100%;height:100%;object-fit:cover;display:block;">
                     <a class="position-absolute d-flex align-items-center justify-content-center" href="#"
                         data-toggle="modal" data-target="#videoModal"

@@ -148,6 +148,19 @@ include '../app/views/layout/header.php';
             ['file' => 'ganpati-9.jpeg', 'title' => 'Festive Spirit'],
             ['file' => 'ganpati-10.jpeg', 'title' => 'Sacred Rituals'],
             ['file' => 'ganpati-11.jpeg', 'title' => 'Grand Celebration'],
+            ['file' => 'ganpati-12.jpg', 'title' => 'Visarjan Procession'],
+            ['file' => 'ganpati-18.jpg', 'title' => 'Devotional Singing'],
+            ['file' => 'ganpati-14.jpg', 'title' => 'Modak Offering'],
+            ['file' => 'ganpati-21.jpg', 'title' => 'Community Gathering'],
+            ['file' => 'ganpati-16.jpg', 'title' => 'Flower Decoration'],
+            ['file' => 'ganpati-23.jpg', 'title' => 'Festive Moments'],
+            ['file' => 'ganpati-13.jpg', 'title' => 'Sacred Ceremony'],
+            ['file' => 'ganpati-20.jpg', 'title' => 'Evening Celebration'],
+            ['file' => 'ganpati-15.jpg', 'title' => 'Traditional Rituals'],
+            ['file' => 'ganpati-22.jpg', 'title' => 'Joyful Gathering'],
+            ['file' => 'ganpati-17.jpg', 'title' => 'Spiritual Moments'],
+            ['file' => 'ganpati-24.jpg', 'title' => 'Grand Farewell'],
+            ['file' => 'ganpati-19.jpg', 'title' => 'Community Spirit'],
         ];
         ?>
         <div class="ganpati-gallery-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">

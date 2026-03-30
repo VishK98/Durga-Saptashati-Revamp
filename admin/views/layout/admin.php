@@ -66,6 +66,12 @@
                     <?php if ($pendingVolunteers > 0): ?><span class="badge-count"><?= $pendingVolunteers ?></span><?php endif; ?>
                 </a>
 
+                <?php try { $pendingMembers = $pdo->query("SELECT COUNT(*) FROM members WHERE status = 'pending'")->fetchColumn(); } catch(Exception $e) { $pendingMembers = 0; } ?>
+                <a href="admin.php?page=members" class="sidebar-item <?= $currentPage === 'members' ? 'active' : '' ?>">
+                    <i class="fas fa-id-card"></i> <span>Members</span>
+                    <?php if ($pendingMembers > 0): ?><span class="badge-count"><?= $pendingMembers ?></span><?php endif; ?>
+                </a>
+
                 <?php try { $newAppsCount = $pdo->query("SELECT COUNT(*) FROM career_applications WHERE status = 'new'")->fetchColumn(); } catch(Exception $e) { $newAppsCount = 0; } ?>
                 <a href="admin.php?page=careers" class="sidebar-item <?= $currentPage === 'careers' ? 'active' : '' ?>">
                     <i class="fas fa-briefcase"></i> <span>Careers</span>

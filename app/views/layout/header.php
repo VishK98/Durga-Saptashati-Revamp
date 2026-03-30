@@ -258,6 +258,13 @@
                                                 <small>Join our volunteer network</small>
                                             </div>
                                         </a>
+                                        <a class="dropdown-item" href="<?= url('become-member.php') ?>">
+                                            <i class="fas fa-id-card"></i>
+                                            <div>
+                                                <strong>Become a Member</strong>
+                                                <small>Join as a valued member</small>
+                                            </div>
+                                        </a>
                                         <a class="dropdown-item" href="<?= url('career-opportunities.php') ?>">
                                             <i class="fas fa-briefcase"></i>
                                             <div>
