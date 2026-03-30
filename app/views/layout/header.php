@@ -288,6 +288,13 @@
                         </div>
                     </li>
 
+                    <!-- Gallery -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= url('event-gallery.php') ?>">
+                            <span class="nav-text">Gallery</span>
+                        </a>
+                    </li>
+
                     <!-- Blogs -->
                     <li class="nav-item">
                         <a class="nav-link" href="<?= url('blog.php') ?>">
@@ -295,11 +302,10 @@
                         </a>
                     </li>
 
-
-                    <!-- Gallery -->
+                    <!-- Investor -->
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= url('event-gallery.php') ?>">
-                            <span class="nav-text">Gallery</span>
+                        <a class="nav-link" href="<?= url('investor.php') ?>">
+                            <span class="nav-text">Investor</span>
                         </a>
                     </li>
 

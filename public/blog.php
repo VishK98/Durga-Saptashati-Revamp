@@ -13,7 +13,7 @@ include '../app/views/layout/header.php';
 ?>
 
 <!-- Page Header Start -->
-<div class="page-header">
+<div class="page-header blog-page-header">
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
@@ -69,18 +69,21 @@ include '../app/views/layout/header.php';
                             <small style="color:#999;"><i class="far fa-user mr-1" style="color:#f26522;"></i>
                                 <?= htmlspecialchars($bp['author'] ?? 'Admin') ?></small>
                             <?php
-                                $ccStmt = $pdo->prepare("SELECT COUNT(*) FROM blog_comments WHERE blog_id = ? AND status = 'approved'");
-                                $ccStmt->execute([$bp['id']]);
-                                $ccCount = $ccStmt->fetchColumn();
-                                ?>
+                                    $ccStmt = $pdo->prepare("SELECT COUNT(*) FROM blog_comments WHERE blog_id = ? AND status = 'approved'");
+                                    $ccStmt->execute([$bp['id']]);
+                                    $ccCount = $ccStmt->fetchColumn();
+                                    ?>
                             <small style="color:#999;"><i class="far fa-comment mr-1" style="color:#f26522;"></i>
                                 <?= $ccCount ?></small>
                         </div>
                         <h5 class="font-weight-bold mb-2" style="color:#1a1b2e;font-size:1.1rem;line-height:1.4;">
-                            <?= htmlspecialchars($bp['title']) ?></h5>
+                            <?= htmlspecialchars($bp['title']) ?>
+                        </h5>
                         <p class="flex-grow-1" style="color:#666;font-size:0.9rem;line-height:1.7;">
-                            <?= htmlspecialchars(mb_strimwidth(strip_tags($bp['content'] ?? ''), 0, 150, '...')) ?></p>
-                        <span style="color:#f26522;font-weight:600;font-size:0.9rem;display:inline-flex;align-items:center;">
+                            <?= htmlspecialchars(mb_strimwidth(strip_tags($bp['content'] ?? ''), 0, 150, '...')) ?>
+                        </p>
+                        <span
+                            style="color:#f26522;font-weight:600;font-size:0.9rem;display:inline-flex;align-items:center;">
                             Read More <i class="fa fa-long-arrow-alt-right ml-2"></i>
                         </span>
                     </div>

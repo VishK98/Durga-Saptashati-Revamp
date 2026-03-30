@@ -36,7 +36,7 @@ include '../app/views/layout/header.php';
 ?>
 
 <!-- Page Header Start -->
-<div class="page-header">
+<div class="page-header blog-page-header">
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
@@ -171,19 +171,34 @@ include '../app/views/layout/header.php';
                         <input type="hidden" name="blog_id" value="<?= $blog['id'] ?>">
                         <div style="display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-bottom:15px;">
                             <div>
-                                <label style="display:block;margin-bottom:5px;font-weight:600;font-size:0.85rem;color:#333;">Name *</label>
-                                <input type="text" name="name" required placeholder="Your name" style="width:100%;padding:11px 14px;border:1px solid #ddd;border-radius:8px;font-size:0.9rem;font-family:inherit;transition:border-color 0.2s;" onfocus="this.style.borderColor='#f26522'" onblur="this.style.borderColor='#ddd'">
+                                <label
+                                    style="display:block;margin-bottom:5px;font-weight:600;font-size:0.85rem;color:#333;">Name
+                                    *</label>
+                                <input type="text" name="name" required placeholder="Your name"
+                                    style="width:100%;padding:11px 14px;border:1px solid #ddd;border-radius:8px;font-size:0.9rem;font-family:inherit;transition:border-color 0.2s;"
+                                    onfocus="this.style.borderColor='#f26522'" onblur="this.style.borderColor='#ddd'">
                             </div>
                             <div>
-                                <label style="display:block;margin-bottom:5px;font-weight:600;font-size:0.85rem;color:#333;">Email *</label>
-                                <input type="email" name="email" required placeholder="Your email" style="width:100%;padding:11px 14px;border:1px solid #ddd;border-radius:8px;font-size:0.9rem;font-family:inherit;transition:border-color 0.2s;" onfocus="this.style.borderColor='#f26522'" onblur="this.style.borderColor='#ddd'">
+                                <label
+                                    style="display:block;margin-bottom:5px;font-weight:600;font-size:0.85rem;color:#333;">Email
+                                    *</label>
+                                <input type="email" name="email" required placeholder="Your email"
+                                    style="width:100%;padding:11px 14px;border:1px solid #ddd;border-radius:8px;font-size:0.9rem;font-family:inherit;transition:border-color 0.2s;"
+                                    onfocus="this.style.borderColor='#f26522'" onblur="this.style.borderColor='#ddd'">
                             </div>
                         </div>
                         <div style="margin-bottom:15px;">
-                            <label style="display:block;margin-bottom:5px;font-weight:600;font-size:0.85rem;color:#333;">Comment *</label>
-                            <textarea name="comment" required rows="5" placeholder="Write your comment..." style="width:100%;padding:11px 14px;border:1px solid #ddd;border-radius:8px;font-size:0.9rem;font-family:inherit;resize:vertical;transition:border-color 0.2s;" onfocus="this.style.borderColor='#f26522'" onblur="this.style.borderColor='#ddd'"></textarea>
+                            <label
+                                style="display:block;margin-bottom:5px;font-weight:600;font-size:0.85rem;color:#333;">Comment
+                                *</label>
+                            <textarea name="comment" required rows="5" placeholder="Write your comment..."
+                                style="width:100%;padding:11px 14px;border:1px solid #ddd;border-radius:8px;font-size:0.9rem;font-family:inherit;resize:vertical;transition:border-color 0.2s;"
+                                onfocus="this.style.borderColor='#f26522'"
+                                onblur="this.style.borderColor='#ddd'"></textarea>
                         </div>
-                        <button type="button" id="commentSubmitBtn" onclick="submitComment()" style="background:#f26522;color:#fff;border:none;padding:12px 30px;border-radius:8px;font-size:0.9rem;font-weight:600;cursor:pointer;font-family:inherit;transition:background 0.2s;min-width:150px;" onmouseover="this.style.background='#d9551a'" onmouseout="this.style.background='#f26522'">
+                        <button type="button" id="commentSubmitBtn" onclick="submitComment()"
+                            style="background:#f26522;color:#fff;border:none;padding:12px 30px;border-radius:8px;font-size:0.9rem;font-weight:600;cursor:pointer;font-family:inherit;transition:background 0.2s;min-width:150px;"
+                            onmouseover="this.style.background='#d9551a'" onmouseout="this.style.background='#f26522'">
                             Post Comment
                         </button>
                     </form>
@@ -202,7 +217,8 @@ include '../app/views/layout/header.php';
 
                         var originalText = btn.innerHTML;
                         btn.disabled = true;
-                        btn.innerHTML = '<span style="display:inline-block;width:18px;height:18px;border:3px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:cmtSpin 0.6s linear infinite;vertical-align:middle;"></span>';
+                        btn.innerHTML =
+                            '<span style="display:inline-block;width:18px;height:18px;border:3px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:cmtSpin 0.6s linear infinite;vertical-align:middle;"></span>';
 
                         var formData = new FormData(form);
                         var xhr = new XMLHttpRequest();
@@ -219,7 +235,7 @@ include '../app/views/layout/header.php';
                                 } else {
                                     showToast(res.message, 'error');
                                 }
-                            } catch(e) {
+                            } catch (e) {
                                 showToast('Something went wrong. Please try again.', 'error');
                             }
                         };
