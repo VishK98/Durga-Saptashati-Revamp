@@ -94,31 +94,12 @@ if ($success)
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label class="mbr-label">Full Name <span class="req">*</span></label>
-                                <input type="text" name="full_name" required class="mbr-input"
-                                    placeholder="Enter your full name">
+                                <input type="text" name="full_name" required class="mbr-input" placeholder="Enter your full name">
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label class="mbr-label">Date of Birth <span class="req">*</span></label>
                                 <input type="date" name="date_of_birth" required class="mbr-input">
                             </div>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="mbr-label">Gender <span class="req">*</span></label>
-                            <div class="mbr-gender-group">
-                                <label class="mbr-gender-label"><input type="radio" name="gender" value="Male" required>
-                                    Male</label>
-                                <label class="mbr-gender-label"><input type="radio" name="gender" value="Female">
-                                    Female</label>
-                                <label class="mbr-gender-label"><input type="radio" name="gender"
-                                        value="Prefer not to say"> Prefer not to say</label>
-                            </div>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="mbr-label">Address</label>
-                            <textarea name="address" rows="2" class="mbr-input mbr-textarea"
-                                placeholder="Enter your address"></textarea>
                         </div>
 
                         <div class="row">
@@ -133,6 +114,27 @@ if ($success)
                         </div>
 
                         <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="mbr-label">Gender <span class="req">*</span></label>
+                                <input type="hidden" name="gender" required>
+                                <div class="cdd" id="genderDd">
+                                    <div class="cdd-selected" onclick="toggleCdd('genderDd')">
+                                        <span class="cdd-text">Select gender</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                    <div class="cdd-options">
+                                        <div class="cdd-option" onclick="selectCdd('genderDd','Male','Male','fa-mars')">
+                                            <i class="fas fa-mars"></i> Male
+                                        </div>
+                                        <div class="cdd-option" onclick="selectCdd('genderDd','Female','Female','fa-venus')">
+                                            <i class="fas fa-venus"></i> Female
+                                        </div>
+                                        <div class="cdd-option" onclick="selectCdd('genderDd','Prefer not to say','Other','fa-genderless')">
+                                            <i class="fas fa-genderless"></i> Other
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="col-md-6 mb-3">
                                 <label class="mbr-label">Membership Type <span class="req">*</span></label>
                                 <input type="hidden" name="membership_type" required>
@@ -157,61 +159,11 @@ if ($success)
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6 mb-3">
-                                <label class="mbr-label">Payment Mode <span class="req">*</span></label>
-                                <input type="hidden" name="payment_mode" required>
-                                <div class="cdd" id="paymentModeDd">
-                                    <div class="cdd-selected" onclick="toggleCdd('paymentModeDd')">
-                                        <span class="cdd-text">Select payment mode</span>
-                                        <i class="fas fa-chevron-down"></i>
-                                    </div>
-                                    <div class="cdd-options">
-                                        <div class="cdd-option"
-                                            onclick="selectCdd('paymentModeDd','Bank Transfer','Bank Transfer (IMPS, NEFT)','fa-university')">
-                                            <i class="fas fa-university"></i> Bank Transfer (IMPS, NEFT)
-                                        </div>
-                                        <div class="cdd-option"
-                                            onclick="selectCdd('paymentModeDd','UPI','UPI Payment','fa-mobile-alt')">
-                                            <i class="fas fa-mobile-alt"></i> UPI Payment
-                                        </div>
-                                        <div class="cdd-option"
-                                            onclick="selectCdd('paymentModeDd','Cash','Cash Payment','fa-money-bill-wave')">
-                                            <i class="fas fa-money-bill-wave"></i> Cash Payment
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
 
-                        <!-- Bank Transfer Details -->
-                        <div id="memberBankDetails" class="mbr-payment-panel">
-                            <h6><i class="fas fa-university"></i> Bank Transfer Details</h6>
-                            <div class="mbr-bank-grid">
-                                <div class="mbr-bank-item"><small>Account Name</small><strong>Durga Saptashati
-                                        Foundation</strong></div>
-                                <div class="mbr-bank-item"><small>Account Number</small><strong>XXXX XXXX XXXX
-                                        XXXX</strong></div>
-                                <div class="mbr-bank-item"><small>IFSC Code</small><strong>XXXXXXXXXX</strong></div>
-                                <div class="mbr-bank-item"><small>Bank</small><strong>State Bank of India</strong></div>
-                            </div>
-                        </div>
-
-                        <!-- UPI Details -->
-                        <div id="memberUpiDetails" class="mbr-payment-panel mbr-upi-center">
-                            <h6><i class="fas fa-mobile-alt"></i> UPI Payment</h6>
-                            <div class="mbr-qr-box"><i class="fas fa-qrcode"></i></div>
-                            <p class="mbr-upi-hint">Scan QR code or use UPI ID</p>
-                            <p class="mbr-upi-id">donate@saptashati</p>
-                            <div class="mbr-screenshot-upload">
-                                <label class="mbr-label" style="text-align:left;">Payment Screenshot</label>
-                                <div class="mbr-upload-area" onclick="document.getElementById('mbrScreenshot').click()">
-                                    <i class="fas fa-cloud-upload-alt"></i>
-                                    <p id="mbrFileLabel">Click to upload payment screenshot</p>
-                                    <small>JPG, PNG, WEBP (max 5MB)</small>
-                                    <input type="file" name="payment_screenshot" id="mbrScreenshot" accept="image/*"
-                                        onchange="document.getElementById('mbrFileLabel').textContent = this.files[0] ? this.files[0].name : 'Click to upload payment screenshot'">
-                                </div>
-                            </div>
+                        <div class="mb-3">
+                            <label class="mbr-label">Address</label>
+                            <textarea name="address" rows="2" class="mbr-input mbr-textarea" placeholder="Enter your address"></textarea>
                         </div>
 
                         <button type="submit" class="mbr-submit">
@@ -280,10 +232,6 @@ function selectCdd(id, value, label, iconClass) {
     dd.querySelector('.cdd-selected').classList.remove('active');
     var hidden = dd.previousElementSibling;
     if (hidden && hidden.type === 'hidden') hidden.value = value;
-    if (id === 'paymentModeDd') {
-        document.getElementById('memberBankDetails').style.display = value === 'Bank Transfer' ? 'block' : 'none';
-        document.getElementById('memberUpiDetails').style.display = value === 'UPI' ? 'block' : 'none';
-    }
 }
 document.addEventListener('click', function(e) {
     if (!e.target.closest('.cdd')) {
