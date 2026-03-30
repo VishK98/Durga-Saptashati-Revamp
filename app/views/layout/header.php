@@ -251,18 +251,19 @@
                                     </div>
                                     <div class="col-lg-4">
                                         <h6 class="dropdown-header">Join Our Community</h6>
-                                        <a class="dropdown-item" href="<?= url('become-volunteer.php') ?>">
-                                            <i class="fas fa-user-plus"></i>
-                                            <div>
-                                                <strong>Become a Volunteer</strong>
-                                                <small>Join our volunteer network</small>
-                                            </div>
-                                        </a>
                                         <a class="dropdown-item" href="<?= url('become-member.php') ?>">
                                             <i class="fas fa-id-card"></i>
                                             <div>
                                                 <strong>Become a Member</strong>
                                                 <small>Join as a valued member</small>
+                                            </div>
+                                        </a>
+
+                                        <a class="dropdown-item" href="<?= url('become-volunteer.php') ?>">
+                                            <i class="fas fa-user-plus"></i>
+                                            <div>
+                                                <strong>Become a Volunteer</strong>
+                                                <small>Join our volunteer network</small>
                                             </div>
                                         </a>
                                         <a class="dropdown-item" href="<?= url('career-opportunities.php') ?>">

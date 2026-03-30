@@ -10,6 +10,8 @@ if ($success)
     unset($_SESSION['membership_success']);
 ?>
 
+<link rel="stylesheet" href="<?= url('assets/css/become-member.css') ?>">
+
 <div class="page-header">
     <div class="container-fluid">
         <div class="row">
@@ -24,254 +26,278 @@ if ($success)
     </div>
 </div>
 
-<section style="padding:70px 0;background:linear-gradient(165deg,#f8f9fa,#fff);">
+<section class="mbr-section">
     <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <h6 class="mbr-section-label">Become a Member</h6>
+            <h2 class="mbr-section-heading">Support Our Mission, Shape the Future</h2>
+            <p class="mbr-section-desc">Joining Durga Saptashati Foundation as a member means standing alongside a community dedicated to empowering women, educating children, and uplifting the underprivileged. Your membership fuels lasting change.</p>
+        </div>
+
         <?php if ($success): ?>
-        <div data-aos="fade-down"
-            style="background:linear-gradient(135deg,#ecfdf5,#d1fae5);border:1px solid #6ee7b7;border-radius:16px;padding:25px 30px;margin-bottom:35px;display:flex;align-items:center;gap:15px;">
-            <div
-                style="width:50px;height:50px;background:#059669;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                <i class="fas fa-check" style="color:#fff;font-size:1.3rem;"></i>
-            </div>
+        <div class="mbr-success" data-aos="fade-down">
+            <div class="mbr-success-icon"><i class="fas fa-check"></i></div>
             <div>
-                <h5 style="color:#065f46;font-weight:700;margin:0 0 4px;">Application Submitted!</h5>
-                <p style="color:#047857;margin:0;font-size:0.92rem;"><?= htmlspecialchars($success) ?></p>
+                <h5>Application Submitted!</h5>
+                <p><?= htmlspecialchars($success) ?></p>
             </div>
         </div>
         <?php endif; ?>
 
-        <div class="row">
+        <div class="row" style="align-items:stretch;">
             <!-- Left: Info -->
-            <div class="col-lg-5 mb-4" data-aos="fade-right">
-                <div
-                    style="background:#fff;border-radius:20px;padding:35px;box-shadow:0 8px 35px rgba(0,0,0,0.06);border:1px solid rgba(0,0,0,0.04);height:100%;">
-                    <div
-                        style="display:inline-flex;align-items:center;gap:10px;background:rgba(242,101,34,0.1);color:#f26522;padding:8px 18px;border-radius:50px;font-size:0.8rem;font-weight:600;margin-bottom:20px;">
-                        <i class="fas fa-id-card"></i> Membership Application
-                    </div>
-
-                    <h3 style="color:#1a1b2e;font-weight:700;font-size:1.4rem;margin-bottom:15px;">Join Our Foundation
-                    </h3>
-
-                    <p style="color:#666;line-height:1.8;font-size:0.92rem;margin-bottom:20px;">
-                        The <strong style="color:#1a1b2e;">Durga Saptashati Foundation</strong>, established by
-                        <strong style="color:#1a1b2e;">Ms. Sandhya Singh</strong> in December 2020, is set to reach
-                        new milestones in its mission to uplift underprivileged women and children. By becoming a
-                        member,
-                        you empower the underprivileged while gaining a deeply fulfilling experience.
+            <div class="col-lg-5 d-flex" data-aos="fade-right">
+                <div class="mbr-card">
+                    <div class="mbr-badge"><i class="fas fa-id-card"></i> Membership Application</div>
+                    <h3 class="mbr-title">Join Our Foundation</h3>
+                    <p class="mbr-desc">
+                        The <strong>Durga Saptashati Foundation</strong>, established by
+                        <strong>Ms. Sandhya Singh</strong> in December 2020, is set to reach new milestones in its
+                        mission to uplift underprivileged women and children. By becoming a member, you empower
+                        the underprivileged while gaining a deeply fulfilling experience.
                     </p>
-
-                    <div
-                        style="background:rgba(242,101,34,0.05);border-left:4px solid #f26522;border-radius:0 10px 10px 0;padding:14px 18px;margin-bottom:20px;">
-                        <p style="color:#1a1b2e;font-weight:600;font-size:0.85rem;margin:0;">
-                            <i class="fas fa-file-alt" style="color:#f26522;margin-right:6px;"></i>
-                            Registration No: U85300DL2020NPL374927
-                        </p>
+                    <div class="mbr-reg-box">
+                        <p><i class="fas fa-file-alt"></i> Registration No: U85300DL2020NPL374927</p>
                     </div>
-
-                    <h5 style="color:#1a1b2e;font-weight:700;font-size:1rem;margin-bottom:15px;">Membership Options</h5>
-
-                    <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:25px;">
-                        <div style="background:#fff;border:2px solid rgba(242,101,34,0.15);border-radius:14px;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;transition:all 0.3s;"
-                            onmouseover="this.style.borderColor='#f26522';this.style.boxShadow='0 4px 15px rgba(242,101,34,0.1)'"
-                            onmouseout="this.style.borderColor='rgba(242,101,34,0.15)';this.style.boxShadow='none'">
-                            <div>
-                                <strong style="color:#1a1b2e;font-size:0.95rem;">1-Year Membership</strong>
-                                <p style="color:#888;font-size:0.78rem;margin:0;">Annual contribution</p>
+                    <h5 class="mbr-options-title">Membership Options</h5>
+                    <div class="mbr-options">
+                        <div class="mbr-option">
+                            <div><strong>1-Year Membership</strong>
+                                <p>Annual contribution</p>
                             </div>
-                            <span
-                                style="background:linear-gradient(135deg,#f26522,#ff8c42);color:#fff;padding:6px 16px;border-radius:20px;font-weight:700;font-size:0.95rem;">&#8377;501</span>
+                            <span class="mbr-price">&#8377;501</span>
                         </div>
-                        <div style="background:#fff;border:2px solid rgba(242,101,34,0.15);border-radius:14px;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;transition:all 0.3s;"
-                            onmouseover="this.style.borderColor='#f26522';this.style.boxShadow='0 4px 15px rgba(242,101,34,0.1)'"
-                            onmouseout="this.style.borderColor='rgba(242,101,34,0.15)';this.style.boxShadow='none'">
-                            <div>
-                                <strong style="color:#1a1b2e;font-size:0.95rem;">6-Year Membership</strong>
-                                <p style="color:#888;font-size:0.78rem;margin:0;">Extended commitment</p>
+                        <div class="mbr-option">
+                            <div><strong>6-Year Membership</strong>
+                                <p>Extended commitment</p>
                             </div>
-                            <span
-                                style="background:linear-gradient(135deg,#f26522,#ff8c42);color:#fff;padding:6px 16px;border-radius:20px;font-weight:700;font-size:0.95rem;">&#8377;2,500</span>
+                            <span class="mbr-price">&#8377;2,500</span>
                         </div>
-                        <div style="background:#fff;border:2px solid rgba(242,101,34,0.15);border-radius:14px;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;position:relative;overflow:hidden;transition:all 0.3s;"
-                            onmouseover="this.style.borderColor='#f26522';this.style.boxShadow='0 4px 15px rgba(242,101,34,0.1)'"
-                            onmouseout="this.style.borderColor='rgba(242,101,34,0.15)';this.style.boxShadow='none'">
-                            <div
-                                style="position:absolute;top:0;right:0;background:#f26522;color:#fff;font-size:0.6rem;padding:2px 10px;border-radius:0 0 0 8px;font-weight:600;">
-                                BEST VALUE</div>
-                            <div>
-                                <strong style="color:#1a1b2e;font-size:0.95rem;">Lifetime Membership</strong>
-                                <p style="color:#888;font-size:0.78rem;margin:0;">One-time commitment</p>
+                        <div class="mbr-option">
+                            <span class="mbr-best-value">BEST VALUE</span>
+                            <div><strong>Lifetime Membership</strong>
+                                <p>One-time commitment</p>
                             </div>
-                            <span
-                                style="background:linear-gradient(135deg,#f26522,#ff8c42);color:#fff;padding:6px 16px;border-radius:20px;font-weight:700;font-size:0.95rem;">&#8377;11,000</span>
-                        </div>
-                    </div>
-
-                    <div style="border-top:1px solid #eee;padding-top:18px;">
-                        <h6 style="color:#1a1b2e;font-weight:700;font-size:0.9rem;margin-bottom:12px;">Contact Us</h6>
-                        <div style="display:flex;flex-direction:column;gap:8px;">
-                            <a href="tel:+919289088161"
-                                style="color:#666;font-size:0.85rem;text-decoration:none;display:flex;align-items:center;gap:8px;">
-                                <i class="fas fa-phone-alt" style="color:#f26522;width:16px;"></i> +91 9289088161
-                            </a>
-                            <a href="mailto:support@saptashati.org"
-                                style="color:#666;font-size:0.85rem;text-decoration:none;display:flex;align-items:center;gap:8px;">
-                                <i class="fas fa-envelope" style="color:#f26522;width:16px;"></i> support@saptashati.org
-                            </a>
-                            <a href="https://www.saptashati.org" target="_blank"
-                                style="color:#666;font-size:0.85rem;text-decoration:none;display:flex;align-items:center;gap:8px;">
-                                <i class="fas fa-globe" style="color:#f26522;width:16px;"></i> www.saptashati.org
-                            </a>
+                            <span class="mbr-price">&#8377;11,000</span>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Right: Form -->
-            <div class="col-lg-7" data-aos="fade-left">
-                <div
-                    style="background:#fff;border-radius:20px;padding:35px;box-shadow:0 8px 35px rgba(0,0,0,0.06);border:1px solid rgba(0,0,0,0.04);">
-                    <h4 style="color:#1a1b2e;font-weight:700;margin-bottom:25px;">
-                        <i class="fas fa-user-plus" style="color:#f26522;margin-right:8px;"></i> Membership Form
-                    </h4>
-
-                    <form method="POST" action="<?= url('admin.php') ?>" enctype="multipart/form-data">
+            <div class="col-lg-7 d-flex" data-aos="fade-left">
+                <div class="mbr-card mbr-form-card">
+                    <h4 class="mbr-form-title"><i class="fas fa-user-plus"></i> Membership Form</h4>
+                    <form method="POST" action="<?= url('admin.php') ?>" enctype="multipart/form-data" class="mbr-form">
                         <input type="hidden" name="action" value="submit_membership">
 
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label
-                                    style="font-weight:600;color:#1a1b2e;font-size:0.85rem;margin-bottom:6px;display:block;">Full
-                                    Name <span style="color:#ef4444;">*</span></label>
-                                <input type="text" name="full_name" required
-                                    style="width:100%;padding:12px 16px;border:2px solid #e5e7eb;border-radius:10px;font-size:0.92rem;transition:all 0.3s;outline:none;"
-                                    onfocus="this.style.borderColor='#f26522'" onblur="this.style.borderColor='#e5e7eb'"
+                                <label class="mbr-label">Full Name <span class="req">*</span></label>
+                                <input type="text" name="full_name" required class="mbr-input"
                                     placeholder="Enter your full name">
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label
-                                    style="font-weight:600;color:#1a1b2e;font-size:0.85rem;margin-bottom:6px;display:block;">Date
-                                    of Birth <span style="color:#ef4444;">*</span></label>
-                                <input type="date" name="date_of_birth" required
-                                    style="width:100%;padding:12px 16px;border:2px solid #e5e7eb;border-radius:10px;font-size:0.92rem;transition:all 0.3s;outline:none;"
-                                    onfocus="this.style.borderColor='#f26522'"
-                                    onblur="this.style.borderColor='#e5e7eb'">
+                                <label class="mbr-label">Date of Birth <span class="req">*</span></label>
+                                <input type="date" name="date_of_birth" required class="mbr-input">
                             </div>
                         </div>
 
                         <div class="mb-3">
-                            <label
-                                style="font-weight:600;color:#1a1b2e;font-size:0.85rem;margin-bottom:8px;display:block;">Gender
-                                <span style="color:#ef4444;">*</span></label>
-                            <div style="display:flex;gap:20px;">
-                                <label
-                                    style="display:flex;align-items:center;gap:6px;cursor:pointer;color:#555;font-size:0.9rem;">
-                                    <input type="radio" name="gender" value="Male" required
-                                        style="accent-color:#f26522;"> Male
-                                </label>
-                                <label
-                                    style="display:flex;align-items:center;gap:6px;cursor:pointer;color:#555;font-size:0.9rem;">
-                                    <input type="radio" name="gender" value="Female" style="accent-color:#f26522;">
-                                    Female
-                                </label>
-                                <label
-                                    style="display:flex;align-items:center;gap:6px;cursor:pointer;color:#555;font-size:0.9rem;">
-                                    <input type="radio" name="gender" value="Prefer not to say"
-                                        style="accent-color:#f26522;"> Prefer not to say
-                                </label>
+                            <label class="mbr-label">Gender <span class="req">*</span></label>
+                            <div class="mbr-gender-group">
+                                <label class="mbr-gender-label"><input type="radio" name="gender" value="Male" required>
+                                    Male</label>
+                                <label class="mbr-gender-label"><input type="radio" name="gender" value="Female">
+                                    Female</label>
+                                <label class="mbr-gender-label"><input type="radio" name="gender"
+                                        value="Prefer not to say"> Prefer not to say</label>
                             </div>
                         </div>
 
                         <div class="mb-3">
-                            <label
-                                style="font-weight:600;color:#1a1b2e;font-size:0.85rem;margin-bottom:6px;display:block;">Address</label>
-                            <textarea name="address" rows="2"
-                                style="width:100%;padding:12px 16px;border:2px solid #e5e7eb;border-radius:10px;font-size:0.92rem;resize:vertical;transition:all 0.3s;outline:none;"
-                                onfocus="this.style.borderColor='#f26522'" onblur="this.style.borderColor='#e5e7eb'"
+                            <label class="mbr-label">Address</label>
+                            <textarea name="address" rows="2" class="mbr-input mbr-textarea"
                                 placeholder="Enter your address"></textarea>
                         </div>
 
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label
-                                    style="font-weight:600;color:#1a1b2e;font-size:0.85rem;margin-bottom:6px;display:block;">Email</label>
-                                <input type="email" name="email"
-                                    style="width:100%;padding:12px 16px;border:2px solid #e5e7eb;border-radius:10px;font-size:0.92rem;transition:all 0.3s;outline:none;"
-                                    onfocus="this.style.borderColor='#f26522'" onblur="this.style.borderColor='#e5e7eb'"
-                                    placeholder="your@email.com">
+                                <label class="mbr-label">Email</label>
+                                <input type="email" name="email" class="mbr-input" placeholder="your@email.com">
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label
-                                    style="font-weight:600;color:#1a1b2e;font-size:0.85rem;margin-bottom:6px;display:block;">Mobile
-                                    Number</label>
-                                <input type="tel" name="mobile"
-                                    style="width:100%;padding:12px 16px;border:2px solid #e5e7eb;border-radius:10px;font-size:0.92rem;transition:all 0.3s;outline:none;"
-                                    onfocus="this.style.borderColor='#f26522'" onblur="this.style.borderColor='#e5e7eb'"
-                                    placeholder="+91 XXXXX XXXXX">
+                                <label class="mbr-label">Mobile Number</label>
+                                <input type="tel" name="mobile" class="mbr-input" placeholder="+91 XXXXX XXXXX">
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label
-                                    style="font-weight:600;color:#1a1b2e;font-size:0.85rem;margin-bottom:6px;display:block;">Membership
-                                    Type <span style="color:#ef4444;">*</span></label>
-                                <select name="membership_type" required
-                                    style="width:100%;padding:12px 16px;border:2px solid #e5e7eb;border-radius:10px;font-size:0.92rem;transition:all 0.3s;outline:none;background:#fff;"
-                                    onfocus="this.style.borderColor='#f26522'"
-                                    onblur="this.style.borderColor='#e5e7eb'">
-                                    <option value="">Select membership</option>
-                                    <option value="1-year">1-Year Membership - &#8377;501</option>
-                                    <option value="6-year">6-Year Membership - &#8377;2,500</option>
-                                    <option value="lifetime">Lifetime Membership - &#8377;11,000</option>
-                                </select>
+                                <label class="mbr-label">Membership Type <span class="req">*</span></label>
+                                <input type="hidden" name="membership_type" required>
+                                <div class="cdd" id="membershipDd">
+                                    <div class="cdd-selected" onclick="toggleCdd('membershipDd')">
+                                        <span class="cdd-text">Select membership</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                    <div class="cdd-options">
+                                        <div class="cdd-option"
+                                            onclick="selectCdd('membershipDd','1-year','1-Year Membership — ₹501','fa-calendar-alt')">
+                                            <i class="fas fa-calendar-alt"></i> 1-Year Membership — ₹501
+                                        </div>
+                                        <div class="cdd-option"
+                                            onclick="selectCdd('membershipDd','6-year','6-Year Membership — ₹2,500','fa-calendar-check')">
+                                            <i class="fas fa-calendar-check"></i> 6-Year Membership — ₹2,500
+                                        </div>
+                                        <div class="cdd-option"
+                                            onclick="selectCdd('membershipDd','lifetime','Lifetime Membership — ₹11,000','fa-infinity')">
+                                            <i class="fas fa-infinity"></i> Lifetime Membership — ₹11,000
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label
-                                    style="font-weight:600;color:#1a1b2e;font-size:0.85rem;margin-bottom:6px;display:block;">Payment
-                                    Mode <span style="color:#ef4444;">*</span></label>
-                                <select name="payment_mode" required
-                                    style="width:100%;padding:12px 16px;border:2px solid #e5e7eb;border-radius:10px;font-size:0.92rem;transition:all 0.3s;outline:none;background:#fff;"
-                                    onfocus="this.style.borderColor='#f26522'"
-                                    onblur="this.style.borderColor='#e5e7eb'">
-                                    <option value="">Select payment mode</option>
-                                    <option value="Bank Transfer">Bank Transfer (IMPS, NEFT)</option>
-                                    <option value="UPI">UPI</option>
-                                    <option value="Cash">Cash</option>
-                                </select>
+                                <label class="mbr-label">Payment Mode <span class="req">*</span></label>
+                                <input type="hidden" name="payment_mode" required>
+                                <div class="cdd" id="paymentModeDd">
+                                    <div class="cdd-selected" onclick="toggleCdd('paymentModeDd')">
+                                        <span class="cdd-text">Select payment mode</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                    <div class="cdd-options">
+                                        <div class="cdd-option"
+                                            onclick="selectCdd('paymentModeDd','Bank Transfer','Bank Transfer (IMPS, NEFT)','fa-university')">
+                                            <i class="fas fa-university"></i> Bank Transfer (IMPS, NEFT)
+                                        </div>
+                                        <div class="cdd-option"
+                                            onclick="selectCdd('paymentModeDd','UPI','UPI Payment','fa-mobile-alt')">
+                                            <i class="fas fa-mobile-alt"></i> UPI Payment
+                                        </div>
+                                        <div class="cdd-option"
+                                            onclick="selectCdd('paymentModeDd','Cash','Cash Payment','fa-money-bill-wave')">
+                                            <i class="fas fa-money-bill-wave"></i> Cash Payment
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="mb-4">
-                            <label
-                                style="font-weight:600;color:#1a1b2e;font-size:0.85rem;margin-bottom:6px;display:block;">Payment
-                                Screenshot <span style="color:#888;font-weight:400;">(optional)</span></label>
-                            <div style="border:2px dashed #e5e7eb;border-radius:10px;padding:25px;text-align:center;transition:all 0.3s;cursor:pointer;position:relative;"
-                                onclick="document.getElementById('screenshotInput').click()"
-                                onmouseover="this.style.borderColor='#f26522'"
-                                onmouseout="this.style.borderColor='#e5e7eb'">
-                                <i class="fas fa-cloud-upload-alt"
-                                    style="font-size:2rem;color:#ccc;margin-bottom:8px;display:block;"></i>
-                                <p style="color:#888;font-size:0.85rem;margin:0;" id="fileLabel">Click to upload payment
-                                    screenshot</p>
-                                <small style="color:#aaa;font-size:0.75rem;">JPG, PNG, WEBP (max 5MB)</small>
-                                <input type="file" name="payment_screenshot" id="screenshotInput" accept="image/*"
-                                    style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;cursor:pointer;"
-                                    onchange="document.getElementById('fileLabel').textContent = this.files[0] ? this.files[0].name : 'Click to upload'">
+                        <!-- Bank Transfer Details -->
+                        <div id="memberBankDetails" class="mbr-payment-panel">
+                            <h6><i class="fas fa-university"></i> Bank Transfer Details</h6>
+                            <div class="mbr-bank-grid">
+                                <div class="mbr-bank-item"><small>Account Name</small><strong>Durga Saptashati
+                                        Foundation</strong></div>
+                                <div class="mbr-bank-item"><small>Account Number</small><strong>XXXX XXXX XXXX
+                                        XXXX</strong></div>
+                                <div class="mbr-bank-item"><small>IFSC Code</small><strong>XXXXXXXXXX</strong></div>
+                                <div class="mbr-bank-item"><small>Bank</small><strong>State Bank of India</strong></div>
                             </div>
                         </div>
 
-                        <button type="submit"
-                            style="width:100%;padding:14px;background:linear-gradient(135deg,#f26522,#ff8c42);color:#fff;border:none;border-radius:12px;font-size:1rem;font-weight:700;cursor:pointer;transition:all 0.3s;box-shadow:0 8px 25px rgba(242,101,34,0.3);"
-                            onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 12px 35px rgba(242,101,34,0.4)'"
-                            onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 8px 25px rgba(242,101,34,0.3)'">
-                            <i class="fas fa-paper-plane" style="margin-right:8px;"></i> Submit Application
+                        <!-- UPI Details -->
+                        <div id="memberUpiDetails" class="mbr-payment-panel mbr-upi-center">
+                            <h6><i class="fas fa-mobile-alt"></i> UPI Payment</h6>
+                            <div class="mbr-qr-box"><i class="fas fa-qrcode"></i></div>
+                            <p class="mbr-upi-hint">Scan QR code or use UPI ID</p>
+                            <p class="mbr-upi-id">donate@saptashati</p>
+                            <div class="mbr-screenshot-upload">
+                                <label class="mbr-label" style="text-align:left;">Payment Screenshot</label>
+                                <div class="mbr-upload-area" onclick="document.getElementById('mbrScreenshot').click()">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <p id="mbrFileLabel">Click to upload payment screenshot</p>
+                                    <small>JPG, PNG, WEBP (max 5MB)</small>
+                                    <input type="file" name="payment_screenshot" id="mbrScreenshot" accept="image/*"
+                                        onchange="document.getElementById('mbrFileLabel').textContent = this.files[0] ? this.files[0].name : 'Click to upload payment screenshot'">
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="mbr-submit">
+                            <i class="fas fa-paper-plane"></i> Submit Application
                         </button>
                     </form>
                 </div>
             </div>
         </div>
+
+        <!-- Full-width Contact Bar -->
+        <div class="row mt-4" data-aos="fade-up">
+            <div class="col-12">
+                <div class="mbr-contact-bar">
+                    <div class="mbr-contact-info">
+                        <div class="mbr-contact-icon"><i class="fas fa-headset"></i></div>
+                        <div>
+                            <h6>Need Help? Contact Us</h6>
+                            <p>We're here to assist you with your membership application</p>
+                        </div>
+                    </div>
+                    <div class="mbr-contact-links">
+                        <a href="tel:+919289088161" class="mbr-contact-link"><i class="fas fa-phone-alt"></i> +91
+                            9289088161</a>
+                        <a href="mailto:support@saptashati.org" class="mbr-contact-link"><i class="fas fa-envelope"></i>
+                            support@saptashati.org</a>
+                        <a href="https://www.saptashati.org" target="_blank" class="mbr-contact-link"><i
+                                class="fas fa-globe"></i> www.saptashati.org</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
+
+<script>
+function toggleCdd(id) {
+    var dd = document.getElementById(id);
+    var opts = dd.querySelector('.cdd-options');
+    var icon = dd.querySelector('.fa-chevron-down');
+    var sel = dd.querySelector('.cdd-selected');
+    var isOpen = opts.style.display === 'block';
+    document.querySelectorAll('.cdd-options').forEach(function(o) {
+        o.style.display = 'none';
+    });
+    document.querySelectorAll('.cdd .fa-chevron-down').forEach(function(i) {
+        i.style.transform = 'rotate(0)';
+    });
+    document.querySelectorAll('.cdd-selected').forEach(function(s) {
+        s.classList.remove('active');
+    });
+    if (!isOpen) {
+        opts.style.display = 'block';
+        icon.style.transform = 'rotate(180deg)';
+        sel.classList.add('active');
+    }
+}
+
+function selectCdd(id, value, label, iconClass) {
+    var dd = document.getElementById(id);
+    var text = dd.querySelector('.cdd-text');
+    text.innerHTML = '<i class="fas ' + iconClass + '"></i>' + label;
+    text.classList.add('has-value');
+    dd.querySelector('.cdd-options').style.display = 'none';
+    dd.querySelector('.fa-chevron-down').style.transform = 'rotate(0)';
+    dd.querySelector('.cdd-selected').classList.remove('active');
+    var hidden = dd.previousElementSibling;
+    if (hidden && hidden.type === 'hidden') hidden.value = value;
+    if (id === 'paymentModeDd') {
+        document.getElementById('memberBankDetails').style.display = value === 'Bank Transfer' ? 'block' : 'none';
+        document.getElementById('memberUpiDetails').style.display = value === 'UPI' ? 'block' : 'none';
+    }
+}
+document.addEventListener('click', function(e) {
+    if (!e.target.closest('.cdd')) {
+        document.querySelectorAll('.cdd-options').forEach(function(o) {
+            o.style.display = 'none';
+        });
+        document.querySelectorAll('.cdd .fa-chevron-down').forEach(function(i) {
+            i.style.transform = 'rotate(0)';
+        });
+        document.querySelectorAll('.cdd-selected').forEach(function(s) {
+            s.classList.remove('active');
+        });
+    }
+});
+</script>
 
 <?php include '../app/views/layout/footer.php'; ?>
