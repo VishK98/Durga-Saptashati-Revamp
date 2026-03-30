@@ -1,112 +1,79 @@
 <?php
 require_once '../app/config/config.php';
-$pageTitle = "Independence Day Celebration - Durga Saptashati Foundation";
-$pageKeywords = "independence day, 15 august, freedom celebration, patriotic events, national pride, indian independence, community service, nation building";
-$pageDescription = "Join Durga Saptashati Foundation in celebrating India's Independence Day with patriotic fervor, community service initiatives, and honoring our nation's heroes through meaningful programs.";
-
+$pageTitle = "Independence Day Celebration";
+$pageDescription = "Durga Saptashati Foundation's Independence Day Celebration — honouring our freedom with flag hoisting, cultural performances, and community service drives.";
+$pageKeywords = "independence day, 15 august, patriotic celebration, flag hoisting, cultural performance, Durga Saptashati Foundation";
 include '../app/views/layout/header.php';
 ?>
 
-<!-- Custom CSS for Independence Day Page -->
 <link rel="stylesheet" href="<?= url('assets/css/events/independence-day.css') ?>">
 
-<!-- Separated Flag Styles -->
-<link rel="stylesheet" href="<?= url('assets/css/events/flag.css') ?>">
-
-<!-- International Yoga Day CSS for Gallery Styling -->
-<link rel="stylesheet" href="<?= url('assets/css/events/international-yoga-day.css') ?>">
-
-<!-- Page Header Start -->
-<div class="page-header">
+<!-- Page Header -->
+<div class="page-header ind-page-header">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12">
-                <h2>Independence Day Celebration</h2>
-            </div>
+            <div class="col-12"><h2>Independence Day Celebration</h2></div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
-                <a href="<?= url('events.php') ?>">Events</a>
+                <a href="<?= url('event.php') ?>">Events</a>
                 <a href="<?= url('independence-day.php') ?>">Independence Day</a>
             </div>
         </div>
     </div>
 </div>
-<!-- Page Header End -->
 
-<!-- Patriotic Hero Section -->
-<section class="independence-hero-section position-relative overflow-hidden">
-    <div class="animated-bg-elements">
-        <div class="flag-wave flag-1"></div>
-        <div class="flag-wave flag-2"></div>
-        <div class="flag-wave flag-3"></div>
-    </div>
-
+<!-- Hero: Content Left + Image Right like reference -->
+<section class="ind-hero">
     <div class="container-fluid">
-        <div class="row min-vh-100 align-items-center">
-            <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1200">
-                <div class="hero-content-wrapper">
-                    <div class="date-badge">
-                        <i class="fas fa-calendar-day"></i>
-                        <span>15th August 2024</span>
+        <div class="row align-items-center ind-hero-row">
+            <!-- Left: Content -->
+            <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
+                <div class="ind-content">
+                    <div class="ind-badge">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>15th August 2025</span>
                     </div>
 
-                    <h1 class="hero-title">
-                        Celebrating <span class="text-saffron">78 Years</span> of
-                        <span class="text-gradient-tricolor">Freedom & Unity</span>
+                    <h1 class="ind-title">
+                        Celebrating <span class="ind-saffron-text">79 Years</span>
+                        of <span class="ind-green-text">Freedom</span> & <span class="ind-saffron-text">Unity</span>
                     </h1>
 
-                    <p class="hero-description">
-                        Join us in commemorating India's journey of independence, honoring the sacrifices of our freedom
-                        fighters,
-                        and pledging to build a stronger, more inclusive nation through community service and social
-                        responsibility.
+                    <p class="ind-desc">
+                        Join us in commemorating India's journey of independence, honoring the sacrifices
+                        of our freedom fighters, and pledging to build a stronger, more inclusive nation
+                        through community service and social responsibility.
                     </p>
 
-                    <div class="hero-stats-grid">
-                        <div class="stat-card">
-                            <div class="stat-value" data-count="78">0</div>
-                            <div class="stat-label">Years of Independence</div>
+                    <div class="ind-stats-row">
+                        <div class="ind-stat-card">
+                            <div class="ind-stat-num" data-counter="79">0</div>
+                            <div class="ind-stat-label">Years of Independence</div>
                         </div>
-                        <div class="stat-card">
-                            <div class="stat-value" data-count="500">0+</div>
-                            <div class="stat-label">Community Members</div>
+                        <div class="ind-stat-card">
+                            <div class="ind-stat-num" data-counter="500">0</div>
+                            <div class="ind-stat-label">Community Members</div>
                         </div>
-                        <div class="stat-card">
-                            <div class="stat-value" data-count="25">0+</div>
-                            <div class="stat-label">Service Projects</div>
+                        <div class="ind-stat-card">
+                            <div class="ind-stat-num" data-counter="25">0</div>
+                            <div class="ind-stat-label">Service Projects</div>
                         </div>
-                    </div>
-
-                    <div class="hero-cta-group">
-                        <a href="#events" class="btn-primary-custom">
-                            <i class="fas fa-flag"></i>
-                            View Events
-                        </a>
-                        <a href="#wall-of-recognition" class="btn-outline-custom">
-                            <i class="fas fa-medal"></i>
-                            Wall of Recognition
-                        </a>
                     </div>
                 </div>
             </div>
 
-            <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300" data-aos-duration="1200">
-                <div class="hero-visual-container">
-                    <div class="main-visual-wrapper">
-                        <img src="https://images.unsplash.com/photo-1604931668626-ab49cb27d952?w=700&h=800&fit=crop"
-                            alt="Independence Day Celebration" class="hero-main-image">
-                        <div class="floating-badge badge-1">
-                            <i class="fas fa-dove"></i>
-                            <span>Peace</span>
-                        </div>
-                        <div class="floating-badge badge-2">
-                            <i class="fas fa-hands-helping"></i>
-                            <span>Unity</span>
-                        </div>
-                        <div class="floating-badge badge-3">
-                            <i class="fas fa-chart-line"></i>
-                            <span>Progress</span>
-                        </div>
+            <!-- Right: Image -->
+            <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200" data-aos-duration="1000">
+                <div class="ind-hero-img-wrap">
+                    <img src="<?= url('assets/images/independence-day-celebration/indpe.jpg') ?>" alt="Independence Day" class="ind-hero-img">
+                    <div class="ind-float-badge ind-float-1">
+                        <i class="fas fa-dove"></i> <span>Peace</span>
+                    </div>
+                    <div class="ind-float-badge ind-float-2">
+                        <i class="fas fa-hands-helping"></i> <span>Unity</span>
+                    </div>
+                    <div class="ind-float-badge ind-float-3">
+                        <i class="fas fa-chart-line"></i> <span>Progress</span>
                     </div>
                 </div>
             </div>
@@ -114,585 +81,128 @@ include '../app/views/layout/header.php';
     </div>
 </section>
 
-<!-- Tri-color Divider -->
-<div class="tricolor-divider">
-    <div class="color-band saffron"></div>
-    <div class="color-band white">
-        <div class="ashoka-chakra">
-            <div class="chakra-center"></div>
-            <div class="chakra-spokes"></div>
+<!-- Indian Flag Banner (Horizontal Tricolor with Ashoka Chakra) -->
+<div class="ind-flag-banner">
+    <div class="ind-flag-col ind-saffron-bg"></div>
+    <div class="ind-flag-col ind-white-bg">
+        <div class="ind-ashoka-chakra">
+            <svg viewBox="0 0 100 100" width="80" height="80">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="#000080" stroke-width="3"/>
+                <circle cx="50" cy="50" r="5" fill="#000080"/>
+                <?php for ($s = 0; $s < 24; $s++): ?>
+                <line x1="50" y1="50" x2="<?= 50 + 40 * cos(deg2rad($s * 15)) ?>" y2="<?= 50 + 40 * sin(deg2rad($s * 15)) ?>" stroke="#000080" stroke-width="1.5"/>
+                <?php endfor; ?>
+                <circle cx="50" cy="50" r="40" fill="none" stroke="#000080" stroke-width="2"/>
+            </svg>
         </div>
     </div>
-    <div class="color-band green"></div>
+    <div class="ind-flag-col ind-green-bg"></div>
 </div>
 
-<!-- Our Pledge Section -->
-<section class="pledge-section">
+<!-- Gallery Section -->
+<section class="ind-gallery-section" id="gallery">
     <div class="container-fluid">
-        <div class="row justify-content-center">
-            <div class="col-lg-10">
-                <div class="section-header text-center" data-aos="fade-up">
-                    <span class="section-badge">Our Commitment</span>
-                    <h2 class="section-title">Nation Building Through Service</h2>
-                    <h6 class="section-subtitle">
-                        At Durga Saptashati Foundation, we believe true independence means empowering every citizen
-                        with education, healthcare, and opportunities for growth.
-                    </h6>
+        <div class="ind-section-header text-center" data-aos="fade-up">
+            <span class="ind-section-badge">Gallery</span>
+            <h2 class="ind-section-title">Celebration Moments</h2>
+            <p class="ind-section-desc">Patriotic moments from our Independence Day celebrations — flag hoisting, cultural performances, and community gatherings.</p>
+        </div>
+
+        <?php
+        $indImages = [
+            ['file' => 'independence-day-celebration-5.webp', 'title' => 'Flag Hoisting'],
+            ['file' => 'independence-day-celebration.webp', 'title' => 'Celebration Day'],
+            ['file' => 'independence-day-celebration-12.webp', 'title' => 'Patriotic Performance'],
+            ['file' => 'independence-day-celebration-3.webp', 'title' => 'Cultural Programme'],
+            ['file' => 'independence-day-celebration-9.webp', 'title' => 'Community Gathering'],
+            ['file' => 'independence-day-celebration-1.webp', 'title' => 'Morning Ceremony'],
+            ['file' => 'independence-day-celebration-15.webp', 'title' => 'Stage Programme'],
+            ['file' => 'independence-day-celebration-7.webp', 'title' => 'Student Performance'],
+            ['file' => 'independence-day-celebration-4.webp', 'title' => 'Tribute Moment'],
+            ['file' => 'independence-day-celebration-16.webp', 'title' => 'Grand Celebration'],
+            ['file' => 'independence-day-celebration-2.webp', 'title' => 'National Pride'],
+            ['file' => 'independence-day-celebration-10.webp', 'title' => 'Festive Spirit'],
+            ['file' => 'independence-day-celebration-6.webp', 'title' => 'Group Photo'],
+            ['file' => 'independence-day-celebration-13.webp', 'title' => 'Joyful Moments'],
+            ['file' => 'independence-day-celebration-8.webp', 'title' => 'Award Ceremony'],
+            ['file' => 'independence-day-celebration-17.webp', 'title' => 'Closing Ceremony'],
+            ['file' => 'independence-day-celebration-11.webp', 'title' => 'Unity March'],
+            ['file' => 'independence-day-celebration-14.webp', 'title' => 'Cultural Evening'],
+        ];
+        ?>
+        <div class="ind-gallery-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+            <?php foreach ($indImages as $i => $img): ?>
+            <div data-aos="fade-up" data-aos-delay="<?= ($i % 3) * 50 ?>"
+                style="cursor:pointer;border-radius:14px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.06);transition:all 0.3s;background:#fff;"
+                onclick="openIndLb(<?= $i ?>)"
+                onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 12px 35px rgba(0,0,0,0.12)'"
+                onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.06)'">
+                <div style="position:relative;overflow:hidden;">
+                    <img src="<?= url('assets/images/independence-day-celebration/' . $img['file']) ?>"
+                        alt="<?= htmlspecialchars($img['title']) ?>"
+                        style="width:100%;height:220px;object-fit:cover;display:block;transition:transform 0.4s;"
+                        onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                    <div style="position:absolute;top:12px;left:12px;background:rgba(0,0,0,0.6);color:#fff;padding:4px 12px;border-radius:15px;font-size:0.72rem;font-weight:600;backdrop-filter:blur(4px);">Independence Day</div>
+                    <div style="position:absolute;inset:0;background:rgba(0,0,0,0.3);opacity:0;transition:opacity 0.3s;display:flex;align-items:center;justify-content:center;"
+                        onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0'">
+                        <div style="width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;">
+                            <i class="fas fa-search-plus" style="color:#f26522;font-size:1.2rem;"></i>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="row pledge-cards-row">
-                    <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="100">
-                        <div class="pledge-card">
-                            <div class="card-icon">
-                                <i class="fas fa-graduation-cap"></i>
-                            </div>
-                            <h3>Education for All</h3>
-                            <p>Ensuring quality education reaches every corner of our nation, breaking barriers of
-                                inequality.</p>
-                            <div class="card-stats">
-                                <span><i class="fas fa-users"></i> 5000+ Students</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="pledge-card">
-                            <div class="card-icon">
-                                <i class="fas fa-heartbeat"></i>
-                            </div>
-                            <h3>Healthcare Access</h3>
-                            <p>Providing essential healthcare services to underserved communities across rural and urban
-                                areas.</p>
-                            <div class="card-stats">
-                                <span><i class="fas fa-hospital"></i> 50+ Health Camps</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="300">
-                        <div class="pledge-card">
-                            <div class="card-icon">
-                                <i class="fas fa-seedling"></i>
-                            </div>
-                            <h3>Environmental Care</h3>
-                            <p>Protecting our nation's natural heritage through sustainable practices and green
-                                initiatives.</p>
-                            <div class="card-stats">
-                                <span><i class="fas fa-tree"></i> 10000+ Trees Planted</span>
-                            </div>
-                        </div>
-                    </div>
+                <div style="padding:14px 16px;">
+                    <h6 style="color:#1a1b2e;font-weight:600;font-size:0.9rem;margin:0;"><?= htmlspecialchars($img['title']) ?></h6>
                 </div>
             </div>
+            <?php endforeach; ?>
         </div>
     </div>
 </section>
 
-<!-- Events Timeline Section -->
-<section class="events-timeline-section" id="events">
-    <div class="container-fluid">
-        <div class="section-header text-center" data-aos="fade-up">
-            <span class="section-badge">Celebration Events</span>
-            <h2 class="section-title">Independence Day Programs</h2>
-        </div>
-
-        <div class="timeline-container">
-            <div class="timeline-line"></div>
-
-            <div class="timeline-item left" data-aos="fade-right">
-                <div class="timeline-content">
-                    <div class="time-badge">6:00 AM</div>
-                    <h3>Flag Hoisting Ceremony</h3>
-                    <p>Traditional flag hoisting followed by the national anthem and patriotic songs.</p>
-                    <div class="event-meta">
-                        <span><i class="fas fa-map-marker-alt"></i> Main Ground</span>
-                        <span><i class="fas fa-users"></i> Open to All</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="timeline-item right" data-aos="fade-left">
-                <div class="timeline-content">
-                    <div class="time-badge">8:00 AM</div>
-                    <h3>Cultural Performances</h3>
-                    <p>Students showcase patriotic dances, songs, and theatrical performances.</p>
-                    <div class="event-meta">
-                        <span><i class="fas fa-map-marker-alt"></i> Auditorium</span>
-                        <span><i class="fas fa-ticket-alt"></i> Free Entry</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="timeline-item left" data-aos="fade-right">
-                <div class="timeline-content">
-                    <div class="time-badge">10:00 AM</div>
-                    <h3>Freedom Fighters Tribute</h3>
-                    <p>Special ceremony honoring local freedom fighters and veterans.</p>
-                    <div class="event-meta">
-                        <span><i class="fas fa-map-marker-alt"></i> Memorial Hall</span>
-                        <span><i class="fas fa-medal"></i> Special Guests</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="timeline-item right" data-aos="fade-left">
-                <div class="timeline-content">
-                    <div class="time-badge">2:00 PM</div>
-                    <h3>Community Service Drive</h3>
-                    <p>Blood donation camp, free health checkup, and distribution of essentials.</p>
-                    <div class="event-meta">
-                        <span><i class="fas fa-map-marker-alt"></i> Community Center</span>
-                        <span><i class="fas fa-hands-helping"></i> Volunteer</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="timeline-item left" data-aos="fade-right">
-                <div class="timeline-content">
-                    <div class="time-badge">5:00 PM</div>
-                    <h3>Unity March & Rally</h3>
-                    <p>Peace march promoting national unity and communal harmony.</p>
-                    <div class="event-meta">
-                        <span><i class="fas fa-map-marker-alt"></i> City Center</span>
-                        <span><i class="fas fa-walking"></i> Join Us</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!-- Lightbox -->
+<div id="indLb" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.92);z-index:99999;align-items:center;justify-content:center;backdrop-filter:blur(8px);">
+    <button onclick="closeIndLb()" style="position:absolute;top:20px;right:20px;background:rgba(255,255,255,0.1);border:none;width:44px;height:44px;border-radius:50%;cursor:pointer;color:#fff;font-size:1.3rem;z-index:10;display:flex;align-items:center;justify-content:center;transition:all 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">&times;</button>
+    <button onclick="indPrev()" style="position:absolute;left:20px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.1);border:none;width:50px;height:50px;border-radius:50%;cursor:pointer;color:#fff;font-size:1.2rem;z-index:10;display:flex;align-items:center;justify-content:center;transition:all 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'"><i class="fas fa-chevron-left"></i></button>
+    <button onclick="indNext()" style="position:absolute;right:20px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.1);border:none;width:50px;height:50px;border-radius:50%;cursor:pointer;color:#fff;font-size:1.2rem;z-index:10;display:flex;align-items:center;justify-content:center;transition:all 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'"><i class="fas fa-chevron-right"></i></button>
+    <div style="text-align:center;max-width:90%;max-height:85vh;">
+        <img id="indLbImg" src="" alt="" style="max-width:100%;max-height:78vh;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,0.5);object-fit:contain;">
+        <h5 id="indLbTitle" style="color:#fff;font-weight:600;font-size:1rem;margin:14px 0 0;"></h5>
     </div>
-</section>
+</div>
 
-<!-- Wall of Recognition Gallery -->
-<section class="gallery-section" id="wall-of-recognition">
-    <div class="container-fluid">
-        <div class="section-header-yoga text-center" data-aos="fade-up">
-            <span class="section-badge-yoga">Honor & Pride</span>
-            <h2 class="section-title-yoga">Wall of Recognition</h2>
-            <p class="section-description-yoga">
-                Certificates, awards, and acknowledgments we've received for our service to the nation
-            </p>
-        </div>
-
-        <div class="yoga-gallery-grid">
-            <!-- Certificate Item 1 -->
-            <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100">
-                <div class="gallery-card" onclick="openGalleryModal(this)"
-                    data-image="https://images.unsplash.com/photo-1604931668626-ab49cb27d952?w=800&h=600&fit=crop"
-                    data-title="Government Recognition Certificate - Excellence in Nation Building">
-                    <img src="https://images.unsplash.com/photo-1604931668626-ab49cb27d952?w=400&h=300&fit=crop"
-                        alt="Government Recognition Certificate">
-                    <div class="gallery-overlay">
-                        <div class="overlay-content">
-                            <h4>National Excellence Award</h4>
-                            <p>Government Recognition 2023</p>
-                            <i class="fas fa-search-plus"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Certificate Item 2 -->
-            <div class="gallery-item" data-aos="zoom-in" data-aos-delay="200">
-                <div class="gallery-card" onclick="openGalleryModal(this)"
-                    data-image="https://images.unsplash.com/photo-1532618793091-ec5fe9635fbd?w=800&h=600&fit=crop"
-                    data-title="Excellence in Social Service - Community Welfare Award">
-                    <img src="https://images.unsplash.com/photo-1532618793091-ec5fe9635fbd?w=400&h=300&fit=crop"
-                        alt="Excellence in Social Service">
-                    <div class="gallery-overlay">
-                        <div class="overlay-content">
-                            <h4>Service Excellence</h4>
-                            <p>Community Service Award 2023</p>
-                            <i class="fas fa-search-plus"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Certificate Item 3 -->
-            <div class="gallery-item" data-aos="zoom-in" data-aos-delay="300">
-                <div class="gallery-card" onclick="openGalleryModal(this)"
-                    data-image="https://images.unsplash.com/photo-1578662996442-48f60103fc7e?w=800&h=600&fit=crop"
-                    data-title="Community Development Award - Nation Building Initiative">
-                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc7e?w=400&h=300&fit=crop"
-                        alt="Community Development Award">
-                    <div class="gallery-overlay">
-                        <div class="overlay-content">
-                            <h4>Nation Building Award</h4>
-                            <p>Development Excellence 2022</p>
-                            <i class="fas fa-search-plus"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Certificate Item 4 -->
-            <div class="gallery-item" data-aos="zoom-in" data-aos-delay="400">
-                <div class="gallery-card" onclick="openGalleryModal(this)"
-                    data-image="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&h=600&fit=crop"
-                    data-title="Best NGO for Women Empowerment - Regional Social Welfare Board">
-                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=300&fit=crop"
-                        alt="Women Empowerment Recognition">
-                    <div class="gallery-overlay">
-                        <div class="overlay-content">
-                            <h4>Women Empowerment</h4>
-                            <p>Best NGO Award 2022</p>
-                            <i class="fas fa-search-plus"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Certificate Item 5 -->
-            <div class="gallery-item" data-aos="zoom-in" data-aos-delay="500">
-                <div class="gallery-card" onclick="openGalleryModal(this)"
-                    data-image="https://images.unsplash.com/photo-1569163139394-de4798aa62b6?w=800&h=600&fit=crop"
-                    data-title="Outstanding Leadership Award - Excellence in Social Impact">
-                    <img src="https://images.unsplash.com/photo-1569163139394-de4798aa62b6?w=400&h=300&fit=crop"
-                        alt="Outstanding Leadership Award">
-                    <div class="gallery-overlay">
-                        <div class="overlay-content">
-                            <h4>Leadership Excellence</h4>
-                            <p>Outstanding Leadership 2021</p>
-                            <i class="fas fa-search-plus"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Certificate Item 6 -->
-            <div class="gallery-item" data-aos="zoom-in" data-aos-delay="600">
-                <div class="gallery-card" onclick="openGalleryModal(this)"
-                    data-image="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&h=600&fit=crop"
-                    data-title="Outstanding Partnership Initiative - Corporate Social Responsibility">
-                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=400&h=300&fit=crop"
-                        alt="Partnership Initiative Award">
-                    <div class="gallery-overlay">
-                        <div class="overlay-content">
-                            <h4>Unity in Service</h4>
-                            <p>Partnership Excellence 2020</p>
-                            <i class="fas fa-search-plus"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Gallery Modal -->
-    <div id="galleryModal" class="gallery-modal">
-        <div class="modal-backdrop" onclick="closeGalleryModal()"></div>
-        <div class="modal-container">
-            <div class="modal-header">
-                <h3 id="galleryModalTitle">Gallery Image</h3>
-                <button class="modal-close" onclick="closeGalleryModal()">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <button class="modal-nav-btn modal-prev" onclick="previousGalleryImage()">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-
-                <div class="modal-image-container">
-                    <img id="galleryModalImage" src="" alt="">
-                </div>
-
-                <button class="modal-nav-btn modal-next" onclick="nextGalleryImage()">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Freedom Stories Section -->
-<section class="freedom-stories-section">
-    <div class="container-fluid">
-        <div class="section-header text-center" data-aos="fade-up">
-            <span class="section-badge">Inspiring Journeys</span>
-            <h2 class="section-title">Stories of Change</h2>
-        </div>
-
-        <div class="row stories-row">
-            <div class="col-lg-6" data-aos="fade-right">
-                <div class="story-card featured">
-                    <div class="story-image">
-                        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600&h=400&fit=crop"
-                            alt="Community Service">
-                    </div>
-                    <div class="story-content">
-                        <span class="story-category">Community Impact</span>
-                        <h3>From Streets to Schools</h3>
-                        <p>How our education initiative transformed the lives of 500+ street children, giving them hope
-                            and a future through quality education and mentorship.</p>
-                        <div class="story-author">
-                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=50&h=50&fit=crop"
-                                alt="Author">
-                            <div>
-                                <h5>Sarah Johnson</h5>
-                                <span>Program Director</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-6">
-                <div class="row">
-                    <div class="col-12" data-aos="fade-left" data-aos-delay="100">
-                        <div class="story-card horizontal">
-                            <div class="story-image">
-                                <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=200&h=150&fit=crop"
-                                    alt="Rural Development">
-                            </div>
-                            <div class="story-content">
-                                <span class="story-category">Rural Development</span>
-                                <h4>Empowering Villages</h4>
-                                <p>Digital literacy programs reaching 50+ villages, connecting rural India to
-                                    opportunities.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12" data-aos="fade-left" data-aos-delay="200">
-                        <div class="story-card horizontal">
-                            <div class="story-image">
-                                <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=200&h=150&fit=crop"
-                                    alt="Healthcare">
-                            </div>
-                            <div class="story-content">
-                                <span class="story-category">Healthcare</span>
-                                <h4>Health for All</h4>
-                                <p>Free medical camps providing healthcare access to 10,000+ underprivileged citizens.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12" data-aos="fade-left" data-aos-delay="300">
-                        <div class="story-card horizontal">
-                            <div class="story-image">
-                                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&h=150&fit=crop"
-                                    alt="Women Empowerment">
-                            </div>
-                            <div class="story-content">
-                                <span class="story-category">Women Empowerment</span>
-                                <h4>Breaking Barriers</h4>
-                                <p>Skill development programs helping 1000+ women achieve financial independence.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Call to Action Section -->
-<section class="cta-section">
-    <div class="container-fluid">
-        <div class="cta-wrapper" data-aos="zoom-in">
-            <div class="row align-items-center">
-                <div class="col-lg-8">
-                    <h2 class="cta-title">Be Part of Nation Building</h2>
-                    <p class="cta-description">
-                        Join us in our mission to create a stronger, more inclusive India through education,
-                        healthcare, and community service.
-                    </p>
-                </div>
-                <div class="col-lg-4 text-lg-end">
-                    <div class="cta-buttons">
-                        <a href="#" class="btn-primary-custom">
-                            <i class="fas fa-hands-helping"></i>
-                            Volunteer Now
-                        </a>
-                        <a href="#" class="btn-outline-custom">
-                            <i class="fas fa-donate"></i>
-                            Support Us
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- JavaScript for Interactive Features -->
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-// Initialize AOS
-AOS.init({
-    duration: 1000,
-    once: true,
-    offset: 100
+var indData = <?= json_encode(array_map(function($img) { return ['src' => url('assets/images/independence-day-celebration/' . $img['file']), 'title' => $img['title']]; }, $indImages)) ?>;
+var indIdx = 0;
+function openIndLb(i) { indIdx = i; updateIndLb(); document.getElementById('indLb').style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+function closeIndLb() { document.getElementById('indLb').style.display = 'none'; document.body.style.overflow = ''; }
+function updateIndLb() { document.getElementById('indLbImg').src = indData[indIdx].src; document.getElementById('indLbTitle').textContent = indData[indIdx].title; }
+function indPrev() { indIdx = (indIdx - 1 + indData.length) % indData.length; updateIndLb(); }
+function indNext() { indIdx = (indIdx + 1) % indData.length; updateIndLb(); }
+document.getElementById('indLb').addEventListener('click', function(e) { if (e.target === this) closeIndLb(); });
+document.addEventListener('keydown', function(e) {
+    if (document.getElementById('indLb').style.display !== 'flex') return;
+    if (e.key === 'Escape') closeIndLb();
+    if (e.key === 'ArrowLeft') indPrev();
+    if (e.key === 'ArrowRight') indNext();
 });
 
-// Counter Animation
+// Counter
 document.addEventListener('DOMContentLoaded', function() {
-    const counters = document.querySelectorAll('.stat-value');
-    const observerOptions = {
-        threshold: 0.7,
-        rootMargin: '0px 0px -100px 0px'
-    };
-
-    const startCounting = (entries, observer) => {
-        entries.forEach(entry => {
+    var counters = document.querySelectorAll('[data-counter]');
+    var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
             if (entry.isIntersecting) {
-                const counter = entry.target;
-                const target = parseInt(counter.getAttribute('data-count'));
-                const hasPlus = counter.getAttribute('data-count').includes('+');
-                let current = 0;
-                const increment = target / 100;
-
-                const updateCounter = () => {
-                    current += increment;
-                    if (current >= target) {
-                        counter.textContent = target + (hasPlus ? '+' : '');
-                    } else {
-                        counter.textContent = Math.floor(current) + (hasPlus ? '+' : '');
-                        requestAnimationFrame(updateCounter);
-                    }
-                };
-
-                updateCounter();
-                observer.unobserve(counter);
+                var c = entry.target, target = parseInt(c.getAttribute('data-counter')), current = 0, inc = target / 60;
+                var timer = setInterval(function() {
+                    current += inc;
+                    if (current >= target) { c.textContent = target.toLocaleString() + '+'; clearInterval(timer); }
+                    else { c.textContent = Math.floor(current).toLocaleString(); }
+                }, 25);
+                obs.unobserve(c);
             }
         });
-    };
-
-    const counterObserver = new IntersectionObserver(startCounting, observerOptions);
-    counters.forEach(counter => counterObserver.observe(counter));
-});
-
-// Gallery Modal Functions
-let currentGalleryIndex = 0;
-let galleryImages = [];
-
-// Initialize gallery images array
-document.addEventListener('DOMContentLoaded', function() {
-    const galleryCards = document.querySelectorAll('.gallery-card[onclick]');
-    galleryImages = Array.from(galleryCards).map(card => ({
-        src: card.getAttribute('data-image'),
-        title: card.getAttribute('data-title'),
-        element: card
-    }));
-});
-
-function openGalleryModal(element) {
-    const modal = document.getElementById('galleryModal');
-    const modalImage = document.getElementById('galleryModalImage');
-    const modalTitle = document.getElementById('galleryModalTitle');
-
-    // Find current image index
-    currentGalleryIndex = galleryImages.findIndex(img => img.element === element);
-
-    // Set modal content
-    const currentImage = galleryImages[currentGalleryIndex];
-    modalImage.src = currentImage.src;
-    modalImage.alt = currentImage.title;
-    modalTitle.textContent = currentImage.title;
-
-    // Show modal
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-
-    // Update navigation button states
-    updateGalleryNavigationButtons();
-}
-
-function nextGalleryImage() {
-    if (currentGalleryIndex < galleryImages.length - 1) {
-        currentGalleryIndex++;
-        updateGalleryModalImage();
-    }
-}
-
-function previousGalleryImage() {
-    if (currentGalleryIndex > 0) {
-        currentGalleryIndex--;
-        updateGalleryModalImage();
-    }
-}
-
-function updateGalleryModalImage() {
-    const modalImage = document.getElementById('galleryModalImage');
-    const modalTitle = document.getElementById('galleryModalTitle');
-    const currentImage = galleryImages[currentGalleryIndex];
-
-    modalImage.src = currentImage.src;
-    modalImage.alt = currentImage.title;
-    modalTitle.textContent = currentImage.title;
-
-    updateGalleryNavigationButtons();
-}
-
-function updateGalleryNavigationButtons() {
-    const prevBtn = document.querySelector('.modal-prev');
-    const nextBtn = document.querySelector('.modal-next');
-
-    // Update button states
-    if (currentGalleryIndex === 0) {
-        prevBtn.style.opacity = '0.5';
-        prevBtn.style.cursor = 'not-allowed';
-    } else {
-        prevBtn.style.opacity = '1';
-        prevBtn.style.cursor = 'pointer';
-    }
-
-    if (currentGalleryIndex === galleryImages.length - 1) {
-        nextBtn.style.opacity = '0.5';
-        nextBtn.style.cursor = 'not-allowed';
-    } else {
-        nextBtn.style.opacity = '1';
-        nextBtn.style.cursor = 'pointer';
-    }
-}
-
-function closeGalleryModal() {
-    const modal = document.getElementById('galleryModal');
-    modal.classList.remove('active');
-    document.body.style.overflow = 'auto';
-}
-
-// Close modal on Escape key and add arrow key navigation
-document.addEventListener('keydown', function(e) {
-    const modal = document.getElementById('galleryModal');
-    if (modal && modal.classList.contains('active')) {
-        if (e.key === 'Escape') {
-            closeGalleryModal();
-        } else if (e.key === 'ArrowLeft') {
-            e.preventDefault();
-            previousGalleryImage();
-        } else if (e.key === 'ArrowRight') {
-            e.preventDefault();
-            nextGalleryImage();
-        }
-    }
-});
-
-// Smooth Scroll
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
-});
-
-// Parallax Effect for Hero Section
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const parallaxElements = document.querySelectorAll('.flag-wave');
-
-    parallaxElements.forEach((element, index) => {
-        const speed = 0.5 + (index * 0.1);
-        element.style.transform = `translateY(${scrolled * speed}px)`;
-    });
+    }, { threshold: 0.7 });
+    counters.forEach(function(c) { obs.observe(c); });
 });
 </script>
 

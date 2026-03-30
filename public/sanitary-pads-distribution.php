@@ -106,12 +106,22 @@ include '../app/views/layout/header.php';
 
         <?php
         $spdImages = [
+            ['file' => 'sanitary-pads-distribution-7.webp', 'title' => 'Community Outreach'],
             ['file' => 'sanitary-pads-distribution-3.webp', 'title' => 'Community Drive'],
+            ['file' => 'sanitary-pads-distribution-12.webp', 'title' => 'School Campaign'],
             ['file' => 'sanitary-pads-distribution.webp', 'title' => 'Distribution Camp'],
+            ['file' => 'sanitary-pads-distribution-9.webp', 'title' => 'Volunteer Team'],
             ['file' => 'sanitary-pads-distribution-5.webp', 'title' => 'Awareness Session'],
+            ['file' => 'sanitary-pads-distribution-14.webp', 'title' => 'Rural Distribution'],
             ['file' => 'sanitary-pads-distribution-1.webp', 'title' => 'Reaching Every Girl'],
+            ['file' => 'sanitary-pads-distribution-11.webp', 'title' => 'Health Education'],
+            ['file' => 'sanitary-pads-distribution-6.webp', 'title' => 'Kit Preparation'],
             ['file' => 'sanitary-pads-distribution-4.webp', 'title' => 'Hygiene Workshop'],
+            ['file' => 'sanitary-pads-distribution-15.webp', 'title' => 'Impact Stories'],
+            ['file' => 'sanitary-pads-distribution-8.webp', 'title' => 'On-ground Support'],
             ['file' => 'sanitary-pads-distribution-2.webp', 'title' => 'Empowering Women'],
+            ['file' => 'sanitary-pads-distribution-13.webp', 'title' => 'Women Gathering'],
+            ['file' => 'sanitary-pads-distribution--10.webp', 'title' => 'Awareness Drive'],
         ];
         ?>
         <div class="spd-gallery-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
