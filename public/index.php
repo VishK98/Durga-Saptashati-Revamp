@@ -110,7 +110,7 @@ include '../app/views/layout/header.php';
 <!-- Video Modal moved below about section -->
 
 <!-- About Section Start -->
-<div class="container-fluid py-5" id="about">
+<div class="container-fluid" id="about">
     <div class="container py-4">
         <div class="row" style="align-items:stretch;">
             <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right" data-aos-duration="1000">
@@ -209,7 +209,7 @@ include '../app/views/layout/header.php';
 <!-- Sanskrit Quote Section End -->
 
 <!-- Facts/Counter Section Start -->
-<div class="container-fluid py-5" style="background:#1a1b2e;">
+<div class="container-fluid" style="background:#1a1b2e;">
     <div class="container py-5">
         <div class="row">
             <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 text-center" data-aos="fade-up" data-aos-delay="100">
@@ -421,7 +421,7 @@ include '../app/views/layout/header.php';
 <!-- Our Causes Section End -->
 
 <!-- Activities Section Start -->
-<div class="container-fluid py-5" style="background:#fff;">
+<div class="container-fluid" style="background:#fff;">
     <div class="container py-4">
         <div class="text-center mb-5" data-aos="fade-up">
             <h6 class="text-uppercase mb-1" style="color:#f26522;letter-spacing:3px;font-weight:600;">How We Help</h6>
@@ -569,7 +569,7 @@ include '../app/views/layout/header.php';
 <!-- Activities Section End -->
 
 <!-- Donate Section Start -->
-<div class="container-fluid py-5"
+<div class="container-fluid"
     style="background:url('<?php echo asset('img/donate.jpg') ?>') center center/cover no-repeat fixed;position:relative;">
     <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(26,27,46,0.9);"></div>
     <div class="container py-5 position-relative" style="z-index:1;">
@@ -657,7 +657,7 @@ $blogStmt = $pdo->prepare("SELECT * FROM blogs WHERE status = 'published' ORDER 
 $blogStmt->execute();
 $latestBlogs = $blogStmt->fetchAll();
 ?>
-<div class="container-fluid py-5" style="background:#f8f9fa;">
+<div class="container-fluid" style="background:#f8f9fa;">
     <div class="container py-4">
         <div class="text-center mb-5" data-aos="fade-up">
             <h6 class="text-uppercase mb-1" style="color:#f26522;letter-spacing:3px;font-weight:600;">From Our Blog</h6>
