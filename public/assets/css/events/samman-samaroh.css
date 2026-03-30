@@ -1,0 +1,172 @@
+/* Samman Samaroh */
+
+.ss-page-header {
+  background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+    url(../../images/samman-samaroh/samman-samaroh-3.webp) !important;
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+/* Hero — Ribbon Banner */
+.ss-hero { overflow: hidden; }
+
+.ss-hero-visual {
+  position: relative;
+  height: 70vh;
+  min-height: 450px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ss-hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ss-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(13,14,20,0.5) 0%, rgba(13,14,20,0.8) 100%);
+}
+
+.ss-hero-center {
+  position: relative;
+  z-index: 5;
+  text-align: center;
+}
+
+.ss-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(242,101,34,0.15);
+  border: 1px solid rgba(242,101,34,0.3);
+  color: #ff8c42;
+  padding: 10px 22px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.ss-title {
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: 10px;
+}
+
+.ss-venue {
+  color: rgba(255,255,255,0.7);
+  font-weight: 500;
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+  letter-spacing: 0.5px;
+}
+
+/* Ribbon */
+.ss-ribbon {
+  background: #fff;
+  padding: 35px 0;
+  box-shadow: 0 -10px 40px rgba(0,0,0,0.08);
+  position: relative;
+  z-index: 10;
+  border-top: 4px solid #f26522;
+}
+
+.ss-ribbon-text {
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.85;
+  margin: 0;
+}
+
+.ss-ribbon-stats {
+  display: flex;
+  gap: 16px;
+}
+
+.ss-rs {
+  flex: 1;
+  text-align: center;
+  background: rgba(242,101,34,0.06);
+  padding: 16px 12px;
+  border-radius: 12px;
+  transition: all 0.3s;
+}
+
+.ss-rs:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(242,101,34,0.1);
+}
+
+.ss-rs strong {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #f26522;
+  line-height: 1;
+  display: block;
+}
+
+.ss-rs span {
+  font-size: 0.7rem;
+  color: #888;
+  font-weight: 600;
+  margin-top: 4px;
+  display: block;
+}
+
+/* Gallery */
+.ss-gallery-section {
+  padding: 60px 0;
+  background: linear-gradient(135deg, #f8f9fa 0%, rgba(242,101,34,0.02) 100%);
+}
+
+.ss-section-header { margin-bottom: 50px; }
+
+.ss-section-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #f26522, #ff8c42);
+  color: #fff;
+  padding: 8px 20px;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.ss-section-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  color: #0d0e14;
+  line-height: 1.2;
+}
+
+.ss-section-desc {
+  font-size: 1.05rem;
+  color: #666;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .ss-hero-visual { height: 50vh; min-height: 350px; }
+  .ss-ribbon-stats { margin-top: 20px; }
+  .ss-gallery-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+@media (max-width: 768px) {
+  .ss-hero-visual { height: 40vh; min-height: 280px; }
+  .ss-title { font-size: 1.8rem; }
+  .ss-ribbon { padding: 25px 0; }
+  .ss-ribbon-stats { flex-wrap: wrap; gap: 10px; }
+  .ss-rs { min-width: 45%; }
+  .ss-gallery-grid { grid-template-columns: 1fr !important; }
+}

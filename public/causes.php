@@ -17,6 +17,8 @@ $causes = [
     ['title' => 'Junior Super Model', 'icon' => 'fa-star', 'url' => 'junior-super-model-pacific-mall-D21.php', 'img' => 'junior-super-modal/junior-super-modal.jpg', 'desc' => 'A platform for young talents to showcase confidence, creativity, and personality at Pacific Mall D21.', 'tag' => 'Talent'],
     ['title' => 'Jan Aushadhi Diwas 2023', 'icon' => 'fa-pills', 'url' => 'pradhan-mantri-bhartiya-janaushadhi-pariyojana-7th-march.php', 'img' => 'jan-aushadhi/jan-aushadhi.webp', 'desc' => 'Promoting affordable generic medicines and healthcare awareness under PM Janaushadhi Pariyojana.', 'tag' => 'Healthcare'],
     ['title' => 'भारत-तिब्बत समन्वय संघ स्थापना दिवस एवं G20 देशो पर चर्चा', 'icon' => 'fa-landmark', 'url' => 'india-tibbat-samanwaya-sangh-sthapna-diwas.php', 'img' => 'sthapna-diwas/sthapna-diwas.webp', 'desc' => 'Foundation day celebration honouring Indo-Tibetan unity through cultural programmes and felicitations.', 'tag' => 'Heritage'],
+    ['title' => 'सम्मान समारोह हरियाणा प्रान्त कार्यालय', 'icon' => 'fa-award', 'url' => 'samman-samaroh-hariyana-prant-office-30oct-2022.php', 'img' => 'samman-samaroh/samman-samaroh.webp', 'desc' => 'Felicitation ceremony honouring community leaders for outstanding contributions to social welfare.', 'tag' => 'Felicitation'],
+    ['title' => 'National Core Council Meeting', 'icon' => 'fa-landmark', 'url' => 'national-core-council-meeting.php', 'img' => 'national-core-council-meeting/national-core-council-meeting.webp', 'desc' => 'Two-day strategic meeting for governance, planning, and organisational development (8-9 Oct 2022).', 'tag' => 'Governance'],
 ];
 ?>
 
