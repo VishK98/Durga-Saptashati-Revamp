@@ -16,6 +16,7 @@ $causes = [
     ['title' => 'इंद्रप्रस्थ साहित्य महोत्सव', 'icon' => 'fa-book-open', 'url' => 'indraprastha-sahitya-mahotsav-2022.php', 'img' => 'indra/indra.webp', 'desc' => 'A grand literary festival celebrating Hindi literature, poetry, and cultural heritage.', 'tag' => 'Literary'],
     ['title' => 'Junior Super Model', 'icon' => 'fa-star', 'url' => 'junior-super-model-pacific-mall-D21.php', 'img' => 'junior-super-modal/junior-super-modal.jpg', 'desc' => 'A platform for young talents to showcase confidence, creativity, and personality at Pacific Mall D21.', 'tag' => 'Talent'],
     ['title' => 'Jan Aushadhi Diwas 2023', 'icon' => 'fa-pills', 'url' => 'pradhan-mantri-bhartiya-janaushadhi-pariyojana-7th-march.php', 'img' => 'jan-aushadhi/jan-aushadhi.webp', 'desc' => 'Promoting affordable generic medicines and healthcare awareness under PM Janaushadhi Pariyojana.', 'tag' => 'Healthcare'],
+    ['title' => 'भारत-तिब्बत समन्वय संघ स्थापना दिवस एवं G20 देशो पर चर्चा', 'icon' => 'fa-landmark', 'url' => 'india-tibbat-samanwaya-sangh-sthapna-diwas.php', 'img' => 'sthapna-diwas/sthapna-diwas.webp', 'desc' => 'Foundation day celebration honouring Indo-Tibetan unity through cultural programmes and felicitations.', 'tag' => 'Heritage'],
 ];
 ?>
 

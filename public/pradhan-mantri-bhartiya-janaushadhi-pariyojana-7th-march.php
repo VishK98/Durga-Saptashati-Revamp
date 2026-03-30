@@ -130,16 +130,26 @@ include '../app/views/layout/header.php';
 
         <?php
         $jaImages = [
+            ['file' => 'jan-aushadhi-14.webp', 'title' => 'Community Outreach'],
             ['file' => 'jan-aushadhi-6.webp', 'title' => 'Awareness Drive'],
+            ['file' => 'jan-aushadhi-17.webp', 'title' => 'Inauguration Moment'],
             ['file' => 'jan-aushadhi.webp', 'title' => 'Jan Aushadhi Diwas'],
             ['file' => 'jan-aushadhi-9.webp', 'title' => 'Community Camp'],
+            ['file' => 'jan-aushadhi-12.webp', 'title' => 'Medicine Awareness'],
             ['file' => 'jan-aushadhi-2.webp', 'title' => 'Health Talk'],
+            ['file' => 'jan-aushadhi-19.webp', 'title' => 'Volunteer Team'],
             ['file' => 'jan-aushadhi-7.webp', 'title' => 'Medicine Distribution'],
+            ['file' => 'jan-aushadhi-15.webp', 'title' => 'Stage Programme'],
             ['file' => 'jan-aushadhi-4.webp', 'title' => 'Guest Address'],
+            ['file' => 'jan-aushadhi-11.webp', 'title' => 'Healthcare Session'],
+            ['file' => 'jan-aushadhi-20.webp', 'title' => 'Closing Ceremony'],
             ['file' => 'jan-aushadhi-10.webp', 'title' => 'Group Photo'],
             ['file' => 'jan-aushadhi-1.webp', 'title' => 'Opening Ceremony'],
+            ['file' => 'jan-aushadhi-16.webp', 'title' => 'Public Awareness'],
             ['file' => 'jan-aushadhi-8.webp', 'title' => 'Health Checkup'],
-            ['file' => 'jan-aushadhi-3.webp', 'title' => 'Felicitation'],
+            ['file' => 'jan-aushadhi-13.webp', 'title' => 'Felicitation Ceremony'],
+            ['file' => 'jan-aushadhi-3.webp', 'title' => 'Guest Felicitation'],
+            ['file' => 'jan-aushadhi-18.webp', 'title' => 'Community Gathering'],
             ['file' => 'jan-aushadhi-5.webp', 'title' => 'Public Engagement'],
         ];
         ?>
