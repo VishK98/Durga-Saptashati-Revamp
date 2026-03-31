@@ -404,14 +404,15 @@
 .social-title {
     font-size: 1rem;
     font-weight: 500;
-    color: #fff;
+    color: #f26522;
     margin-bottom: 15px;
-    text-align: center;
+    margin-top: 31px;
+    /* text-align: center; */
 }
 
 .social-links {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     gap: 12px;
 }
 
