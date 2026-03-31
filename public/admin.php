@@ -2,6 +2,77 @@
 session_start();
 require_once '../app/config/config.php';
 
+// AJAX handlers (return JSON, no redirect)
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest') {
+    header('Content-Type: application/json');
+    $action = $_POST['action'] ?? '';
+    try {
+        switch ($action) {
+            case 'add_member':
+                $payMode = trim($_POST['payment_mode'] ?? 'Cash');
+                $status = trim($_POST['status'] ?? 'pending');
+                $stmt = $pdo->prepare("INSERT INTO members (full_name, gender, address, email, mobile, membership_type, profession, payment_mode, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                $stmt->execute([
+                    trim($_POST['full_name']),
+                    trim($_POST['gender'] ?? ''),
+                    trim($_POST['address'] ?? ''),
+                    trim($_POST['email'] ?? ''),
+                    trim($_POST['mobile'] ?? ''),
+                    trim($_POST['membership_type'] ?? ''),
+                    trim($_POST['profession'] ?? ''),
+                    $payMode,
+                    $status
+                ]);
+                echo json_encode(['success' => true, 'message' => 'Member added successfully.']);
+                exit;
+
+            case 'delete_member':
+                $pdo->prepare("DELETE FROM members WHERE id = ?")->execute([(int)$_POST['member_id']]);
+                echo json_encode(['success' => true, 'message' => 'Member deleted successfully.']);
+                exit;
+
+            case 'update_member':
+                $stmt = $pdo->prepare("UPDATE members SET full_name = ?, email = ?, mobile = ?, gender = ?, membership_type = ?, address = ?, profession = ?, payment_mode = ?, status = ? WHERE id = ?");
+                $stmt->execute([
+                    trim($_POST['full_name']),
+                    trim($_POST['email'] ?? ''),
+                    trim($_POST['mobile'] ?? ''),
+                    trim($_POST['gender'] ?? ''),
+                    trim($_POST['membership_type'] ?? ''),
+                    trim($_POST['address'] ?? ''),
+                    trim($_POST['profession'] ?? ''),
+                    trim($_POST['payment_mode'] ?? 'Cash'),
+                    trim($_POST['status'] ?? 'pending'),
+                    (int)$_POST['member_id']
+                ]);
+                echo json_encode(['success' => true, 'message' => 'Member updated successfully.']);
+                exit;
+
+            case 'delete_membership_plan':
+                $pdo->prepare("DELETE FROM membership_plans WHERE id = ?")->execute([(int)$_POST['plan_id']]);
+                echo json_encode(['success' => true, 'message' => 'Plan deleted successfully.']);
+                exit;
+
+            case 'approve_member':
+                $pdo->prepare("UPDATE members SET status = 'approved' WHERE id = ?")->execute([(int)$_POST['member_id']]);
+                echo json_encode(['success' => true, 'message' => 'Member approved successfully.']);
+                exit;
+
+            case 'reject_member':
+                $pdo->prepare("UPDATE members SET status = 'rejected' WHERE id = ?")->execute([(int)$_POST['member_id']]);
+                echo json_encode(['success' => true, 'message' => 'Member rejected.']);
+                exit;
+
+            default:
+                echo json_encode(['success' => false, 'message' => 'Unknown action.']);
+                exit;
+        }
+    } catch (Exception $e) {
+        echo json_encode(['success' => false, 'message' => 'Error: ' . $e->getMessage()]);
+        exit;
+    }
+}
+
 // Handle login
 if (isset($_POST['login'])) {
     $email = trim($_POST['email'] ?? '');
@@ -576,15 +647,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'rejec
     exit;
 }
 
+// Handle update member
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'update_member') {
+    $stmt = $pdo->prepare("UPDATE members SET full_name = ?, email = ?, mobile = ?, gender = ?, membership_type = ?, address = ?, profession = ?, payment_mode = ?, status = ? WHERE id = ?");
+    $stmt->execute([
+        trim($_POST['full_name']),
+        trim($_POST['email'] ?? ''),
+        trim($_POST['mobile'] ?? ''),
+        trim($_POST['gender'] ?? ''),
+        trim($_POST['membership_type'] ?? ''),
+        trim($_POST['address'] ?? ''),
+        trim($_POST['profession'] ?? ''),
+        trim($_POST['payment_mode'] ?? 'Cash'),
+        trim($_POST['status'] ?? 'pending'),
+        (int)$_POST['member_id']
+    ]);
+    $_SESSION['member_success'] = 'Member updated successfully.';
+    header('Location: admin.php?page=members');
+    exit;
+}
+
 // Handle delete member
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'delete_member') {
-    $stmt = $pdo->prepare("SELECT payment_screenshot FROM members WHERE id = ?");
-    $stmt->execute([(int)$_POST['member_id']]);
-    $m = $stmt->fetch();
-    if ($m && $m['payment_screenshot']) {
-        $path = __DIR__ . '/assets/uploads/members/' . $m['payment_screenshot'];
-        if (file_exists($path)) unlink($path);
-    }
     $pdo->prepare("DELETE FROM members WHERE id = ?")->execute([(int)$_POST['member_id']]);
     $_SESSION['member_success'] = 'Member deleted.';
     header('Location: admin.php?page=members');

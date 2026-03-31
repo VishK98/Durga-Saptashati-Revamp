@@ -39,7 +39,8 @@ try {
         <div class="text-center mb-5" data-aos="fade-up">
             <h6 class="mbr-section-label">Become a Member</h6>
             <h2 class="mbr-section-heading">Support Our Mission, Shape the Future</h2>
-            <p class="mbr-section-desc">Joining Durga Saptashati Foundation as a member means standing alongside a community dedicated to empowering women, educating children, and uplifting the underprivileged. Your membership fuels lasting change.</p>
+            <p class="mbr-section-desc">Join Durga Saptashati Foundation to support women, educate children, and uplift
+                communities—creating lasting change.</p>
         </div>
 
         <?php if ($success): ?>
@@ -94,7 +95,8 @@ try {
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label class="mbr-label">Full Name <span class="req">*</span></label>
-                                <input type="text" name="full_name" required class="mbr-input" placeholder="Enter your full name">
+                                <input type="text" name="full_name" required class="mbr-input"
+                                    placeholder="Enter your full name">
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label class="mbr-label">Email</label>
@@ -119,10 +121,12 @@ try {
                                         <div class="cdd-option" onclick="selectCdd('genderDd','Male','Male','fa-mars')">
                                             <i class="fas fa-mars"></i> Male
                                         </div>
-                                        <div class="cdd-option" onclick="selectCdd('genderDd','Female','Female','fa-venus')">
+                                        <div class="cdd-option"
+                                            onclick="selectCdd('genderDd','Female','Female','fa-venus')">
                                             <i class="fas fa-venus"></i> Female
                                         </div>
-                                        <div class="cdd-option" onclick="selectCdd('genderDd','Prefer not to say','Other','fa-genderless')">
+                                        <div class="cdd-option"
+                                            onclick="selectCdd('genderDd','Prefer not to say','Other','fa-genderless')">
                                             <i class="fas fa-genderless"></i> Other
                                         </div>
                                     </div>
@@ -140,7 +144,9 @@ try {
                                         <?php foreach ($membershipPlans as $plan): ?>
                                         <div class="cdd-option"
                                             onclick="selectCdd('membershipDd','<?= htmlspecialchars($plan['slug']) ?>','<?= htmlspecialchars($plan['name']) ?> — ₹<?= number_format($plan['price'], 0) ?>','<?= htmlspecialchars($plan['icon']) ?>')">
-                                            <i class="fas <?= htmlspecialchars($plan['icon']) ?>"></i> <?= htmlspecialchars($plan['name']) ?> — &#8377;<?= number_format($plan['price'], 0) ?>
+                                            <i class="fas <?= htmlspecialchars($plan['icon']) ?>"></i>
+                                            <?= htmlspecialchars($plan['name']) ?> —
+                                            &#8377;<?= number_format($plan['price'], 0) ?>
                                         </div>
                                         <?php endforeach; ?>
                                     </div>
@@ -155,10 +161,12 @@ try {
                                         <i class="fas fa-chevron-down"></i>
                                     </div>
                                     <div class="cdd-options">
-                                        <div class="cdd-option" onclick="selectCdd('paymentDd','Online','Online','fa-globe')">
+                                        <div class="cdd-option"
+                                            onclick="selectCdd('paymentDd','Online','Online','fa-globe')">
                                             <i class="fas fa-globe"></i> Online
                                         </div>
-                                        <div class="cdd-option" onclick="selectCdd('paymentDd','Cash','Cash','fa-money-bill-wave')">
+                                        <div class="cdd-option"
+                                            onclick="selectCdd('paymentDd','Cash','Cash','fa-money-bill-wave')">
                                             <i class="fas fa-money-bill-wave"></i> Cash
                                         </div>
                                     </div>
@@ -168,12 +176,14 @@ try {
 
                         <div class="mb-3">
                             <label class="mbr-label">Profession</label>
-                            <input type="text" name="profession" class="mbr-input" placeholder="e.g. Teacher, Engineer, Business">
+                            <input type="text" name="profession" class="mbr-input"
+                                placeholder="e.g. Teacher, Engineer, Business">
                         </div>
 
                         <div class="mb-3">
                             <label class="mbr-label">Address</label>
-                            <textarea name="address" rows="2" class="mbr-input mbr-textarea" placeholder="Enter your address"></textarea>
+                            <textarea name="address" rows="2" class="mbr-input mbr-textarea"
+                                placeholder="Enter your address"></textarea>
                         </div>
 
                         <button type="submit" class="mbr-submit">
