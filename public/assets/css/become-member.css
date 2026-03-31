@@ -1,7 +1,6 @@
 /* Become a Member Page */
 
 .mbr-section {
-  padding: 50px 0;
   background: linear-gradient(165deg, #f8f9fa, #fff);
 }
 
@@ -477,4 +476,105 @@
   .mbr-card { padding: 25px; }
   .mbr-bank-grid { grid-template-columns: 1fr; }
   .mbr-contact-links { flex-direction: column; gap: 12px; }
+  .mbr-members-grid { grid-template-columns: 1fr; }
 }
+
+/* ===== Our Members Section ===== */
+.mbr-members-section {
+  margin-bottom: 45px;
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  /* box-shadow: 0 8px 40px rgba(26, 27, 46, 0.08); */
+}
+
+
+.mbr-members-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 0;
+}
+
+.mbr-member-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 26px;
+  border-bottom: 1px solid rgba(0,0,0,0.04);
+  border-right: 1px solid rgba(0,0,0,0.04);
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+.mbr-member-card:hover {
+  background: linear-gradient(135deg, #fff8f5, #fff);
+  transform: scale(1.01);
+  z-index: 1;
+  box-shadow: 0 4px 20px rgba(242, 101, 34, 0.08);
+}
+
+.mbr-member-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #f26522, #e8451a);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.15rem;
+  flex-shrink: 0;
+  text-transform: uppercase;
+  box-shadow: 0 3px 12px rgba(242, 101, 34, 0.25);
+  transition: transform 0.25s ease;
+}
+
+.mbr-member-card:hover .mbr-member-avatar {
+  transform: rotate(-5deg) scale(1.05);
+}
+
+.mbr-member-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.mbr-member-name {
+  margin: 0;
+  font-size: 0.93rem;
+  font-weight: 700;
+  color: #1a1b2e;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mbr-member-profession {
+  margin: 3px 0 0;
+  font-size: 0.78rem;
+  color: #888;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mbr-member-since {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.7rem;
+  color: #aaa;
+}
+
+.mbr-member-plan {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 5px;
+  font-size: 0.72rem;
+  color: #f26522;
+  font-weight: 600;
+  background: rgba(242, 101, 34, 0.08);
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+

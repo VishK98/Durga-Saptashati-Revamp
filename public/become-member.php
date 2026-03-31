@@ -16,6 +16,16 @@ try {
 } catch (Exception $e) {
     $membershipPlans = [];
 }
+
+// Fetch approved members
+try {
+    $approvedMembers = $pdo->query("SELECT full_name, profession, membership_type, created_at FROM members WHERE status = 'approved' ORDER BY created_at DESC")->fetchAll();
+    $planMapPublic = [];
+    foreach ($membershipPlans as $mp) { $planMapPublic[$mp['slug']] = $mp['name']; }
+} catch (Exception $e) {
+    $approvedMembers = [];
+    $planMapPublic = [];
+}
 ?>
 
 <link rel="stylesheet" href="<?= url('assets/css/become-member.css') ?>">
@@ -193,6 +203,32 @@ try {
                 </div>
             </div>
         </div>
+
+        <?php if (!empty($approvedMembers)): ?>
+        <!-- Our Members Section -->
+        <div class="text-center mb-4 mt-5" data-aos="fade-up">
+            <h6 class="text-uppercase mb-1" style="color:#f26522;letter-spacing:3px;font-weight:600;">Our Community</h6>
+            <h1 style="color:#1a1b2e;">Our Proud / <span style="color:#f26522;">Members</span></h1>
+        </div>
+        <div class="mbr-members-section" data-aos="fade-up">
+            <div class="mbr-members-grid">
+                <?php foreach ($approvedMembers as $idx => $am): ?>
+                <div class="mbr-member-card" data-aos="fade-up" data-aos-delay="<?= min($idx * 50, 300) ?>">
+                    <div class="mbr-member-avatar">
+                        <?= strtoupper(substr($am['full_name'], 0, 1)) ?>
+                    </div>
+                    <div class="mbr-member-info">
+                        <h6 class="mbr-member-name"><?= htmlspecialchars($am['full_name']) ?></h6>
+                        <?php if (!empty($am['profession'])): ?>
+                        <span class="mbr-member-plan"><?= htmlspecialchars($am['profession']) ?></span>
+                        <?php endif; ?>
+                        <span class="mbr-member-since">Since <?= date('M Y', strtotime($am['created_at'])) ?></span>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+        <?php endif; ?>
 
         <!-- Full-width Contact Bar -->
         <div class="row mt-4" data-aos="fade-up">
