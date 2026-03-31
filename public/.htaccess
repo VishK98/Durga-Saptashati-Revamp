@@ -3,3 +3,6 @@ RewriteBase /Durga-Saptashati-Revamp/public/
 
 # Blog detail: blog/slug -> blog-detail.php?slug=slug
 RewriteRule ^blog/([a-zA-Z0-9_-]+)/?$ blog-detail.php?slug=$1 [L,QSA]
+
+# News detail: news/slug -> news-detail.php?slug=slug
+RewriteRule ^news/([a-zA-Z0-9_-]+)/?$ news-detail.php?slug=$1 [L,QSA]

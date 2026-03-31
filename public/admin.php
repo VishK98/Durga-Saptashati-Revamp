@@ -672,9 +672,87 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'toggl
     exit;
 }
 
+// Create news article
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'create_news') {
+    $title = trim($_POST['title']);
+    $slug = strtolower(preg_replace('/[^a-z0-9]+/', '-', $title));
+    $slug = trim($slug, '-');
+    // Ensure unique slug
+    $check = $pdo->prepare("SELECT COUNT(*) FROM news WHERE slug = ?");
+    $check->execute([$slug]);
+    if ($check->fetchColumn() > 0) $slug .= '-' . time();
+
+    $image = null;
+    if (!empty($_FILES['news_image']['name'])) {
+        $uploadDir = __DIR__ . '/assets/uploads/news/';
+        if (!is_dir($uploadDir)) mkdir($uploadDir, 0777, true);
+        $ext = strtolower(pathinfo($_FILES['news_image']['name'], PATHINFO_EXTENSION));
+        if (in_array($ext, ['jpg','jpeg','png','webp']) && $_FILES['news_image']['size'] <= 5*1024*1024) {
+            $image = 'news_' . time() . '.' . $ext;
+            move_uploaded_file($_FILES['news_image']['tmp_name'], $uploadDir . $image);
+        }
+    }
+    $stmt = $pdo->prepare("INSERT INTO news (title, slug, category, content, image, source, source_url, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->execute([$title, $slug, trim($_POST['category'] ?? 'General'), trim($_POST['content'] ?? ''), $image, trim($_POST['source'] ?? ''), trim($_POST['source_url'] ?? ''), $_POST['status'] ?? 'published']);
+    $_SESSION['toast_success'] = 'News article published.';
+    header('Location: admin.php?page=news');
+    exit;
+}
+
+// Delete news article
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'delete_news') {
+    $stmt = $pdo->prepare("SELECT image FROM news WHERE id = ?");
+    $stmt->execute([(int)$_POST['news_id']]);
+    $n = $stmt->fetch();
+    if ($n && $n['image']) {
+        $path = __DIR__ . '/assets/uploads/news/' . $n['image'];
+        if (file_exists($path)) unlink($path);
+    }
+    $pdo->prepare("DELETE FROM news WHERE id = ?")->execute([(int)$_POST['news_id']]);
+    $_SESSION['toast_success'] = 'News article deleted.';
+    header('Location: admin.php?page=news');
+    exit;
+}
+
+// Update news article
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'update_news') {
+    $image = null;
+    if (!empty($_FILES['news_image']['name'])) {
+        $uploadDir = __DIR__ . '/assets/uploads/news/';
+        if (!is_dir($uploadDir)) mkdir($uploadDir, 0777, true);
+        $ext = strtolower(pathinfo($_FILES['news_image']['name'], PATHINFO_EXTENSION));
+        if (in_array($ext, ['jpg','jpeg','png','webp']) && $_FILES['news_image']['size'] <= 5*1024*1024) {
+            $image = 'news_' . time() . '.' . $ext;
+            move_uploaded_file($_FILES['news_image']['tmp_name'], $uploadDir . $image);
+            // Delete old image
+            $old = $pdo->prepare("SELECT image FROM news WHERE id = ?");
+            $old->execute([(int)$_POST['news_id']]);
+            $oldImg = $old->fetchColumn();
+            if ($oldImg && file_exists($uploadDir . $oldImg)) unlink($uploadDir . $oldImg);
+        }
+    }
+    $sql = "UPDATE news SET title = ?, category = ?, content = ?, source = ?, source_url = ?, status = ?";
+    $params = [trim($_POST['title']), trim($_POST['category'] ?? 'General'), trim($_POST['content'] ?? ''), trim($_POST['source'] ?? ''), trim($_POST['source_url'] ?? ''), $_POST['status'] ?? 'published'];
+    if ($image) { $sql .= ", image = ?"; $params[] = $image; }
+    $sql .= " WHERE id = ?";
+    $params[] = (int)$_POST['news_id'];
+    $pdo->prepare($sql)->execute($params);
+    $_SESSION['toast_success'] = 'News article updated.';
+    header('Location: admin.php?page=news');
+    exit;
+}
+
+// Toggle news status
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'toggle_news') {
+    $pdo->prepare("UPDATE news SET status = CASE WHEN status = 'published' THEN 'draft' ELSE 'published' END WHERE id = ?")->execute([(int)$_POST['news_id']]);
+    $_SESSION['toast_success'] = 'News status updated.';
+    header('Location: admin.php?page=news');
+    exit;
+}
+
 // Route to correct page
 $page = $_GET['page'] ?? 'dashboard';
-$allowedPages = ['dashboard', 'blogs', 'queries', 'subscribers', 'gallery', 'settings', 'comments', 'donations', 'volunteers', 'careers', 'members', 'reports'];
+$allowedPages = ['dashboard', 'blogs', 'queries', 'subscribers', 'gallery', 'settings', 'comments', 'donations', 'volunteers', 'careers', 'members', 'reports', 'news'];
 
 if (!in_array($page, $allowedPages)) {
     $page = 'dashboard';

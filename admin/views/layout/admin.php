@@ -86,8 +86,16 @@
 
                 <div class="sidebar-menu-label">Content</div>
 
+                <?php try { $newsCount = $pdo->query("SELECT COUNT(*) FROM news")->fetchColumn(); } catch(Exception $e) { $newsCount = 0; } ?>
+                <a href="admin.php?page=news" class="sidebar-item <?= $currentPage === 'news' ? 'active' : '' ?>">
+                    <i class="fas fa-newspaper"></i> <span>News</span>
+                    <?php if ($newsCount > 0): ?><span class="badge-count"><?= $newsCount ?></span><?php endif; ?>
+                </a>
+
+                <?php try { $galleryCount = $pdo->query("SELECT COUNT(*) FROM gallery")->fetchColumn(); } catch(Exception $e) { $galleryCount = 0; } ?>
                 <a href="admin.php?page=gallery" class="sidebar-item <?= $currentPage === 'gallery' ? 'active' : '' ?>">
                     <i class="fas fa-images"></i> <span>Gallery</span>
+                    <?php if ($galleryCount > 0): ?><span class="badge-count"><?= $galleryCount ?></span><?php endif; ?>
                 </a>
 
                 <a href="admin.php?page=subscribers"

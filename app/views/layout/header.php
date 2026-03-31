@@ -163,6 +163,16 @@
                             <div class="mega-dropdown-content">
                                 <div class="row">
                                     <div class="col-lg-4">
+                                        <div class="mega-image">
+                                            <img src="<?= asset('images/strength.jpg') ?>" alt="Our Events"
+                                                class="img-fluid rounded">
+                                            <div class="mega-image-overlay">
+                                                <h6>Our Events</h6>
+                                                <p>Celebrations, programmes & more</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
                                         <h6 class="dropdown-header">Annual Programs</h6>
                                         <a class="dropdown-item" href="<?= url('durga-award.php') ?>">
                                             <i class="fas fa-trophy"></i> Durga Award
@@ -182,29 +192,18 @@
                                         </a>
                                     </div>
                                     <div class="col-lg-4">
-                                        <h6 class="dropdown-header">Festivals & Celebrations</h6>
-                                        <a class="dropdown-item" href="<?= url('ganpati-celebration.php') ?>">
-                                            <i class="fas fa-pray"></i> Ganpati Celebration
-                                            <span class="item-description">Festival of Ganesha</span>
-                                        </a>
-                                        <a class="dropdown-item" href="<?= url('cultural-programs.php') ?>">
-                                            <i class="fas fa-theater-masks"></i> Cultural Programs
-                                            <span class="item-description">Celebrating our heritage</span>
-                                        </a>
+                                        <h6 class="dropdown-header">Community Events</h6>
                                         <a class="dropdown-item" href="<?= url('saree-run.php') ?>">
                                             <i class="fas fa-running"></i> Saree Run
                                             <span class="item-description">Celebrating strength & culture</span>
                                         </a>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <h6 class="dropdown-header">Community Events</h6>
                                         <a class="dropdown-item" href="<?= url('hearing-aids-camp.php') ?>">
                                             <i class="fas fa-assistive-listening-systems"></i> Hearing Aids Camp
                                             <span class="item-description">Free hearing aid distribution</span>
                                         </a>
-                                        <a class="dropdown-item" href="<?= url('painting-competition.php') ?>">
-                                            <i class="fas fa-palette"></i> Painting Competition
-                                            <span class="item-description">Nurturing young creativity</span>
+                                        <a class="dropdown-item" href="<?= url('cultural-programs.php') ?>">
+                                            <i class="fas fa-theater-masks"></i> Cultural Programs
+                                            <span class="item-description">Celebrating our heritage</span>
                                         </a>
                                         <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="<?= url('event.php') ?>">
@@ -237,7 +236,7 @@
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="mega-image">
-                                            <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=300&h=200&fit=crop"
+                                            <img src="<?= asset('images/unity.jpg') ?>"
                                                 alt="Join Durga Saptashati Foundation" class="img-fluid rounded">
                                             <div class="mega-image-overlay">
                                                 <h6>Join Our Mission</h6>
@@ -285,18 +284,57 @@
                         </div>
                     </li>
 
-                    <!-- Gallery -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= url('event-gallery.php') ?>">
-                            <span class="nav-text">Gallery</span>
+                    <!-- Media Mega Dropdown -->
+                    <li class="nav-item dropdown mega-dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="mediaDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="nav-text">Media</span>
+                            <i class="fas fa-chevron-down dropdown-arrow"></i>
                         </a>
-                    </li>
-
-                    <!-- Blogs -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= url('blog.php') ?>">
-                            <span class="nav-text">Blogs</span>
-                        </a>
+                        <div class="dropdown-menu mega-dropdown-menu dropdown-menu-right involved-mega"
+                            aria-labelledby="mediaDropdown">
+                            <div class="mega-dropdown-content">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="mega-image">
+                                            <img src="<?= asset('images/support-1.jpg') ?>" alt="Media & Updates"
+                                                class="img-fluid rounded">
+                                            <div class="mega-image-overlay">
+                                                <h6>Media Centre</h6>
+                                                <p>Photos, news & stories of impact</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <h6 class="dropdown-header">Stories & Updates</h6>
+                                        <a class="dropdown-item" href="<?= url('news.php') ?>">
+                                            <i class="fas fa-newspaper"></i>
+                                            <div>
+                                                <strong>News & Updates</strong>
+                                                <small>Latest announcements</small>
+                                            </div>
+                                        </a>
+                                        <a class="dropdown-item" href="<?= url('blog.php') ?>">
+                                            <i class="fas fa-blog"></i>
+                                            <div>
+                                                <strong>Blog & Articles</strong>
+                                                <small>Insights & stories</small>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <h6 class="dropdown-header">Visual Media</h6>
+                                        <a class="dropdown-item" href="<?= url('event-gallery.php') ?>">
+                                            <i class="fas fa-images"></i>
+                                            <div>
+                                                <strong>Photo Gallery</strong>
+                                                <small>Event photos & memories</small>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </li>
 
                     <!-- Investor -->

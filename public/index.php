@@ -1456,8 +1456,9 @@ $latestBlogs = $blogStmt->fetchAll();
 <div class="container-fluid" style="background:#f8f9fa;">
     <div class="container py-4">
         <div class="text-center mb-5" data-aos="fade-up">
-            <h6 class="text-uppercase mb-1" style="color:#f26522;letter-spacing:3px;font-weight:600;">From Our Blog</h6>
-            <h1 style="color:#1a1b2e;">Latest <span style="color:#f26522;">News & Articles</span></h1>
+            <h6 class="text-uppercase mb-2" style="color:#f26522;letter-spacing:3px;font-weight:600;">From Our Blog</h6>
+            <h2 style="color:#1a1b2e;font-weight:800;">Latest <span style="color:#f26522;">News & Articles</span></h2>
+            <p style="color:#888;max-width:550px;margin:10px auto 0;font-size:0.92rem;">Insights, stories, and updates from our journey of empowering communities and transforming lives.</p>
         </div>
         <div class="row" style="display:flex;flex-wrap:wrap;">
             <?php if (empty($latestBlogs)): ?>
