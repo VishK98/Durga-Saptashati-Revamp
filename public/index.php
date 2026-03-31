@@ -196,9 +196,9 @@ include '../app/views/layout/header.php';
 
 
 <!-- Sanskrit Quote Section Start -->
-<div class="sanskrit-section"
-    style="background: url('<?php echo asset('img/facts.jpg') ?>') center center/cover no-repeat fixed;">
-    <div class="container position-relative text-center" data-aos="zoom-in" data-aos-duration="1000">
+<div class="sanskrit-section "
+    style="background: url('<?php echo asset('images/ancient-prayer.jpeg') ?>') center center/cover no-repeat fixed;">
+    <div class="container p-lg-5 position-relative text-center" data-aos="zoom-in" data-aos-duration="1000">
         <p class="sanskrit-text mb-3">सर्वे भवन्तु सुखिनः सर्वे सन्तु निरामया।</p>
         <p class="sanskrit-translation mb-4">"May all beings be happy, May all beings be free from illness"</p>
         <div style="width:60px;height:3px;background:#f26522;margin:0 auto 20px;"></div>
@@ -348,7 +348,7 @@ include '../app/views/layout/header.php';
 
 <!-- Volunteer / Join Us Section Start -->
 <div class="container-fluid"
-    style="background:url('<?php echo asset('img/volunteer.jpg') ?>') center center/cover no-repeat fixed;position:relative;">
+    style="background:url('<?php echo asset('images/volunteer.jpeg') ?>') center center/cover no-repeat fixed;position:relative;">
     <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(242,101,34,0.9);"></div>
     <div class="container py-5 position-relative text-center" style="z-index:1;">
         <div class="py-5" data-aos="zoom-in">

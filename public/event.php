@@ -8,12 +8,14 @@ include '../app/views/layout/header.php';
 $events = [
     ['title' => 'Durga Award Ceremony', 'icon' => 'fa-trophy', 'url' => 'durga-award.php', 'img' => 'durga-award/durga-award.jpeg', 'desc' => 'Honouring exceptional individuals making outstanding contributions to social welfare and community development.', 'tag' => 'Award'],
     ['title' => 'International Yoga Day', 'icon' => 'fa-spa', 'url' => 'yoga-day.php', 'img' => 'yoga-day/yoga.jpeg', 'desc' => 'Celebrating the transformative power of yoga through mass sessions, mindfulness, and community wellness.', 'tag' => 'Wellness'],
-    ['title' => 'Ganpati Celebration', 'icon' => 'fa-pray', 'url' => 'ganpati-celebration.php', 'img' => 'ganpati/ganesh-cover.webp', 'desc' => 'Celebrating Ganesh Chaturthi with traditional rituals, cultural programmes, and community gatherings.', 'tag' => 'Festival'],
+    ['title' => 'Saree Run', 'icon' => 'fa-running', 'url' => 'saree-run.php', 'img' => 'saree/saree.webp', 'desc' => 'A unique event celebrating Indian women\'s strength, culture, and fitness through a vibrant community run.', 'tag' => 'Event'],
     ['title' => "International Women's Day", 'icon' => 'fa-venus', 'url' => 'womens-day.php', 'img' => 'woman-day/woman.jpeg', 'desc' => "Celebrating women's achievements through felicitation events, empowerment workshops, and community programs.", 'tag' => 'Celebration'],
+    ['title' => 'Ganpati Celebration', 'icon' => 'fa-pray', 'url' => 'ganpati-celebration.php', 'img' => 'ganpati/ganesh-cover.webp', 'desc' => 'Celebrating Ganesh Chaturthi with traditional rituals, cultural programmes, and community gatherings.', 'tag' => 'Festival'],
     ['title' => 'Hearing Aids Camp', 'icon' => 'fa-assistive-listening-systems', 'url' => 'hearing-aids-camp.php', 'img' => 'hearing/hearing-4.jpeg', 'desc' => 'Providing free hearing aids and audiological support to those in need through community health camps.', 'tag' => 'Health Camp'],
     ['title' => 'Painting Competition', 'icon' => 'fa-palette', 'url' => 'painting-competition.php', 'img' => 'painting/painting.webp', 'desc' => 'Nurturing creativity in children through inter-school painting competitions, workshops, and exhibitions.', 'tag' => 'Arts & Culture'],
     ['title' => 'Independence Day', 'icon' => 'fa-flag', 'url' => 'independence-day.php', 'img' => 'independence-day-celebration/independence-day-celebration.webp', 'desc' => 'Celebrating the spirit of freedom with patriotic events, flag hoisting, and community programmes.', 'tag' => 'National Day'],
-    ['title' => 'Saree Run', 'icon' => 'fa-running', 'url' => 'saree-run.php', 'img' => 'saree/saree.webp', 'desc' => 'A unique event celebrating Indian women\'s strength, culture, and fitness through a vibrant community run.', 'tag' => 'Event'],
+    ['title' => 'Junior Super Model', 'icon' => 'fa-star', 'url' => 'junior-super-model-pacific-mall-D21.php', 'img' => 'junior-super-modal/junior-super-modal.jpg', 'desc' => 'A platform for young talents to showcase confidence, creativity, and personality at Pacific Mall D21.', 'tag' => 'Talent'],
+    ['title' => 'इंद्रप्रस्थ साहित्य महोत्सव', 'icon' => 'fa-book-open', 'url' => 'indraprastha-sahitya-mahotsav-2022.php', 'img' => 'indra/indra.webp', 'desc' => 'A grand literary festival celebrating Hindi literature, poetry, and cultural heritage.', 'tag' => 'Literary'],
 ];
 ?>
 

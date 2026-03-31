@@ -14,7 +14,7 @@ try {
 }
 ?>
 
-<div class="page-header">
+<div class="page-header gallery-page-header">
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">

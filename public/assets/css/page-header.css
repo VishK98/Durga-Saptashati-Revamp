@@ -179,3 +179,31 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.gallery-page-header {
+  position: relative;
+  margin-bottom: 45px;
+  padding: 210px 0 90px 0;
+  text-align: center;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(../images/gallery.jpeg);
+  background-attachment: fixed;
+  background-position: center 65%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.investor-page-header {
+  position: relative;
+  margin-bottom: 45px;
+  padding: 210px 0 90px 0;
+  text-align: center;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(../images/investor-header.jpg);
+  background-attachment: fixed;
+  background-position: center 65%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
