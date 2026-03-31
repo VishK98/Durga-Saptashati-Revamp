@@ -345,7 +345,7 @@ body {
 
 /* Brand/Logo */
 .navbar.navbar-modern .navbar-brand {
-  padding: 10px 15px 10px 0;
+  /* padding: 10px 15px 10px 0; */
   margin-right: 30px;
   transition: transform var(--transition);
   position: relative;

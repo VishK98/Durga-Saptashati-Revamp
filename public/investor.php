@@ -42,8 +42,8 @@ include '../app/views/layout/header.php';
                 ['icon' => 'fa-handshake', 'title' => 'Trusted Governance', 'desc' => 'Led by experienced professionals committed to ethical and accountable management.'],
             ];
             foreach ($whyInvest as $i => $item):
-            ?>
-            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="<?= ($i+1)*100 ?>">
+                ?>
+            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="<?= ($i + 1) * 100 ?>">
                 <div class="inv-why-card">
                     <div class="inv-why-icon"><i class="fas <?= $item['icon'] ?>"></i></div>
                     <h5 class="inv-why-title"><?= $item['title'] ?></h5>
@@ -76,15 +76,15 @@ include '../app/views/layout/header.php';
                 $reports = [];
             }
             if (empty($reports)):
-            ?>
+                ?>
             <div class="col-12 text-center" style="padding:40px;">
                 <i class="fas fa-file-pdf"
                     style="font-size:2.5rem;color:rgba(255,255,255,0.2);margin-bottom:15px;display:block;"></i>
                 <p style="color:rgba(255,255,255,0.5);">Financial reports will be available soon.</p>
             </div>
             <?php else:
-            foreach ($reports as $i => $report):
-            ?>
+                foreach ($reports as $i => $report):
+                    ?>
             <div class="col-lg-3 col-md-6 mb-4" data-aos="zoom-in" data-aos-delay="<?= ($i + 1) * 100 ?>">
                 <div class="abt-report-card"
                     onclick="openPdfModal('<?= url('assets/reports/' . rawurlencode($report['file'])) ?>', '<?= addslashes($report['title']) ?>')">
@@ -115,7 +115,7 @@ include '../app/views/layout/header.php';
                             ['icon' => 'fa-seedling', 'title' => 'Environment', 'desc' => '500+ trees planted'],
                         ];
                         foreach ($metrics as $m):
-                        ?>
+                            ?>
                         <div class="col-6 mb-3">
                             <div class="abt-metric-card">
                                 <i class="fas <?= $m['icon'] ?>"></i>
@@ -140,7 +140,7 @@ include '../app/views/layout/header.php';
                         ['label' => 'Women Empowerment', 'value' => '10%', 'color' => '#8b5cf6'],
                     ];
                     foreach ($progressItems as $item):
-                    ?>
+                        ?>
                     <div class="abt-progress-row">
                         <div class="abt-progress-labels">
                             <span><?= $item['label'] ?></span>
@@ -183,8 +183,8 @@ include '../app/views/layout/header.php';
                         ['num' => '10+', 'label' => 'Programs Run', 'icon' => 'fa-project-diagram'],
                     ];
                     foreach ($numbers as $i => $n):
-                    ?>
-                    <div class="col-6 col-md-3 mb-3" data-aos="zoom-in" data-aos-delay="<?= ($i+1)*100 ?>">
+                        ?>
+                    <div class="col-6 col-md-3 mb-3" data-aos="zoom-in" data-aos-delay="<?= ($i + 1) * 100 ?>">
                         <div class="inv-num-card">
                             <i class="fas <?= $n['icon'] ?>"></i>
                             <h3><?= $n['num'] ?></h3>

@@ -121,7 +121,7 @@
 
     <!-- Nav Bar Start -->
     <nav class="navbar navbar-expand-lg navbar-modern">
-        <div class="container-fluid px-3 px-md-4">
+        <div class="container-fluid">
             <a href="<?= url('index.php') ?>" class="navbar-brand">
                 <img src="<?= asset('images/logo-wide.webp') ?>" alt="Durga Saptashati Foundation">
             </a>
@@ -350,7 +350,6 @@
                 <div class="mobile-cta-wrapper d-lg-none">
                     <a href="<?= url('contact.php') ?>" class="btn rally-btn mobile-cta-btn">
                         <span class="btn-text">Contact Us</span>
-                        <span class="btn-icon"><i class="fas fa-phone-alt"></i></span>
                     </a>
                 </div>
             </div>
@@ -358,7 +357,6 @@
             <!-- Desktop CTA Button -->
             <a href="<?= url('contact.php') ?>" class="btn rally-btn d-none d-lg-flex">
                 <span class="btn-text">Contact Us</span>
-                <span class="btn-icon"><i class="fas fa-phone-alt"></i></span>
             </a>
         </div>
     </nav>
