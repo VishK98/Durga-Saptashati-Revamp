@@ -421,7 +421,7 @@ $mshipFeatures = [
                     </ul>
 
                     <a href="<?= url('become-member.php') ?>" class="mp-btn<?= $isFeatured ? ' mp-btn-glow' : '' ?>">
-                        Get Started <i class="fas fa-arrow-right"></i>
+                        <span>Get Started</span> <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
@@ -900,7 +900,7 @@ $mshipFeatures = [
 <!-- Activities Section Start -->
 <div class="container-fluid" style="background:#fff;">
     <div class="container py-5">
-        <div class="row align-items-center mb-5">
+        <div class="row align-items-center mb-4">
             <div class="col-lg-6" data-aos="fade-right">
                 <span class="act-label"><i class="fas fa-hands-helping"></i> How We Help</span>
                 <h1 class="act-heading">Making Real <span>Impact</span> Through Action</h1>
@@ -1030,7 +1030,7 @@ $mshipFeatures = [
 .act-card {
     background: #fff;
     border-radius: 18px;
-    padding: 0 28px 28px;
+    padding: 0 18px 18px;
     text-align: center;
     height: 100%;
     position: relative;
@@ -1185,16 +1185,25 @@ $mshipFeatures = [
         <div class="row align-items-center">
             <div class="col-lg-7 mb-5 mb-lg-0" data-aos="fade-right">
                 <div class="section-title mb-4">
-                    <h6 class="text-uppercase d-inline-flex align-items-center" style="color:#f26522;letter-spacing:3px;font-weight:600;gap:8px;">
-                        <span style="width:36px;height:36px;border-radius:50%;background:rgba(242,101,34,0.15);display:inline-flex;align-items:center;justify-content:center;animation:donate-heart 1.2s ease-in-out infinite;">
+                    <h6 class="text-uppercase d-inline-flex align-items-center"
+                        style="color:#f26522;letter-spacing:3px;font-weight:600;gap:8px;">
+                        <span
+                            style="width:36px;height:36px;border-radius:50%;background:rgba(242,101,34,0.15);display:inline-flex;align-items:center;justify-content:center;animation:donate-heart 1.2s ease-in-out infinite;">
                             <i class="fas fa-heart" style="font-size:0.9rem;"></i>
                         </span>
                         Make a Donation
                     </h6>
                     <style>
                     @keyframes donate-heart {
-                        0%, 100% { transform: scale(1); }
-                        50% { transform: scale(1.2); }
+
+                        0%,
+                        100% {
+                            transform: scale(1);
+                        }
+
+                        50% {
+                            transform: scale(1.2);
+                        }
                     }
                     </style>
                     <h1 class="text-white">Your Small Help Can Make a <span style="color:#f26522;">Big Difference</span>
@@ -1458,7 +1467,8 @@ $latestBlogs = $blogStmt->fetchAll();
         <div class="text-center mb-5" data-aos="fade-up">
             <h6 class="text-uppercase mb-2" style="color:#f26522;letter-spacing:3px;font-weight:600;">From Our Blog</h6>
             <h2 style="color:#1a1b2e;font-weight:800;">Latest <span style="color:#f26522;">News & Articles</span></h2>
-            <p style="color:#888;max-width:550px;margin:10px auto 0;font-size:0.92rem;">Insights, stories, and updates from our journey of empowering communities and transforming lives.</p>
+            <p style="color:#888;max-width:550px;margin:10px auto 0;font-size:0.92rem;">Insights, stories, and updates
+                from our journey of empowering communities and transforming lives.</p>
         </div>
         <div class="row" style="display:flex;flex-wrap:wrap;">
             <?php if (empty($latestBlogs)): ?>

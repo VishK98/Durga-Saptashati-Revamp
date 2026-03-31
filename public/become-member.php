@@ -206,30 +206,48 @@ try {
 
         <?php if (!empty($approvedMembers)): ?>
         <!-- Our Members Section -->
-        <div class="text-center mb-4 mt-5" data-aos="fade-up">
-            <h6 class="text-uppercase mb-1" style="color:#f26522;letter-spacing:3px;font-weight:600;">Our Community</h6>
-            <h1 style="color:#1a1b2e;">Our Proud / <span style="color:#f26522;">Members</span></h1>
+    </div>
+</section>
+
+<div class="mbr-members-dark">
+    <div class="mbr-members-dark-bg"></div>
+    <div class="container" style="position:relative;z-index:1;">
+        <div class="text-center mb-4" data-aos="fade-up">
+            <div class="mbr-members-badge"><i class="fas fa-users"></i> Our Community</div>
+            <h2 class="mbr-members-dark-heading">Our Proud <span>Members</span></h2>
+            <p class="mbr-members-dark-sub">Together we create lasting change through unity and compassion.</p>
         </div>
-        <div class="mbr-members-section" data-aos="fade-up">
+        <div class="mbr-members-section">
             <div class="mbr-members-grid">
                 <?php foreach ($approvedMembers as $idx => $am): ?>
-                <div class="mbr-member-card" data-aos="fade-up" data-aos-delay="<?= min($idx * 50, 300) ?>">
+                <div class="mbr-member-card <?= $idx >= 9 ? 'mbr-member-hidden' : '' ?>" data-aos="fade-up" data-aos-delay="<?= min($idx * 50, 300) ?>">
                     <div class="mbr-member-avatar">
-                        <?= strtoupper(substr($am['full_name'], 0, 1)) ?>
+                        <img src="<?= asset('images/profile-1.png') ?>" alt="<?= htmlspecialchars($am['full_name']) ?>">
                     </div>
                     <div class="mbr-member-info">
                         <h6 class="mbr-member-name"><?= htmlspecialchars($am['full_name']) ?></h6>
                         <?php if (!empty($am['profession'])): ?>
                         <span class="mbr-member-plan"><?= htmlspecialchars($am['profession']) ?></span>
                         <?php endif; ?>
-                        <span class="mbr-member-since">Since <?= date('M Y', strtotime($am['created_at'])) ?></span>
                     </div>
+                    <span class="mbr-member-since">Since <?= date('M Y', strtotime($am['created_at'])) ?></span>
                 </div>
                 <?php endforeach; ?>
             </div>
+            <?php if (count($approvedMembers) > 9): ?>
+            <div class="text-center mt-4">
+                <button class="mbr-show-more-btn" id="showMoreMembers" onclick="toggleMoreMembers()">
+                    <span>Show More</span> <i class="fas fa-chevron-down"></i>
+                </button>
+            </div>
+            <?php endif; ?>
         </div>
-        <?php endif; ?>
+    </div>
+</div>
+<?php endif; ?>
 
+<section class="mbr-section">
+    <div class="container">
         <!-- Full-width Contact Bar -->
         <div class="row mt-4" data-aos="fade-up">
             <div class="col-12">
@@ -256,6 +274,18 @@ try {
 </section>
 
 <script>
+function toggleMoreMembers() {
+    var hidden = document.querySelectorAll('.mbr-member-hidden');
+    var btn = document.getElementById('showMoreMembers');
+    var isShowing = btn.classList.contains('expanded');
+    hidden.forEach(function(card) {
+        card.style.display = isShowing ? 'none' : 'flex';
+    });
+    btn.classList.toggle('expanded');
+    btn.querySelector('span').textContent = isShowing ? 'Show More' : 'Show Less';
+    btn.querySelector('i').className = isShowing ? 'fas fa-chevron-down' : 'fas fa-chevron-up';
+}
+
 function toggleCdd(id) {
     var dd = document.getElementById(id);
     var opts = dd.querySelector('.cdd-options');
