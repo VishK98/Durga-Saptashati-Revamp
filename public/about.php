@@ -204,7 +204,7 @@ include '../app/views/layout/header.php';
                         ['icon' => 'fa-user-friends', 'color' => '#c94a0f', 'title' => 'Senior Care', 'desc' => 'Dignified support for elderly citizens'],
                     ];
                     foreach ($focusAreas as $area):
-                    ?>
+                        ?>
                     <div style="flex:1;min-width:180px;background:#fff;border-radius:14px;padding:22px 18px;box-shadow:0 4px 18px rgba(0,0,0,0.06);border:1px solid rgba(0,0,0,0.04);text-align:center;transition:all 0.3s;"
                         onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 30px rgba(242,101,34,0.12)'"
                         onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 18px rgba(0,0,0,0.06)'">
@@ -288,7 +288,7 @@ include '../app/views/layout/header.php';
                 ['icon' => 'fa-shield-alt', 'title' => 'Protection', 'desc' => 'Against harassment & trafficking'],
             ];
             foreach ($pillars as $p):
-            ?>
+                ?>
             <div style="flex:1;min-width:200px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:22px 18px;text-align:center;transition:all 0.3s;"
                 onmouseover="this.style.background='rgba(242,101,34,0.1)';this.style.borderColor='rgba(242,101,34,0.25)';this.style.transform='translateY(-4px)'"
                 onmouseout="this.style.background='rgba(255,255,255,0.04)';this.style.borderColor='rgba(255,255,255,0.08)';this.style.transform='translateY(0)'">
@@ -477,7 +477,7 @@ include '../app/views/layout/header.php';
                 ['name' => 'Karishma', 'role' => 'Kids Activity & Dance Trainer', 'img' => 'team/karishma.png'],
                 ['name' => 'Sulekha', 'role' => 'Kids Arts Trainer', 'img' => 'team/shulekha.png'],
                 ['name' => 'Shivani', 'role' => 'Assistant Trainer', 'img' => 'team/shivani.png'],
-                ['name' => 'Vishesh', 'role' => 'Web Developer', 'img' => 'team/vishesh-kumar.png'],
+                ['name' => 'Vishesh Kumar', 'role' => 'Full Stack Developer', 'img' => 'team/vishesh-kumar.png'],
                 ['name' => 'Nalini', 'role' => 'Volunteer Team Leader', 'img' => 'team/nalini.png'],
                 ['name' => 'Tanishka', 'role' => 'Volunteer Team Leader', 'img' => 'team/tanishka.png'],
             ];
@@ -502,8 +502,10 @@ include '../app/views/layout/header.php';
     <div class="container">
         <div class="row align-items-center" data-aos="fade-up">
             <div class="col-lg-7">
-                <h3 style="color:#fff;font-weight:700;font-size:1.7rem;margin-bottom:10px;">Want to Support a Cause?</h3>
-                <p style="color:rgba(255,255,255,0.8);font-size:0.95rem;margin:0;line-height:1.7;">Your contribution can create a lasting impact. Join hands with us to transform lives in communities that need it most.</p>
+                <h3 style="color:#fff;font-weight:700;font-size:1.7rem;margin-bottom:10px;">Want to Support a Cause?
+                </h3>
+                <p style="color:rgba(255,255,255,0.8);font-size:0.95rem;margin:0;line-height:1.7;">Your contribution can
+                    create a lasting impact. Join hands with us to transform lives in communities that need it most.</p>
             </div>
             <div class="col-lg-5 text-lg-end mt-4 mt-lg-0">
                 <a href="<?= url('make-donation.php') ?>" class="cta-btn-primary">

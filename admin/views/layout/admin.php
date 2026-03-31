@@ -201,20 +201,17 @@
         }
     });
 
-    // Live clock
-    function updateClock() {
-        var now = new Date();
-        var el = document.getElementById('liveClock');
-        if (el) {
-            el.textContent = now.toLocaleTimeString('en-GB', {
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit'
+    // Live clock (only runs if element exists)
+    var clockEl = document.getElementById('liveClock');
+    if (clockEl) {
+        function updateClock() {
+            clockEl.textContent = new Date().toLocaleTimeString('en-GB', {
+                hour: '2-digit', minute: '2-digit', second: '2-digit'
             });
         }
+        setInterval(updateClock, 1000);
+        updateClock();
     }
-    setInterval(updateClock, 1000);
-    updateClock();
 
     // Profile dropdown - close on click outside
     document.addEventListener('click', function(e) {

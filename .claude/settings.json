@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(c:/xampp/mysql/bin/mysql.exe -u root durga_saptashati -e \":*)",
+      "Bash(php -l admin/views/pages/dashboard.php)"
+    ]
+  }
+}

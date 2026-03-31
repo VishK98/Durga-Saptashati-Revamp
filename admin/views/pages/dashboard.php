@@ -15,9 +15,9 @@ $greetText = $hour < 12 ? 'Good Morning' : ($hour < 17 ? 'Good Afternoon' : 'Goo
 </div>
 
 <?php
-// Dynamic dashboard counts
-$dBlogCount = $pdo->query("SELECT COUNT(*) FROM blogs")->fetchColumn();
-$dCommentCount = $pdo->query("SELECT COUNT(*) FROM blog_comments")->fetchColumn();
+// Dynamic dashboard counts - all wrapped in try/catch for safety
+try { $dBlogCount = $pdo->query("SELECT COUNT(*) FROM blogs")->fetchColumn(); } catch(Exception $e) { $dBlogCount = 0; }
+try { $dCommentCount = $pdo->query("SELECT COUNT(*) FROM blog_comments")->fetchColumn(); } catch(Exception $e) { $dCommentCount = 0; }
 try { $dQueryCount = $pdo->query("SELECT COUNT(*) FROM contact_queries")->fetchColumn(); } catch(Exception $e) { $dQueryCount = 0; }
 try { $dSubCount = $pdo->query("SELECT COUNT(*) FROM subscribers")->fetchColumn(); } catch(Exception $e) { $dSubCount = 0; }
 try { $dDonationTotal = (float)$pdo->query("SELECT COALESCE(SUM(amount),0) FROM donations WHERE status='completed'")->fetchColumn(); } catch(Exception $e) { $dDonationTotal = 0; }
@@ -67,93 +67,86 @@ try {
 } catch(Exception $e) { $pendingMembersList = []; }
 ?>
 
-<!-- Revenue Highlight Card -->
-<div style="margin-top:20px;background:linear-gradient(135deg, #1a1b2e 0%, #2d2e4a 60%, #f26522 100%);border-radius:18px;padding:30px 35px;color:#fff;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;">
-    <div>
-        <p style="font-size:0.82rem;opacity:0.7;margin-bottom:4px;text-transform:uppercase;letter-spacing:2px;font-weight:600;">Total Revenue Collected</p>
-        <h2 style="font-size:2.4rem;font-weight:800;margin:0;letter-spacing:-1px;">&#8377;<?= number_format($dDonationTotal, 0) ?></h2>
-        <p style="font-size:0.82rem;opacity:0.6;margin-top:6px;"><i class="fas fa-check-circle" style="color:#10b981;"></i> <?= $dCompletedDonations ?> completed &nbsp;&bull;&nbsp; <i class="fas fa-clock" style="color:#f59e0b;"></i> <?= $dPendingDonations ?> pending</p>
+<!-- Stat Cards -->
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:20px;">
+
+    <!-- Total Members -->
+    <div style="background:linear-gradient(135deg,#059669 0%,#10b981 100%);border-radius:16px;padding:22px;color:#fff;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:-15px;right:-15px;width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,0.1);"></div>
+        <div style="position:absolute;bottom:-20px;right:20px;width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,0.06);"></div>
+        <div style="width:40px;height:40px;border-radius:12px;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;margin-bottom:14px;">
+            <i class="fas fa-id-card" style="font-size:1rem;"></i>
+        </div>
+        <h3 style="font-size:1.6rem;font-weight:800;margin:0;"><?= $dMemberCount ?></h3>
+        <p style="font-size:0.78rem;opacity:0.7;margin:4px 0 0;">Total Members</p>
+        <div style="margin-top:10px;font-size:0.7rem;opacity:0.6;display:flex;gap:10px;">
+            <span><i class="fas fa-check-circle"></i> <?= $dApprovedMembers ?> approved</span>
+            <span><i class="fas fa-clock"></i> <?= $dPendingMembers ?> pending</span>
+        </div>
     </div>
-    <div style="display:flex;gap:15px;flex-wrap:wrap;">
-        <div style="background:rgba(255,255,255,0.12);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.15);border-radius:14px;padding:18px 22px;text-align:center;min-width:110px;">
-            <h3 style="font-size:1.6rem;font-weight:800;margin:0;"><?= $dMemberCount ?></h3>
-            <p style="font-size:0.75rem;opacity:0.7;margin-top:3px;">Members</p>
+
+    <!-- Blogs -->
+    <div style="background:linear-gradient(135deg,#d97706 0%,#f59e0b 100%);border-radius:16px;padding:22px;color:#fff;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:-15px;right:-15px;width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,0.1);"></div>
+        <div style="position:absolute;bottom:-20px;right:20px;width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,0.06);"></div>
+        <div style="width:40px;height:40px;border-radius:12px;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;margin-bottom:14px;">
+            <i class="fas fa-blog" style="font-size:1rem;"></i>
         </div>
-        <div style="background:rgba(255,255,255,0.12);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.15);border-radius:14px;padding:18px 22px;text-align:center;min-width:110px;">
-            <h3 style="font-size:1.6rem;font-weight:800;margin:0;"><?= $dVolunteerCount ?></h3>
-            <p style="font-size:0.75rem;opacity:0.7;margin-top:3px;">Volunteers</p>
+        <h3 style="font-size:1.6rem;font-weight:800;margin:0;"><?= $dBlogCount ?></h3>
+        <p style="font-size:0.78rem;opacity:0.7;margin:4px 0 0;">Blogs</p>
+        <div style="margin-top:10px;font-size:0.7rem;opacity:0.6;">
+            <span><i class="fas fa-comment-dots"></i> <?= $dCommentCount ?> comments</span>
         </div>
-        <div style="background:rgba(255,255,255,0.12);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.15);border-radius:14px;padding:18px 22px;text-align:center;min-width:110px;">
-            <h3 style="font-size:1.6rem;font-weight:800;margin:0;"><?= $dDonationCount ?></h3>
-            <p style="font-size:0.75rem;opacity:0.7;margin-top:3px;">Donations</p>
+    </div>
+
+    <!-- Queries -->
+    <div style="background:linear-gradient(135deg,#7c3aed 0%,#8b5cf6 100%);border-radius:16px;padding:22px;color:#fff;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:-15px;right:-15px;width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,0.1);"></div>
+        <div style="position:absolute;bottom:-20px;right:20px;width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,0.06);"></div>
+        <div style="width:40px;height:40px;border-radius:12px;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;margin-bottom:14px;">
+            <i class="fas fa-comments" style="font-size:1rem;"></i>
+        </div>
+        <h3 style="font-size:1.6rem;font-weight:800;margin:0;"><?= $dQueryCount ?></h3>
+        <p style="font-size:0.78rem;opacity:0.7;margin:4px 0 0;">Queries</p>
+        <div style="margin-top:10px;font-size:0.7rem;opacity:0.6;">
+            <span><i class="fas fa-envelope"></i> <?= $dSubCount ?> subscribers</span>
+        </div>
+    </div>
+
+    <!-- Gallery -->
+    <div style="background:linear-gradient(135deg,#2563eb 0%,#3b82f6 100%);border-radius:16px;padding:22px;color:#fff;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:-15px;right:-15px;width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,0.1);"></div>
+        <div style="position:absolute;bottom:-20px;right:20px;width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,0.06);"></div>
+        <div style="width:40px;height:40px;border-radius:12px;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;margin-bottom:14px;">
+            <i class="fas fa-images" style="font-size:1rem;"></i>
+        </div>
+        <h3 style="font-size:1.6rem;font-weight:800;margin:0;"><?= $dGalleryCount ?></h3>
+        <p style="font-size:0.78rem;opacity:0.7;margin:4px 0 0;">Gallery</p>
+        <div style="margin-top:10px;font-size:0.7rem;opacity:0.6;">
+            <span><i class="fas fa-camera"></i> Photos uploaded</span>
         </div>
     </div>
 </div>
 
-<!-- Stat Cards -->
-<div class="stat-cards" style="grid-template-columns:repeat(4,1fr);margin-top:20px;">
-    <div class="stat-card" style="border-left:3px solid var(--accent);">
-        <div class="stat-icon" style="background:var(--accent-light);color:var(--accent);"><i class="fas fa-blog"></i></div>
-        <div class="stat-info"><h3><?= $dBlogCount ?></h3><p>Blogs</p></div>
-    </div>
-    <div class="stat-card" style="border-left:3px solid #d97706;">
-        <div class="stat-icon" style="background:var(--warning-light);color:#d97706;"><i class="fas fa-comment-dots"></i></div>
-        <div class="stat-info"><h3><?= $dCommentCount ?></h3><p>Comments</p></div>
-    </div>
-    <div class="stat-card" style="border-left:3px solid #059669;">
-        <div class="stat-icon" style="background:var(--success-light);color:#059669;"><i class="fas fa-id-card"></i></div>
-        <div class="stat-info">
-            <h3><?= $dApprovedMembers ?><span style="font-size:0.7rem;color:var(--text-muted);font-weight:400;">/ <?= $dMemberCount ?></span></h3>
-            <p>Approved Members</p>
-        </div>
-    </div>
-    <div class="stat-card" style="border-left:3px solid #2563eb;">
-        <div class="stat-icon" style="background:var(--info-light);color:#2563eb;"><i class="fas fa-donate"></i></div>
-        <div class="stat-info"><h3>&#8377;<?= number_format($dDonationTotal, 0) ?></h3><p>Donations</p></div>
-    </div>
-    <div class="stat-card" style="border-left:3px solid var(--purple);">
-        <div class="stat-icon" style="background:var(--purple-light);color:var(--purple);"><i class="fas fa-comments"></i></div>
-        <div class="stat-info"><h3><?= $dQueryCount ?></h3><p>Queries</p></div>
-    </div>
-    <div class="stat-card" style="border-left:3px solid var(--pink);">
-        <div class="stat-icon" style="background:var(--pink-light);color:var(--pink);"><i class="fas fa-envelope"></i></div>
-        <div class="stat-info"><h3><?= $dSubCount ?></h3><p>Subscribers</p></div>
-    </div>
-    <div class="stat-card" style="border-left:3px solid #0ea5e9;">
-        <div class="stat-icon" style="background:rgba(14,165,233,0.1);color:#0ea5e9;"><i class="fas fa-newspaper"></i></div>
-        <div class="stat-info"><h3><?= $dNewsCount ?></h3><p>News</p></div>
-    </div>
-    <div class="stat-card" style="border-left:3px solid #14b8a6;">
-        <div class="stat-icon" style="background:rgba(20,184,166,0.1);color:#14b8a6;"><i class="fas fa-images"></i></div>
-        <div class="stat-info"><h3><?= $dGalleryCount ?></h3><p>Gallery</p></div>
-    </div>
-</div>
 
 <!-- Charts Row -->
 <div style="display:grid;grid-template-columns:2fr 1fr;gap:20px;margin-top:25px;">
     <!-- Donation Chart -->
     <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:16px;padding:24px;">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px;">
             <div>
                 <h4 style="font-size:1rem;font-weight:700;color:var(--text-primary);margin:0;">Donation Overview</h4>
                 <p style="font-size:0.78rem;color:var(--text-muted);margin-top:2px;">Last 6 months</p>
             </div>
-            <div style="display:flex;align-items:center;gap:12px;font-size:0.75rem;">
-                <span style="display:flex;align-items:center;gap:4px;"><span style="width:8px;height:8px;border-radius:50%;background:var(--accent);display:inline-block;"></span> Revenue</span>
-            </div>
         </div>
-        <canvas id="donationChart" height="220"></canvas>
+        <div id="donationChart"></div>
     </div>
 
     <!-- Members Donut -->
     <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:16px;padding:24px;">
         <h4 style="font-size:1rem;font-weight:700;color:var(--text-primary);margin:0 0 5px;">Member Status</h4>
-        <p style="font-size:0.78rem;color:var(--text-muted);margin-bottom:15px;">Total: <?= $dMemberCount ?></p>
-        <canvas id="memberDonut" height="200"></canvas>
-        <div style="display:flex;justify-content:center;gap:20px;margin-top:15px;font-size:0.78rem;">
-            <span style="display:flex;align-items:center;gap:5px;"><span style="width:10px;height:10px;border-radius:3px;background:#10b981;display:inline-block;"></span> Approved (<?= $dApprovedMembers ?>)</span>
-            <span style="display:flex;align-items:center;gap:5px;"><span style="width:10px;height:10px;border-radius:3px;background:#f59e0b;display:inline-block;"></span> Pending (<?= $dPendingMembers ?>)</span>
-        </div>
+        <p style="font-size:0.78rem;color:var(--text-muted);margin-bottom:5px;">Total: <?= $dMemberCount ?></p>
+        <div id="memberDonut"></div>
     </div>
 </div>
 
@@ -162,15 +155,15 @@ try {
     <!-- Monthly Members Bar Chart -->
     <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:16px;padding:24px;">
         <h4 style="font-size:1rem;font-weight:700;color:var(--text-primary);margin:0 0 5px;">New Members</h4>
-        <p style="font-size:0.78rem;color:var(--text-muted);margin-bottom:15px;">Monthly signups (last 6 months)</p>
-        <canvas id="membersBarChart" height="180"></canvas>
+        <p style="font-size:0.78rem;color:var(--text-muted);margin-bottom:5px;">Monthly signups (last 6 months)</p>
+        <div id="membersBarChart"></div>
     </div>
 
-    <!-- Activity Breakdown Pie -->
+    <!-- Content Overview -->
     <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:16px;padding:24px;">
         <h4 style="font-size:1rem;font-weight:700;color:var(--text-primary);margin:0 0 5px;">Content Overview</h4>
-        <p style="font-size:0.78rem;color:var(--text-muted);margin-bottom:15px;">Distribution across categories</p>
-        <canvas id="contentPie" height="180"></canvas>
+        <p style="font-size:0.78rem;color:var(--text-muted);margin-bottom:5px;">Distribution across categories</p>
+        <div id="contentPie"></div>
     </div>
 </div>
 
@@ -248,288 +241,252 @@ try {
     </div>
 </div>
 
-<!-- Quick Actions -->
-<div class="quick-actions">
-    <h4>Quick Actions</h4>
-    <div class="action-cards">
-        <a href="admin.php?page=blogs" class="action-card">
-            <div class="action-icon" style="background:var(--accent-light);color:var(--accent);">
-                <i class="fas fa-pen-fancy"></i>
+
+<!-- Activity Row: Recent Members + Recent Donations -->
+<?php
+try { $actMembers = $pdo->query("SELECT full_name, membership_type, status, payment_mode, created_at FROM members ORDER BY created_at DESC LIMIT 6")->fetchAll(); } catch(Exception $e) { $actMembers = []; }
+try { $actDonations = $pdo->query("SELECT name, email, amount, status, payment_method, created_at FROM donations ORDER BY created_at DESC LIMIT 6")->fetchAll(); } catch(Exception $e) { $actDonations = []; }
+try { $actVolunteers = $pdo->query("SELECT name, email, status, created_at FROM volunteers ORDER BY created_at DESC LIMIT 6")->fetchAll(); } catch(Exception $e) { $actVolunteers = []; }
+try { $actQueries = $pdo->query("SELECT name, email, subject, status, created_at FROM contact_queries ORDER BY created_at DESC LIMIT 6")->fetchAll(); } catch(Exception $e) { $actQueries = []; }
+?>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:25px;">
+    <!-- Recent Members Card -->
+    <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:16px;overflow:hidden;">
+        <div style="padding:18px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;">
+            <div style="display:flex;align-items:center;gap:10px;">
+                <div style="width:34px;height:34px;border-radius:10px;background:var(--purple-light);display:flex;align-items:center;justify-content:center;">
+                    <i class="fas fa-id-card" style="color:var(--purple);font-size:0.85rem;"></i>
+                </div>
+                <div>
+                    <h4 style="font-size:0.92rem;font-weight:700;color:var(--text-primary);margin:0;">Recent Members</h4>
+                    <p style="font-size:0.72rem;color:var(--text-muted);margin:0;">Latest membership applications</p>
+                </div>
             </div>
-            <div class="action-text">
-                <h6>Create New Blog</h6>
-                <p>Write and publish a new blog post</p>
+            <a href="admin.php?page=members" style="font-size:0.75rem;color:var(--accent);font-weight:600;text-decoration:none;">View All <i class="fas fa-arrow-right" style="font-size:0.6rem;"></i></a>
+        </div>
+        <div style="padding:0;">
+            <?php if (empty($actMembers)): ?>
+                <div style="padding:30px;text-align:center;color:var(--text-muted);font-size:0.85rem;">No members yet.</div>
+            <?php else: ?>
+                <?php foreach ($actMembers as $idx => $am): ?>
+                <div style="display:flex;align-items:center;gap:12px;padding:12px 24px;border-bottom:1px solid #f5f5f5;<?= $idx >= 5 ? 'display:none;' : '' ?>">
+                    <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,<?= $am['status']==='approved' ? '#10b981,#059669' : ($am['status']==='pending' ? '#f59e0b,#d97706' : '#ef4444,#dc2626') ?>);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff;font-size:0.75rem;font-weight:700;">
+                        <?= strtoupper(mb_substr($am['full_name'], 0, 1)) ?>
+                    </div>
+                    <div style="flex:1;min-width:0;">
+                        <div style="font-weight:600;font-size:0.82rem;color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;"><?= htmlspecialchars($am['full_name']) ?></div>
+                        <div style="font-size:0.7rem;color:var(--text-muted);display:flex;align-items:center;gap:6px;">
+                            <span><?= htmlspecialchars($am['membership_type']) ?></span>
+                            <span style="color:#d1d5db;">&bull;</span>
+                            <span><?= $am['payment_mode'] ?></span>
+                        </div>
+                    </div>
+                    <div style="text-align:right;flex-shrink:0;">
+                        <span style="padding:3px 10px;border-radius:20px;font-size:0.68rem;font-weight:600;
+                            background:<?= $am['status']==='approved' ? 'var(--success-light)' : ($am['status']==='pending' ? 'var(--warning-light)' : 'var(--danger-light)') ?>;
+                            color:<?= $am['status']==='approved' ? '#059669' : ($am['status']==='pending' ? '#d97706' : '#dc2626') ?>;">
+                            <?= ucfirst($am['status']) ?>
+                        </span>
+                        <div style="font-size:0.65rem;color:var(--text-muted);margin-top:3px;"><?= date('d M, h:i A', strtotime($am['created_at'])) ?></div>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
+    </div>
+
+    <!-- Recent Donations Card -->
+    <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:16px;overflow:hidden;">
+        <div style="padding:18px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;">
+            <div style="display:flex;align-items:center;gap:10px;">
+                <div style="width:34px;height:34px;border-radius:10px;background:var(--success-light);display:flex;align-items:center;justify-content:center;">
+                    <i class="fas fa-donate" style="color:#059669;font-size:0.85rem;"></i>
+                </div>
+                <div>
+                    <h4 style="font-size:0.92rem;font-weight:700;color:var(--text-primary);margin:0;">Recent Donations</h4>
+                    <p style="font-size:0.72rem;color:var(--text-muted);margin:0;">Latest donation transactions</p>
+                </div>
             </div>
-        </a>
-        <a href="admin.php?page=members" class="action-card">
-            <div class="action-icon" style="background:var(--success-light);color:#059669;">
-                <i class="fas fa-user-check"></i>
-            </div>
-            <div class="action-text">
-                <h6>Manage Members</h6>
-                <p>Review pending applications</p>
-            </div>
-        </a>
-        <a href="admin.php?page=donations" class="action-card">
-            <div class="action-icon" style="background:var(--info-light);color:#2563eb;">
-                <i class="fas fa-hand-holding-usd"></i>
-            </div>
-            <div class="action-text">
-                <h6>View Donations</h6>
-                <p>Track and manage donations</p>
-            </div>
-        </a>
-        <a href="admin.php?page=queries" class="action-card">
-            <div class="action-icon" style="background:var(--warning-light);color:#d97706;">
-                <i class="fas fa-comment-dots"></i>
-            </div>
-            <div class="action-text">
-                <h6>View Queries</h6>
-                <p>Review and respond to queries</p>
-            </div>
-        </a>
-        <a href="admin.php?page=gallery" class="action-card">
-            <div class="action-icon" style="background:var(--purple-light);color:var(--purple);">
-                <i class="fas fa-cloud-upload-alt"></i>
-            </div>
-            <div class="action-text">
-                <h6>Upload Photos</h6>
-                <p>Add images to the gallery</p>
-            </div>
-        </a>
-        <a href="admin.php?page=volunteers" class="action-card">
-            <div class="action-icon" style="background:var(--pink-light);color:var(--pink);">
-                <i class="fas fa-hands-helping"></i>
-            </div>
-            <div class="action-text">
-                <h6>Volunteers</h6>
-                <p>Manage volunteer applications</p>
-            </div>
-        </a>
+            <a href="admin.php?page=donations" style="font-size:0.75rem;color:var(--accent);font-weight:600;text-decoration:none;">View All <i class="fas fa-arrow-right" style="font-size:0.6rem;"></i></a>
+        </div>
+        <div style="padding:0;">
+            <?php if (empty($actDonations)): ?>
+                <div style="padding:30px;text-align:center;color:var(--text-muted);font-size:0.85rem;">No donations yet.</div>
+            <?php else: ?>
+                <?php foreach ($actDonations as $idx => $ad): ?>
+                <div style="display:flex;align-items:center;gap:12px;padding:12px 24px;border-bottom:1px solid #f5f5f5;">
+                    <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,<?= $ad['status']==='completed' ? '#10b981,#059669' : '#f59e0b,#d97706' ?>);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff;font-size:0.75rem;font-weight:700;">
+                        <?= strtoupper(mb_substr($ad['name'], 0, 1)) ?>
+                    </div>
+                    <div style="flex:1;min-width:0;">
+                        <div style="font-weight:600;font-size:0.82rem;color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;"><?= htmlspecialchars($ad['name']) ?></div>
+                        <div style="font-size:0.7rem;color:var(--text-muted);"><?= htmlspecialchars($ad['email']) ?></div>
+                    </div>
+                    <div style="text-align:right;flex-shrink:0;">
+                        <div style="font-weight:700;font-size:0.9rem;color:var(--text-primary);">&#8377;<?= number_format($ad['amount'], 0) ?></div>
+                        <span style="padding:2px 8px;border-radius:20px;font-size:0.65rem;font-weight:600;
+                            background:<?= $ad['status']==='completed' ? 'var(--success-light)' : 'var(--warning-light)' ?>;
+                            color:<?= $ad['status']==='completed' ? '#059669' : '#d97706' ?>;">
+                            <?= ucfirst($ad['status']) ?>
+                        </span>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
     </div>
 </div>
 
-<!-- Recent Activity -->
-<div class="recent-activity">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:15px;">
-        <h4 style="margin:0;">Recent Activity</h4>
-        <span style="font-size:0.75rem;color:var(--text-muted);"><i class="fas fa-history" style="margin-right:4px;"></i> Last 10 activities</span>
-    </div>
-    <div class="activity-list">
-        <?php
-        $activities = [];
-
-        $recentBlogs = $pdo->query("SELECT title, status, created_at FROM blogs ORDER BY created_at DESC LIMIT 5")->fetchAll();
-        foreach ($recentBlogs as $b) {
-            $activities[] = [
-                'icon' => 'fa-blog', 'icon_bg' => 'var(--accent-light)', 'icon_color' => 'var(--accent)',
-                'text' => 'Blog post ' . ($b['status'] === 'published' ? 'published' : 'drafted') . ': ' . $b['title'],
-                'time' => $b['created_at'],
-                'badge' => ucfirst($b['status']),
-                'badge_bg' => $b['status'] === 'published' ? 'var(--info-light)' : '#f3f4f6',
-                'badge_color' => $b['status'] === 'published' ? '#2563eb' : '#6b7280'
-            ];
-        }
-
-        $recentComments = $pdo->query("SELECT c.name, c.status, c.created_at, b.title as blog_title FROM blog_comments c LEFT JOIN blogs b ON c.blog_id = b.id ORDER BY c.created_at DESC LIMIT 5")->fetchAll();
-        foreach ($recentComments as $c) {
-            $activities[] = [
-                'icon' => 'fa-comment-dots', 'icon_bg' => 'var(--warning-light)', 'icon_color' => '#d97706',
-                'text' => 'Comment from ' . $c['name'] . ' on "' . mb_strimwidth($c['blog_title'] ?? '', 0, 40, '...') . '"',
-                'time' => $c['created_at'],
-                'badge' => ucfirst($c['status']),
-                'badge_bg' => $c['status'] === 'approved' ? 'var(--success-light)' : ($c['status'] === 'pending' ? 'var(--warning-light)' : 'var(--danger-light)'),
-                'badge_color' => $c['status'] === 'approved' ? '#059669' : ($c['status'] === 'pending' ? '#d97706' : '#dc2626')
-            ];
-        }
-
-        try {
-            $recentDonations = $pdo->query("SELECT name, amount, status, created_at FROM donations ORDER BY created_at DESC LIMIT 5")->fetchAll();
-            foreach ($recentDonations as $d) {
-                $activities[] = [
-                    'icon' => 'fa-donate', 'icon_bg' => 'var(--success-light)', 'icon_color' => '#059669',
-                    'text' => 'Donation of ₹' . number_format($d['amount'], 0) . ' by ' . $d['name'],
-                    'time' => $d['created_at'],
-                    'badge' => ucfirst($d['status']),
-                    'badge_bg' => $d['status'] === 'completed' ? 'var(--success-light)' : 'var(--warning-light)',
-                    'badge_color' => $d['status'] === 'completed' ? '#059669' : '#d97706'
-                ];
-            }
-        } catch(Exception $e) {}
-
-        try {
-            $recentMembers = $pdo->query("SELECT full_name, status, created_at FROM members ORDER BY created_at DESC LIMIT 5")->fetchAll();
-            foreach ($recentMembers as $m) {
-                $activities[] = [
-                    'icon' => 'fa-id-card', 'icon_bg' => 'var(--purple-light)', 'icon_color' => 'var(--purple)',
-                    'text' => 'New membership: ' . $m['full_name'],
-                    'time' => $m['created_at'],
-                    'badge' => ucfirst($m['status']),
-                    'badge_bg' => $m['status'] === 'approved' ? 'var(--success-light)' : ($m['status'] === 'pending' ? 'var(--warning-light)' : 'var(--danger-light)'),
-                    'badge_color' => $m['status'] === 'approved' ? '#059669' : ($m['status'] === 'pending' ? '#d97706' : '#dc2626')
-                ];
-            }
-        } catch(Exception $e) {}
-
-        usort($activities, function($a, $b) { return strtotime($b['time']) - strtotime($a['time']); });
-        $activities = array_slice($activities, 0, 10);
-        ?>
-
-        <?php if (empty($activities)): ?>
-            <div class="activity-item"><div class="activity-text"><h6 style="color:#999;">No recent activity yet.</h6></div></div>
-        <?php else: ?>
-            <?php foreach ($activities as $act): ?>
-            <div class="activity-item">
-                <div class="activity-icon" style="background:<?= $act['icon_bg'] ?>;color:<?= $act['icon_color'] ?>;">
-                    <i class="fas <?= $act['icon'] ?>"></i>
+<!-- Second Activity Row: Volunteers + Queries -->
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px;">
+    <!-- Recent Volunteers Card -->
+    <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:16px;overflow:hidden;">
+        <div style="padding:18px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;">
+            <div style="display:flex;align-items:center;gap:10px;">
+                <div style="width:34px;height:34px;border-radius:10px;background:var(--pink-light);display:flex;align-items:center;justify-content:center;">
+                    <i class="fas fa-hands-helping" style="color:var(--pink);font-size:0.85rem;"></i>
                 </div>
-                <div class="activity-text">
-                    <h6><?= htmlspecialchars(mb_strimwidth($act['text'], 0, 70, '...')) ?></h6>
-                    <small><i class="far fa-clock"></i> <?= date('j F Y, h:i A', strtotime($act['time'])) ?></small>
+                <div>
+                    <h4 style="font-size:0.92rem;font-weight:700;color:var(--text-primary);margin:0;">Recent Volunteers</h4>
+                    <p style="font-size:0.72rem;color:var(--text-muted);margin:0;">Latest volunteer applications</p>
                 </div>
-                <span class="activity-badge" style="background:<?= $act['badge_bg'] ?>;color:<?= $act['badge_color'] ?>;"><?= $act['badge'] ?></span>
             </div>
-            <?php endforeach; ?>
-        <?php endif; ?>
+            <a href="admin.php?page=volunteers" style="font-size:0.75rem;color:var(--accent);font-weight:600;text-decoration:none;">View All <i class="fas fa-arrow-right" style="font-size:0.6rem;"></i></a>
+        </div>
+        <div style="padding:0;">
+            <?php if (empty($actVolunteers)): ?>
+                <div style="padding:30px;text-align:center;">
+                    <i class="fas fa-user-plus" style="font-size:1.5rem;color:var(--border);margin-bottom:6px;display:block;"></i>
+                    <p style="color:var(--text-muted);font-size:0.82rem;margin:0;">No volunteer applications yet.</p>
+                </div>
+            <?php else: ?>
+                <?php foreach ($actVolunteers as $av): ?>
+                <div style="display:flex;align-items:center;gap:12px;padding:12px 24px;border-bottom:1px solid #f5f5f5;">
+                    <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--pink),#d946ef);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff;font-size:0.75rem;font-weight:700;">
+                        <?= strtoupper(mb_substr($av['name'], 0, 1)) ?>
+                    </div>
+                    <div style="flex:1;min-width:0;">
+                        <div style="font-weight:600;font-size:0.82rem;color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;"><?= htmlspecialchars($av['name']) ?></div>
+                        <div style="font-size:0.7rem;color:var(--text-muted);"><?= htmlspecialchars($av['email']) ?></div>
+                    </div>
+                    <div style="text-align:right;flex-shrink:0;">
+                        <span style="padding:3px 10px;border-radius:20px;font-size:0.68rem;font-weight:600;
+                            background:<?= $av['status']==='approved' ? 'var(--success-light)' : ($av['status']==='pending' ? 'var(--warning-light)' : 'var(--danger-light)') ?>;
+                            color:<?= $av['status']==='approved' ? '#059669' : ($av['status']==='pending' ? '#d97706' : '#dc2626') ?>;">
+                            <?= ucfirst($av['status']) ?>
+                        </span>
+                        <div style="font-size:0.65rem;color:var(--text-muted);margin-top:3px;"><?= date('d M, h:i A', strtotime($av['created_at'])) ?></div>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
+    </div>
+
+    <!-- Recent Queries Card -->
+    <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:16px;overflow:hidden;">
+        <div style="padding:18px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;">
+            <div style="display:flex;align-items:center;gap:10px;">
+                <div style="width:34px;height:34px;border-radius:10px;background:var(--info-light);display:flex;align-items:center;justify-content:center;">
+                    <i class="fas fa-comments" style="color:#2563eb;font-size:0.85rem;"></i>
+                </div>
+                <div>
+                    <h4 style="font-size:0.92rem;font-weight:700;color:var(--text-primary);margin:0;">Recent Queries</h4>
+                    <p style="font-size:0.72rem;color:var(--text-muted);margin:0;">Latest contact form submissions</p>
+                </div>
+            </div>
+            <a href="admin.php?page=queries" style="font-size:0.75rem;color:var(--accent);font-weight:600;text-decoration:none;">View All <i class="fas fa-arrow-right" style="font-size:0.6rem;"></i></a>
+        </div>
+        <div style="padding:0;">
+            <?php if (empty($actQueries)): ?>
+                <div style="padding:30px;text-align:center;">
+                    <i class="fas fa-inbox" style="font-size:1.5rem;color:var(--border);margin-bottom:6px;display:block;"></i>
+                    <p style="color:var(--text-muted);font-size:0.82rem;margin:0;">No queries yet.</p>
+                </div>
+            <?php else: ?>
+                <?php foreach ($actQueries as $aq): ?>
+                <div style="display:flex;align-items:center;gap:12px;padding:12px 24px;border-bottom:1px solid #f5f5f5;">
+                    <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#2563eb);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff;font-size:0.75rem;font-weight:700;">
+                        <?= strtoupper(mb_substr($aq['name'], 0, 1)) ?>
+                    </div>
+                    <div style="flex:1;min-width:0;">
+                        <div style="font-weight:600;font-size:0.82rem;color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;"><?= htmlspecialchars($aq['name']) ?></div>
+                        <div style="font-size:0.7rem;color:var(--text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;"><?= htmlspecialchars($aq['subject'] ?? $aq['email']) ?></div>
+                    </div>
+                    <div style="text-align:right;flex-shrink:0;">
+                        <span style="padding:3px 10px;border-radius:20px;font-size:0.68rem;font-weight:600;
+                            background:<?= $aq['status']==='replied' ? 'var(--success-light)' : ($aq['status']==='new' ? 'var(--info-light)' : 'var(--warning-light)') ?>;
+                            color:<?= $aq['status']==='replied' ? '#059669' : ($aq['status']==='new' ? '#2563eb' : '#d97706') ?>;">
+                            <?= ucfirst($aq['status']) ?>
+                        </span>
+                        <div style="font-size:0.65rem;color:var(--text-muted);margin-top:3px;"><?= date('d M, h:i A', strtotime($aq['created_at'])) ?></div>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
     </div>
 </div>
 
-<!-- Chart.js CDN -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<!-- ApexCharts CDN (SVG-based, no canvas/requestAnimationFrame) -->
+<script src="https://cdn.jsdelivr.net/npm/apexcharts@3.49.0/dist/apexcharts.min.js"></script>
 <script>
 // Donation Area Chart
-var donCtx = document.getElementById('donationChart').getContext('2d');
-var donGradient = donCtx.createLinearGradient(0, 0, 0, 220);
-donGradient.addColorStop(0, 'rgba(242, 101, 34, 0.25)');
-donGradient.addColorStop(1, 'rgba(242, 101, 34, 0.01)');
-
-new Chart(donCtx, {
-    type: 'line',
-    data: {
-        labels: <?= json_encode(array_column($monthlyDonations, 'label')) ?>,
-        datasets: [{
-            label: 'Revenue (₹)',
-            data: <?= json_encode(array_column($monthlyDonations, 'amount')) ?>,
-            borderColor: '#f26522',
-            backgroundColor: donGradient,
-            borderWidth: 3,
-            fill: true,
-            tension: 0.4,
-            pointBackgroundColor: '#fff',
-            pointBorderColor: '#f26522',
-            pointBorderWidth: 2,
-            pointRadius: 5,
-            pointHoverRadius: 7,
-        }]
-    },
-    options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-            legend: { display: false },
-            tooltip: {
-                backgroundColor: '#1a1b2e',
-                titleFont: { size: 12, weight: '600' },
-                bodyFont: { size: 12 },
-                padding: 12,
-                cornerRadius: 10,
-                callbacks: {
-                    label: function(ctx) { return '₹' + ctx.parsed.y.toLocaleString('en-IN'); }
-                }
-            }
-        },
-        scales: {
-            y: {
-                beginAtZero: true,
-                grid: { color: 'rgba(0,0,0,0.04)', drawBorder: false },
-                ticks: { font: { size: 11 }, color: '#9ca3af', callback: function(v) { return '₹' + (v >= 1000 ? (v/1000)+'k' : v); } }
-            },
-            x: {
-                grid: { display: false },
-                ticks: { font: { size: 11 }, color: '#9ca3af' }
-            }
-        }
-    }
-});
+new ApexCharts(document.getElementById('donationChart'), {
+    chart: { type: 'area', height: 260, toolbar: { show: false }, fontFamily: 'Inter, sans-serif', animations: { enabled: true, easing: 'easeinout', speed: 600, animateGradually: { enabled: false } } },
+    series: [{ name: 'Revenue', data: <?= json_encode(array_column($monthlyDonations, 'amount')) ?> }],
+    labels: <?= json_encode(array_column($monthlyDonations, 'label')) ?>,
+    colors: ['#f26522'],
+    fill: { type: 'gradient', gradient: { shadeIntensity: 1, opacityFrom: 0.35, opacityTo: 0.05, stops: [0, 90, 100] } },
+    stroke: { curve: 'smooth', width: 3 },
+    markers: { size: 5, colors: ['#fff'], strokeColors: '#f26522', strokeWidth: 2, hover: { size: 7 } },
+    dataLabels: { enabled: false },
+    grid: { borderColor: '#f0f0f0', strokeDashArray: 4, xaxis: { lines: { show: false } } },
+    xaxis: { labels: { style: { colors: '#9ca3af', fontSize: '11px' } }, axisBorder: { show: false }, axisTicks: { show: false } },
+    yaxis: { labels: { style: { colors: '#9ca3af', fontSize: '11px' }, formatter: function(v) { return '₹' + (v >= 1000 ? (v/1000)+'k' : v); } } },
+    tooltip: { theme: 'dark', y: { formatter: function(v) { return '₹' + v.toLocaleString('en-IN'); } } }
+}).render();
 
 // Member Donut
-new Chart(document.getElementById('memberDonut').getContext('2d'), {
-    type: 'doughnut',
-    data: {
-        labels: ['Approved', 'Pending'],
-        datasets: [{
-            data: [<?= $dApprovedMembers ?>, <?= $dPendingMembers ?>],
-            backgroundColor: ['#10b981', '#f59e0b'],
-            borderWidth: 0,
-            hoverOffset: 8
-        }]
-    },
-    options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        cutout: '70%',
-        plugins: {
-            legend: { display: false },
-            tooltip: {
-                backgroundColor: '#1a1b2e',
-                padding: 10,
-                cornerRadius: 8,
-                bodyFont: { size: 12 }
-            }
-        }
-    }
-});
+new ApexCharts(document.getElementById('memberDonut'), {
+    chart: { type: 'donut', height: 280, fontFamily: 'Inter, sans-serif', animations: { enabled: true, speed: 500 } },
+    series: [<?= $dApprovedMembers ?>, <?= $dPendingMembers ?>],
+    labels: ['Approved', 'Pending'],
+    colors: ['#10b981', '#f59e0b'],
+    plotOptions: { pie: { donut: { size: '72%', labels: { show: true, name: { fontSize: '14px', fontWeight: 600 }, value: { fontSize: '22px', fontWeight: 700, color: '#1a1b2e' }, total: { show: true, label: 'Total', fontSize: '13px', color: '#9ca3af', formatter: function(w) { return w.globals.seriesTotals.reduce(function(a,b){return a+b},0); } } } } } },
+    dataLabels: { enabled: false },
+    legend: { position: 'bottom', fontSize: '12px', fontWeight: 500, markers: { width: 10, height: 10, radius: 3 }, itemMargin: { horizontal: 12 } },
+    stroke: { width: 0 },
+    tooltip: { theme: 'dark' }
+}).render();
 
 // Members Bar Chart
-new Chart(document.getElementById('membersBarChart').getContext('2d'), {
-    type: 'bar',
-    data: {
-        labels: <?= json_encode(array_column($monthlyMembers, 'label')) ?>,
-        datasets: [{
-            label: 'New Members',
-            data: <?= json_encode(array_column($monthlyMembers, 'count')) ?>,
-            backgroundColor: 'rgba(139, 92, 246, 0.7)',
-            borderRadius: 8,
-            borderSkipped: false,
-            barThickness: 28
-        }]
-    },
-    options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-            legend: { display: false },
-            tooltip: { backgroundColor: '#1a1b2e', padding: 10, cornerRadius: 8 }
-        },
-        scales: {
-            y: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.04)', drawBorder: false }, ticks: { font: { size: 11 }, color: '#9ca3af', stepSize: 1 } },
-            x: { grid: { display: false }, ticks: { font: { size: 11 }, color: '#9ca3af' } }
-        }
-    }
-});
+new ApexCharts(document.getElementById('membersBarChart'), {
+    chart: { type: 'bar', height: 240, toolbar: { show: false }, fontFamily: 'Inter, sans-serif', animations: { enabled: true, speed: 500 } },
+    series: [{ name: 'New Members', data: <?= json_encode(array_column($monthlyMembers, 'count')) ?> }],
+    labels: <?= json_encode(array_column($monthlyMembers, 'label')) ?>,
+    colors: ['#8b5cf6'],
+    plotOptions: { bar: { borderRadius: 8, columnWidth: '45%', distributed: false } },
+    dataLabels: { enabled: false },
+    grid: { borderColor: '#f0f0f0', strokeDashArray: 4, xaxis: { lines: { show: false } } },
+    xaxis: { labels: { style: { colors: '#9ca3af', fontSize: '11px' } }, axisBorder: { show: false }, axisTicks: { show: false } },
+    yaxis: { labels: { style: { colors: '#9ca3af', fontSize: '11px' } }, tickAmount: 4 },
+    tooltip: { theme: 'dark' }
+}).render();
 
-// Content Pie
-new Chart(document.getElementById('contentPie').getContext('2d'), {
-    type: 'doughnut',
-    data: {
-        labels: ['Blogs', 'News', 'Gallery', 'Events'],
-        datasets: [{
-            data: [<?= $dBlogCount ?>, <?= $dNewsCount ?>, <?= $dGalleryCount ?>, <?= $dEventCount ?>],
-            backgroundColor: ['#f26522', '#3b82f6', '#8b5cf6', '#10b981'],
-            borderWidth: 0,
-            hoverOffset: 8
-        }]
-    },
-    options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        cutout: '60%',
-        plugins: {
-            legend: { position: 'bottom', labels: { padding: 15, usePointStyle: true, pointStyle: 'rectRounded', font: { size: 11 } } },
-            tooltip: { backgroundColor: '#1a1b2e', padding: 10, cornerRadius: 8 }
-        }
-    }
-});
+// Content Donut
+new ApexCharts(document.getElementById('contentPie'), {
+    chart: { type: 'donut', height: 280, fontFamily: 'Inter, sans-serif', animations: { enabled: true, speed: 500 } },
+    series: [<?= $dBlogCount ?>, <?= $dNewsCount ?>, <?= $dGalleryCount ?>, <?= $dEventCount ?>],
+    labels: ['Blogs', 'News', 'Gallery', 'Events'],
+    colors: ['#f26522', '#3b82f6', '#8b5cf6', '#10b981'],
+    plotOptions: { pie: { donut: { size: '65%' } } },
+    dataLabels: { enabled: false },
+    legend: { position: 'bottom', fontSize: '12px', fontWeight: 500, markers: { width: 10, height: 10, radius: 3 }, itemMargin: { horizontal: 10 } },
+    stroke: { width: 0 },
+    tooltip: { theme: 'dark' }
+}).render();
 </script>
 
 <style>
