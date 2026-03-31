@@ -313,19 +313,18 @@ if (isset($_SESSION['member_success'])) {
                                                 class="fas fa-eye"></i> View</a>
                                         <a href="javascript:void(0)" onclick="editMember(<?= $m['id'] ?>)"><i
                                                 class="fas fa-edit"></i> Edit</a>
-                                        <?php if ($m['status'] !== 'approved' && $m['payment_mode'] === 'Cash'): ?>
-                                            <a href="javascript:void(0)"
+                                        <?php if ($m['status'] === 'pending'): ?>
+                                            <a href="javascript:void(0)" style="color:#22c55e;font-weight:600;"
                                                 onclick="ajaxMemberAction('approve_member', <?= $m['id'] ?>)"><i
                                                     class="fas fa-check"></i> Approve</a>
-                                        <?php endif; ?>
-                                        <?php if ($m['status'] !== 'rejected'): ?>
-                                            <a href="javascript:void(0)"
+                                            <a href="javascript:void(0)" style="color:#ef4444;font-weight:600;"
                                                 onclick="ajaxMemberAction('reject_member', <?= $m['id'] ?>)"><i
                                                     class="fas fa-times"></i> Reject</a>
+                                        <?php else: ?>
+                                            <a href="javascript:void(0)"
+                                                onclick="showConfirmModal('Delete this member?', function(){ ajaxMemberAction('delete_member', <?= $m['id'] ?>) })"
+                                                style="color:#ef4444;"><i class="fas fa-trash"></i> Delete</a>
                                         <?php endif; ?>
-                                        <a href="javascript:void(0)"
-                                            onclick="showConfirmModal('Delete this member?', function(){ ajaxMemberAction('delete_member', <?= $m['id'] ?>) })"
-                                            style="color:#ef4444;"><i class="fas fa-trash"></i> Delete</a>
                                     </div>
                                 </div>
                             </td>

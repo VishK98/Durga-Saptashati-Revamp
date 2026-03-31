@@ -97,6 +97,7 @@ include '../app/views/layout/header.php';
                         </button>
                     </form>
 
+                    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
                     <script>
                     function selectAmount(btn, amount) {
                         document.querySelectorAll('.amt-btn').forEach(function(b) { b.style.borderColor='#e5e7eb'; b.style.background='#f9fafb'; b.style.color='#333'; });
@@ -109,20 +110,82 @@ include '../app/views/layout/header.php';
                         var btn = this;
                         var name = form.querySelector('[name="name"]').value.trim();
                         var email = form.querySelector('[name="email"]').value.trim();
-                        var amount = form.querySelector('[name="amount"]').value;
+                        var phone = form.querySelector('[name="phone"]').value.trim();
+                        var amount = parseInt(form.querySelector('[name="amount"]').value);
+                        var message = form.querySelector('[name="message"]').value.trim();
                         if (!name || !email || !amount || amount <= 0) { showToast('Please fill in all required fields.', 'error'); return; }
+
                         var originalText = btn.innerHTML;
                         btn.disabled = true;
-                        btn.innerHTML = '<span style="display:inline-block;width:18px;height:18px;border:3px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:formSpin 0.6s linear infinite;vertical-align:middle;"></span>';
-                        var formData = new FormData(form);
-                        var xhr = new XMLHttpRequest();
-                        xhr.open('POST', '<?= url("api/donation.php") ?>');
-                        xhr.onload = function() {
+                        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+
+                        // Create Razorpay order
+                        var fd = new FormData();
+                        fd.append('action', 'create_order');
+                        fd.append('amount', amount);
+                        fd.append('type', 'donation');
+                        fd.append('name', name);
+                        fd.append('email', email);
+                        fd.append('phone', phone);
+
+                        fetch('<?= url("api/razorpay-payment.php") ?>', { method: 'POST', body: fd })
+                        .then(function(r) { return r.json(); })
+                        .then(function(data) {
+                            if (!data.success) {
+                                btn.disabled = false; btn.innerHTML = originalText;
+                                showToast(data.message || 'Could not initiate payment.', 'error');
+                                return;
+                            }
+
+                            var options = {
+                                key: data.key,
+                                amount: data.amount * 100,
+                                currency: 'INR',
+                                name: 'Durga Saptashati Foundation',
+                                description: 'Donation',
+                                order_id: data.order_id,
+                                prefill: { name: name, email: email, contact: phone },
+                                theme: { color: '#f26522' },
+                                handler: function(response) {
+                                    var vfd = new FormData();
+                                    vfd.append('action', 'verify_payment');
+                                    vfd.append('type', 'donation');
+                                    vfd.append('razorpay_payment_id', response.razorpay_payment_id);
+                                    vfd.append('razorpay_order_id', response.razorpay_order_id);
+                                    vfd.append('razorpay_signature', response.razorpay_signature);
+                                    vfd.append('name', name);
+                                    vfd.append('email', email);
+                                    vfd.append('phone', phone);
+                                    vfd.append('amount', amount);
+                                    vfd.append('message', message);
+
+                                    fetch('<?= url("api/razorpay-payment.php") ?>', { method: 'POST', body: vfd })
+                                    .then(function(r) { return r.json(); })
+                                    .then(function(vdata) {
+                                        btn.disabled = false; btn.innerHTML = originalText;
+                                        if (vdata.success) {
+                                            showToast(vdata.message, 'success');
+                                            form.reset();
+                                            document.querySelectorAll('.amt-btn').forEach(function(b) { b.style.borderColor='#e5e7eb'; b.style.background='#f9fafb'; b.style.color='#333'; });
+                                            window.scrollTo({top:0,behavior:'smooth'});
+                                        } else { showToast(vdata.message, 'error'); }
+                                    });
+                                },
+                                modal: {
+                                    ondismiss: function() {
+                                        btn.disabled = false; btn.innerHTML = originalText;
+                                        showToast('Payment was cancelled.', 'error');
+                                    }
+                                }
+                            };
+
+                            var rzp = new Razorpay(options);
+                            rzp.open();
+                        })
+                        .catch(function() {
                             btn.disabled = false; btn.innerHTML = originalText;
-                            try { var res = JSON.parse(xhr.responseText); if (res.success) { showToast(res.message, 'success'); form.reset(); document.querySelectorAll('.amt-btn').forEach(function(b) { b.style.borderColor='#e5e7eb'; b.style.background='#f9fafb'; b.style.color='#333'; }); window.scrollTo({top:0,behavior:'smooth'}); } else { showToast(res.message, 'error'); } } catch(e) { showToast('Something went wrong. Please try again.', 'error'); }
-                        };
-                        xhr.onerror = function() { btn.disabled = false; btn.innerHTML = originalText; showToast('Network error. Please check your connection.', 'error'); };
-                        xhr.send(formData);
+                            showToast('Network error. Please try again.', 'error');
+                        });
                     });
                     </script>
 

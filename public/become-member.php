@@ -99,7 +99,7 @@ try {
             <div class="col-lg-7 d-flex" data-aos="fade-left">
                 <div class="mbr-card mbr-form-card">
                     <h4 class="mbr-form-title"><i class="fas fa-user-plus"></i> Membership Form</h4>
-                    <form method="POST" action="<?= url('admin.php') ?>" enctype="multipart/form-data" class="mbr-form">
+                    <form method="POST" onsubmit="return false;" enctype="multipart/form-data" class="mbr-form">
                         <input type="hidden" name="action" value="submit_membership">
 
                         <div class="row">
@@ -196,7 +196,7 @@ try {
                                 placeholder="Enter your address"></textarea>
                         </div>
 
-                        <button type="submit" class="mbr-submit">
+                        <button type="submit" class="mbr-submit" id="membershipSubmitBtn">
                             <i class="fas fa-paper-plane"></i> Submit Application
                         </button>
                     </form>
@@ -273,7 +273,151 @@ try {
     </div>
 </section>
 
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script>
+// Membership plan prices for Razorpay
+var membershipPrices = {};
+<?php foreach ($membershipPlans as $plan): ?>
+membershipPrices['<?= htmlspecialchars($plan['slug']) ?>'] = <?= (int)$plan['price'] ?>;
+<?php endforeach; ?>
+
+// Intercept form submission for Razorpay
+(function() {
+    var form = document.querySelector('.mbr-form');
+    if (!form) return;
+
+    form.addEventListener('submit', function(e) {
+        var paymentMode = form.querySelector('[name="payment_mode"]').value;
+        var membershipType = form.querySelector('[name="membership_type"]').value;
+        var fullName = form.querySelector('[name="full_name"]').value.trim();
+        var email = form.querySelector('[name="email"]').value.trim();
+        var mobile = form.querySelector('[name="mobile"]').value.trim();
+        var gender = form.querySelector('[name="gender"]').value;
+
+        if (!fullName || !gender || !membershipType || !paymentMode) {
+            showToast('Please fill in all required fields.', 'error');
+            return;
+        }
+
+        var btn = document.getElementById('membershipSubmitBtn');
+        var originalHTML = btn.innerHTML;
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+
+        if (paymentMode === 'Cash') {
+            // Submit via AJAX
+            var fd = new FormData(form);
+            fetch('<?= url("api/membership.php") ?>', { method: 'POST', body: fd })
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                btn.disabled = false; btn.innerHTML = originalHTML;
+                if (data.success) {
+                    showToast(data.message, 'success');
+                    form.reset();
+                    document.querySelectorAll('.cdd-text').forEach(function(t) { t.classList.remove('has-value'); });
+                    window.scrollTo({top: 0, behavior: 'smooth'});
+                    setTimeout(function() { location.reload(); }, 2000);
+                } else { showToast(data.message, 'error'); }
+            })
+            .catch(function() {
+                btn.disabled = false; btn.innerHTML = originalHTML;
+                showToast('Network error. Please try again.', 'error');
+            });
+            return;
+        }
+
+        // Online payment - use Razorpay
+        var amount = membershipPrices[membershipType] || 0;
+        if (amount <= 0) {
+            btn.disabled = false; btn.innerHTML = originalHTML;
+            showToast('Invalid membership plan selected.', 'error');
+            return;
+        }
+
+        // Create Razorpay order
+        var fd = new FormData();
+        fd.append('action', 'create_order');
+        fd.append('amount', amount);
+        fd.append('type', 'membership');
+        fd.append('name', fullName);
+        fd.append('email', email);
+        fd.append('phone', mobile);
+
+        fetch('<?= url("api/razorpay-payment.php") ?>', { method: 'POST', body: fd })
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+            if (!data.success) {
+                btn.disabled = false;
+                btn.innerHTML = originalHTML;
+                showToast(data.message || 'Could not initiate payment.', 'error');
+                return;
+            }
+
+            var options = {
+                key: data.key,
+                amount: data.amount * 100,
+                currency: 'INR',
+                name: 'Durga Saptashati Foundation',
+                description: 'Membership - ' + membershipType,
+                order_id: data.order_id,
+                prefill: { name: fullName, email: email, contact: mobile },
+                theme: { color: '#f26522' },
+                handler: function(response) {
+                    // Verify payment on server
+                    var vfd = new FormData();
+                    vfd.append('action', 'verify_payment');
+                    vfd.append('type', 'membership');
+                    vfd.append('razorpay_payment_id', response.razorpay_payment_id);
+                    vfd.append('razorpay_order_id', response.razorpay_order_id);
+                    vfd.append('razorpay_signature', response.razorpay_signature);
+                    vfd.append('full_name', fullName);
+                    vfd.append('gender', gender);
+                    vfd.append('address', form.querySelector('[name="address"]').value);
+                    vfd.append('email', email);
+                    vfd.append('mobile', mobile);
+                    vfd.append('membership_type', membershipType);
+                    vfd.append('profession', form.querySelector('[name="profession"]').value);
+                    vfd.append('amount', amount);
+
+                    fetch('<?= url("api/razorpay-payment.php") ?>', { method: 'POST', body: vfd })
+                    .then(function(r) { return r.json(); })
+                    .then(function(vdata) {
+                        btn.disabled = false;
+                        btn.innerHTML = originalHTML;
+                        if (vdata.success) {
+                            showToast(vdata.message, 'success');
+                            form.reset();
+                            document.querySelectorAll('.cdd-text').forEach(function(t) {
+                                t.classList.remove('has-value');
+                                t.innerHTML = t.closest('.cdd').querySelector('.cdd-selected').getAttribute('data-placeholder') || 'Select...';
+                            });
+                            window.scrollTo({top: 0, behavior: 'smooth'});
+                            setTimeout(function() { location.reload(); }, 2000);
+                        } else {
+                            showToast(vdata.message, 'error');
+                        }
+                    });
+                },
+                modal: {
+                    ondismiss: function() {
+                        btn.disabled = false;
+                        btn.innerHTML = originalHTML;
+                        showToast('Payment was cancelled.', 'error');
+                    }
+                }
+            };
+
+            var rzp = new Razorpay(options);
+            rzp.open();
+        })
+        .catch(function() {
+            btn.disabled = false;
+            btn.innerHTML = originalHTML;
+            showToast('Network error. Please try again.', 'error');
+        });
+    });
+})();
+
 function toggleMoreMembers() {
     var hidden = document.querySelectorAll('.mbr-member-hidden');
     var btn = document.getElementById('showMoreMembers');

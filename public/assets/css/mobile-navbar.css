@@ -190,6 +190,16 @@
   .navbar.navbar-modern .nav-link .nav-text {
     flex: 1;
     text-align: left;
+    color: rgba(255, 255, 255, 0.95) !important;
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .navbar.navbar-modern .nav-link:hover,
+  .navbar.navbar-modern:not(.scrolled):not(.nav-sticky):hover .nav-link,
+  .navbar.navbar-modern:not(.scrolled):not(.nav-sticky) .nav-link {
+    color: rgba(255, 255, 255, 0.95) !important;
   }
 
   .navbar.navbar-modern .nav-link:hover {
@@ -215,9 +225,10 @@
     backdrop-filter: blur(10px);
     transition: all 0.3s ease, max-height 0.5s ease;
     overflow: hidden;
-    height: auto; /* allow expansion */
-    display: block; /* prevent flex constraints */
+    height: auto !important; /* override desktop height:100% */
+    display: block !important; /* prevent flex constraints */
     max-height: 64px; /* collapsed height equals header height */
+    position: relative !important; /* override desktop static */
   }
 
   .navbar.navbar-modern .dropdown.show {
@@ -232,7 +243,9 @@
   }
 
   /* Override desktop mega menu behavior on mobile */
-  .navbar.navbar-modern .mega-dropdown-menu {
+  .navbar.navbar-modern .mega-dropdown-menu,
+  .navbar.navbar-modern .mega-dropdown:hover .mega-dropdown-menu,
+  .navbar.navbar-modern .mega-dropdown-menu:hover {
     position: static !important;
     width: 100% !important;
     left: auto !important;
@@ -240,6 +253,12 @@
     top: auto !important;
     border-top: none !important;
     box-shadow: none !important;
+    animation: none !important;
+  }
+
+  /* Disable desktop hover effects on mega-dropdown on mobile */
+  .navbar.navbar-modern .mega-dropdown::after {
+    display: none !important;
   }
 
   .navbar.navbar-modern .dropdown-menu {

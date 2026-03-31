@@ -1258,7 +1258,7 @@ $mshipFeatures = [
                         <h3>Donate Now</h3>
                         <p>Every rupee makes a difference</p>
                     </div>
-                    <form action="<?= url('make-donation.php') ?>" method="GET">
+                    <form id="homeDonateForm" onsubmit="return false;">
                         <div class="donate-field">
                             <div class="donate-field-icon"><i class="fas fa-user"></i></div>
                             <input type="text" name="name" placeholder="Full Name" required>
@@ -1285,11 +1285,89 @@ $mshipFeatures = [
                             <span class="donate-quick"
                                 onclick="this.closest('form').querySelector('[name=amount]').value=5000">&#8377;5,000</span>
                         </div>
-                        <button type="submit" class="donate-submit">
+                        <button type="submit" class="donate-submit" id="homeDonateBtn">
                             <i class="fas fa-heart"></i> Donate Now
                         </button>
                         <div class="donate-secure"><i class="fas fa-lock"></i> 100% Secure &amp; Encrypted Payment</div>
                     </form>
+                    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+                    <script>
+                    document.getElementById('homeDonateBtn').addEventListener('click', function() {
+                        var form = document.getElementById('homeDonateForm');
+                        var btn = this;
+                        var name = form.querySelector('[name="name"]').value.trim();
+                        var email = form.querySelector('[name="email"]').value.trim();
+                        var phone = form.querySelector('[name="phone"]').value.trim();
+                        var amount = parseInt(form.querySelector('[name="amount"]').value);
+                        if (!name || !email || !amount || amount <= 0) { showToast('Please fill in all required fields.', 'error'); return; }
+
+                        var originalHTML = btn.innerHTML;
+                        btn.disabled = true;
+                        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+
+                        var fd = new FormData();
+                        fd.append('action', 'create_order');
+                        fd.append('amount', amount);
+                        fd.append('type', 'donation');
+                        fd.append('name', name);
+                        fd.append('email', email);
+                        fd.append('phone', phone);
+
+                        fetch('<?= url("api/razorpay-payment.php") ?>', { method: 'POST', body: fd })
+                        .then(function(r) { return r.json(); })
+                        .then(function(data) {
+                            if (!data.success) {
+                                btn.disabled = false; btn.innerHTML = originalHTML;
+                                showToast(data.message || 'Could not initiate payment.', 'error');
+                                return;
+                            }
+                            var options = {
+                                key: data.key,
+                                amount: data.amount * 100,
+                                currency: 'INR',
+                                name: 'Durga Saptashati Foundation',
+                                description: 'Donation',
+                                order_id: data.order_id,
+                                prefill: { name: name, email: email, contact: phone },
+                                theme: { color: '#f26522' },
+                                handler: function(response) {
+                                    var vfd = new FormData();
+                                    vfd.append('action', 'verify_payment');
+                                    vfd.append('type', 'donation');
+                                    vfd.append('razorpay_payment_id', response.razorpay_payment_id);
+                                    vfd.append('razorpay_order_id', response.razorpay_order_id);
+                                    vfd.append('razorpay_signature', response.razorpay_signature);
+                                    vfd.append('name', name);
+                                    vfd.append('email', email);
+                                    vfd.append('phone', phone);
+                                    vfd.append('amount', amount);
+                                    vfd.append('message', '');
+
+                                    fetch('<?= url("api/razorpay-payment.php") ?>', { method: 'POST', body: vfd })
+                                    .then(function(r) { return r.json(); })
+                                    .then(function(vdata) {
+                                        btn.disabled = false; btn.innerHTML = originalHTML;
+                                        if (vdata.success) {
+                                            showToast(vdata.message, 'success');
+                                            form.reset();
+                                        } else { showToast(vdata.message, 'error'); }
+                                    });
+                                },
+                                modal: {
+                                    ondismiss: function() {
+                                        btn.disabled = false; btn.innerHTML = originalHTML;
+                                    }
+                                }
+                            };
+                            var rzp = new Razorpay(options);
+                            rzp.open();
+                        })
+                        .catch(function() {
+                            btn.disabled = false; btn.innerHTML = originalHTML;
+                            showToast('Network error. Please try again.', 'error');
+                        });
+                    });
+                    </script>
                 </div>
             </div>
 
