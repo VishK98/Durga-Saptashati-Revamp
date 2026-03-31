@@ -98,8 +98,6 @@ $blogs = $stmt->fetchAll();
                                 <div class="action-menu">
                                     <a href="javascript:void(0)" onclick="viewBlog(<?= $blog['id'] ?>)"><i class="fas fa-eye"></i> View</a>
                                     <a href="javascript:void(0)" onclick="openBlogModal(<?= $blog['id'] ?>)"><i class="fas fa-edit"></i> Edit</a>
-                                    <a href="javascript:void(0)" onclick="toggleStatus(<?= $blog['id'] ?>)"><i class="fas fa-toggle-on"></i> Toggle Status</a>
-                                    <div class="action-divider"></div>
                                     <button class="action-delete" onclick="confirmDeleteBlog(<?= $blog['id'] ?>)"><i class="fas fa-trash"></i> Delete</button>
                                 </div>
                             </div>

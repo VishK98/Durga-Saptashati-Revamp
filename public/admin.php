@@ -63,6 +63,129 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_SERVER['HTTP_X_REQUESTED_W
                 echo json_encode(['success' => true, 'message' => 'Member rejected.']);
                 exit;
 
+            case 'add_membership_plan':
+                $stmt = $pdo->prepare("INSERT INTO membership_plans (slug, name, price, description, duration_label, icon, sort_order, is_best_value, is_active) VALUES (?, ?, ?, ?, ?, ?, ?, ?, 1)");
+                $stmt->execute([
+                    trim($_POST['plan_slug']),
+                    trim($_POST['plan_name']),
+                    (float)$_POST['plan_price'],
+                    trim($_POST['plan_description'] ?? ''),
+                    trim($_POST['plan_duration_label'] ?? ''),
+                    trim($_POST['plan_icon'] ?? 'fa-id-card'),
+                    (int)($_POST['plan_sort_order'] ?? 0),
+                    ($_POST['plan_is_best_value'] ?? '0') === '1' ? 1 : 0
+                ]);
+                echo json_encode(['success' => true, 'message' => 'Plan added successfully.']);
+                exit;
+
+            case 'update_membership_plan':
+                $stmt = $pdo->prepare("UPDATE membership_plans SET name = ?, price = ?, description = ?, duration_label = ?, icon = ?, sort_order = ?, is_best_value = ?, is_active = ? WHERE id = ?");
+                $stmt->execute([
+                    trim($_POST['plan_name']),
+                    (float)$_POST['plan_price'],
+                    trim($_POST['plan_description'] ?? ''),
+                    trim($_POST['plan_duration_label'] ?? ''),
+                    trim($_POST['plan_icon'] ?? 'fa-id-card'),
+                    (int)($_POST['plan_sort_order'] ?? 0),
+                    ($_POST['plan_is_best_value'] ?? '0') === '1' ? 1 : 0,
+                    ($_POST['plan_is_active'] ?? '0') === '1' ? 1 : 0,
+                    (int)$_POST['plan_id']
+                ]);
+                echo json_encode(['success' => true, 'message' => 'Plan updated successfully.']);
+                exit;
+
+            case 'toggle_career':
+                $stmt = $pdo->prepare("SELECT status FROM careers WHERE id = ?");
+                $stmt->execute([(int)$_POST['career_id']]);
+                $cur = $stmt->fetchColumn();
+                $new = ($cur === 'active') ? 'closed' : 'active';
+                $pdo->prepare("UPDATE careers SET status = ? WHERE id = ?")->execute([$new, (int)$_POST['career_id']]);
+                echo json_encode(['success' => true, 'message' => 'Job ' . ($new === 'active' ? 'activated' : 'closed') . ' successfully.']);
+                exit;
+
+            case 'update_career':
+                $stmt = $pdo->prepare("UPDATE careers SET title = ?, department = ?, location = ?, type = ?, status = ?, description = ?, requirements = ? WHERE id = ?");
+                $stmt->execute([
+                    trim($_POST['title']),
+                    trim($_POST['department'] ?? ''),
+                    trim($_POST['location'] ?? ''),
+                    trim($_POST['type'] ?? 'full-time'),
+                    trim($_POST['status'] ?? 'active'),
+                    trim($_POST['description'] ?? ''),
+                    trim($_POST['requirements'] ?? ''),
+                    (int)$_POST['career_id']
+                ]);
+                echo json_encode(['success' => true, 'message' => 'Job opening updated successfully.']);
+                exit;
+
+            case 'delete_career':
+                $pdo->prepare("DELETE FROM careers WHERE id = ?")->execute([(int)$_POST['career_id']]);
+                echo json_encode(['success' => true, 'message' => 'Job opening deleted.']);
+                exit;
+
+            case 'update_application':
+                $pdo->prepare("UPDATE career_applications SET status = ? WHERE id = ?")->execute([trim($_POST['status']), (int)$_POST['app_id']]);
+                echo json_encode(['success' => true, 'message' => 'Application updated.']);
+                exit;
+
+            case 'delete_application':
+                $pdo->prepare("DELETE FROM career_applications WHERE id = ?")->execute([(int)$_POST['app_id']]);
+                echo json_encode(['success' => true, 'message' => 'Application deleted.']);
+                exit;
+
+            case 'delete_gallery':
+                $stmt = $pdo->prepare("SELECT image FROM gallery WHERE id = ?");
+                $stmt->execute([(int)$_POST['gallery_id']]);
+                $img = $stmt->fetchColumn();
+                if ($img) {
+                    $path = __DIR__ . '/assets/uploads/gallery/' . $img;
+                    if (file_exists($path)) unlink($path);
+                }
+                $pdo->prepare("DELETE FROM gallery WHERE id = ?")->execute([(int)$_POST['gallery_id']]);
+                echo json_encode(['success' => true, 'message' => 'Photo deleted successfully.']);
+                exit;
+
+            case 'toggle_report':
+                $stmt = $pdo->prepare("SELECT is_active FROM financial_reports WHERE id = ?");
+                $stmt->execute([(int)$_POST['report_id']]);
+                $cur = $stmt->fetchColumn();
+                $pdo->prepare("UPDATE financial_reports SET is_active = ? WHERE id = ?")->execute([$cur ? 0 : 1, (int)$_POST['report_id']]);
+                echo json_encode(['success' => true, 'message' => 'Report visibility updated.']);
+                exit;
+
+            case 'delete_report':
+                $stmt = $pdo->prepare("SELECT file FROM financial_reports WHERE id = ?");
+                $stmt->execute([(int)$_POST['report_id']]);
+                $file = $stmt->fetchColumn();
+                if ($file) {
+                    $path = __DIR__ . '/assets/reports/' . $file;
+                    if (file_exists($path)) unlink($path);
+                }
+                $pdo->prepare("DELETE FROM financial_reports WHERE id = ?")->execute([(int)$_POST['report_id']]);
+                echo json_encode(['success' => true, 'message' => 'Report deleted successfully.']);
+                exit;
+
+            case 'toggle_news':
+                $stmt = $pdo->prepare("SELECT status FROM news WHERE id = ?");
+                $stmt->execute([(int)$_POST['news_id']]);
+                $current = $stmt->fetchColumn();
+                $newStatus = ($current === 'published') ? 'draft' : 'published';
+                $pdo->prepare("UPDATE news SET status = ? WHERE id = ?")->execute([$newStatus, (int)$_POST['news_id']]);
+                echo json_encode(['success' => true, 'message' => 'Article ' . ($newStatus === 'published' ? 'published' : 'unpublished') . ' successfully.']);
+                exit;
+
+            case 'delete_news':
+                $stmt = $pdo->prepare("SELECT image FROM news WHERE id = ?");
+                $stmt->execute([(int)$_POST['news_id']]);
+                $img = $stmt->fetchColumn();
+                if ($img) {
+                    $path = __DIR__ . '/assets/uploads/news/' . $img;
+                    if (file_exists($path)) unlink($path);
+                }
+                $pdo->prepare("DELETE FROM news WHERE id = ?")->execute([(int)$_POST['news_id']]);
+                echo json_encode(['success' => true, 'message' => 'Article deleted successfully.']);
+                exit;
+
             default:
                 echo json_encode(['success' => false, 'message' => 'Unknown action.']);
                 exit;
