@@ -1,0 +1,284 @@
+/* Reports Page Styles */
+
+.rp-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.rp-stat-icon-accent {
+    background: var(--accent-light);
+    color: var(--accent);
+}
+
+.rp-stat-icon-success {
+    background: var(--success-light);
+    color: #059669;
+}
+
+.rp-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.rp-header-icon {
+    color: var(--accent);
+    margin-right: 8px;
+}
+
+.rp-upload-btn {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.rp-no-padding {
+    padding: 0;
+}
+
+.rp-empty-state {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-muted);
+}
+
+.rp-empty-icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    display: block;
+    opacity: 0.3;
+}
+
+.rp-actions-col {
+    text-align: right;
+}
+
+.rp-badge-active {
+    background: var(--success-light);
+    color: #059669;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.rp-badge-hidden {
+    background: #fee2e2;
+    color: #dc2626;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.rp-date-cell {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+}
+
+.rp-delete-link {
+    color: #ef4444;
+}
+
+/* Upload Report Modal */
+.rp-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+}
+
+.rp-confirm-overlay {
+    z-index: 99999;
+}
+
+.rp-modal-box {
+    background: #fff;
+    border-radius: 16px;
+    max-width: 550px;
+    width: 95%;
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 30px;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.rp-modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 1.3rem;
+    cursor: pointer;
+    color: #999;
+}
+
+.rp-modal-title {
+    margin-bottom: 20px;
+    color: #1a1b2e;
+}
+
+.rp-modal-title-icon {
+    color: var(--accent);
+}
+
+.rp-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.rp-form-group {
+    margin-bottom: 15px;
+}
+
+.rp-form-group-lg {
+    margin-bottom: 20px;
+}
+
+.rp-label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.rp-required {
+    color: #ef4444;
+}
+
+.rp-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: inherit;
+}
+
+.rp-dropzone {
+    border: 2px dashed #ddd;
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.rp-dropzone-icon {
+    font-size: 2rem;
+    color: #ccc;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.rp-dropzone-text {
+    margin: 0 0 4px;
+    font-weight: 600;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.rp-dropzone-filename {
+    margin: 0;
+    color: #999;
+    font-size: 0.8rem;
+}
+
+.rp-hidden {
+    display: none;
+}
+
+.rp-submit-btn {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* Confirm Modal */
+.rp-confirm-box {
+    background: #fff;
+    border-radius: 16px;
+    max-width: 400px;
+    width: 90%;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.rp-confirm-icon-wrap {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #fef2f2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 18px;
+}
+
+.rp-confirm-icon {
+    color: #ef4444;
+    font-size: 1.5rem;
+}
+
+.rp-confirm-title {
+    margin-bottom: 8px;
+    color: #1a1b2e;
+    font-size: 1.1rem;
+}
+
+.rp-confirm-msg {
+    color: #666;
+    font-size: 0.92rem;
+    margin-bottom: 24px;
+}
+
+.rp-confirm-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.rp-btn-cancel {
+    padding: 10px 28px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fff;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #666;
+}
+
+.rp-btn-delete {
+    padding: 10px 28px;
+    border: none;
+    border-radius: 8px;
+    background: #ef4444;
+    color: #fff;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
