@@ -46,14 +46,17 @@
                             <a href="<?php echo url('about.php'); ?>" class="footer-link">
                                 <i class="fas fa-chevron-right"></i>About Us
                             </a>
-                            <a href="<?php echo url('causes.php'); ?>" class="footer-link">
-                                <i class="fas fa-chevron-right"></i>Our Causes
-                            </a>
                             <a href="<?php echo url('event.php'); ?>" class="footer-link">
                                 <i class="fas fa-chevron-right"></i>Events
                             </a>
+                            <a href="<?php echo url('causes.php'); ?>" class="footer-link">
+                                <i class="fas fa-chevron-right"></i>Our Causes
+                            </a>
                             <a href="<?php echo url('blog.php'); ?>" class="footer-link">
-                                <i class="fas fa-chevron-right"></i>News & Blog
+                                <i class="fas fa-chevron-right"></i>Blogs & Articles
+                            </a>
+                            <a href="<?php echo url('news.php'); ?>" class="footer-link">
+                                <i class="fas fa-chevron-right"></i>News & Insights
                             </a>
                             <a href="<?php echo url('contact.php'); ?>" class="footer-link">
                                 <i class="fas fa-chevron-right"></i>Contact Us
@@ -176,7 +179,7 @@
                                     class="social-link facebook" title="Facebook">
                                     <i class="fab fa-facebook-f"></i>
                                 </a>
-                                <a href="https://www.instagram.com/_saptashati/" target="_blank"
+                                <a href="https://www.instagram.com/durgasaptashatifoundation/" target="_blank"
                                     class="social-link instagram" title="Instagram">
                                     <i class="fab fa-instagram"></i>
                                 </a>
