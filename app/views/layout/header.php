@@ -16,7 +16,7 @@
     <meta name="author" content="Durga Saptashati Foundation">
 
     <!-- Favicon -->
-    <link href="<?= asset('img/favicon.ico') ?>" rel="icon">
+    <link href="<?= asset('images/favicon.png') ?>" rel="icon" type="image/png">
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
@@ -104,8 +104,8 @@
                             title="Like us on Facebook" data-toggle="tooltip" data-placement="bottom">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="https://www.instagram.com/_saptashati/" target="_blank" title="Follow us on Instagram"
-                            data-toggle="tooltip" data-placement="bottom">
+                        <a href="https://www.instagram.com/durgasaptashatifoundation/" target="_blank"
+                            title="Follow us on Instagram" data-toggle="tooltip" data-placement="bottom">
                             <i class="fab fa-instagram"></i>
                         </a>
                         <a href="https://www.youtube.com/channel/UCKWpbOcfN4HHrkFHmjz4l5Q" target="_blank"

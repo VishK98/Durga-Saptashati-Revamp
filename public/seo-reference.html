@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SEO Implementation Reference — Saptashati Foundation</title>
+  <style>
+    :root { --primary: #e8751a; --dark: #1a1a2e; --light: #f5f5f5; --code-bg: #1e1e2e; --code-text: #cdd6f4; --border: #e0e0e0; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: var(--light); color: #333; line-height: 1.7; }
+    .container { max-width: 960px; margin: 0 auto; padding: 20px; }
+    header { background: var(--dark); color: #fff; padding: 40px 20px; text-align: center; }
+    header h1 { font-size: 1.8rem; margin-bottom: 8px; }
+    header p { opacity: 0.8; font-size: 0.95rem; }
+    .toc { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 24px 32px; margin: 24px 0; }
+    .toc h2 { font-size: 1.1rem; margin-bottom: 12px; color: var(--dark); }
+    .toc ol { padding-left: 20px; }
+    .toc li { margin: 6px 0; }
+    .toc a { color: var(--primary); text-decoration: none; }
+    .toc a:hover { text-decoration: underline; }
+    section { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 28px 32px; margin: 20px 0; }
+    section h2 { font-size: 1.3rem; color: var(--dark); border-bottom: 3px solid var(--primary); padding-bottom: 8px; margin-bottom: 16px; }
+    section h3 { font-size: 1rem; color: #555; margin: 16px 0 8px; }
+    p, li { font-size: 0.92rem; }
+    ul { padding-left: 20px; margin: 8px 0; }
+    .note { background: #fff8e1; border-left: 4px solid #ffc107; padding: 12px 16px; margin: 12px 0; border-radius: 0 4px 4px 0; font-size: 0.88rem; }
+    .note strong { color: #e65100; }
+    .warn { background: #fce4ec; border-left: 4px solid #e53935; padding: 12px 16px; margin: 12px 0; border-radius: 0 4px 4px 0; font-size: 0.88rem; }
+    .warn strong { color: #b71c1c; }
+    .success { background: #e8f5e9; border-left: 4px solid #43a047; padding: 12px 16px; margin: 12px 0; border-radius: 0 4px 4px 0; font-size: 0.88rem; }
+    pre { background: var(--code-bg); color: var(--code-text); padding: 16px 20px; border-radius: 6px; overflow-x: auto; margin: 12px 0; font-size: 0.85rem; line-height: 1.6; }
+    code { font-family: 'Cascadia Code', 'Fira Code', 'Consolas', monospace; }
+    .inline-code { background: #eee; padding: 2px 6px; border-radius: 3px; font-size: 0.85rem; }
+    .badge { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: 600; margin-left: 8px; vertical-align: middle; }
+    .badge-existing { background: #e8f5e9; color: #2e7d32; }
+    .badge-new { background: #fff3e0; color: #e65100; }
+    .badge-critical { background: #fce4ec; color: #c62828; }
+    .checklist { list-style: none; padding-left: 0; }
+    .checklist li { padding: 4px 0; }
+    .checklist li::before { content: "\2610"; margin-right: 8px; font-size: 1.1rem; }
+    footer { text-align: center; padding: 32px 20px; color: #888; font-size: 0.82rem; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>SEO Implementation Reference</h1>
+  <p>Saptashati Foundation — Complete SEO checklist extracted from the old project for the new revamp</p>
+</header>
+
+<div class="container">
+
+  <!-- ============================================================ -->
+  <!-- TABLE OF CONTENTS                                            -->
+  <!-- ============================================================ -->
+  <nav class="toc">
+    <h2>Table of Contents</h2>
+    <ol>
+      <li><a href="#meta-tags">Essential Meta Tags (Per Page)</a></li>
+      <li><a href="#canonical">Canonical URLs</a></li>
+      <li><a href="#open-graph">Open Graph &amp; Twitter Cards (NEW)</a></li>
+      <li><a href="#json-ld">JSON-LD Structured Data</a></li>
+      <li><a href="#favicon">Favicon &amp; Touch Icons</a></li>
+      <li><a href="#robots-txt">robots.txt</a></li>
+      <li><a href="#sitemap">sitemap.xml</a></li>
+      <li><a href="#htaccess">.htaccess — Redirects &amp; Rules</a></li>
+      <li><a href="#google-verification">Google Search Console Verification</a></li>
+      <li><a href="#analytics">Google Analytics / Tag Manager (NEW)</a></li>
+      <li><a href="#image-seo">Image SEO &amp; Alt Text</a></li>
+      <li><a href="#page-wise-meta">Page-Wise Meta Data Reference</a></li>
+      <li><a href="#php-helper">PHP Helper — Reusable SEO Head Include</a></li>
+      <li><a href="#checklist">Final Checklist</a></li>
+    </ol>
+  </nav>
+
+  <!-- ============================================================ -->
+  <!-- 1. ESSENTIAL META TAGS                                       -->
+  <!-- ============================================================ -->
+  <section id="meta-tags">
+    <h2>1. Essential Meta Tags <span class="badge badge-existing">From Old Project</span></h2>
+    <p>These meta tags must be present in the <span class="inline-code">&lt;head&gt;</span> of every page:</p>
+
+<pre><code>&lt;!-- Character Set &amp; Viewport --&gt;
+&lt;meta charset="UTF-8"&gt;
+&lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+
+&lt;!-- SEO Core --&gt;
+&lt;meta name="robots" content="index, follow"&gt;
+&lt;title&gt;Your Page Title — Saptashati Foundation&lt;/title&gt;
+&lt;meta name="description" content="Page-specific description, 150-160 characters max."&gt;
+&lt;meta name="keywords" content="relevant, comma, separated, keywords"&gt;
+
+&lt;!-- Language --&gt;
+&lt;html dir="ltr" lang="en"&gt;
+</code></pre>
+
+    <div class="note">
+      <strong>Tip:</strong> Keep the title under 60 characters and the description under 160 characters for best SERP display. The old project had excessively long keyword tags — trim to 10-15 highly relevant keywords per page.
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 2. CANONICAL URLS                                            -->
+  <!-- ============================================================ -->
+  <section id="canonical">
+    <h2>2. Canonical URLs <span class="badge badge-existing">From Old Project</span></h2>
+    <p>Add one canonical tag per page pointing to the full, canonical URL of that page:</p>
+
+<pre><code>&lt;!-- Homepage --&gt;
+&lt;link rel="canonical" href="https://www.saptashati.org/"&gt;
+
+&lt;!-- Inner Pages --&gt;
+&lt;link rel="canonical" href="https://www.saptashati.org/about.php"&gt;
+&lt;link rel="canonical" href="https://www.saptashati.org/contact.php"&gt;
+&lt;link rel="canonical" href="https://www.saptashati.org/make-donation.php"&gt;
+</code></pre>
+
+    <div class="warn">
+      <strong>Issue in Old Project:</strong> Several event pages had canonical tags pointing to wrong URLs (e.g., multiple pages pointing to <span class="inline-code">international-womens-day.html</span>). Ensure every page's canonical matches its own URL exactly.
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 3. OPEN GRAPH & TWITTER CARDS                                -->
+  <!-- ============================================================ -->
+  <section id="open-graph">
+    <h2>3. Open Graph &amp; Twitter Cards <span class="badge badge-new">NEW — Was Missing</span></h2>
+    <p>These were completely absent in the old project. Add them to every page for proper social media sharing:</p>
+
+<pre><code>&lt;!-- Open Graph (Facebook, LinkedIn, WhatsApp) --&gt;
+&lt;meta property="og:type" content="website"&gt;
+&lt;meta property="og:site_name" content="Saptashati Foundation"&gt;
+&lt;meta property="og:title" content="Your Page Title"&gt;
+&lt;meta property="og:description" content="Page-specific description for social sharing."&gt;
+&lt;meta property="og:url" content="https://www.saptashati.org/page-url.php"&gt;
+&lt;meta property="og:image" content="https://www.saptashati.org/assets/images/og-default.jpg"&gt;
+&lt;meta property="og:image:width" content="1200"&gt;
+&lt;meta property="og:image:height" content="630"&gt;
+&lt;meta property="og:locale" content="en_IN"&gt;
+
+&lt;!-- Twitter Card --&gt;
+&lt;meta name="twitter:card" content="summary_large_image"&gt;
+&lt;meta name="twitter:title" content="Your Page Title"&gt;
+&lt;meta name="twitter:description" content="Page-specific description for Twitter."&gt;
+&lt;meta name="twitter:image" content="https://www.saptashati.org/assets/images/og-default.jpg"&gt;
+&lt;meta name="twitter:site" content="@Saptashati_F"&gt;
+</code></pre>
+
+    <div class="note">
+      <strong>Image Requirement:</strong> Create a default OG image at <span class="inline-code">assets/images/og-default.jpg</span> — recommended size 1200x630px. Use page-specific images where available (events, blog posts).
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 4. JSON-LD STRUCTURED DATA                                   -->
+  <!-- ============================================================ -->
+  <section id="json-ld">
+    <h2>4. JSON-LD Structured Data <span class="badge badge-existing">From Old Project</span></h2>
+    <p>This Organization schema was present on every page. Place it just before the closing <span class="inline-code">&lt;/head&gt;</span> tag:</p>
+
+<pre><code>&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Saptashati Foundation",
+  "url": "https://www.saptashati.org/",
+  "logo": "https://www.saptashati.org/assets/images/logo-wide.png",
+  "description": "Saptashati Foundation is a women's rights nonprofit organization which is a platform to empower widows, handicapped people, disabled people, senior citizens and women of the nation.",
+  "sameAs": [
+    "https://www.instagram.com/_saptashati/",
+    "https://www.facebook.com/Durgasaptashati.org",
+    "https://x.com/Saptashati_F"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+91 8826422990",
+    "contactType": "customer service",
+    "email": "support@saptashati.org",
+    "areaServed": "IN",
+    "availableLanguage": ["English", "Hindi"]
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "MNG Tower, Plot NO - 1 & 2, Pocket - A2",
+    "addressLocality": "2nd Floor, Sector - 17, Near SBI Bank Dwarka",
+    "addressRegion": "New Delhi",
+    "postalCode": "110078",
+    "addressCountry": "IN"
+  }
+}
+&lt;/script&gt;
+</code></pre>
+
+    <h3>Additional Schema (NEW — Recommended for specific pages)</h3>
+
+<pre><code>&lt;!-- For Event Pages --&gt;
+&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": "Event Name Here",
+  "description": "Brief event description.",
+  "startDate": "2026-01-15T10:00:00+05:30",
+  "endDate": "2026-01-15T17:00:00+05:30",
+  "location": {
+    "@type": "Place",
+    "name": "Saptashati Foundation Office",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "MNG Tower, Plot NO - 1 & 2, Pocket - A2",
+      "addressLocality": "Dwarka Sector 17",
+      "addressRegion": "New Delhi",
+      "postalCode": "110078",
+      "addressCountry": "IN"
+    }
+  },
+  "organizer": {
+    "@type": "Organization",
+    "name": "Saptashati Foundation",
+    "url": "https://www.saptashati.org/"
+  },
+  "image": "https://www.saptashati.org/assets/images/events/event-image.jpg"
+}
+&lt;/script&gt;
+
+&lt;!-- For Donation Page --&gt;
+&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "DonateAction",
+  "name": "Donate to Saptashati Foundation",
+  "description": "Support women empowerment, child education, and senior citizen welfare.",
+  "recipient": {
+    "@type": "Organization",
+    "name": "Saptashati Foundation",
+    "url": "https://www.saptashati.org/"
+  }
+}
+&lt;/script&gt;
+
+&lt;!-- For Blog/News Articles --&gt;
+&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Article Title Here",
+  "description": "Brief article description.",
+  "image": "https://www.saptashati.org/assets/images/blog/article-image.jpg",
+  "author": {
+    "@type": "Organization",
+    "name": "Saptashati Foundation"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Saptashati Foundation",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.saptashati.org/assets/images/logo-wide.png"
+    }
+  },
+  "datePublished": "2026-01-15",
+  "dateModified": "2026-01-15"
+}
+&lt;/script&gt;
+</code></pre>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 5. FAVICON & TOUCH ICONS                                     -->
+  <!-- ============================================================ -->
+  <section id="favicon">
+    <h2>5. Favicon &amp; Touch Icons <span class="badge badge-existing">From Old Project</span> <span class="badge badge-new">+ NEW</span></h2>
+
+<pre><code>&lt;!-- Existing (from old project) --&gt;
+&lt;link rel="shortcut icon" href="assets/images/favicon.png" type="image/png"&gt;
+
+&lt;!-- NEW: Apple Touch Icon (was missing) --&gt;
+&lt;link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png"&gt;
+
+&lt;!-- NEW: Additional sizes for cross-device support --&gt;
+&lt;link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png"&gt;
+&lt;link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png"&gt;
+
+&lt;!-- NEW: Web App Manifest --&gt;
+&lt;link rel="manifest" href="site.webmanifest"&gt;
+&lt;meta name="theme-color" content="#e8751a"&gt;
+</code></pre>
+
+    <div class="note">
+      <strong>Action Required:</strong> Generate favicon variants from the logo using <a href="https://realfavicongenerator.net/" target="_blank">realfavicongenerator.net</a> and place them in <span class="inline-code">assets/images/</span>.
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 6. ROBOTS.TXT                                                -->
+  <!-- ============================================================ -->
+  <section id="robots-txt">
+    <h2>6. robots.txt <span class="badge badge-existing">From Old Project</span></h2>
+    <p>Place this file at the root of the public directory:</p>
+
+    <h3>File: <span class="inline-code">public/robots.txt</span></h3>
+<pre><code># robots.txt — Saptashati Foundation
+# https://www.saptashati.org/robots.txt
+
+User-agent: *
+Allow: /
+
+# Block admin and API routes
+Disallow: /admin.php
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://www.saptashati.org/sitemap.xml
+</code></pre>
+
+    <div class="note">
+      <strong>Improvement:</strong> The old project had no <span class="inline-code">Disallow</span> rules. The new version blocks admin and API paths from crawlers.
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 7. SITEMAP.XML                                               -->
+  <!-- ============================================================ -->
+  <section id="sitemap">
+    <h2>7. sitemap.xml <span class="badge badge-existing">From Old Project</span></h2>
+    <p>The old project had 70+ URLs. Here is the template for the new project — update URLs to <span class="inline-code">.php</span> extensions:</p>
+
+    <h3>File: <span class="inline-code">public/sitemap.xml</span></h3>
+<pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"&gt;
+
+  &lt;!-- Homepage --&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://www.saptashati.org/&lt;/loc&gt;
+    &lt;lastmod&gt;2026-04-01&lt;/lastmod&gt;
+    &lt;changefreq&gt;weekly&lt;/changefreq&gt;
+    &lt;priority&gt;1.00&lt;/priority&gt;
+  &lt;/url&gt;
+
+  &lt;!-- Core Pages --&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://www.saptashati.org/about.php&lt;/loc&gt;
+    &lt;lastmod&gt;2026-04-01&lt;/lastmod&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+    &lt;priority&gt;0.80&lt;/priority&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://www.saptashati.org/contact.php&lt;/loc&gt;
+    &lt;lastmod&gt;2026-04-01&lt;/lastmod&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+    &lt;priority&gt;0.80&lt;/priority&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://www.saptashati.org/make-donation.php&lt;/loc&gt;
+    &lt;lastmod&gt;2026-04-01&lt;/lastmod&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+    &lt;priority&gt;0.80&lt;/priority&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://www.saptashati.org/causes.php&lt;/loc&gt;
+    &lt;lastmod&gt;2026-04-01&lt;/lastmod&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+    &lt;priority&gt;0.80&lt;/priority&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://www.saptashati.org/event.php&lt;/loc&gt;
+    &lt;lastmod&gt;2026-04-01&lt;/lastmod&gt;
+    &lt;changefreq&gt;weekly&lt;/changefreq&gt;
+    &lt;priority&gt;0.80&lt;/priority&gt;
+  &lt;/url&gt;
+
+  &lt;!-- Cause Pages --&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://www.saptashati.org/womens-empowerment.php&lt;/loc&gt;
+    &lt;lastmod&gt;2026-04-01&lt;/lastmod&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+    &lt;priority&gt;0.70&lt;/priority&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://www.saptashati.org/no-people-hungry.php&lt;/loc&gt;
+    &lt;lastmod&gt;2026-04-01&lt;/lastmod&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+    &lt;priority&gt;0.70&lt;/priority&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://www.saptashati.org/education-for-every-kids.php&lt;/loc&gt;
+    &lt;lastmod&gt;2026-04-01&lt;/lastmod&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+    &lt;priority&gt;0.70&lt;/priority&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://www.saptashati.org/livelihood.php&lt;/loc&gt;
+    &lt;lastmod&gt;2026-04-01&lt;/lastmod&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+    &lt;priority&gt;0.70&lt;/priority&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://www.saptashati.org/womens-rights.php&lt;/loc&gt;
+    &lt;lastmod&gt;2026-04-01&lt;/lastmod&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+    &lt;priority&gt;0.70&lt;/priority&gt;
+  &lt;/url&gt;
+
+  &lt;!-- Blog &amp; News --&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://www.saptashati.org/blog.php&lt;/loc&gt;
+    &lt;lastmod&gt;2026-04-01&lt;/lastmod&gt;
+    &lt;changefreq&gt;weekly&lt;/changefreq&gt;
+    &lt;priority&gt;0.70&lt;/priority&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://www.saptashati.org/news.php&lt;/loc&gt;
+    &lt;lastmod&gt;2026-04-01&lt;/lastmod&gt;
+    &lt;changefreq&gt;weekly&lt;/changefreq&gt;
+    &lt;priority&gt;0.70&lt;/priority&gt;
+  &lt;/url&gt;
+
+  &lt;!-- Event Pages --&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://www.saptashati.org/independence-day.php&lt;/loc&gt;
+    &lt;lastmod&gt;2026-04-01&lt;/lastmod&gt;
+    &lt;changefreq&gt;yearly&lt;/changefreq&gt;
+    &lt;priority&gt;0.60&lt;/priority&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://www.saptashati.org/international-womens-day.php&lt;/loc&gt;
+    &lt;lastmod&gt;2026-04-01&lt;/lastmod&gt;
+    &lt;changefreq&gt;yearly&lt;/changefreq&gt;
+    &lt;priority&gt;0.60&lt;/priority&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://www.saptashati.org/yoga-day.php&lt;/loc&gt;
+    &lt;lastmod&gt;2026-04-01&lt;/lastmod&gt;
+    &lt;changefreq&gt;yearly&lt;/changefreq&gt;
+    &lt;priority&gt;0.60&lt;/priority&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://www.saptashati.org/ganpati-celebration.php&lt;/loc&gt;
+    &lt;lastmod&gt;2026-04-01&lt;/lastmod&gt;
+    &lt;changefreq&gt;yearly&lt;/changefreq&gt;
+    &lt;priority&gt;0.60&lt;/priority&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://www.saptashati.org/durga-award.php&lt;/loc&gt;
+    &lt;lastmod&gt;2026-04-01&lt;/lastmod&gt;
+    &lt;changefreq&gt;yearly&lt;/changefreq&gt;
+    &lt;priority&gt;0.60&lt;/priority&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://www.saptashati.org/saree-run.php&lt;/loc&gt;
+    &lt;lastmod&gt;2026-04-01&lt;/lastmod&gt;
+    &lt;changefreq&gt;yearly&lt;/changefreq&gt;
+    &lt;priority&gt;0.60&lt;/priority&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://www.saptashati.org/blood-donation-drives.php&lt;/loc&gt;
+    &lt;lastmod&gt;2026-04-01&lt;/lastmod&gt;
+    &lt;changefreq&gt;yearly&lt;/changefreq&gt;
+    &lt;priority&gt;0.60&lt;/priority&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://www.saptashati.org/health-camps-events.php&lt;/loc&gt;
+    &lt;lastmod&gt;2026-04-01&lt;/lastmod&gt;
+    &lt;changefreq&gt;yearly&lt;/changefreq&gt;
+    &lt;priority&gt;0.60&lt;/priority&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://www.saptashati.org/sanitary-pads-distribution.php&lt;/loc&gt;
+    &lt;lastmod&gt;2026-04-01&lt;/lastmod&gt;
+    &lt;changefreq&gt;yearly&lt;/changefreq&gt;
+    &lt;priority&gt;0.60&lt;/priority&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://www.saptashati.org/flood-relief-campaign.php&lt;/loc&gt;
+    &lt;lastmod&gt;2026-04-01&lt;/lastmod&gt;
+    &lt;changefreq&gt;yearly&lt;/changefreq&gt;
+    &lt;priority&gt;0.60&lt;/priority&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://www.saptashati.org/painting-competition.php&lt;/loc&gt;
+    &lt;lastmod&gt;2026-04-01&lt;/lastmod&gt;
+    &lt;changefreq&gt;yearly&lt;/changefreq&gt;
+    &lt;priority&gt;0.60&lt;/priority&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://www.saptashati.org/cultural-programs.php&lt;/loc&gt;
+    &lt;lastmod&gt;2026-04-01&lt;/lastmod&gt;
+    &lt;changefreq&gt;yearly&lt;/changefreq&gt;
+    &lt;priority&gt;0.60&lt;/priority&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://www.saptashati.org/hearing-aids-camp.php&lt;/loc&gt;
+    &lt;lastmod&gt;2026-04-01&lt;/lastmod&gt;
+    &lt;changefreq&gt;yearly&lt;/changefreq&gt;
+    &lt;priority&gt;0.60&lt;/priority&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://www.saptashati.org/womens-day.php&lt;/loc&gt;
+    &lt;lastmod&gt;2026-04-01&lt;/lastmod&gt;
+    &lt;changefreq&gt;yearly&lt;/changefreq&gt;
+    &lt;priority&gt;0.60&lt;/priority&gt;
+  &lt;/url&gt;
+
+  &lt;!-- Support Pages --&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://www.saptashati.org/become-volunteer.php&lt;/loc&gt;
+    &lt;lastmod&gt;2026-04-01&lt;/lastmod&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+    &lt;priority&gt;0.60&lt;/priority&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://www.saptashati.org/become-member.php&lt;/loc&gt;
+    &lt;lastmod&gt;2026-04-01&lt;/lastmod&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+    &lt;priority&gt;0.60&lt;/priority&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://www.saptashati.org/career-opportunities.php&lt;/loc&gt;
+    &lt;lastmod&gt;2026-04-01&lt;/lastmod&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+    &lt;priority&gt;0.60&lt;/priority&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://www.saptashati.org/investor.php&lt;/loc&gt;
+    &lt;lastmod&gt;2026-04-01&lt;/lastmod&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+    &lt;priority&gt;0.50&lt;/priority&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://www.saptashati.org/newsletter.php&lt;/loc&gt;
+    &lt;lastmod&gt;2026-04-01&lt;/lastmod&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+    &lt;priority&gt;0.50&lt;/priority&gt;
+  &lt;/url&gt;
+
+  &lt;!-- Service Pages --&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://www.saptashati.org/health-awareness.php&lt;/loc&gt;
+    &lt;lastmod&gt;2026-04-01&lt;/lastmod&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+    &lt;priority&gt;0.60&lt;/priority&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://www.saptashati.org/medical-camps.php&lt;/loc&gt;
+    &lt;lastmod&gt;2026-04-01&lt;/lastmod&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+    &lt;priority&gt;0.60&lt;/priority&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://www.saptashati.org/maternal-care.php&lt;/loc&gt;
+    &lt;lastmod&gt;2026-04-01&lt;/lastmod&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+    &lt;priority&gt;0.60&lt;/priority&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://www.saptashati.org/adult-literacy.php&lt;/loc&gt;
+    &lt;lastmod&gt;2026-04-01&lt;/lastmod&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+    &lt;priority&gt;0.60&lt;/priority&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://www.saptashati.org/digital-learning.php&lt;/loc&gt;
+    &lt;lastmod&gt;2026-04-01&lt;/lastmod&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+    &lt;priority&gt;0.60&lt;/priority&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://www.saptashati.org/school-support.php&lt;/loc&gt;
+    &lt;lastmod&gt;2026-04-01&lt;/lastmod&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+    &lt;priority&gt;0.60&lt;/priority&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://www.saptashati.org/rural-development.php&lt;/loc&gt;
+    &lt;lastmod&gt;2026-04-01&lt;/lastmod&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+    &lt;priority&gt;0.60&lt;/priority&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://www.saptashati.org/environment-care.php&lt;/loc&gt;
+    &lt;lastmod&gt;2026-04-01&lt;/lastmod&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+    &lt;priority&gt;0.60&lt;/priority&gt;
+  &lt;/url&gt;
+
+  &lt;!-- Gallery --&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://www.saptashati.org/event-gallery.php&lt;/loc&gt;
+    &lt;lastmod&gt;2026-04-01&lt;/lastmod&gt;
+    &lt;changefreq&gt;weekly&lt;/changefreq&gt;
+    &lt;priority&gt;0.50&lt;/priority&gt;
+  &lt;/url&gt;
+
+&lt;/urlset&gt;
+</code></pre>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 8. .HTACCESS                                                 -->
+  <!-- ============================================================ -->
+  <section id="htaccess">
+    <h2>8. .htaccess — Redirects &amp; Rules <span class="badge badge-existing">From Old Project</span></h2>
+
+    <h3>File: <span class="inline-code">public/.htaccess</span></h3>
+<pre><code># Custom 404 Error Page
+ErrorDocument 404 /404.php
+
+&lt;IfModule mod_rewrite.c&gt;
+  RewriteEngine On
+
+  # ============================================================
+  # HTTPS Enforcement (HTTP → HTTPS)
+  # ============================================================
+  RewriteCond %{HTTPS} off
+  RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # ============================================================
+  # WWW Enforcement (non-www → www)
+  # ============================================================
+  RewriteCond %{HTTP_HOST} !^www\. [NC]
+  RewriteRule (.*) https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # ============================================================
+  # Remove index.php from URL
+  # ============================================================
+  RewriteCond %{THE_REQUEST} /index\.php? [NC]
+  RewriteRule ^(.*/)?index\.php?$ /$1 [R=301,L]
+
+  # ============================================================
+  # 301 Redirects: Old URLs (.html) → New URLs (.php)
+  # Preserves SEO juice from the old site
+  # ============================================================
+  RewriteRule ^index\.html$                    / [R=301,L]
+  RewriteRule ^about\.html$                    /about.php [R=301,L]
+  RewriteRule ^contact\.html$                  /contact.php [R=301,L]
+  RewriteRule ^conact\.html$                   /contact.php [R=301,L]
+  RewriteRule ^donation\.html$                 /make-donation.php [R=301,L]
+  RewriteRule ^events\.html$                   /event.php [R=301,L]
+  RewriteRule ^our-causes\.html$               /causes.php [R=301,L]
+  RewriteRule ^women-empowerment\.html$        /womens-empowerment.php [R=301,L]
+  RewriteRule ^no-people-hungry\.html$         /no-people-hungry.php [R=301,L]
+  RewriteRule ^education-for-every-kids\.html$ /education-for-every-kids.php [R=301,L]
+  RewriteRule ^every-kids-for-education\.html$ /education-for-every-kids.php [R=301,L]
+  RewriteRule ^livehood\.html$                 /livelihood.php [R=301,L]
+  RewriteRule ^gallery\.html$                  /event-gallery.php [R=301,L]
+  RewriteRule ^investor\.html$                 /investor.php [R=301,L]
+  RewriteRule ^blog/about\.html$               /about.php [R=301,L]
+
+  # Old event page redirects (.html → .php)
+  RewriteRule ^international-womens-day\.html$          /international-womens-day.php [R=301,L]
+  RewriteRule ^independence-day\.html$                   /independence-day.php [R=301,L]
+  RewriteRule ^yoga-day\.html$                           /yoga-day.php [R=301,L]
+  RewriteRule ^ganpati-celebration\.html$                /ganpati-celebration.php [R=301,L]
+  RewriteRule ^saree-run\.html$                          /saree-run.php [R=301,L]
+  RewriteRule ^blood-donation-drives\.html$              /blood-donation-drives.php [R=301,L]
+  RewriteRule ^health-camps-events\.html$                /health-camps-events.php [R=301,L]
+  RewriteRule ^sanitary-pads-distribution\.html$         /sanitary-pads-distribution.php [R=301,L]
+  RewriteRule ^flood-relief-campaign\.html$              /flood-relief-campaign.php [R=301,L]
+  RewriteRule ^painting-competition\.html$               /painting-competition.php [R=301,L]
+  RewriteRule ^cultural-programs\.html$                  /cultural-programs.php [R=301,L]
+  RewriteRule ^hearing-aids-camp\.html$                  /hearing-aids-camp.php [R=301,L]
+&lt;/IfModule&gt;
+
+# ============================================================
+# Performance: Enable Gzip Compression
+# ============================================================
+&lt;IfModule mod_deflate.c&gt;
+  AddOutputFilterByType DEFLATE text/html text/plain text/css
+  AddOutputFilterByType DEFLATE text/javascript application/javascript application/json
+  AddOutputFilterByType DEFLATE text/xml application/xml image/svg+xml
+&lt;/IfModule&gt;
+
+# ============================================================
+# Performance: Browser Caching
+# ============================================================
+&lt;IfModule mod_expires.c&gt;
+  ExpiresActive On
+  ExpiresByType image/jpg  "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png  "access plus 1 year"
+  ExpiresByType image/gif  "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType text/css   "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+&lt;/IfModule&gt;
+</code></pre>
+
+    <div class="warn">
+      <strong>Critical:</strong> The .html → .php redirects are essential to preserve search engine rankings from the old site. Without these, all existing Google-indexed pages will return 404s.
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 9. GOOGLE SEARCH CONSOLE VERIFICATION                        -->
+  <!-- ============================================================ -->
+  <section id="google-verification">
+    <h2>9. Google Search Console Verification <span class="badge badge-existing">From Old Project</span></h2>
+    <p>Two verification files found in the old project. Copy these to the new project's public root:</p>
+
+    <h3>File: <span class="inline-code">public/google20ddbdeda24da3bf.html</span></h3>
+<pre><code>google-site-verification: google20ddbdeda24da3bf.html</code></pre>
+
+    <h3>File: <span class="inline-code">public/googlef5b7206a5a4d596b.html</span></h3>
+<pre><code>google-site-verification: googlef5b7206a5a4d596b.html</code></pre>
+
+    <div class="note">
+      <strong>Alternative:</strong> You can also verify via a meta tag in the head instead of separate files:
+    </div>
+<pre><code>&lt;meta name="google-site-verification" content="google20ddbdeda24da3bf"&gt;</code></pre>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 10. GOOGLE ANALYTICS                                         -->
+  <!-- ============================================================ -->
+  <section id="analytics">
+    <h2>10. Google Analytics / Tag Manager <span class="badge badge-critical">MISSING — Must Add</span></h2>
+    <p>The old project had <strong>no analytics</strong> at all. Add Google Analytics 4 (GA4) to every page. Place this right after the opening <span class="inline-code">&lt;head&gt;</span> tag:</p>
+
+<pre><code>&lt;!-- Google Analytics 4 --&gt;
+&lt;script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"&gt;&lt;/script&gt;
+&lt;script&gt;
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+&lt;/script&gt;
+</code></pre>
+
+    <div class="warn">
+      <strong>Action Required:</strong> Replace <span class="inline-code">G-XXXXXXXXXX</span> with your actual GA4 Measurement ID from <a href="https://analytics.google.com/" target="_blank">Google Analytics</a>.
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 11. IMAGE SEO                                                -->
+  <!-- ============================================================ -->
+  <section id="image-seo">
+    <h2>11. Image SEO &amp; Alt Text <span class="badge badge-existing">From Old Project</span></h2>
+    <p>Follow these rules for every image on the new site:</p>
+
+<pre><code>&lt;!-- GOOD: Descriptive alt text --&gt;
+&lt;img src="assets/images/events/independence-day-2025.jpg"
+     alt="76th Independence Day celebration at Saptashati Foundation, Dwarka"
+     loading="lazy"
+     width="800"
+     height="450"&gt;
+
+&lt;!-- GOOD: Logo with simple alt --&gt;
+&lt;img src="assets/images/logo-wide.png"
+     alt="Saptashati Foundation Logo"
+     width="200"
+     height="60"&gt;
+
+&lt;!-- BAD: Avoid these patterns --&gt;
+&lt;img src="image.jpg" alt="logo"&gt;         &lt;!-- Too vague --&gt;
+&lt;img src="image.jpg" alt=""&gt;              &lt;!-- Empty alt --&gt;
+&lt;img src="image.jpg"&gt;                     &lt;!-- Missing alt --&gt;
+</code></pre>
+
+    <h3>Image SEO Rules</h3>
+    <ul>
+      <li>Every <span class="inline-code">&lt;img&gt;</span> must have an <span class="inline-code">alt</span> attribute</li>
+      <li>Use descriptive, keyword-rich alt text (but don't keyword-stuff)</li>
+      <li>Add <span class="inline-code">loading="lazy"</span> to all below-the-fold images</li>
+      <li>Always specify <span class="inline-code">width</span> and <span class="inline-code">height</span> to prevent layout shift (CLS)</li>
+      <li>Use WebP format where possible for smaller file sizes</li>
+      <li>Keep filenames descriptive: <span class="inline-code">independence-day-celebration.jpg</span> not <span class="inline-code">IMG_4521.jpg</span></li>
+    </ul>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 12. PAGE-WISE META DATA                                      -->
+  <!-- ============================================================ -->
+  <section id="page-wise-meta">
+    <h2>12. Page-Wise Meta Data Reference <span class="badge badge-existing">From Old Project</span></h2>
+    <p>Use these as a starting reference. Update the descriptions to be more concise (under 160 chars):</p>
+
+    <div style="overflow-x: auto;">
+      <table style="width: 100%; border-collapse: collapse; font-size: 0.82rem;">
+        <thead>
+          <tr style="background: var(--dark); color: #fff;">
+            <th style="padding: 10px; text-align: left;">Page</th>
+            <th style="padding: 10px; text-align: left;">Title</th>
+            <th style="padding: 10px; text-align: left;">Meta Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 8px;"><span class="inline-code">index.php</span></td>
+            <td style="padding: 8px;">Top NGOs In Delhi Working For Women, Kids &amp; Senior Citizens | Saptashati</td>
+            <td style="padding: 8px;">Saptashati Foundation is a top NGO in Dwarka, Delhi working for women empowerment, child education, and senior citizen welfare. Join our mission.</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border); background: #fafafa;">
+            <td style="padding: 8px;"><span class="inline-code">about.php</span></td>
+            <td style="padding: 8px;">About Us — Best NGO &amp; Charity Organisation in Delhi | Saptashati</td>
+            <td style="padding: 8px;">Saptashati Foundation empowers women, provides free education to underprivileged children, and creates safe spaces for senior citizens in Delhi/NCR.</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 8px;"><span class="inline-code">contact.php</span></td>
+            <td style="padding: 8px;">Contact Us — Saptashati Foundation, Dwarka, New Delhi</td>
+            <td style="padding: 8px;">Get in touch with Saptashati Foundation. Visit us at MNG Tower, Dwarka Sector 17, New Delhi or call +91 8826422990.</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border); background: #fafafa;">
+            <td style="padding: 8px;"><span class="inline-code">make-donation.php</span></td>
+            <td style="padding: 8px;">Donate Online — Support NGO in Delhi | Saptashati Foundation</td>
+            <td style="padding: 8px;">Donate to Saptashati Foundation and help needy people in Delhi. Your contribution supports women empowerment, child education, and hunger relief.</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 8px;"><span class="inline-code">causes.php</span></td>
+            <td style="padding: 8px;">Our Causes — Saptashati Foundation</td>
+            <td style="padding: 8px;">Explore our causes: women empowerment, education for every child, zero hunger, livelihood programs, and senior citizen welfare in Delhi.</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border); background: #fafafa;">
+            <td style="padding: 8px;"><span class="inline-code">womens-empowerment.php</span></td>
+            <td style="padding: 8px;">Women Empowerment Programs in Dwarka, Delhi | Saptashati</td>
+            <td style="padding: 8px;">Saptashati Foundation runs self-defence training, vocational programs, and safety workshops to empower women in Dwarka and Delhi/NCR.</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 8px;"><span class="inline-code">education-for-every-kids.php</span></td>
+            <td style="padding: 8px;">Free Education for Underprivileged Children in Delhi | Saptashati</td>
+            <td style="padding: 8px;">Providing free quality education to underprivileged children in Delhi through learning centers, school support, and digital literacy programs.</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border); background: #fafafa;">
+            <td style="padding: 8px;"><span class="inline-code">no-people-hungry.php</span></td>
+            <td style="padding: 8px;">No People Hungry — Food Distribution NGO in Delhi | Saptashati</td>
+            <td style="padding: 8px;">Saptashati Foundation distributes free meals and food supplies to the hungry and homeless in Dwarka and across Delhi.</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 8px;"><span class="inline-code">livelihood.php</span></td>
+            <td style="padding: 8px;">Livelihood &amp; Skill Development Programs | Saptashati Foundation</td>
+            <td style="padding: 8px;">Empowering communities through vocational training, skill development, and livelihood programs for self-reliance in Delhi.</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border); background: #fafafa;">
+            <td style="padding: 8px;"><span class="inline-code">blog.php</span></td>
+            <td style="padding: 8px;">Blog — Latest News &amp; Stories | Saptashati Foundation</td>
+            <td style="padding: 8px;">Read the latest stories, updates, and insights from Saptashati Foundation's work in women empowerment, education, and social welfare.</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px;"><span class="inline-code">event.php</span></td>
+            <td style="padding: 8px;">Events &amp; Activities | Saptashati Foundation</td>
+            <td style="padding: 8px;">Explore our events: health camps, cultural programs, awareness drives, and community celebrations organized by Saptashati Foundation.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 13. PHP HELPER                                               -->
+  <!-- ============================================================ -->
+  <section id="php-helper">
+    <h2>13. PHP Helper — Reusable SEO Head Include <span class="badge badge-new">NEW</span></h2>
+    <p>Since the new project uses PHP, create a reusable include file to avoid duplicating SEO tags on every page:</p>
+
+    <h3>File: <span class="inline-code">includes/seo-head.php</span></h3>
+<pre><code>&lt;?php
+/**
+ * SEO Head Include
+ *
+ * Usage: Set these variables before including this file:
+ *   $page_title       — Page title (required)
+ *   $page_description — Meta description (required)
+ *   $page_keywords    — Meta keywords (optional)
+ *   $page_url         — Full canonical URL (required)
+ *   $page_image       — OG image URL (optional, defaults to site logo)
+ *   $page_type        — OG type: "website" or "article" (optional, defaults to "website")
+ *   $schema_json      — Additional JSON-LD schema string (optional)
+ */
+
+$site_name   = "Saptashati Foundation";
+$site_url    = "https://www.saptashati.org";
+$default_img = $site_url . "/assets/images/og-default.jpg";
+$twitter     = "@Saptashati_F";
+
+// Fallbacks
+$page_image = $page_image ?? $default_img;
+$page_type  = $page_type ?? "website";
+?&gt;
+
+&lt;!-- Google Analytics 4 --&gt;
+&lt;script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"&gt;&lt;/script&gt;
+&lt;script&gt;
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+&lt;/script&gt;
+
+&lt;!-- Core Meta --&gt;
+&lt;meta charset="UTF-8"&gt;
+&lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+&lt;meta name="robots" content="index, follow"&gt;
+
+&lt;!-- SEO --&gt;
+&lt;title&gt;&lt;?= htmlspecialchars($page_title) ?&gt;&lt;/title&gt;
+&lt;meta name="description" content="&lt;?= htmlspecialchars($page_description) ?&gt;"&gt;
+&lt;?php if (!empty($page_keywords)): ?&gt;
+&lt;meta name="keywords" content="&lt;?= htmlspecialchars($page_keywords) ?&gt;"&gt;
+&lt;?php endif; ?&gt;
+&lt;link rel="canonical" href="&lt;?= htmlspecialchars($page_url) ?&gt;"&gt;
+
+&lt;!-- Open Graph --&gt;
+&lt;meta property="og:type" content="&lt;?= $page_type ?&gt;"&gt;
+&lt;meta property="og:site_name" content="&lt;?= $site_name ?&gt;"&gt;
+&lt;meta property="og:title" content="&lt;?= htmlspecialchars($page_title) ?&gt;"&gt;
+&lt;meta property="og:description" content="&lt;?= htmlspecialchars($page_description) ?&gt;"&gt;
+&lt;meta property="og:url" content="&lt;?= htmlspecialchars($page_url) ?&gt;"&gt;
+&lt;meta property="og:image" content="&lt;?= htmlspecialchars($page_image) ?&gt;"&gt;
+&lt;meta property="og:image:width" content="1200"&gt;
+&lt;meta property="og:image:height" content="630"&gt;
+&lt;meta property="og:locale" content="en_IN"&gt;
+
+&lt;!-- Twitter Card --&gt;
+&lt;meta name="twitter:card" content="summary_large_image"&gt;
+&lt;meta name="twitter:site" content="&lt;?= $twitter ?&gt;"&gt;
+&lt;meta name="twitter:title" content="&lt;?= htmlspecialchars($page_title) ?&gt;"&gt;
+&lt;meta name="twitter:description" content="&lt;?= htmlspecialchars($page_description) ?&gt;"&gt;
+&lt;meta name="twitter:image" content="&lt;?= htmlspecialchars($page_image) ?&gt;"&gt;
+
+&lt;!-- Favicon --&gt;
+&lt;link rel="shortcut icon" href="assets/images/favicon.png" type="image/png"&gt;
+&lt;link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png"&gt;
+&lt;link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png"&gt;
+&lt;link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png"&gt;
+&lt;meta name="theme-color" content="#e8751a"&gt;
+
+&lt;!-- Organization Schema (Global) --&gt;
+&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Saptashati Foundation",
+  "url": "https://www.saptashati.org/",
+  "logo": "https://www.saptashati.org/assets/images/logo-wide.png",
+  "description": "Saptashati Foundation is a women's rights nonprofit organization which is a platform to empower widows, handicapped people, disabled people, senior citizens and women of the nation.",
+  "sameAs": [
+    "https://www.instagram.com/_saptashati/",
+    "https://www.facebook.com/Durgasaptashati.org",
+    "https://x.com/Saptashati_F"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+91 8826422990",
+    "contactType": "customer service",
+    "email": "support@saptashati.org",
+    "areaServed": "IN",
+    "availableLanguage": ["English", "Hindi"]
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "MNG Tower, Plot NO - 1 &amp; 2, Pocket - A2",
+    "addressLocality": "2nd Floor, Sector - 17, Near SBI Bank Dwarka",
+    "addressRegion": "New Delhi",
+    "postalCode": "110078",
+    "addressCountry": "IN"
+  }
+}
+&lt;/script&gt;
+
+&lt;?php if (!empty($schema_json)): ?&gt;
+&lt;!-- Page-Specific Schema --&gt;
+&lt;script type="application/ld+json"&gt;
+&lt;?= $schema_json ?&gt;
+&lt;/script&gt;
+&lt;?php endif; ?&gt;
+</code></pre>
+
+    <h3>Example Usage in a Page</h3>
+<pre><code>&lt;?php
+// about.php
+$page_title       = "About Us — Best NGO &amp; Charity Organisation in Delhi | Saptashati";
+$page_description = "Saptashati Foundation empowers women, provides free education to underprivileged children, and creates safe spaces for senior citizens in Delhi/NCR.";
+$page_keywords    = "Best NGOs in Delhi, Saptashati Foundation, Women Safety NGO Dwarka, Top NGOs Senior Citizens Delhi";
+$page_url         = "https://www.saptashati.org/about.php";
+?&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html dir="ltr" lang="en"&gt;
+&lt;head&gt;
+  &lt;?php include 'includes/seo-head.php'; ?&gt;
+
+  &lt;!-- Page-specific stylesheets here --&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- Page content --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 14. FINAL CHECKLIST                                          -->
+  <!-- ============================================================ -->
+  <section id="checklist">
+    <h2>14. Final Checklist</h2>
+
+    <h3>Per-Page Checklist</h3>
+    <ul class="checklist">
+      <li>Unique <span class="inline-code">&lt;title&gt;</span> tag (under 60 characters)</li>
+      <li>Unique <span class="inline-code">meta description</span> (under 160 characters)</li>
+      <li>Correct <span class="inline-code">canonical</span> URL matching the page's own URL</li>
+      <li>Open Graph tags (og:title, og:description, og:image, og:url)</li>
+      <li>Twitter Card tags</li>
+      <li>JSON-LD Organization schema</li>
+      <li>All images have descriptive <span class="inline-code">alt</span> text</li>
+      <li>Images have <span class="inline-code">width</span>, <span class="inline-code">height</span>, and <span class="inline-code">loading="lazy"</span></li>
+      <li>Only one <span class="inline-code">&lt;h1&gt;</span> tag per page</li>
+      <li>Semantic heading hierarchy (h1 → h2 → h3)</li>
+    </ul>
+
+    <h3>Site-Wide Checklist</h3>
+    <ul class="checklist">
+      <li>robots.txt in public root with sitemap reference</li>
+      <li>sitemap.xml listing all public pages</li>
+      <li>.htaccess with HTTPS + WWW enforcement</li>
+      <li>.htaccess with .html → .php 301 redirects (old site migration)</li>
+      <li>Google Search Console verification files copied</li>
+      <li>Google Analytics 4 tracking code on all pages</li>
+      <li>Favicon + Apple Touch Icon in place</li>
+      <li>OG default image created (1200x630px)</li>
+      <li>All internal links use HTTPS and consistent URLs</li>
+      <li>No broken links (run a crawler to check)</li>
+      <li>Submit new sitemap to Google Search Console</li>
+    </ul>
+  </section>
+
+</div>
+
+<footer>
+  <p>SEO Reference Document — Saptashati Foundation Revamp Project</p>
+  <p>Generated from old project analysis. Review and update all values before deployment.</p>
+</footer>
+
+</body>
+</html>
+</code></pre></code></pre>
+</body>
+</html>
