@@ -63,6 +63,16 @@
                 </div>
 
                 <!-- Google Rating & Trust Section -->
+                <?php
+                require_once APP_PATH . '/helpers/google_reviews.php';
+                $googleReview = getGoogleReviewData();
+                $gRating = $googleReview['rating'];
+                $gTotal = $googleReview['total_reviews'];
+                $gReviewUrl = $googleReview['review_url'];
+                $fullStars = floor($gRating);
+                $hasHalf = ($gRating - $fullStars) >= 0.3;
+                $emptyStars = 5 - $fullStars - ($hasHalf ? 1 : 0);
+                ?>
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="footer-widget" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
                         <h3 class="footer-title">Our Rating & Trust</h3>
@@ -74,24 +84,48 @@
                                     alt="Google" class="google-logo">
                                 <span class="rating-text text-bold">Reviews</span>
                             </div>
+                            <?php if ($googleReview['fetched']): ?>
+                            <div class="rating-display">
+                                <div class="rating-stars">
+                                    <?php for ($s = 0; $s < $fullStars; $s++): ?>
+                                    <i class="fas fa-star filled"></i>
+                                    <?php endfor; ?>
+                                    <?php if ($hasHalf): ?>
+                                    <i class="fas fa-star-half-alt filled"></i>
+                                    <?php endif; ?>
+                                    <?php for ($s = 0; $s < $emptyStars; $s++): ?>
+                                    <i class="far fa-star filled"></i>
+                                    <?php endfor; ?>
+                                </div>
+                                <div class="rating-info">
+                                    <span class="rating-score"><?= $gRating ?></span>
+                                    <span class="rating-count">(<?= number_format($gTotal) ?> reviews)</span>
+                                </div>
+                            </div>
+                            <a href="<?= htmlspecialchars($gReviewUrl) ?>" target="_blank" rel="noopener noreferrer"
+                                class="rating-link">
+                                <i class="fas fa-external-link-alt"></i>
+                                Write a Review
+                            </a>
+                            <?php else: ?>
                             <div class="rating-display">
                                 <div class="rating-stars">
                                     <i class="fas fa-star filled"></i>
                                     <i class="fas fa-star filled"></i>
                                     <i class="fas fa-star filled"></i>
                                     <i class="fas fa-star filled"></i>
-                                    <i class="fas fa-star filled"></i>
+                                    <i class="far fa-star filled"></i>
                                 </div>
                                 <div class="rating-info">
-                                    <span class="rating-score">3.7</span>
-                                    <span class="rating-count">(127 reviews)</span>
+                                    <span class="rating-count">Rate us on Google</span>
                                 </div>
                             </div>
-                            <a href="https://g.page/r/YOUR_GOOGLE_BUSINESS_ID/review" target="_blank"
+                            <a href="https://search.google.com/local/writereview?placeid=<?= htmlspecialchars(GOOGLE_PLACE_ID) ?>" target="_blank" rel="noopener noreferrer"
                                 class="rating-link">
                                 <i class="fas fa-external-link-alt"></i>
                                 Write a Review
                             </a>
+                            <?php endif; ?>
                         </div>
 
                         <!-- Trust Badges -->

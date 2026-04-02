@@ -61,6 +61,10 @@ define('MAIL_FROM', $_ENV['MAIL_FROM'] ?? 'info@saptashati.org');
 define('ADMIN_EMAIL', $_ENV['ADMIN_EMAIL'] ?? 'admin@saptashati.org');
 define('ADMIN_PASS', $_ENV['ADMIN_PASS'] ?? 'admin123');
 
+// Google Places API
+define('GOOGLE_PLACES_API_KEY', $_ENV['GOOGLE_PLACES_API_KEY'] ?? '');
+define('GOOGLE_PLACE_ID', $_ENV['GOOGLE_PLACE_ID'] ?? '');
+
 // File Upload Settings
 define('MAX_UPLOAD_SIZE', $_ENV['MAX_UPLOAD_SIZE'] ?? '5M');
 define('ALLOWED_EXTENSIONS', $_ENV['ALLOWED_EXTENSIONS'] ?? 'jpg,jpeg,png,gif,pdf,doc,docx');

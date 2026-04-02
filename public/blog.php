@@ -5,12 +5,28 @@ $pageTitle = "Blog & News";
 $pageDescription = "Stay updated with the latest news, articles, and insights from Durga Saptashati Foundation.";
 $pageKeywords = "Durga Saptashati blog, news, articles, community impact, charity updates";
 
-$stmt = $pdo->prepare("SELECT * FROM blogs WHERE status = 'published' ORDER BY created_at DESC");
+// Pagination
+$perPage = 9;
+$page = max(1, (int) ($_GET['page'] ?? 1));
+$offset = ($page - 1) * $perPage;
+
+$totalStmt = $pdo->prepare("SELECT COUNT(*) FROM blogs WHERE status = 'published'");
+$totalStmt->execute();
+$totalBlogs = (int) $totalStmt->fetchColumn();
+$totalPages = max(1, ceil($totalBlogs / $perPage));
+$page = min($page, $totalPages);
+$offset = ($page - 1) * $perPage;
+
+$stmt = $pdo->prepare("SELECT * FROM blogs WHERE status = 'published' ORDER BY created_at DESC LIMIT :limit OFFSET :offset");
+$stmt->bindValue(':limit', $perPage, PDO::PARAM_INT);
+$stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
 $stmt->execute();
 $allBlogs = $stmt->fetchAll();
 
 include '../app/views/layout/header.php';
 ?>
+
+<link rel="stylesheet" href="<?php echo asset('css/blog.css'); ?>">
 
 <!-- Page Header Start -->
 <div class="page-header blog-page-header">
@@ -32,60 +48,52 @@ include '../app/views/layout/header.php';
 <div class="container-fluid">
     <div class="container py-3">
         <div class="text-center mb-5">
-            <h6 class="text-uppercase mb-2" style="color:#f26522;letter-spacing:3px;font-weight:600;">From Our Blog</h6>
-            <h2 style="color:#1a1b2e;font-weight:800;">Latest <span style="color:#f26522;">News & Articles</span></h2>
-            <p style="color:#888;max-width:550px;margin:10px auto 0;font-size:0.92rem;">Insights, stories, and updates
+            <h6 class="text-uppercase mb-2 blog-section-label">From Our Blog</h6>
+            <h2 class="blog-section-heading">Latest <span>Articles & Insights</span></h2>
+            <p class="blog-section-desc">Insights, stories, and updates
                 from our journey of empowering communities and transforming lives.</p>
         </div>
 
         <?php if (empty($allBlogs)): ?>
-        <div class="text-center" style="padding:60px 0;">
-            <i class="fas fa-newspaper" style="font-size:3rem;color:#ddd;margin-bottom:15px;"></i>
-            <p style="color:#999;font-size:1rem;">No blog posts published yet. Check back soon!</p>
+        <div class="text-center blog-empty">
+            <i class="fas fa-newspaper blog-empty-icon"></i>
+            <p class="blog-empty-text">No blog posts published yet. Check back soon!</p>
         </div>
         <?php else: ?>
-        <div class="row" style="display:flex;flex-wrap:wrap;">
+        <div class="row d-flex flex-wrap">
             <?php foreach ($allBlogs as $idx => $bp): ?>
             <div class="col-lg-4 col-md-6 mb-4 d-flex">
-                <a href="<?= url('blog/' . $bp['slug']) ?>" class="d-flex flex-column"
-                    style="border-radius:12px;overflow:hidden;box-shadow:0 5px 25px rgba(0,0,0,0.08);transition:all 0.4s;background:#fff;width:100%;text-decoration:none;color:inherit;cursor:pointer;"
-                    onmouseover="this.style.transform='translateY(-8px)';this.style.boxShadow='0 15px 40px rgba(0,0,0,0.15)'"
-                    onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 5px 25px rgba(0,0,0,0.08)'">
-                    <div style="position:relative;overflow:hidden;">
+                <a href="<?= url('blog/' . $bp['slug']) ?>" class="blog-card d-flex flex-column">
+                    <div class="blog-card-img-wrap">
                         <?php $blogImg = $bp['image'] ? asset('uploads/blogs/' . $bp['image']) : asset('img/blog-' . (($idx % 3) + 1) . '.jpg'); ?>
-                        <img class="w-100" src="<?= $blogImg ?>" alt="<?= htmlspecialchars($bp['title']) ?>"
-                            style="height:220px;object-fit:cover;transition:transform 0.5s;"
-                            onmouseover="this.style.transform='scale(1.05)'"
-                            onmouseout="this.style.transform='scale(1)'">
+                        <img class="w-100 blog-card-img" src="<?= $blogImg ?>" alt="<?= htmlspecialchars($bp['title']) ?>">
                         <?php if (!empty($bp['category'])): ?>
-                        <div
-                            style="position:absolute;top:15px;left:15px;background:#f26522;color:#fff;padding:5px 14px;border-radius:20px;font-size:0.75rem;font-weight:600;">
+                        <div class="blog-card-category">
                             <i class="fas fa-tag mr-1"></i> <?= htmlspecialchars($bp['category']) ?>
                         </div>
                         <?php endif; ?>
                     </div>
                     <div class="p-4 d-flex flex-column flex-grow-1">
-                        <div class="d-flex align-items-center mb-3" style="gap:15px;">
-                            <small style="color:#999;"><i class="far fa-calendar-alt mr-1" style="color:#f26522;"></i>
+                        <div class="d-flex align-items-center mb-3 blog-card-meta">
+                            <small><i class="far fa-calendar-alt mr-1"></i>
                                 <?= date('M d, Y', strtotime($bp['created_at'])) ?></small>
-                            <small style="color:#999;"><i class="far fa-user mr-1" style="color:#f26522;"></i>
+                            <small><i class="far fa-user mr-1"></i>
                                 <?= htmlspecialchars($bp['author'] ?? 'Admin') ?></small>
                             <?php
                                     $ccStmt = $pdo->prepare("SELECT COUNT(*) FROM blog_comments WHERE blog_id = ? AND status = 'approved'");
                                     $ccStmt->execute([$bp['id']]);
                                     $ccCount = $ccStmt->fetchColumn();
                                     ?>
-                            <small style="color:#999;"><i class="far fa-comment mr-1" style="color:#f26522;"></i>
+                            <small><i class="far fa-comment mr-1"></i>
                                 <?= $ccCount ?></small>
                         </div>
-                        <h5 class="font-weight-bold mb-2" style="color:#1a1b2e;font-size:1.1rem;line-height:1.4;">
+                        <h5 class="font-weight-bold mb-2 blog-card-title">
                             <?= htmlspecialchars($bp['title']) ?>
                         </h5>
-                        <p class="flex-grow-1" style="color:#666;font-size:0.9rem;line-height:1.7;">
+                        <p class="flex-grow-1 blog-card-excerpt">
                             <?= htmlspecialchars(mb_strimwidth(strip_tags($bp['content'] ?? ''), 0, 150, '...')) ?>
                         </p>
-                        <span
-                            style="color:#f26522;font-weight:600;font-size:0.9rem;display:inline-flex;align-items:center;">
+                        <span class="blog-card-readmore">
                             Read More <i class="fa fa-long-arrow-alt-right ml-2"></i>
                         </span>
                     </div>
@@ -93,6 +101,62 @@ include '../app/views/layout/header.php';
             </div>
             <?php endforeach; ?>
         </div>
+
+        <?php if ($totalPages > 1): ?>
+        <nav class="blog-pagination-nav">
+            <ul class="blog-pagination">
+                <li>
+                    <a href="<?= url('blog.php?page=1') ?>" class="blog-page-link<?= $page === 1 ? ' disabled' : '' ?>">
+                        <i class="fas fa-angle-double-left"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?= $page > 1 ? url('blog.php?page=' . ($page - 1)) : '#' ?>"
+                        class="blog-page-link<?= $page === 1 ? ' disabled' : '' ?>">
+                        <i class="fas fa-angle-left"></i>
+                    </a>
+                </li>
+
+                <?php
+                $pages = [];
+                $pages[] = 1;
+                for ($p = max(2, $page - 1); $p <= min($totalPages - 1, $page + 1); $p++) {
+                    $pages[] = $p;
+                }
+                if ($totalPages > 1) $pages[] = $totalPages;
+                $pages = array_unique($pages);
+                sort($pages);
+
+                $prev = null;
+                foreach ($pages as $p):
+                    if ($prev !== null && $p - $prev > 1): ?>
+                <li><span class="blog-page-dots">&hellip;</span></li>
+                <?php endif; ?>
+                <li>
+                    <a href="<?= url('blog.php?page=' . $p) ?>"
+                        class="blog-page-link<?= $p === $page ? ' blog-page-active' : '' ?>">
+                        <?= $p ?>
+                    </a>
+                </li>
+                <?php $prev = $p;
+                endforeach; ?>
+
+                <li>
+                    <a href="<?= $page < $totalPages ? url('blog.php?page=' . ($page + 1)) : '#' ?>"
+                        class="blog-page-link<?= $page === $totalPages ? ' disabled' : '' ?>">
+                        <i class="fas fa-angle-right"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?= url('blog.php?page=' . $totalPages) ?>"
+                        class="blog-page-link<?= $page === $totalPages ? ' disabled' : '' ?>">
+                        <i class="fas fa-angle-double-right"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <?php endif; ?>
+
         <?php endif; ?>
     </div>
 </div>

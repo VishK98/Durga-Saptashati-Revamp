@@ -328,14 +328,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'creat
     $author = trim($_POST['author'] ?? 'Admin');
     $status = isset($_POST['publish']) ? 'published' : 'draft';
     $slug = generateSlug($title, $pdo);
+    $created_at = !empty($_POST['created_at']) ? date('Y-m-d H:i:s', strtotime($_POST['created_at'])) : date('Y-m-d H:i:s');
 
     $image = null;
     if (!empty($_FILES['image']['name'])) {
         $image = handleBlogImageUpload($_FILES['image']);
     }
 
-    $stmt = $pdo->prepare("INSERT INTO blogs (title, slug, category, content, meta_description, meta_keywords, author, image, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->execute([$title, $slug, $category, $content, $meta_description, $meta_keywords, $author, $image, $status]);
+    $stmt = $pdo->prepare("INSERT INTO blogs (title, slug, category, content, meta_description, meta_keywords, author, image, status, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->execute([$title, $slug, $category, $content, $meta_description, $meta_keywords, $author, $image, $status, $created_at]);
     $_SESSION['blog_success'] = 'Blog post created successfully.';
     header('Location: admin.php?page=blogs');
     exit;
@@ -352,6 +353,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'updat
     $author = trim($_POST['author'] ?? 'Admin');
     $status = isset($_POST['publish']) ? 'published' : 'draft';
     $slug = generateSlug($title, $pdo, $id);
+    $created_at = !empty($_POST['created_at']) ? date('Y-m-d H:i:s', strtotime($_POST['created_at'])) : null;
 
     $image = null;
     if (!empty($_FILES['image']['name'])) {
@@ -365,13 +367,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'updat
                 $oldPath = __DIR__ . '/assets/uploads/blogs/' . $old['image'];
                 if (file_exists($oldPath)) unlink($oldPath);
             }
-            $stmt = $pdo->prepare("UPDATE blogs SET title=?, slug=?, category=?, content=?, meta_description=?, meta_keywords=?, author=?, image=?, status=? WHERE id=?");
-            $stmt->execute([$title, $slug, $category, $content, $meta_description, $meta_keywords, $author, $image, $status, $id]);
+            if ($created_at) {
+                $stmt = $pdo->prepare("UPDATE blogs SET title=?, slug=?, category=?, content=?, meta_description=?, meta_keywords=?, author=?, image=?, status=?, created_at=? WHERE id=?");
+                $stmt->execute([$title, $slug, $category, $content, $meta_description, $meta_keywords, $author, $image, $status, $created_at, $id]);
+            } else {
+                $stmt = $pdo->prepare("UPDATE blogs SET title=?, slug=?, category=?, content=?, meta_description=?, meta_keywords=?, author=?, image=?, status=? WHERE id=?");
+                $stmt->execute([$title, $slug, $category, $content, $meta_description, $meta_keywords, $author, $image, $status, $id]);
+            }
         }
     }
     if (!$image) {
-        $stmt = $pdo->prepare("UPDATE blogs SET title=?, slug=?, category=?, content=?, meta_description=?, meta_keywords=?, author=?, status=? WHERE id=?");
-        $stmt->execute([$title, $slug, $category, $content, $meta_description, $meta_keywords, $author, $status, $id]);
+        if ($created_at) {
+            $stmt = $pdo->prepare("UPDATE blogs SET title=?, slug=?, category=?, content=?, meta_description=?, meta_keywords=?, author=?, status=?, created_at=? WHERE id=?");
+            $stmt->execute([$title, $slug, $category, $content, $meta_description, $meta_keywords, $author, $status, $created_at, $id]);
+        } else {
+            $stmt = $pdo->prepare("UPDATE blogs SET title=?, slug=?, category=?, content=?, meta_description=?, meta_keywords=?, author=?, status=? WHERE id=?");
+            $stmt->execute([$title, $slug, $category, $content, $meta_description, $meta_keywords, $author, $status, $id]);
+        }
     }
 
     $_SESSION['blog_success'] = 'Blog post updated successfully.';

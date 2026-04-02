@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(c:/xampp/mysql/bin/mysql.exe -u root durga_saptashati -e \":*)",
-      "Bash(php -l admin/views/pages/dashboard.php)"
+      "Bash(php -l admin/views/pages/dashboard.php)",
+      "Bash(find /c/xampp/htdocs/Durga-Saptashati-Revamp -type f \\\\\\(-name .env* -o -name *config* \\\\\\))",
+      "Bash(find /c/xampp/htdocs/Durga-Saptashati-Revamp -type f \\\\\\(-name *.json -o -name *.yml -o -name *.yaml \\\\\\))"
     ]
   }
 }
