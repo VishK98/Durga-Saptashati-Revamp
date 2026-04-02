@@ -1,0 +1,149 @@
+/* ===== Admin Queries Page Styles ===== */
+
+.qr-header-icon {
+    color: #d97706;
+    margin-right: 8px;
+}
+
+.qr-actions-th {
+    text-align: right;
+}
+
+.qr-actions-td {
+    text-align: right;
+}
+
+.action-form-inline {
+    display: contents;
+}
+
+.qr-empty-row {
+    text-align: center;
+    padding: 40px;
+    color: #999;
+}
+
+/* Modal */
+.qr-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+}
+
+.qr-modal-box {
+    background: #fff;
+    border-radius: 12px;
+    width: 95%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 30px;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.qr-modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+}
+
+.qr-modal-title {
+    margin: 0 0 20px;
+    color: #1a1b2e;
+    font-size: 1.2rem;
+}
+
+.qr-modal-title i {
+    color: #f26522;
+    margin-right: 8px;
+}
+
+/* View Query Content */
+.qr-view-section {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.qr-view-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 10px;
+}
+
+.qr-view-grid > div {
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.qr-view-label {
+    color: #1a1b2e;
+    font-weight: 600;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.qr-view-value {
+    margin: 3px 0;
+    color: #666;
+}
+
+.qr-view-value-bold {
+    margin: 3px 0;
+    color: #666;
+    font-weight: 500;
+}
+
+.qr-view-message {
+    margin: 8px 0 0;
+    color: #444;
+    line-height: 1.7;
+    white-space: pre-wrap;
+}
+
+/* Comments Page */
+.cm-alert-success {
+    background: #d4edda;
+    color: #155724;
+    padding: 12px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cm-alert-close {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #155724;
+}
+
+.cm-total-count {
+    color: #666;
+    font-size: 0.85rem;
+}
+
+.cm-icon-approve {
+    color: #28a745;
+}
+
+.cm-icon-reject {
+    color: #ffc107;
+}
