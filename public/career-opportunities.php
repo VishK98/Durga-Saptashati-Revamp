@@ -1,8 +1,8 @@
 <?php
 require_once '../app/config/config.php';
-$pageTitle = "Career Opportunities";
-$pageDescription = "Explore career opportunities at Durga Saptashati Foundation. Work with purpose and make a difference.";
-$pageKeywords = "career opportunities, jobs, NGO jobs, Durga Saptashati Foundation";
+$pageTitle = "Career Opportunities | Saptashati Foundation";
+$pageDescription = "Explore career opportunities at Saptashati Foundation. Work with purpose and make a real difference in communities.";
+$pageKeywords = "NGO jobs Delhi, career at NGO, social work jobs, Saptashati Foundation careers, work with purpose";
 
 // Fetch active openings
 $openings = $pdo->query("SELECT * FROM careers WHERE status = 'active' ORDER BY created_at DESC")->fetchAll();

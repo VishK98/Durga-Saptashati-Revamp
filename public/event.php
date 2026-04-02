@@ -1,8 +1,8 @@
 <?php
 require_once '../app/config/config.php';
-$pageTitle = "Events & Activities";
-$pageDescription = "Join our upcoming spiritual and charitable events. Participate in Durga Saptashati Foundation's community activities, religious celebrations, and social service programs.";
-$pageKeywords = "events, activities, Durga Saptashati events, charity events, spiritual celebrations, community programs";
+$pageTitle = "Events & Activities | Saptashati Foundation";
+$pageDescription = "Explore our events: health camps, cultural programs, awareness drives, and community celebrations organized by Saptashati Foundation.";
+$pageKeywords = "Saptashati events, charity events Delhi, community celebrations, health camps, cultural programs, NGO activities";
 include '../app/views/layout/header.php';
 
 $events = [

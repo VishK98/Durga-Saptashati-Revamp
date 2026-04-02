@@ -1,8 +1,9 @@
 <?php
 require_once '../app/config/config.php';
 
-$pageTitle = "Home - " . APP_NAME;
-$pageDescription = "Durga Saptashati Foundation - Empowerment, Education, Equality, Empathy. A trusted charity organisation in Delhi working for the empowerment of women, deprived children, senior citizens, and people with disabilities.";
+$pageTitle = "Top NGOs In Delhi Working For Women, Kids & Senior Citizens | Saptashati";
+$pageDescription = "Saptashati Foundation is a top NGO in Dwarka, Delhi working for women empowerment, child education, and senior citizen welfare. Join our mission.";
+$pageKeywords = "top NGOs in Delhi, best NGO Dwarka, women empowerment NGO, child education Delhi, senior citizen welfare, Durga Saptashati Foundation, charity Delhi";
 
 include '../app/views/layout/header.php';
 ?>

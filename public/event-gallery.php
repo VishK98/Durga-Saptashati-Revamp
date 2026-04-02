@@ -1,8 +1,8 @@
 <?php
 require_once '../app/config/config.php';
-$pageTitle = "Event Gallery";
-$pageDescription = "Browse photos from our events, causes, and community programs at Durga Saptashati Foundation.";
-$pageKeywords = "event gallery, photo gallery, event photos, Durga Saptashati Foundation";
+$pageTitle = "Photo Gallery | Saptashati Foundation";
+$pageDescription = "Browse photos from our events, community programs, and social initiatives at Saptashati Foundation.";
+$pageKeywords = "Saptashati gallery, event photos, NGO gallery, community program photos, charity events gallery";
 include '../app/views/layout/header.php';
 
 try {

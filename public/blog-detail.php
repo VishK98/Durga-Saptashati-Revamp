@@ -17,9 +17,33 @@ if (!$blog) {
 }
 
 
-$pageTitle = $blog['title'];
+$pageTitle = $blog['title'] . ' | ' . APP_NAME;
 $pageDescription = $blog['meta_description'] ?? mb_strimwidth(strip_tags($blog['content']), 0, 160, '...');
 $pageKeywords = $blog['meta_keywords'] ?? 'blog, ' . $blog['category'];
+$pageType = 'article';
+$pageImage = $blog['image'] ? asset('uploads/blogs/' . $blog['image']) : null;
+$pageCanonical = url('blog/' . $blog['slug']);
+$pageSchema = json_encode([
+    '@context' => 'https://schema.org',
+    '@type' => 'Article',
+    'headline' => $blog['title'],
+    'description' => $pageDescription,
+    'image' => $pageImage ?: asset('images/og-default.jpg'),
+    'author' => [
+        '@type' => 'Organization',
+        'name' => APP_NAME,
+    ],
+    'publisher' => [
+        '@type' => 'Organization',
+        'name' => APP_NAME,
+        'logo' => [
+            '@type' => 'ImageObject',
+            'url' => asset('images/logo-wide.png'),
+        ],
+    ],
+    'datePublished' => date('Y-m-d', strtotime($blog['created_at'])),
+    'dateModified' => date('Y-m-d', strtotime($blog['updated_at'])),
+], JSON_UNESCAPED_SLASHES);
 
 // Get related blogs (same category, exclude current)
 $relatedStmt = $pdo->prepare("SELECT * FROM blogs WHERE status = 'published' AND id != ? AND category = ? ORDER BY created_at DESC LIMIT 3");

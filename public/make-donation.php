@@ -1,8 +1,8 @@
 <?php
 require_once '../app/config/config.php';
-$pageTitle = "Make a Donation";
-$pageDescription = "Every contribution matters - make a donation to support Durga Saptashati Foundation's community programs.";
-$pageKeywords = "make donation, donate online, contribute, support foundation, financial contribution, Durga Saptashati Foundation";
+$pageTitle = "Donate Online — Support NGO in Delhi | Saptashati Foundation";
+$pageDescription = "Donate to Saptashati Foundation and help needy people in Delhi. Your contribution supports women empowerment, child education, and hunger relief.";
+$pageKeywords = "donate online, NGO donation Delhi, support charity, donate for education, donate for women, Durga Saptashati donation";
 include '../app/views/layout/header.php';
 ?>
 

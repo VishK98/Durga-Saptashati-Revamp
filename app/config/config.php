@@ -50,6 +50,11 @@ define('APP_PATH', ROOT_PATH . '/app');
 define('PUBLIC_PATH', ROOT_PATH . '/public');
 define('STORAGE_PATH', ROOT_PATH . '/storage');
 
+// Site Contact Info
+define('SITE_PHONE', $_ENV['SITE_PHONE'] ?? '+91 9289088161');
+define('SITE_EMAIL', $_ENV['SITE_EMAIL'] ?? 'support@saptashati.org');
+define('SITE_ADDRESS', trim($_ENV['SITE_ADDRESS'] ?? 'Dwarka, New Delhi', '"'));
+
 // Email Configuration
 define('MAIL_HOST', $_ENV['MAIL_HOST'] ?? 'smtp.gmail.com');
 define('MAIL_PORT', $_ENV['MAIL_PORT'] ?? 587);
@@ -64,6 +69,9 @@ define('ADMIN_PASS', $_ENV['ADMIN_PASS'] ?? 'admin123');
 // Google Places API
 define('GOOGLE_PLACES_API_KEY', $_ENV['GOOGLE_PLACES_API_KEY'] ?? '');
 define('GOOGLE_PLACE_ID', $_ENV['GOOGLE_PLACE_ID'] ?? '');
+
+// Google Analytics
+define('GA_MEASUREMENT_ID', $_ENV['GA_MEASUREMENT_ID'] ?? '');
 
 // File Upload Settings
 define('MAX_UPLOAD_SIZE', $_ENV['MAX_UPLOAD_SIZE'] ?? '5M');

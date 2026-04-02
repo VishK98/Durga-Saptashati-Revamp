@@ -1,8 +1,8 @@
 <?php
 require_once '../app/config/config.php';
-$pageTitle = "Become a Volunteer";
-$pageDescription = "Join our volunteer network and make a difference with Durga Saptashati Foundation's community programs.";
-$pageKeywords = "become volunteer, volunteer network, community service, volunteer opportunities, join volunteers, Durga Saptashati Foundation";
+$pageTitle = "Become a Volunteer | Saptashati Foundation";
+$pageDescription = "Join our volunteer network and make a difference. Help us empower women, educate children, and serve communities in Delhi.";
+$pageKeywords = "volunteer NGO Delhi, become volunteer, community service, volunteer opportunities, Saptashati Foundation";
 include '../app/views/layout/header.php';
 ?>
 

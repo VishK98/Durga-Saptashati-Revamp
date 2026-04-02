@@ -1,0 +1,12 @@
+# robots.txt — Durga Saptashati Foundation
+# https://www.saptashati.org/robots.txt
+
+User-agent: *
+Allow: /
+
+# Block admin and API routes
+Disallow: /admin.php
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://www.saptashati.org/sitemap.xml

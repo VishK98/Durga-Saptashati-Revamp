@@ -1,9 +1,9 @@
 <?php
 require_once '../app/config/config.php';
 
-$pageTitle = "Sustainable Livelihood Programme";
-$pageDescription = "Durga Saptashati Foundation's Livelihood Programme - Creating sustainable livelihoods through vocational training, skill development, and employment support.";
-$pageKeywords = "livelihood, vocational training, skill development, employment support, Durga Saptashati Foundation";
+$pageTitle = "Livelihood & Skill Development Programs | Saptashati Foundation";
+$pageDescription = "Empowering communities through vocational training, skill development, and livelihood programs for self-reliance in Delhi.";
+$pageKeywords = "livelihood programs Delhi, skill development, vocational training, employment support, self-reliance, Saptashati Foundation";
 
 include '../app/views/layout/header.php';
 ?>

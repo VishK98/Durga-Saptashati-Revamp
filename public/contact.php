@@ -1,9 +1,9 @@
 <?php
 require_once '../app/config/config.php';
 
-$pageTitle = "Contact Us";
-$pageDescription = "Get in touch with Durga Saptashati Foundation. Contact us for inquiries, volunteer opportunities, partnerships, or donations.";
-$pageKeywords = "contact Durga Saptashati, contact NGO, volunteer, partnership, donate";
+$pageTitle = "Contact Us — Saptashati Foundation, Dwarka, New Delhi";
+$pageDescription = "Get in touch with Saptashati Foundation. Visit us at MNG Tower, Dwarka Sector 17, New Delhi or call +91 8826422990.";
+$pageKeywords = "contact Saptashati Foundation, NGO Dwarka Delhi, contact charity, volunteer inquiries, donation support";
 
 include '../app/views/layout/header.php';
 ?>

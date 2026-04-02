@@ -16,9 +16,33 @@ if (!$news) {
     exit;
 }
 
-$pageTitle = $news['title'];
+$pageTitle = $news['title'] . ' | ' . APP_NAME;
 $pageDescription = mb_strimwidth(strip_tags($news['content']), 0, 160, '...');
 $pageKeywords = "news, " . $news['category'] . ", Durga Saptashati Foundation";
+$pageType = 'article';
+$pageImage = !empty($news['image']) ? asset('uploads/news/' . $news['image']) : null;
+$pageCanonical = url('news/' . $news['slug']);
+$pageSchema = json_encode([
+    '@context' => 'https://schema.org',
+    '@type' => 'NewsArticle',
+    'headline' => $news['title'],
+    'description' => $pageDescription,
+    'image' => $pageImage ?: asset('images/og-default.jpg'),
+    'author' => [
+        '@type' => 'Organization',
+        'name' => APP_NAME,
+    ],
+    'publisher' => [
+        '@type' => 'Organization',
+        'name' => APP_NAME,
+        'logo' => [
+            '@type' => 'ImageObject',
+            'url' => asset('images/logo-wide.png'),
+        ],
+    ],
+    'datePublished' => date('Y-m-d', strtotime($news['created_at'])),
+    'dateModified' => date('Y-m-d', strtotime($news['updated_at'] ?? $news['created_at'])),
+], JSON_UNESCAPED_SLASHES);
 
 // Get related news (same category, exclude current)
 $relatedStmt = $pdo->prepare("SELECT * FROM news WHERE status = 'published' AND id != ? AND category = ? ORDER BY created_at DESC LIMIT 3");

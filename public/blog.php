@@ -1,9 +1,9 @@
 <?php
 require_once '../app/config/config.php';
 
-$pageTitle = "Blog & News";
-$pageDescription = "Stay updated with the latest news, articles, and insights from Durga Saptashati Foundation.";
-$pageKeywords = "Durga Saptashati blog, news, articles, community impact, charity updates";
+$pageTitle = "Blog — Latest News & Stories | Saptashati Foundation";
+$pageDescription = "Read the latest stories, updates, and insights from Saptashati Foundation's work in women empowerment, education, and social welfare.";
+$pageKeywords = "Saptashati blog, NGO news, charity updates, community impact stories, women empowerment articles, education insights";
 
 // Pagination
 $perPage = 9;

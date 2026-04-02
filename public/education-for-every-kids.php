@@ -1,9 +1,9 @@
 <?php
 require_once '../app/config/config.php';
 
-$pageTitle = "Education For Every Kids";
-$pageDescription = "Durga Saptashati Foundation's Education For Every Kids initiative - Lighting the path of knowledge through scholarships, school support, and learning programs for underprivileged children.";
-$pageKeywords = "education for all, children education, scholarships, school support, learning programs, digital literacy, Durga Saptashati Foundation";
+$pageTitle = "Free Education for Underprivileged Children in Delhi | Saptashati";
+$pageDescription = "Providing free quality education to underprivileged children in Delhi through learning centers, school support, and digital literacy programs.";
+$pageKeywords = "free education Delhi, underprivileged children education, learning centers, school support, digital literacy, Saptashati Foundation";
 
 include '../app/views/layout/header.php';
 ?>

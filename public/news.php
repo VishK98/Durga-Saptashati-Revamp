@@ -1,9 +1,9 @@
 <?php
 require_once '../app/config/config.php';
 
-$pageTitle = "News & Updates";
-$pageDescription = "Stay informed with the latest news and updates from Durga Saptashati Foundation — our initiatives, events, and community impact stories.";
-$pageKeywords = "Durga Saptashati news, NGO updates, charity news, community news, foundation updates";
+$pageTitle = "News & Updates | Saptashati Foundation";
+$pageDescription = "Stay informed with the latest news and updates from Saptashati Foundation — our initiatives, events, and community impact stories.";
+$pageKeywords = "Saptashati Foundation news, NGO updates, charity news, community impact, foundation updates";
 
 try {
     $allNews = $pdo->query("SELECT * FROM news WHERE status = 'published' ORDER BY created_at DESC")->fetchAll();

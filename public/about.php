@@ -1,9 +1,9 @@
 <?php
 require_once '../app/config/config.php';
 
-$pageTitle = "About Us";
-$pageDescription = "Learn about Durga Saptashati Foundation - our story, vision, mission, leadership team, achievements, and financial transparency. Empowering communities since 2010.";
-$pageKeywords = "About Durga Saptashati, our mission, our vision, NGO, spiritual foundation, community service, education, healthcare, women empowerment, leadership, achievements, investors";
+$pageTitle = "About Us — Best NGO & Charity Organisation in Delhi | Saptashati";
+$pageDescription = "Saptashati Foundation empowers women, provides free education to underprivileged children, and creates safe spaces for senior citizens in Delhi/NCR.";
+$pageKeywords = "Best NGOs in Delhi, Saptashati Foundation, Women Safety NGO Dwarka, Top NGOs Senior Citizens Delhi, charity organisation Delhi";
 
 include '../app/views/layout/header.php';
 ?>

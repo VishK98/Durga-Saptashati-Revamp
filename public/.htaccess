@@ -1,8 +1,93 @@
-RewriteEngine On
-RewriteBase /Durga-Saptashati-Revamp/public/
+# Custom 404 Error Page
+# ErrorDocument 404 /404.php
 
-# Blog detail: blog/slug -> blog-detail.php?slug=slug
-RewriteRule ^blog/([a-zA-Z0-9_-]+)/?$ blog-detail.php?slug=$1 [L,QSA]
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /Durga-Saptashati-Revamp/public/
 
-# News detail: news/slug -> news-detail.php?slug=slug
-RewriteRule ^news/([a-zA-Z0-9_-]+)/?$ news-detail.php?slug=$1 [L,QSA]
+  # ============================================================
+  # Dynamic sitemap
+  # ============================================================
+  RewriteRule ^sitemap\.xml$ sitemap.php [L]
+
+  # ============================================================
+  # Blog & News clean URLs
+  # ============================================================
+  RewriteRule ^blog/([a-zA-Z0-9_-]+)/?$ blog-detail.php?slug=$1 [L,QSA]
+  RewriteRule ^news/([a-zA-Z0-9_-]+)/?$ news-detail.php?slug=$1 [L,QSA]
+
+  # ============================================================
+  # HTTPS Enforcement (enable on production)
+  # ============================================================
+  # RewriteCond %{HTTPS} off
+  # RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # ============================================================
+  # WWW Enforcement (enable on production)
+  # ============================================================
+  # RewriteCond %{HTTP_HOST} !^www\. [NC]
+  # RewriteRule (.*) https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # ============================================================
+  # Remove index.php from URL
+  # ============================================================
+  RewriteCond %{THE_REQUEST} /index\.php? [NC]
+  RewriteRule ^(.*/)?index\.php?$ /$1 [R=301,L]
+
+  # ============================================================
+  # 301 Redirects: Old URLs (.html) → New URLs (.php)
+  # Preserves SEO juice from the old site
+  # ============================================================
+  RewriteRule ^index\.html$                    / [R=301,L]
+  RewriteRule ^about\.html$                    about.php [R=301,L]
+  RewriteRule ^contact\.html$                  contact.php [R=301,L]
+  RewriteRule ^conact\.html$                   contact.php [R=301,L]
+  RewriteRule ^donation\.html$                 make-donation.php [R=301,L]
+  RewriteRule ^events\.html$                   event.php [R=301,L]
+  RewriteRule ^our-causes\.html$               causes.php [R=301,L]
+  RewriteRule ^women-empowerment\.html$        womens-empowerment.php [R=301,L]
+  RewriteRule ^no-people-hungry\.html$         no-people-hungry.php [R=301,L]
+  RewriteRule ^education-for-every-kids\.html$ education-for-every-kids.php [R=301,L]
+  RewriteRule ^every-kids-for-education\.html$ education-for-every-kids.php [R=301,L]
+  RewriteRule ^livehood\.html$                 livelihood.php [R=301,L]
+  RewriteRule ^gallery\.html$                  event-gallery.php [R=301,L]
+  RewriteRule ^investor\.html$                 investor.php [R=301,L]
+
+  # Old event page redirects (.html → .php)
+  RewriteRule ^international-womens-day\.html$          international-womens-day.php [R=301,L]
+  RewriteRule ^independence-day\.html$                   independence-day.php [R=301,L]
+  RewriteRule ^yoga-day\.html$                           yoga-day.php [R=301,L]
+  RewriteRule ^ganpati-celebration\.html$                ganpati-celebration.php [R=301,L]
+  RewriteRule ^saree-run\.html$                          saree-run.php [R=301,L]
+  RewriteRule ^blood-donation-drives\.html$              blood-donation-drives.php [R=301,L]
+  RewriteRule ^health-camps-events\.html$                health-camps-events.php [R=301,L]
+  RewriteRule ^sanitary-pads-distribution\.html$         sanitary-pads-distribution.php [R=301,L]
+  RewriteRule ^flood-relief-campaign\.html$              flood-relief-campaign.php [R=301,L]
+  RewriteRule ^painting-competition\.html$               painting-competition.php [R=301,L]
+  RewriteRule ^cultural-programs\.html$                  cultural-programs.php [R=301,L]
+  RewriteRule ^hearing-aids-camp\.html$                  hearing-aids-camp.php [R=301,L]
+</IfModule>
+
+# ============================================================
+# Performance: Enable Gzip Compression
+# ============================================================
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css
+  AddOutputFilterByType DEFLATE text/javascript application/javascript application/json
+  AddOutputFilterByType DEFLATE text/xml application/xml image/svg+xml
+</IfModule>
+
+# ============================================================
+# Performance: Browser Caching
+# ============================================================
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpg  "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png  "access plus 1 year"
+  ExpiresByType image/gif  "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType text/css   "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+</IfModule>

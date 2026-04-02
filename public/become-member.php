@@ -1,9 +1,9 @@
 <?php
 session_start();
 require_once '../app/config/config.php';
-$pageTitle = "Become a Member";
-$pageDescription = "Join Durga Saptashati Foundation as a member. Support our mission to empower underprivileged women and children through education, healthcare, and community development.";
-$pageKeywords = "membership, join NGO, support charity, Durga Saptashati Foundation, member registration";
+$pageTitle = "Become a Member | Saptashati Foundation";
+$pageDescription = "Join Saptashati Foundation as a proud member. Support our mission to empower underprivileged communities through education, healthcare, and development.";
+$pageKeywords = "NGO membership, join Saptashati, member registration, support charity, community membership";
 include '../app/views/layout/header.php';
 
 $success = $_SESSION['membership_success'] ?? null;

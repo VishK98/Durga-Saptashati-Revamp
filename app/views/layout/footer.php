@@ -15,23 +15,21 @@
                                 <i class="fas fa-phone-alt"></i>
                                 <div class="contact-info">
                                     <span class="contact-label">Phone</span>
-                                    <a href="tel:+919289088161" class="contact-value">+91 9289088161</a>
+                                    <a href="tel:<?= preg_replace('/[^+0-9]/', '', SITE_PHONE) ?>" class="contact-value"><?= htmlspecialchars(SITE_PHONE) ?></a>
                                 </div>
                             </div>
                             <div class="contact-item">
                                 <i class="fas fa-envelope"></i>
                                 <div class="contact-info">
                                     <span class="contact-label">Email</span>
-                                    <a href="mailto:support@saptashati.org"
-                                        class="contact-value">support@saptashati.org</a>
+                                    <a href="mailto:<?= htmlspecialchars(SITE_EMAIL) ?>" class="contact-value"><?= htmlspecialchars(SITE_EMAIL) ?></a>
                                 </div>
                             </div>
                             <div class="contact-item">
                                 <i class="fas fa-map-marker-alt"></i>
                                 <div class="contact-info">
                                     <span class="contact-label">Address</span>
-                                    <span class="contact-value">Property No. 150, Basement, Spine Enclave, Block-C,
-                                        Pocket-8, Sector-17, Dwarka, New Delhi - 110075</span>
+                                    <span class="contact-value"><?= htmlspecialchars(SITE_ADDRESS) ?></span>
                                 </div>
                             </div>
                         </div>

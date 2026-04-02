@@ -1,22 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+// SEO defaults
+$seoTitle = isset($pageTitle) ? $pageTitle : APP_NAME . ' - Empowering Communities, Transforming Lives';
+$seoDesc = isset($pageDescription) ? $pageDescription : 'Durga Saptashati Foundation is dedicated to empowering communities through education, healthcare, women empowerment, and sustainable development programs across India.';
+$seoKeywords = isset($pageKeywords) ? $pageKeywords : 'NGO, Charity, Durga Saptashati, Foundation, Women Empowerment, Education, Healthcare, Community Development';
+$seoUrl = isset($pageCanonical) ? $pageCanonical : (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http') . '://' . ($_SERVER['HTTP_HOST'] ?? 'localhost') . ($_SERVER['REQUEST_URI'] ?? '/');
+$seoImage = isset($pageImage) ? $pageImage : asset('images/og-default.jpg');
+$seoType = isset($pageType) ? $pageType : 'website';
+?>
 <head>
+    <?php if (!empty(GA_MEASUREMENT_ID)): ?>
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=<?= GA_MEASUREMENT_ID ?>"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '<?= GA_MEASUREMENT_ID ?>');
+    </script>
+    <?php endif; ?>
+
     <meta charset="utf-8">
-    <title>
-        <?= isset($pageTitle) ? $pageTitle . ' - ' . APP_NAME : APP_NAME . ' - Empowering Communities, Transforming Lives' ?>
-    </title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta
-        content="<?= isset($pageKeywords) ? $pageKeywords : 'NGO, Charity, Durga Saptashati, Foundation, Women Empowerment, Education, Healthcare, Community Development' ?>"
-        name="keywords">
-    <meta
-        content="<?= isset($pageDescription) ? $pageDescription : (isset($metaDescription) ? $metaDescription : 'Durga Saptashati Foundation is dedicated to empowering communities through education, healthcare, women empowerment, and sustainable development programs across India.') ?>"
-        name="description">
-    <meta name="author" content="Durga Saptashati Foundation">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+
+    <!-- SEO Core -->
+    <title><?= htmlspecialchars($seoTitle) ?></title>
+    <meta name="description" content="<?= htmlspecialchars($seoDesc) ?>">
+    <meta name="keywords" content="<?= htmlspecialchars($seoKeywords) ?>">
+    <meta name="author" content="<?= APP_NAME ?>">
+    <link rel="canonical" href="<?= htmlspecialchars($seoUrl) ?>">
+
+    <!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
+    <meta property="og:type" content="<?= $seoType ?>">
+    <meta property="og:site_name" content="<?= APP_NAME ?>">
+    <meta property="og:title" content="<?= htmlspecialchars($seoTitle) ?>">
+    <meta property="og:description" content="<?= htmlspecialchars($seoDesc) ?>">
+    <meta property="og:url" content="<?= htmlspecialchars($seoUrl) ?>">
+    <meta property="og:image" content="<?= htmlspecialchars($seoImage) ?>">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="en_IN">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@Saptashati_F">
+    <meta name="twitter:title" content="<?= htmlspecialchars($seoTitle) ?>">
+    <meta name="twitter:description" content="<?= htmlspecialchars($seoDesc) ?>">
+    <meta name="twitter:image" content="<?= htmlspecialchars($seoImage) ?>">
 
     <!-- Favicon -->
-    <link href="<?= asset('images/favicon.png') ?>" rel="icon" type="image/png">
+    <link rel="icon" href="<?= asset('images/favicon.png') ?>" type="image/png">
+    <link rel="apple-touch-icon" sizes="180x180" href="<?= asset('images/favicon.png') ?>">
+    <meta name="theme-color" content="#f26522">
+
+    <!-- JSON-LD Organization Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "<?= APP_NAME ?>",
+        "url": "<?= APP_URL ?>/public/",
+        "logo": "<?= asset('images/logo-wide.png') ?>",
+        "description": "<?= htmlspecialchars($seoDesc) ?>",
+        "sameAs": [
+            "https://www.instagram.com/durgasaptashatifoundation/",
+            "https://www.facebook.com/Durgasaptashati.org",
+            "https://x.com/Saptashati_F",
+            "https://www.youtube.com/channel/UCKWpbOcfN4HHrkFHmjz4l5Q"
+        ],
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+91 8826422990",
+            "contactType": "customer service",
+            "email": "support@saptashati.org",
+            "areaServed": "IN",
+            "availableLanguage": ["English", "Hindi"]
+        },
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "MNG Tower, Plot NO - 1 & 2, Pocket - A2",
+            "addressLocality": "2nd Floor, Sector - 17, Near SBI Bank Dwarka",
+            "addressRegion": "New Delhi",
+            "postalCode": "110078",
+            "addressCountry": "IN"
+        }
+    }
+    </script>
+    <?php if (!empty($pageSchema)): ?>
+    <script type="application/ld+json"><?= $pageSchema ?></script>
+    <?php endif; ?>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"

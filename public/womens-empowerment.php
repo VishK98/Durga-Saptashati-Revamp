@@ -1,9 +1,9 @@
 <?php
 require_once '../app/config/config.php';
 
-$pageTitle = "Women's Empowerment";
-$pageDescription = "Empowering women through skill development, self-defense training, awareness campaigns, and financial literacy at Durga Saptashati Foundation.";
-$pageKeywords = "women empowerment, skill development, self defense, awareness, financial literacy, Durga Saptashati Foundation";
+$pageTitle = "Women Empowerment Programs in Dwarka, Delhi | Saptashati";
+$pageDescription = "Saptashati Foundation runs self-defence training, vocational programs, and safety workshops to empower women in Dwarka and Delhi/NCR.";
+$pageKeywords = "women empowerment Dwarka, self defence training Delhi, women vocational programs, women safety workshop, Saptashati Foundation";
 
 include '../app/views/layout/header.php';
 ?>

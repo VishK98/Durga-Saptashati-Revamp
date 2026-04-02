@@ -1,9 +1,9 @@
 <?php
 require_once '../app/config/config.php';
 
-$pageTitle = "No People Hungry Campaign";
-$pageDescription = "Durga Saptashati Foundation's No People Hungry Campaign - Nourishing lives and building hope through food security drives, community kitchens, and volunteer-led meal distribution programs.";
-$pageKeywords = "no people hungry, food security, meal distribution, community kitchen, hunger relief, food drive, Durga Saptashati Foundation";
+$pageTitle = "No People Hungry — Food Distribution NGO in Delhi | Saptashati";
+$pageDescription = "Saptashati Foundation distributes free meals and food supplies to the hungry and homeless in Dwarka and across Delhi.";
+$pageKeywords = "food distribution NGO Delhi, free meals, hunger relief Dwarka, food donation, community kitchen, Saptashati Foundation";
 
 include '../app/views/layout/header.php';
 ?>

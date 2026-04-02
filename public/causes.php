@@ -1,8 +1,8 @@
 <?php
 require_once '../app/config/config.php';
-$pageTitle = "Our Causes";
-$pageDescription = "Discover the various causes and initiatives supported by Durga Saptashati Foundation — education, women empowerment, livelihood, and cultural programs.";
-$pageKeywords = "charity causes, education, women empowerment, livelihood, yoga day, cultural programme, Durga Saptashati Foundation";
+$pageTitle = "Our Causes — Saptashati Foundation";
+$pageDescription = "Explore our causes: women empowerment, education for every child, zero hunger, livelihood programs, and senior citizen welfare in Delhi.";
+$pageKeywords = "NGO causes, women empowerment, child education, hunger relief, livelihood programs, senior citizen welfare, Delhi NGO";
 include '../app/views/layout/header.php';
 
 $causes = [
