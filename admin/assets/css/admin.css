@@ -1,6 +1,16 @@
 /* Admin Panel - Clean Light Theme */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 
+::selection {
+  background: #f26522;
+  color: #fff;
+}
+
+::-moz-selection {
+  background: #f26522;
+  color: #fff;
+}
+
 :root {
   --sidebar-width: 260px;
   --sidebar-bg: #1a1b2e;

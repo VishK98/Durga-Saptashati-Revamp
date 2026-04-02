@@ -1,6 +1,16 @@
 /*******************************/
 /********* General CSS *********/
 /*******************************/
+
+::selection {
+  background: #f26522;
+  color: #fff;
+}
+
+::-moz-selection {
+  background: #f26522;
+  color: #fff;
+}
 body {
   color: #777777;
   font-weight: 500;

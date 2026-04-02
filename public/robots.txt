@@ -9,4 +9,4 @@ Disallow: /admin.php
 Disallow: /api/
 
 # Sitemap location
-Sitemap: https://www.saptashati.org/sitemap.xml
+Sitemap: https://www.saptashati.org/public/sitemap.xml

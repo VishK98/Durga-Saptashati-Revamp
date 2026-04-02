@@ -100,12 +100,23 @@ try {
 // Helper Functions
 function asset($path)
 {
+    if (APP_ENV === 'production') {
+        return APP_URL . '/public/assets/' . ltrim($path, '/');
+    }
     return APP_URL . '/public/assets/' . ltrim($path, '/');
 }
 
 function url($path = '')
 {
-    return APP_URL . '/public/' . ltrim($path, '/');
+    $path = ltrim($path, '/');
+    if (APP_ENV === 'production') {
+        // Remove .php extension for clean URLs
+        $path = preg_replace('/\.php(\?|$)/', '$1', $path);
+        // Remove trailing index
+        $path = preg_replace('/^index(\?|$)/', '$1', $path);
+        return APP_URL . '/' . $path;
+    }
+    return APP_URL . '/public/' . $path;
 }
 
 function view($view, $data = [])

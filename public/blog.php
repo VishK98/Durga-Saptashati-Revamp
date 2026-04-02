@@ -5,21 +5,36 @@ $pageTitle = "Blog — Latest News & Stories | Saptashati Foundation";
 $pageDescription = "Read the latest stories, updates, and insights from Saptashati Foundation's work in women empowerment, education, and social welfare.";
 $pageKeywords = "Saptashati blog, NGO news, charity updates, community impact stories, women empowerment articles, education insights";
 
+// Category filter
+$filterCategory = trim($_GET['category'] ?? '');
+
 // Pagination
 $perPage = 9;
 $page = max(1, (int) ($_GET['page'] ?? 1));
 $offset = ($page - 1) * $perPage;
 
-$totalStmt = $pdo->prepare("SELECT COUNT(*) FROM blogs WHERE status = 'published'");
-$totalStmt->execute();
+if ($filterCategory) {
+    $totalStmt = $pdo->prepare("SELECT COUNT(*) FROM blogs WHERE status = 'published' AND category = ?");
+    $totalStmt->execute([$filterCategory]);
+} else {
+    $totalStmt = $pdo->prepare("SELECT COUNT(*) FROM blogs WHERE status = 'published'");
+    $totalStmt->execute();
+}
 $totalBlogs = (int) $totalStmt->fetchColumn();
 $totalPages = max(1, ceil($totalBlogs / $perPage));
 $page = min($page, $totalPages);
 $offset = ($page - 1) * $perPage;
 
-$stmt = $pdo->prepare("SELECT * FROM blogs WHERE status = 'published' ORDER BY created_at DESC LIMIT :limit OFFSET :offset");
-$stmt->bindValue(':limit', $perPage, PDO::PARAM_INT);
-$stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+if ($filterCategory) {
+    $stmt = $pdo->prepare("SELECT * FROM blogs WHERE status = 'published' AND category = :category ORDER BY created_at DESC LIMIT :limit OFFSET :offset");
+    $stmt->bindValue(':category', $filterCategory);
+    $stmt->bindValue(':limit', $perPage, PDO::PARAM_INT);
+    $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+} else {
+    $stmt = $pdo->prepare("SELECT * FROM blogs WHERE status = 'published' ORDER BY created_at DESC LIMIT :limit OFFSET :offset");
+    $stmt->bindValue(':limit', $perPage, PDO::PARAM_INT);
+    $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+}
 $stmt->execute();
 $allBlogs = $stmt->fetchAll();
 
@@ -52,6 +67,16 @@ include '../app/views/layout/header.php';
             <h2 class="blog-section-heading">Latest <span>Articles & Insights</span></h2>
             <p class="blog-section-desc">Insights, stories, and updates
                 from our journey of empowering communities and transforming lives.</p>
+            <?php if ($filterCategory): ?>
+            <div style="margin-top:15px;">
+                <span style="background:rgba(242,101,34,0.1);color:#f26522;padding:6px 16px;border-radius:20px;font-size:0.85rem;font-weight:600;">
+                    <i class="fas fa-tag" style="margin-right:4px;"></i> <?= htmlspecialchars($filterCategory) ?>
+                </span>
+                <a href="<?= url('blog.php') ?>" style="color:#999;font-size:0.85rem;margin-left:10px;text-decoration:none;">
+                    <i class="fas fa-times"></i> Clear filter
+                </a>
+            </div>
+            <?php endif; ?>
         </div>
 
         <?php if (empty($allBlogs)): ?>
@@ -102,16 +127,20 @@ include '../app/views/layout/header.php';
             <?php endforeach; ?>
         </div>
 
+        <?php
+        $catParam = $filterCategory ? '&category=' . urlencode($filterCategory) : '';
+        $blogPageUrl = function($pg) use ($catParam) { return url('blog.php?page=' . $pg . $catParam); };
+        ?>
         <?php if ($totalPages > 1): ?>
         <nav class="blog-pagination-nav">
             <ul class="blog-pagination">
                 <li>
-                    <a href="<?= url('blog.php?page=1') ?>" class="blog-page-link<?= $page === 1 ? ' disabled' : '' ?>">
+                    <a href="<?= $blogPageUrl(1) ?>" class="blog-page-link<?= $page === 1 ? ' disabled' : '' ?>">
                         <i class="fas fa-angle-double-left"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="<?= $page > 1 ? url('blog.php?page=' . ($page - 1)) : '#' ?>"
+                    <a href="<?= $page > 1 ? $blogPageUrl($page - 1) : '#' ?>"
                         class="blog-page-link<?= $page === 1 ? ' disabled' : '' ?>">
                         <i class="fas fa-angle-left"></i>
                     </a>
@@ -133,7 +162,7 @@ include '../app/views/layout/header.php';
                 <li><span class="blog-page-dots">&hellip;</span></li>
                 <?php endif; ?>
                 <li>
-                    <a href="<?= url('blog.php?page=' . $p) ?>"
+                    <a href="<?= $blogPageUrl($p) ?>"
                         class="blog-page-link<?= $p === $page ? ' blog-page-active' : '' ?>">
                         <?= $p ?>
                     </a>
@@ -142,13 +171,13 @@ include '../app/views/layout/header.php';
                 endforeach; ?>
 
                 <li>
-                    <a href="<?= $page < $totalPages ? url('blog.php?page=' . ($page + 1)) : '#' ?>"
+                    <a href="<?= $page < $totalPages ? $blogPageUrl($page + 1) : '#' ?>"
                         class="blog-page-link<?= $page === $totalPages ? ' disabled' : '' ?>">
                         <i class="fas fa-angle-right"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="<?= url('blog.php?page=' . $totalPages) ?>"
+                    <a href="<?= $blogPageUrl($totalPages) ?>"
                         class="blog-page-link<?= $page === $totalPages ? ' disabled' : '' ?>">
                         <i class="fas fa-angle-double-right"></i>
                     </a>

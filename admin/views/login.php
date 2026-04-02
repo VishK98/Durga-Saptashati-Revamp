@@ -40,7 +40,7 @@
             </div>
             <?php endif; ?>
 
-            <form method="POST" action="admin.php">
+            <form method="POST" action="admin">
                 <div class="form-group">
                     <label>Email</label>
                     <div class="input-wrapper">

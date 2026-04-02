@@ -77,21 +77,21 @@ $approvedCount = $pdo->query("SELECT COUNT(*) FROM volunteers WHERE status = 'ap
                             <a href="javascript:void(0)" onclick="viewVolunteer(<?= $v['id'] ?>)"><i
                                     class="fas fa-eye"></i> View</a>
                             <?php if ($v['status'] !== 'approved'): ?>
-                            <form method="POST" action="admin.php?page=volunteers" class="action-form-inline">
+                            <form method="POST" action="admin?page=volunteers" class="action-form-inline">
                                 <input type="hidden" name="action" value="approve_volunteer">
                                 <input type="hidden" name="volunteer_id" value="<?= $v['id'] ?>">
                                 <button type="submit"><i class="fas fa-check"></i> Approve</button>
                             </form>
                             <?php endif; ?>
                             <?php if ($v['status'] !== 'rejected'): ?>
-                            <form method="POST" action="admin.php?page=volunteers" class="action-form-inline">
+                            <form method="POST" action="admin?page=volunteers" class="action-form-inline">
                                 <input type="hidden" name="action" value="reject_volunteer">
                                 <input type="hidden" name="volunteer_id" value="<?= $v['id'] ?>">
                                 <button type="submit"><i class="fas fa-times"></i> Reject</button>
                             </form>
                             <?php endif; ?>
                             <div class="action-divider"></div>
-                            <form method="POST" action="admin.php?page=volunteers" class="action-form-inline">
+                            <form method="POST" action="admin?page=volunteers" class="action-form-inline">
                                 <input type="hidden" name="action" value="delete_volunteer">
                                 <input type="hidden" name="volunteer_id" value="<?= $v['id'] ?>">
                                 <button type="submit" class="action-delete"

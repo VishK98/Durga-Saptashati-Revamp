@@ -263,7 +263,7 @@ function ajaxAction(action, data, callback) {
     fd.append('action', action);
     for (var key in data) fd.append(key, data[key]);
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'admin.php?page=members');
+    xhr.open('POST', 'admin?page=members');
     xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
     xhr.onload = function() {
         try {

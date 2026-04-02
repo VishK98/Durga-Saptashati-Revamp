@@ -320,12 +320,13 @@ include '../app/views/layout/header.php';
                     $categories = $catStmt->fetchAll();
                     ?>
                     <?php foreach ($categories as $cat): ?>
-                    <div
-                        style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f3f4f6;">
+                    <a href="<?= url('blog.php?page=1&category=' . urlencode($cat['category'])) ?>"
+                        style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f3f4f6;text-decoration:none;transition:all 0.2s;"
+                        onmouseover="this.style.paddingLeft='6px'" onmouseout="this.style.paddingLeft='0'">
                         <span style="color:#555;font-size:0.88rem;"><?= htmlspecialchars($cat['category']) ?></span>
                         <span
                             style="background:rgba(242,101,34,0.1);color:#f26522;padding:2px 10px;border-radius:12px;font-size:0.75rem;font-weight:600;"><?= $cat['cnt'] ?></span>
-                    </div>
+                    </a>
                     <?php endforeach; ?>
                 </div>
             </div>
