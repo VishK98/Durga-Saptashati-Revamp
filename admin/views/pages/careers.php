@@ -8,8 +8,6 @@ $activeJobs = count(array_filter($careers, fn($c) => $c['status'] === 'active'))
 $shortlisted = count(array_filter($applications, fn($a) => $a['status'] === 'shortlisted'));
 ?>
 
-<h3 class="career-page-title">Career Management</h3>
-
 <div class="career-tabs">
     <button class="cr-tab active" onclick="switchCareerTab('openings')" id="crtab-openings">
         <i class="fas fa-briefcase"></i> Job Openings
@@ -149,16 +147,45 @@ $shortlisted = count(array_filter($applications, fn($a) => $a['status'] === 'sho
                 <input type="text" id="appSearch" placeholder="Search by name, email, position..."
                     oninput="filterApps()">
             </div>
-            <select id="filterAppStatus" onchange="filterApps()" class="cr-filter-select">
-                <option value="">All Status</option>
-                <option value="new">New</option>
-                <option value="reviewed">Reviewed</option>
-                <option value="shortlisted">Shortlisted</option>
-                <option value="rejected">Rejected</option>
-            </select>
-            <button
-                onclick="document.getElementById('appSearch').value='';document.getElementById('filterAppStatus').value='';filterApps();"
-                class="cr-filter-clear">
+            <input type="hidden" id="filterAppStatus" value="">
+            <div class="custom-select-wrap cr-filter-dropdown" id="filterAppStatusWrap">
+                <div class="custom-select-trigger" onclick="this.parentElement.classList.toggle('open')">
+                    <span id="filterAppStatusText" class="cs-placeholder">All Status</span>
+                    <span class="cs-icon"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="custom-select-options">
+                    <div class="custom-select-option selected" data-value="" onclick="selectAppFilter(this)">
+                        <span class="cs-opt-icon cs-opt-icon-all"><i class="fas fa-list"></i></span>
+                        <span class="cs-opt-text">All Status</span>
+                        <i class="fas fa-check cs-opt-check"></i>
+                    </div>
+                    <div class="custom-select-option" data-value="new" onclick="selectAppFilter(this)">
+                        <span class="cs-opt-icon" style="background:var(--info-light);color:#2563eb;"><i
+                                class="fas fa-envelope"></i></span>
+                        <span class="cs-opt-text">New</span>
+                        <i class="fas fa-check cs-opt-check"></i>
+                    </div>
+                    <div class="custom-select-option" data-value="reviewed" onclick="selectAppFilter(this)">
+                        <span class="cs-opt-icon" style="background:var(--warning-light);color:#d97706;"><i
+                                class="fas fa-eye"></i></span>
+                        <span class="cs-opt-text">Reviewed</span>
+                        <i class="fas fa-check cs-opt-check"></i>
+                    </div>
+                    <div class="custom-select-option" data-value="shortlisted" onclick="selectAppFilter(this)">
+                        <span class="cs-opt-icon" style="background:var(--success-light);color:#059669;"><i
+                                class="fas fa-star"></i></span>
+                        <span class="cs-opt-text">Shortlisted</span>
+                        <i class="fas fa-check cs-opt-check"></i>
+                    </div>
+                    <div class="custom-select-option" data-value="rejected" onclick="selectAppFilter(this)">
+                        <span class="cs-opt-icon" style="background:#fef2f2;color:#ef4444;"><i
+                                class="fas fa-times-circle"></i></span>
+                        <span class="cs-opt-text">Rejected</span>
+                        <i class="fas fa-check cs-opt-check"></i>
+                    </div>
+                </div>
+            </div>
+            <button onclick="clearAppFilters()" class="cr-filter-clear" id="appClearBtn">
                 <i class="fas fa-times"></i> Clear
             </button>
         </div>
@@ -169,8 +196,6 @@ $shortlisted = count(array_filter($applications, fn($a) => $a['status'] === 'sho
                     <th>Name</th>
                     <th>Email</th>
                     <th>Position</th>
-                    <th>Date</th>
-                    <th>Resume</th>
                     <th>Status</th>
                     <th class="cr-actions-th">Actions</th>
                 </tr>
@@ -178,7 +203,7 @@ $shortlisted = count(array_filter($applications, fn($a) => $a['status'] === 'sho
             <tbody>
                 <?php if (empty($applications)): ?>
                 <tr>
-                    <td colspan="8" class="cr-empty-row">No applications received yet.</td>
+                    <td colspan="6" class="cr-empty-row">No applications received yet.</td>
                 </tr>
                 <?php else: ?>
                 <?php foreach ($applications as $i => $a): ?>
@@ -187,15 +212,6 @@ $shortlisted = count(array_filter($applications, fn($a) => $a['status'] === 'sho
                     <td><strong><?= htmlspecialchars($a['name']) ?></strong></td>
                     <td><?= htmlspecialchars($a['email']) ?></td>
                     <td><?= htmlspecialchars($a['job_title'] ?? 'General') ?></td>
-                    <td class="cr-date-cell"><?= date('M d, Y', strtotime($a['created_at'])) ?></td>
-                    <td>
-                        <?php if ($a['resume']): ?>
-                        <a href="<?= asset('uploads/resumes/' . $a['resume']) ?>" target="_blank"
-                            class="cr-resume-link"><i class="fas fa-download"></i> View</a>
-                        <?php else: ?>
-                        <span class="cr-resume-none">-</span>
-                        <?php endif; ?>
-                    </td>
                     <td>
                         <span
                             class="status-badge <?= $a['status'] === 'new' ? 'status-new' : ($a['status'] === 'shortlisted' ? 'status-active' : ($a['status'] === 'reviewed' ? 'status-pending' : 'status-new')) ?>">
@@ -207,15 +223,11 @@ $shortlisted = count(array_filter($applications, fn($a) => $a['status'] === 'sho
                             <button class="action-trigger" onclick="toggleActionMenu(this)"><i
                                     class="fas fa-ellipsis-v"></i></button>
                             <div class="action-menu">
-                                <a href="javascript:void(0)"
-                                    onclick="ajaxCareerAction('update_application', {app_id: <?= $a['id'] ?>, status: 'reviewed'})"><i
-                                        class="fas fa-eye"></i> Mark Reviewed</a>
-                                <a href="javascript:void(0)"
-                                    onclick="ajaxCareerAction('update_application', {app_id: <?= $a['id'] ?>, status: 'shortlisted'})"><i
-                                        class="fas fa-star"></i> Shortlist</a>
-                                <a href="javascript:void(0)"
-                                    onclick="ajaxCareerAction('update_application', {app_id: <?= $a['id'] ?>, status: 'rejected'})"><i
-                                        class="fas fa-times"></i> Reject</a>
+                                <a href="javascript:void(0)" onclick="viewApplication(<?= $a['id'] ?>)"><i
+                                        class="fas fa-eye"></i> View</a>
+                                <a href="javascript:void(0)" onclick="editApplication(<?= $a['id'] ?>)"><i
+                                        class="fas fa-edit"></i> Edit</a>
+                                <div class="action-divider"></div>
                                 <a href="javascript:void(0)" class="cr-delete-link"
                                     onclick="showCareerConfirm('Delete this application?', function(){ ajaxCareerAction('delete_application', {app_id: <?= $a['id'] ?>}) })"><i
                                         class="fas fa-trash"></i> Delete</a>
@@ -356,4 +368,45 @@ $shortlisted = count(array_filter($applications, fn($a) => $a['status'] === 'sho
     </div>
 </div>
 
+<!-- View Application Modal -->
+<div id="viewAppModal" class="cr-modal-overlay">
+    <div class="cr-modal-box">
+        <button onclick="document.getElementById('viewAppModal').style.display='none'"
+            class="cr-modal-close">&times;</button>
+        <h4 class="cr-modal-title"><i class="fas fa-file-alt"></i> Application Details</h4>
+        <div id="viewAppContent"></div>
+    </div>
+</div>
+
+<!-- Edit Application Modal -->
+<div id="editAppModal" class="cr-modal-overlay">
+    <div class="cr-modal-box">
+        <button onclick="document.getElementById('editAppModal').style.display='none'"
+            class="cr-modal-close">&times;</button>
+        <h4 class="cr-modal-title"><i class="fas fa-edit"></i> Edit Application</h4>
+        <form id="editAppForm" onsubmit="return submitEditApp(event)">
+            <input type="hidden" id="editAppId">
+            <div class="cr-form-group">
+                <label class="cr-form-label">Status</label>
+                <select id="editAppStatus" class="cr-form-input">
+                    <option value="new">New</option>
+                    <option value="reviewed">Reviewed</option>
+                    <option value="shortlisted">Shortlisted</option>
+                    <option value="rejected">Rejected</option>
+                </select>
+            </div>
+            <button type="submit" class="cr-form-submit">Update Application</button>
+        </form>
+    </div>
+</div>
+
+<link rel="stylesheet" href="../admin/assets/css/queries.css">
+
+<?php
+$appDataJson = [];
+foreach ($applications as $a) { $appDataJson[$a['id']] = $a; }
+?>
+<script>
+var appData = <?= json_encode($appDataJson) ?>;
+</script>
 <script src="../admin/assets/js/careers.js"></script>

@@ -77,26 +77,7 @@ $pendingCount = $pdo->query("SELECT COUNT(*) FROM donations WHERE status = 'pend
                     <div class="action-wrap">
                         <button class="action-trigger" onclick="toggleActionMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
                         <div class="action-menu">
-                            <?php if ($d['status'] !== 'completed'): ?>
-                            <form method="POST" action="admin.php?page=donations" class="action-form-inline">
-                                <input type="hidden" name="action" value="complete_donation">
-                                <input type="hidden" name="donation_id" value="<?= $d['id'] ?>">
-                                <button type="submit"><i class="fas fa-check"></i> Mark Completed</button>
-                            </form>
-                            <?php endif; ?>
-                            <?php if ($d['status'] !== 'failed'): ?>
-                            <form method="POST" action="admin.php?page=donations" class="action-form-inline">
-                                <input type="hidden" name="action" value="fail_donation">
-                                <input type="hidden" name="donation_id" value="<?= $d['id'] ?>">
-                                <button type="submit"><i class="fas fa-times"></i> Mark Failed</button>
-                            </form>
-                            <?php endif; ?>
-                            <div class="action-divider"></div>
-                            <form method="POST" action="admin.php?page=donations" class="action-form-inline">
-                                <input type="hidden" name="action" value="delete_donation">
-                                <input type="hidden" name="donation_id" value="<?= $d['id'] ?>">
-                                <button type="submit" class="action-delete" onclick="return confirm('Delete this donation record?')"><i class="fas fa-trash"></i> Delete</button>
-                            </form>
+                            <a href="javascript:void(0)" onclick="viewDonation(<?= $d['id'] ?>)"><i class="fas fa-eye"></i> View</a>
                         </div>
                     </div>
                 </td>
@@ -106,3 +87,57 @@ $pendingCount = $pdo->query("SELECT COUNT(*) FROM donations WHERE status = 'pend
         </tbody>
     </table>
 </div>
+
+<!-- View Donation Modal -->
+<div id="viewDonationModal" class="dn-modal-overlay">
+    <div class="dn-modal-box">
+        <button onclick="document.getElementById('viewDonationModal').style.display='none'" class="dn-modal-close">&times;</button>
+        <h3 class="dn-modal-title"><i class="fas fa-donate"></i> Donation Details</h3>
+        <div id="viewDonationContent"></div>
+    </div>
+</div>
+
+<?php
+$donationDataJson = [];
+foreach ($donations as $d) {
+    $donationDataJson[$d['id']] = $d;
+}
+?>
+
+<link rel="stylesheet" href="../admin/assets/css/queries.css">
+<script>
+var donationData = <?= json_encode($donationDataJson) ?>;
+
+function viewDonation(id) {
+    var d = donationData[id];
+    if (!d) return;
+    var statusClass = d.status === 'completed' ? 'status-active' : (d.status === 'pending' ? 'status-pending' : 'status-new');
+    var html = '<div class="qr-view-section">' +
+        '<div class="qr-view-grid">' +
+        '<div><small class="qr-view-label">Donor Name</small><p class="qr-view-value-bold">' + escHtml(d.name) + '</p></div>' +
+        '<div><small class="qr-view-label">Email</small><p class="qr-view-value">' + escHtml(d.email || '-') + '</p></div>' +
+        '<div><small class="qr-view-label">Phone</small><p class="qr-view-value">' + escHtml(d.phone || '-') + '</p></div>' +
+        '<div><small class="qr-view-label">Amount</small><p class="qr-view-value-bold dn-amount">\u20B9' + Number(d.amount).toLocaleString('en-IN') + '</p></div>' +
+        '</div></div>' +
+        '<div class="qr-view-section">' +
+        '<div class="qr-view-grid">' +
+        '<div><small class="qr-view-label">Payment Method</small><p class="qr-view-value">' + escHtml(d.payment_method || '-') + '</p></div>' +
+        '<div><small class="qr-view-label">Transaction ID</small><p class="qr-view-value">' + escHtml(d.transaction_id || '-') + '</p></div>' +
+        '<div><small class="qr-view-label">Date</small><p class="qr-view-value">' + d.created_at + '</p></div>' +
+        '<div><small class="qr-view-label">Status</small><p class="qr-view-value"><span class="status-badge ' + statusClass + '">' + d.status.charAt(0).toUpperCase() + d.status.slice(1) + '</span></p></div>' +
+        '</div></div>' +
+        (d.notes ? '<div><small class="qr-view-label">Notes</small><p class="qr-view-message">' + escHtml(d.notes) + '</p></div>' : '');
+    document.getElementById('viewDonationContent').innerHTML = html;
+    document.getElementById('viewDonationModal').style.display = 'flex';
+}
+
+function escHtml(str) {
+    var div = document.createElement('div');
+    div.textContent = str || '';
+    return div.innerHTML;
+}
+
+document.getElementById('viewDonationModal').addEventListener('click', function(e) {
+    if (e.target === this) this.style.display = 'none';
+});
+</script>

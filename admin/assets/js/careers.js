@@ -94,6 +94,40 @@ document.getElementById('careerConfirmBtn').addEventListener('click', function()
     _careerConfirmCb = null;
 });
 
+// Custom filter dropdown
+function selectAppFilter(el) {
+    var val = el.dataset.value;
+    var wrap = el.closest('.custom-select-wrap');
+    var textEl = document.getElementById('filterAppStatusText');
+    document.getElementById('filterAppStatus').value = val;
+    textEl.textContent = el.querySelector('.cs-opt-text').textContent;
+    textEl.className = val ? '' : 'cs-placeholder';
+    wrap.querySelectorAll('.custom-select-option').forEach(function(o) { o.classList.remove('selected'); });
+    el.classList.add('selected');
+    wrap.classList.remove('open');
+    filterApps();
+}
+
+// Close filter dropdown on outside click
+document.addEventListener('click', function(e) {
+    document.querySelectorAll('.cr-filter-dropdown.open').forEach(function(wrap) {
+        if (!wrap.contains(e.target)) wrap.classList.remove('open');
+    });
+});
+
+function updateAppClearBtn() {
+    var search = document.getElementById('appSearch').value;
+    var status = document.getElementById('filterAppStatus').value;
+    var btn = document.getElementById('appClearBtn');
+    if (btn) {
+        if (search || status) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    }
+}
+
 // Filter Applications
 function filterApps() {
     var search = document.getElementById('appSearch').value.toLowerCase();
@@ -119,10 +153,68 @@ function filterApps() {
             row.style.display = 'none';
         }
     });
+    updateAppClearBtn();
+}
+
+function clearAppFilters() {
+    document.getElementById('appSearch').value = '';
+    document.getElementById('filterAppStatus').value = '';
+    var textEl = document.getElementById('filterAppStatusText');
+    textEl.textContent = 'All Status';
+    textEl.className = 'cs-placeholder';
+    var wrap = document.getElementById('filterAppStatusWrap');
+    wrap.querySelectorAll('.custom-select-option').forEach(function(o) { o.classList.remove('selected'); });
+    wrap.querySelector('.custom-select-option[data-value=""]').classList.add('selected');
+    filterApps();
+}
+
+// View Application
+function viewApplication(id) {
+    var a = appData[id];
+    if (!a) return;
+    var statusClass = a.status === 'new' ? 'status-new' : (a.status === 'shortlisted' ? 'status-active' : (a.status === 'reviewed' ? 'status-pending' : 'status-new'));
+    var html = '<div class="qr-view-section">' +
+        '<div class="qr-view-grid">' +
+        '<div><small class="qr-view-label">Name</small><p class="qr-view-value-bold">' + escHtml(a.name) + '</p></div>' +
+        '<div><small class="qr-view-label">Email</small><p class="qr-view-value">' + escHtml(a.email) + '</p></div>' +
+        '<div><small class="qr-view-label">Phone</small><p class="qr-view-value">' + escHtml(a.phone || '-') + '</p></div>' +
+        '<div><small class="qr-view-label">Position</small><p class="qr-view-value">' + escHtml(a.job_title || 'General') + '</p></div>' +
+        '<div><small class="qr-view-label">Date</small><p class="qr-view-value">' + a.created_at + '</p></div>' +
+        '<div><small class="qr-view-label">Status</small><p class="qr-view-value"><span class="status-badge ' + statusClass + '">' + a.status.charAt(0).toUpperCase() + a.status.slice(1) + '</span></p></div>' +
+        '</div></div>' +
+        (a.resume ? '<div class="qr-view-section"><small class="qr-view-label">Resume</small><p class="qr-view-value"><a href="' + a.resume + '" target="_blank" class="cr-resume-link"><i class="fas fa-download"></i> Download Resume</a></p></div>' : '') +
+        (a.cover_letter ? '<div><small class="qr-view-label">Cover Letter</small><p class="qr-view-message">' + escHtml(a.cover_letter) + '</p></div>' : '');
+    document.getElementById('viewAppContent').innerHTML = html;
+    document.getElementById('viewAppModal').style.display = 'flex';
+}
+
+// Edit Application
+function editApplication(id) {
+    var a = appData[id];
+    if (!a) return;
+    document.getElementById('editAppId').value = a.id;
+    document.getElementById('editAppStatus').value = a.status || 'new';
+    document.getElementById('editAppModal').style.display = 'flex';
+}
+
+function submitEditApp(e) {
+    e.preventDefault();
+    ajaxCareerAction('update_application', {
+        app_id: document.getElementById('editAppId').value,
+        status: document.getElementById('editAppStatus').value
+    });
+    document.getElementById('editAppModal').style.display = 'none';
+    return false;
+}
+
+function escHtml(str) {
+    var div = document.createElement('div');
+    div.textContent = str || '';
+    return div.innerHTML;
 }
 
 // Close modals on backdrop click
-['addJobModal', 'viewJobModal', 'editJobModal', 'careerConfirmModal'].forEach(function(id) {
+['addJobModal', 'viewJobModal', 'editJobModal', 'careerConfirmModal', 'viewAppModal', 'editAppModal'].forEach(function(id) {
     var el = document.getElementById(id);
     if (el) el.addEventListener('click', function(e) { if (e.target === this) this.style.display = 'none'; });
 });

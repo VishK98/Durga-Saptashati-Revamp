@@ -1,0 +1,21 @@
+/* ===== Admin Volunteers Page Styles ===== */
+
+/* Stats Grid */
+.vl-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.vl-stat-icon-accent { background: var(--accent-light); color: var(--accent); }
+.vl-stat-icon-warning { background: var(--warning-light); color: #d97706; }
+.vl-stat-icon-success { background: var(--success-light); color: #059669; }
+
+/* Header */
+.vl-header-icon { color: var(--accent); margin-right: 8px; }
+
+/* Table */
+.vl-actions-th { text-align: right; }
+.vl-actions-td { text-align: right; }
+.vl-empty-row { text-align: center; padding: 40px; color: #999; }
