@@ -1,0 +1,12 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Serve admin assets directly (not through public/)
+    RewriteCond %{REQUEST_URI} ^/admin/assets/
+    RewriteRule ^(.*)$ /$1 [L]
+
+    # Redirect everything else to the public folder
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteCond %{REQUEST_URI} !^/admin/assets/
+    RewriteRule ^(.*)$ /public/$1 [L]
+</IfModule>
