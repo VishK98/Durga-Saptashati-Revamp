@@ -3,7 +3,7 @@
 <?php
 $adminData = null;
 if (isset($_SESSION['admin_id'])) {
-    $stmt = $pdo->prepare("SELECT name, email FROM admin_users WHERE id = ?");
+    $stmt = $pdo->prepare("SELECT name, email, phone, address FROM admin_users WHERE id = ?");
     $stmt->execute([$_SESSION['admin_id']]);
     $adminData = $stmt->fetch();
 }
@@ -40,19 +40,19 @@ if (isset($_SESSION['admin_id'])) {
             <form method="POST" action="admin.php?page=settings&action=update_profile">
                 <div class="s-field">
                     <label>Full Name</label>
-                    <input type="text" name="name" value="<?= htmlspecialchars($adminData['name'] ?? 'Admin') ?>">
+                    <input type="text" name="name" value="<?= htmlspecialchars($adminData['name'] ?? '') ?>" required>
                 </div>
                 <div class="s-field">
                     <label>Email Address</label>
-                    <input type="email" name="email" value="<?= htmlspecialchars($adminData['email'] ?? '') ?>">
+                    <input type="email" name="email" value="<?= htmlspecialchars($adminData['email'] ?? '') ?>" required>
                 </div>
                 <div class="s-field">
                     <label>Phone Number</label>
-                    <input type="text" name="phone" value="+91 9289088161">
+                    <input type="text" name="phone" value="<?= htmlspecialchars($adminData['phone'] ?? '') ?>" placeholder="e.g. +91 9876543210">
                 </div>
                 <div class="s-field">
                     <label>Address</label>
-                    <input type="text" name="address" value="Dwarka, New Delhi, India">
+                    <input type="text" name="address" value="<?= htmlspecialchars($adminData['address'] ?? '') ?>" placeholder="e.g. Dwarka, New Delhi">
                 </div>
                 <button type="submit" class="btn-admin btn-primary st-btn-save">
                     <i class="fas fa-save"></i> Save Changes

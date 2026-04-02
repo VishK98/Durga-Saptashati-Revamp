@@ -120,8 +120,8 @@
                                     <span class="rating-count">Rate us on Google</span>
                                 </div>
                             </div>
-                            <a href="https://search.google.com/local/writereview?placeid=<?= htmlspecialchars(GOOGLE_PLACE_ID) ?>" target="_blank" rel="noopener noreferrer"
-                                class="rating-link">
+                            <a href="https://search.google.com/local/writereview?placeid=<?= htmlspecialchars(GOOGLE_PLACE_ID) ?>"
+                                target="_blank" rel="noopener noreferrer" class="rating-link">
                                 <i class="fas fa-external-link-alt"></i>
                                 Write a Review
                             </a>
@@ -151,16 +151,17 @@
                         <div class="newsletter-section">
                             <p class="newsletter-text">Subscribe to our newsletter for updates on our programs and
                                 impact.</p>
-                            <form id="newsletter-form mt-3" action="<?php echo url('newsletter.php'); ?>" method="POST"
-                                class="newsletter-form">
+                            <form id="newsletterForm" class="newsletter-form"
+                                data-url="<?php echo url('api/newsletter.php'); ?>">
                                 <div class="input-group">
-                                    <input type="email" name="email" class="form-control newsletter-input"
-                                        placeholder="Your email address" required>
-                                    <button type="submit" class="newsletter-btn">
+                                    <input type="email" name="email" id="newsletterEmail"
+                                        class="form-control newsletter-input" placeholder="Your email address" required>
+                                    <button type="submit" class="newsletter-btn" id="newsletterBtn">
                                         <i class="fas fa-paper-plane"></i>
                                     </button>
                                 </div>
                             </form>
+                            <div id="newsletterMsg" class="newsletter-msg"></div>
                         </div>
 
                         <!-- Social Media -->
@@ -432,6 +433,22 @@
 
 .newsletter-btn:hover {
     background: #e55a1f;
+}
+
+.newsletter-msg {
+    margin-top: 8px;
+    font-size: 0.8rem;
+    display: none;
+}
+
+.newsletter-msg.success {
+    color: #10b981;
+    display: block;
+}
+
+.newsletter-msg.error {
+    color: #ef4444;
+    display: block;
 }
 
 /* Social Media */
@@ -904,6 +921,51 @@ function removeToast(el) {
         if (el.parentElement) el.parentElement.removeChild(el);
     }, 300);
 }
+</script>
+
+<script>
+// Newsletter AJAX
+(function() {
+    var form = document.getElementById('newsletterForm');
+    if (!form) return;
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var email = document.getElementById('newsletterEmail').value.trim();
+        var btn = document.getElementById('newsletterBtn');
+        var msg = document.getElementById('newsletterMsg');
+        if (!email) return;
+        var origHTML = btn.innerHTML;
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+        msg.className = 'newsletter-msg';
+        msg.textContent = '';
+        var fd = new FormData();
+        fd.append('email', email);
+        fetch(form.getAttribute('data-url'), {
+                method: 'POST',
+                body: fd
+            })
+            .then(function(r) {
+                return r.json();
+            })
+            .then(function(data) {
+                btn.disabled = false;
+                btn.innerHTML = origHTML;
+                msg.textContent = data.message;
+                msg.className = 'newsletter-msg ' + (data.success ? 'success' : 'error');
+                if (data.success) {
+                    document.getElementById('newsletterEmail').value = '';
+                    showToast(data.message, 'success');
+                }
+            })
+            .catch(function() {
+                btn.disabled = false;
+                btn.innerHTML = origHTML;
+                msg.textContent = 'Network error. Please try again.';
+                msg.className = 'newsletter-msg error';
+            });
+    });
+})();
 </script>
 
 <?php

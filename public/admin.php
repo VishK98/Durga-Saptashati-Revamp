@@ -235,10 +235,12 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_GET['action'] ?? '') === 'update_profile' && ($_GET['page'] ?? '') === 'settings') {
     $name = trim($_POST['name'] ?? '');
     $email = trim($_POST['email'] ?? '');
+    $phone = trim($_POST['phone'] ?? '');
+    $address = trim($_POST['address'] ?? '');
 
     if (!empty($name) && !empty($email)) {
-        $stmt = $pdo->prepare("UPDATE admin_users SET name = ?, email = ? WHERE id = ?");
-        $stmt->execute([$name, $email, $_SESSION['admin_id']]);
+        $stmt = $pdo->prepare("UPDATE admin_users SET name = ?, email = ?, phone = ?, address = ? WHERE id = ?");
+        $stmt->execute([$name, $email, $phone, $address, $_SESSION['admin_id']]);
         $_SESSION['admin_name'] = $name;
         $_SESSION['admin_email'] = $email;
         $_SESSION['settings_success'] = 'Profile updated successfully.';
@@ -967,6 +969,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'toggl
     $_SESSION['toast_success'] = 'News status updated.';
     header('Location: admin.php?page=news');
     exit;
+}
+
+// Handle subscriber actions
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
+    $subAction = $_POST['action'];
+    $subId = (int)($_POST['subscriber_id'] ?? 0);
+
+    if ($subAction === 'unsubscribe' && $subId) {
+        $pdo->prepare("UPDATE subscribers SET status = 'unsubscribed' WHERE id = ?")->execute([$subId]);
+        $_SESSION['toast_success'] = 'Subscriber unsubscribed.';
+        header('Location: admin.php?page=subscribers');
+        exit;
+    }
+    if ($subAction === 'resubscribe' && $subId) {
+        $pdo->prepare("UPDATE subscribers SET status = 'active' WHERE id = ?")->execute([$subId]);
+        $_SESSION['toast_success'] = 'Subscriber reactivated.';
+        header('Location: admin.php?page=subscribers');
+        exit;
+    }
+    if ($subAction === 'delete_subscriber' && $subId) {
+        $pdo->prepare("DELETE FROM subscribers WHERE id = ?")->execute([$subId]);
+        $_SESSION['toast_success'] = 'Subscriber deleted.';
+        header('Location: admin.php?page=subscribers');
+        exit;
+    }
 }
 
 // Route to correct page

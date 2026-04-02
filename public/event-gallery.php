@@ -93,8 +93,6 @@ try {
                     <h6
                         style="color:#1a1b2e;font-weight:600;font-size:0.9rem;margin:0 0 4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">
                         <?= htmlspecialchars($img['title'] ?: 'Untitled') ?></h6>
-                    <small
-                        style="color:#999;font-size:0.78rem;"><?= date('M d, Y', strtotime($img['created_at'])) ?></small>
                 </div>
             </div>
             <?php endforeach; ?>
@@ -164,7 +162,7 @@ function updateLightbox() {
     var d = galleryData[currentIndex];
     document.getElementById('lightboxImg').src = d.src;
     document.getElementById('lightboxTitle').textContent = d.title;
-    document.getElementById('lightboxInfo').textContent = d.category + ' \u2022 ' + d.date;
+    document.getElementById('lightboxInfo').textContent = d.category;
 }
 
 function prevImage() {
