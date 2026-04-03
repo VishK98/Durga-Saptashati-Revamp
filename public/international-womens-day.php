@@ -1,9 +1,9 @@
 <?php
 require_once '../app/config/config.php';
 
-$pageTitle = "International Women's Day Celebration";
-$pageDescription = "Durga Saptashati Foundation's International Women's Day Celebration - Inspiring inclusion through empowerment workshops, felicitations, and honoring women's achievements.";
-$pageKeywords = "international womens day, women empowerment, celebration, inspire inclusion, women's achievements, Durga Saptashati Foundation";
+$pageTitle = "Durga Saptashati NGO in Delhi: International Women’s day Celebration in Dwarka.";
+$pageDescription = "Durga Saptashati NGO in Dwarka is dedicated to improving the living conditions of marginalised women in Delhi. Although we celebrate the power of women every day, celebrating International women’s day on 8th March every year- has its own charm. We conduct various fun activities, cultural programmes, and competitions to promote women’s empowerment and spread awareness about women’s safety and education in Delhi.";
+$pageKeywords = "Durga Saptashati NGO, Best NGO in Dwarka, Delhi, International Women’s day celebration in Dwarka,InternationalWomenDayInDwarka, InternationalWomenDay, Internationalwomendaycelebrationindwarka, CelebrationofInternationalWomenDay, Internationalwomendaycelebration,Durga Saptashati,Durga Saptashati NGO,Durga Saptashati foundation,DurgaSaptashati,International Women’s Day celebrated in Dwarka, Women’s Rights Non-Profit Organization in Delhi";
 
 include '../app/views/layout/header.php';
 ?>
@@ -116,8 +116,8 @@ include '../app/views/layout/header.php';
                 <div class="iwd-hero-visual">
                     <div class="iwd-pose-showcase">
                         <div class="iwd-pose-card iwd-main-pose">
-                            <img src="<?= url('assets/images/woman-day/woman.jpeg') ?>"
-                                alt="Women's Day Celebration" class="iwd-pose-image">
+                            <img src="<?= url('assets/images/woman-day/woman.jpeg') ?>" alt="Women's Day Celebration"
+                                class="iwd-pose-image">
                             <div class="iwd-pose-overlay">
                                 <span class="iwd-pose-name">Women's Day</span>
                                 <span class="iwd-pose-benefit">Inspire Inclusion</span>
@@ -126,12 +126,10 @@ include '../app/views/layout/header.php';
 
                         <div class="iwd-floating-poses">
                             <div class="iwd-mini-pose iwd-pose-1">
-                                <img src="<?= url('assets/images/woman-day/woman-1.jpeg') ?>"
-                                    alt="Women empowerment">
+                                <img src="<?= url('assets/images/woman-day/woman-1.jpeg') ?>" alt="Women empowerment">
                             </div>
                             <div class="iwd-mini-pose iwd-pose-2">
-                                <img src="<?= url('assets/images/woman-day/woman-2.jpeg') ?>"
-                                    alt="Women celebration">
+                                <img src="<?= url('assets/images/woman-day/woman-2.jpeg') ?>" alt="Women celebration">
                             </div>
                         </div>
 
@@ -236,7 +234,8 @@ include '../app/views/layout/header.php';
 
 <!-- JavaScript -->
 <script>
-var iwdData = <?= json_encode(array_map(function($img) { return ['src' => url('assets/images/woman-day/' . $img['file']), 'title' => $img['title']]; }, $iwdImages)) ?>;
+var iwdData =
+    <?= json_encode(array_map(function($img) { return ['src' => url('assets/images/woman-day/' . $img['file']), 'title' => $img['title']]; }, $iwdImages)) ?>;
 var iwdIdx = 0;
 
 function openIwdLightbox(i) {

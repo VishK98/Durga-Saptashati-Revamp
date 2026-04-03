@@ -1,9 +1,9 @@
 <?php
 require_once '../app/config/config.php';
 
-$pageTitle = "Painting Competition";
-$pageDescription = "Nurturing creativity in children through inter-school painting competitions, art workshops, and exhibitions organized by Durga Saptashati Foundation.";
-$pageKeywords = "painting competition, art competition, children creativity, inter-school painting, art workshops, art exhibition, talent recognition, Durga Saptashati Foundation";
+$pageTitle = "Durga Saptashati NGO in Delhi: Painting Competition for underprivileged children.";
+$pageDescription = "Durga Saptashati is a non-profit charity organisation in Dwarka working for the education of underprivileged children. To give them a balanced chance at self-development, we conduct painting competitions to hone their talents and develop their creative abilities. You can help these kids realize their potential and get the recognition they deserve by sponsoring our painting competitions, awards, prizes or gifts.";
+$pageKeywords = "Durga Saptashati NGO, Top NGO in Dwarka, Delhi, NGO for underprivileged children,PaintingCompetitionInDwarka,DurgaSaptashatiPaintingCompetitionInDwarka,DwarkaPaintingCompetitionDurgaSaptashati,PaintingCompetition,PaintingCompetitionNGOInDwarkaDelhi,Durga Saptashati,Durga Saptashati NGO,Durga Saptashati foundation,DurgaSaptashati,Painting Competition for Underprivileged Children in Dwarka, Painting Competition NGO in Dwarka Delhi, Painting Competition for Underprivileged Children";
 
 include '../app/views/layout/header.php';
 ?>
@@ -114,8 +114,8 @@ include '../app/views/layout/header.php';
                 <div class="paint-hero-visual">
                     <div class="paint-showcase">
                         <div class="paint-card paint-main-card">
-                            <img src="<?= url('assets/images/painting/painting.webp') ?>"
-                                alt="Painting Competition" class="paint-card-image">
+                            <img src="<?= url('assets/images/painting/painting.webp') ?>" alt="Painting Competition"
+                                class="paint-card-image">
                             <div class="paint-card-overlay">
                                 <span class="paint-card-name">Colours of Imagination</span>
                                 <span class="paint-card-detail">Inter-School Competition</span>
@@ -124,12 +124,10 @@ include '../app/views/layout/header.php';
 
                         <div class="paint-floating-cards">
                             <div class="paint-mini-card paint-mini-1">
-                                <img src="<?= url('assets/images/painting/painting-1.webp') ?>"
-                                    alt="Art Workshop">
+                                <img src="<?= url('assets/images/painting/painting-1.webp') ?>" alt="Art Workshop">
                             </div>
                             <div class="paint-mini-card paint-mini-2">
-                                <img src="<?= url('assets/images/painting/painting-2.webp') ?>"
-                                    alt="Art Exhibition">
+                                <img src="<?= url('assets/images/painting/painting-2.webp') ?>" alt="Art Exhibition">
                             </div>
                         </div>
 

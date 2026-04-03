@@ -1,9 +1,9 @@
 <?php
 require_once '../app/config/config.php';
 
-$pageTitle = "Women Empowerment Programs in Dwarka, Delhi | Saptashati";
-$pageDescription = "Saptashati Foundation runs self-defence training, vocational programs, and safety workshops to empower women in Dwarka and Delhi/NCR.";
-$pageKeywords = "women empowerment Dwarka, self defence training Delhi, women vocational programs, women safety workshop, Saptashati Foundation";
+$pageTitle = "NGO working for women empowerment | Durga Saptashati Foundation";
+$pageDescription = "Durga Saptashati NGOs working towards empowering women in different ways–from helping victims of crime to providing rural women with modern-day jobs. NGOs working for women empowerment to ensure that all women have the opportunity to be free from violence.";
+$pageKeywords = "Women Empowerment vocational training In Dwarka,Women Empowerment Self defence In Dwarka,Women Empowerment Selfdefence Training In Dwarka,NGOs, women empowerment India, listicle, volunteers and NGOs, women empowerment, Dwarka, Delhi, Durga Saptashati, Durga Saptashati, Women empowerment , NGO Women empowerment,Durga Saptashati,Durga Saptashati NGO,Durga Saptashati foundation,DurgaSaptashati,Top Women Empowerment NGO In Dwarka,Top Women Empowerment Services In Dwarka,Empowerment Of Women In Dwarka,NGO For Women Empowerment In Delhi,Women NGOs And Welfare Services In Delhi,Women NGOs and Welfare Services in Delhi, Women Empowerment & Safety NGO in Dwarka, NGO for Women Empowerment in Delhi, Empowerment of Women in Dwarka, Top Women Empowerment Services in Dwarka, Top Women Empowerment NGO in Dwarka, Women's Empowerment in Dwarka, Women's Empowerment in Dwarka Delhi, Women's Empowerment, Women Empowerment Vocational Training in Dwarka, Women Empowerment Self Defence in Dwarka, Women Empowerment Selfdefence Training in Dwarka, Women's Welfare NGO in Dwarka, NGOs for Women in Dwarka Delhi";
 
 include '../app/views/layout/header.php';
 ?>
@@ -70,7 +70,6 @@ include '../app/views/layout/header.php';
                     <h1 class="we-hero-title">
                         Women's
                         <span class="we-highlight">Empowerment</span>
-                        Initiative
                     </h1>
 
                     <p class="we-hero-desc">

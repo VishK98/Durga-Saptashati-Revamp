@@ -1,9 +1,9 @@
 <?php
 require_once '../app/config/config.php';
 
-$pageTitle = "International Yoga Day Celebration";
-$pageDescription = "Join Durga Saptashati Foundation's International Yoga Day celebration promoting holistic wellness, mindfulness, and community harmony through ancient yogic practices and modern wellness techniques.";
-$pageKeywords = "International Yoga Day, yoga celebration, wellness event, mindfulness, holistic health, yoga practice, meditation, community wellness, Durga Saptashati Foundation, yoga therapy";
+$pageTitle = "Durga Saptashati Foundation in Delhi: Yoga Day Celebration in Dwarka.";
+$pageDescription = "Durga Saptashati teaches yoga to economically underprivileged people, making sure that all members of society can experience its benefits. That’s why Yoga Day celebration on 21st June every year at our NGO in Dwarka is- always a big event. We always try our best to spread awareness about Yoga, its positive impacts on health, and the importance of exercise in general.";
+$pageKeywords = "Durga Saptashati NGO, Best NGO in Dwarka, Delhi, Yoga Day celebration in Dwarka, YogaDaycelebrationinDelhi, YogaDaycelebration, CelebrateYogaDayNGO, CelebrateYogaDay, InternationalYogaDayCelebration, CelebrationInternationalDayYoga,Durga Saptashati,Durga Saptashati NGO,Durga Saptashati foundation,DurgaSaptashati,NGO celebrates International Yoga Day in Dwarka Delhi, Yoga Day Celebration in Dwarka Delhi, Yoga Day Celebrations in Delhi, Celebrations Yoga Day in Dwarka Delhi, International Yoga Day Celebration in Dwarka Delhi";
 
 include '../app/views/layout/header.php';
 ?>
@@ -214,7 +214,8 @@ include '../app/views/layout/header.php';
                 </div>
                 <div style="padding:14px 16px;">
                     <h6 style="color:#1a1b2e;font-weight:600;font-size:0.9rem;margin:0;">
-                        <?= htmlspecialchars($img['title']) ?></h6>
+                        <?= htmlspecialchars($img['title']) ?>
+                    </h6>
                 </div>
             </div>
             <?php endforeach; ?>
@@ -247,7 +248,8 @@ include '../app/views/layout/header.php';
 <!-- JavaScript -->
 <script>
 var yogaData =
-    <?= json_encode(array_map(function($img) { return ['src' => url('assets/images/yoga-day/' . $img['file']), 'title' => $img['title']]; }, $yogaImages)) ?>;
+    <?= json_encode(array_map(function ($img) {
+            return ['src' => url('assets/images/yoga-day/' . $img['file']), 'title' => $img['title']]; }, $yogaImages)) ?>;
 var yogaIdx = 0;
 
 function openYogaLightbox(i) {

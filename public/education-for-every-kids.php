@@ -1,9 +1,10 @@
 <?php
 require_once '../app/config/config.php';
 
-$pageTitle = "Free Education for Underprivileged Children in Delhi | Saptashati";
-$pageDescription = "Providing free quality education to underprivileged children in Delhi through learning centers, school support, and digital literacy programs.";
-$pageKeywords = "free education Delhi, underprivileged children education, learning centers, school support, digital literacy, Saptashati Foundation";
+$pageTitle = "Durga Saptashati Foundation Child Education NGO in Dwarka| Volunteer with us!";
+$pageDescription = "Durga Saptashati Foundation is a leading child education NGO based in Dwarka, Delhi. Every day we try to bridge the education gap among the underprivileged children in Delhi. We work as an after-school support group to bridge the educational & moral gap between these children and their affluent peers. If you wish to help, kindly visit our website to know more.";
+$pageKeywords = "Best NGO Delhi, Education NGO, Volunteer Delhi, Volunteer Delhi, Volunteer NCR, Top 100 NGO India, , NGO underprivileged children, NGO underprivileged children education NCR, NGO underprivileged children education Delhi, NGO underprivileged children education Delhi, NGO schools in Delhi, NGO schools in NCR, NGO schools in Delhi, NGO girl child education, NGO girl education, NGO mentor program, School fees NGO, Distribute food NGO, Distribute snacks NGO, Celebrate with NGO, Celebrate birthday with underprivileged kids, Top 10 NGOs NCR, Top 10 NGOs Delhi, Charity NGO, Charity education, online donation, online donation noida, online donations delhi, donations for children, donations for children noida, charity donations, charity donations dwarka, ngo donations, feed the hungry, feed the hungry delhi, NGO for Child Education, NGO for Child Education dwarka, corona virus donation dwarka, covid19 Donation delhi, NGO working on COVID, NGO working on COVID delhi, NGO donations for Conorna virus, covid donation, covid donation delhi,Top NGOs in Delhi, Durga Saptashati NGO in Dwarka, Delhi, Best Food Health NGO in Delhi, food donation in Dwarka, No people hungry  ngo in Dwarka, No people hungry,Dwarka, Delhi, Durga Saptashati
+,Durga Saptashati,Durga Saptashati NGO,Durga Saptashati foundation,DurgaSaptashati,Education for Every Kids in Dwarka Delhi, NGOs for Kids in Dwarka Delhi, Education for Everyone in Dwarka Delhi, Top NGOs for Education in Dwarka Delhi, Education for Every Kids in Dwarka";
 
 include '../app/views/layout/header.php';
 ?>
@@ -153,7 +154,8 @@ include '../app/views/layout/header.php';
                 </div>
                 <div style="padding:14px 16px;">
                     <h6 style="color:#1a1b2e;font-weight:600;font-size:0.9rem;margin:0;">
-                        <?= htmlspecialchars($img['title']) ?></h6>
+                        <?= htmlspecialchars($img['title']) ?>
+                    </h6>
                 </div>
             </div>
             <?php endforeach; ?>
@@ -185,7 +187,9 @@ include '../app/views/layout/header.php';
 
 <script>
 var eduData =
-    <?= json_encode(array_map(function($img) { return ['src' => url('assets/images/education-for/' . $img['file']), 'title' => $img['title']]; }, $eduImages)) ?>;
+    <?= json_encode(array_map(function ($img) {
+            return ['src' => url('assets/images/education-for/' . $img['file']), 'title' => $img['title']];
+        }, $eduImages)) ?>;
 var eduIdx = 0;
 
 function openEduLightbox(i) {

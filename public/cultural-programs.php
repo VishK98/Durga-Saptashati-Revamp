@@ -1,8 +1,8 @@
 <?php
 require_once '../app/config/config.php';
-$pageTitle = "Cultural Programs";
-$pageDescription = "Celebrate heritage with Durga Saptashati Foundation's traditional performances, cultural events, and community celebrations.";
-$pageKeywords = "cultural programs, traditional performances, cultural events, heritage celebration, community festivals, Durga Saptashati Foundation";
+$pageTitle = "Durga Saptashati NGO Cultural Programmes in Dwarka, Delhi.";
+$pageDescription = "Sandhya Singh, founder of Durga Saptashati NGO in Delhi believes cultural activities are integral to an individual’s development. They instil a sense of belonging, teach civic responsibilities, and also help in busting social myths. Therefore, we organise various cultural programmes at periodic intervals. Catch glimpses of beautiful folk dances, rangoli decorations, drawings, paintings, etc in our images gallery. Join us!";
+$pageKeywords = "Durga Saptashati NGO, Top NGO in Dwarka, Delhi, NGO for underprivileged children,CulturalFolkDancesCompetitionsInDwarka,CulturalDrawingCompetitionsInDwarka,RangoliMakingCompetitionsInDwarka,IndependencedayCelebrationInDwarka,CulturalSingingCompetitionsInDwarka,FestivalCelebrationsInDwarka,Durga Saptashati,Durga Saptashati NGO,Durga Saptashati foundation,DurgaSaptashati,Cultural Programme for Underprivileged Children in Dwarka, Cultural Programme NGO in Dwarka Delhi, Cultural Programme for Underprivileged Children, Cultural Programme for Children in Delhi";
 include '../app/views/layout/header.php';
 ?>
 

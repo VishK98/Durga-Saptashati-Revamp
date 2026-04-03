@@ -1,9 +1,9 @@
 <?php
 require_once '../app/config/config.php';
 
-$pageTitle = "No People Hungry — Food Distribution NGO in Delhi | Saptashati";
-$pageDescription = "Saptashati Foundation distributes free meals and food supplies to the hungry and homeless in Dwarka and across Delhi.";
-$pageKeywords = "food distribution NGO Delhi, free meals, hunger relief Dwarka, food donation, community kitchen, Saptashati Foundation";
+$pageTitle = "Hunger NGO in Delhi Satiating the Underprivileged Children | Durga Saptashati Foundation";
+$pageDescription = "Being a known hunger NGO in delhi, Durga Saptashati Foundation. Sandhya Singh- conduct frequent food donation drives in Dwarka. Just like water and air are free and accessible to all, come, and help us make food available too! Donate today.";
+$pageKeywords = "Top NGOs in Delhi, Durga Saptashati NGO in Dwarka, Delhi, Best Food Health NGO in Delhi, food donation in Dwarka, No people hungry  ngo in Dwarka, No people hungry,Dwarka, Delhi, Durga Saptashati,Durga Saptashati,Durga Saptashati NGO,Durga Saptashati foundation,DurgaSaptashati,No People Hungry in Dwarka, No People Hungry in Dwarka Delhi, No People Hungry in Delhi, Food Donation NGO in Dwarka Delhi";
 
 include '../app/views/layout/header.php';
 ?>
@@ -99,7 +99,7 @@ include '../app/views/layout/header.php';
     <div class="container-fluid">
         <div class="hunger-section-header text-center" data-aos="fade-up">
             <span class="hunger-section-badge">Gallery</span>
-            <h2 class="hunger-section-title">Hunger Relief in Action</h2>
+            <h2 class="hunger-section-title">No People Hungry</h2>
             <p class="hunger-section-desc">
                 Witness the impact of our food security campaigns as we serve meals, distribute groceries,
                 and bring smiles to countless faces across communities.
