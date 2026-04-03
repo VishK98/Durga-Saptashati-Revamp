@@ -58,7 +58,7 @@ $allComments = $stmt->fetchAll();
                             <a href="javascript:void(0)" onclick="this.closest('.action-menu').querySelector('.approve-form').submit()">
                                 <i class="fas fa-check cm-icon-approve"></i> Approve
                             </a>
-                            <form class="approve-form" method="POST" action="admin?page=comments" hidden>
+                            <form class="approve-form" method="POST" action="admin/comments" hidden>
                                 <input type="hidden" name="action" value="approve_comment">
                                 <input type="hidden" name="comment_id" value="<?= $cm['id'] ?>">
                             </form>
@@ -67,7 +67,7 @@ $allComments = $stmt->fetchAll();
                             <a href="javascript:void(0)" onclick="this.closest('.action-menu').querySelector('.reject-form').submit()">
                                 <i class="fas fa-ban cm-icon-reject"></i> Reject
                             </a>
-                            <form class="reject-form" method="POST" action="admin?page=comments" hidden>
+                            <form class="reject-form" method="POST" action="admin/comments" hidden>
                                 <input type="hidden" name="action" value="reject_comment">
                                 <input type="hidden" name="comment_id" value="<?= $cm['id'] ?>">
                             </form>
@@ -76,7 +76,7 @@ $allComments = $stmt->fetchAll();
                             <a href="javascript:void(0)" class="action-delete" onclick="if(confirm('Delete this comment?')) this.closest('.action-menu').querySelector('.delete-form').submit()">
                                 <i class="fas fa-trash"></i> Delete
                             </a>
-                            <form class="delete-form" method="POST" action="admin?page=comments" hidden>
+                            <form class="delete-form" method="POST" action="admin/comments" hidden>
                                 <input type="hidden" name="action" value="delete_comment">
                                 <input type="hidden" name="comment_id" value="<?= $cm['id'] ?>">
                             </form>

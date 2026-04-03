@@ -37,7 +37,7 @@ if (isset($_SESSION['admin_id'])) {
             <h4>Profile Information</h4>
             <p class="panel-desc">Update your account profile information</p>
 
-            <form method="POST" action="admin?page=settings&action=update_profile">
+            <form method="POST" action="admin/settings&action=update_profile">
                 <div class="s-field">
                     <label>Full Name</label>
                     <input type="text" name="name" value="<?= htmlspecialchars($adminData['name'] ?? '') ?>" required>
@@ -73,7 +73,7 @@ if (isset($_SESSION['admin_id'])) {
             <h4>Change Password</h4>
             <p class="panel-desc">Ensure your account is using a strong password for security</p>
 
-            <form method="POST" action="admin?page=settings&action=change_password">
+            <form method="POST" action="admin/settings&action=change_password">
                 <div class="s-field">
                     <label>Current Password</label>
                     <input type="password" name="current_password" required placeholder="Enter current password">

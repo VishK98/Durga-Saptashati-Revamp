@@ -4,7 +4,11 @@
       "Bash(c:/xampp/mysql/bin/mysql.exe -u root durga_saptashati -e \":*)",
       "Bash(php -l admin/views/pages/dashboard.php)",
       "Bash(find /c/xampp/htdocs/Durga-Saptashati-Revamp -type f \\\\\\(-name .env* -o -name *config* \\\\\\))",
-      "Bash(find /c/xampp/htdocs/Durga-Saptashati-Revamp -type f \\\\\\(-name *.json -o -name *.yml -o -name *.yaml \\\\\\))"
+      "Bash(find /c/xampp/htdocs/Durga-Saptashati-Revamp -type f \\\\\\(-name *.json -o -name *.yml -o -name *.yaml \\\\\\))",
+      "Read(//c/xampp/mysql/bin/**)",
+      "Bash(./mysql -u root durga_saptashati -e \"DESCRIBE members;\")",
+      "Bash(sed -i \"s|Location: admin?page=|Location: admin/|g\" public/admin.php)",
+      "Bash(sed -i \"s|Location: admin$|Location: admin/dashboard|\" public/admin.php)"
     ]
   }
 }

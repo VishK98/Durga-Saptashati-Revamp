@@ -20,8 +20,19 @@ function viewMember(id) {
         var p = planMap[m.membership_type];
         typeLabel = p.name + ' (\u20B9' + Number(p.price).toLocaleString('en-IN') + ')';
     }
+
+    // Photo section
+    var photoHtml = '<div style="text-align:center;margin-bottom:20px;">';
+    if (m.photo) {
+        photoHtml += '<img src="' + memberUploadsUrl + m.photo + '" alt="' + m.full_name + '" class="mb-view-photo">';
+    } else {
+        photoHtml += '<div class="mb-view-photo-placeholder"><i class="fas fa-user"></i></div>';
+    }
+    photoHtml += '<h5 style="color:#1a1b2e;font-weight:700;margin:10px 0 2px;">' + m.full_name + '</h5>';
+    photoHtml += '<span class="status-badge ' + (m.status === 'approved' ? 'status-active' : m.status === 'pending' ? 'status-pending' : 'status-new') + '">' + m.status.charAt(0).toUpperCase() + m.status.slice(1) + '</span>';
+    photoHtml += '</div>';
+
     var rows = [
-        ['Name', m.full_name],
         ['Email', m.email],
         ['Mobile', m.mobile],
         ['Gender', m.gender],
@@ -29,10 +40,6 @@ function viewMember(id) {
         ['Profession', m.profession],
         ['Membership', typeLabel],
         ['Payment Mode', m.payment_mode && m.payment_mode !== 'N/A' ? m.payment_mode : null],
-        ['Status', '<span class="status-badge ' + (m.status === 'approved' ? 'status-active' : m.status ===
-                'pending' ? 'status-pending' : 'status-new') + '">' + m.status.charAt(0).toUpperCase() + m.status
-            .slice(1) + '</span>'
-        ],
         ['Applied On', m.created_at && m.created_at !== '0000-00-00 00:00:00' ? new Date(m.created_at)
             .toLocaleDateString('en-IN', {
                 year: 'numeric',
@@ -41,7 +48,7 @@ function viewMember(id) {
             }) : null
         ]
     ];
-    var html = '<div class="qr-view-section"><div class="qr-view-grid">';
+    var html = photoHtml + '<div class="qr-view-section"><div class="qr-view-grid">';
     rows.forEach(function(r) {
         if (r[1]) {
             html += '<div><div class="qr-view-label">' + r[0] + '</div><div class="qr-view-value-bold">' + r[1] + '</div></div>';
@@ -67,6 +74,17 @@ function editMember(id) {
     document.getElementById('editMemberProfession').value = m.profession || '';
     document.getElementById('editMemberPayment').value = m.payment_mode || 'Cash';
     document.getElementById('editMemberStatus').value = m.status || 'pending';
+    // Photo preview
+    var img = document.getElementById('editMemberPhotoImg');
+    var placeholder = document.getElementById('editMemberPhotoPlaceholder');
+    if (m.photo) {
+        img.src = memberUploadsUrl + m.photo;
+        img.style.display = 'block';
+        placeholder.style.display = 'none';
+    } else {
+        img.style.display = 'none';
+        placeholder.style.display = 'flex';
+    }
     document.getElementById('editMemberModal').style.display = 'flex';
 }
 
@@ -231,30 +249,49 @@ function submitEditPlan(e) {
 
 function openAddMember() {
     document.getElementById('addMemberForm').reset();
+    var img = document.getElementById('addMemberPhotoImg');
+    var placeholder = document.getElementById('addMemberPhotoPlaceholder');
+    if (img) { img.style.display = 'none'; img.src = ''; }
+    if (placeholder) placeholder.style.display = 'flex';
     document.getElementById('addMemberModal').style.display = 'flex';
 }
 
 function submitAddMember(e) {
     e.preventDefault();
     var form = document.getElementById('addMemberForm');
-    var data = {
-        full_name: form.querySelector('#addMemberName').value,
-        email: form.querySelector('#addMemberEmail').value,
-        mobile: form.querySelector('#addMemberMobile').value,
-        gender: form.querySelector('#addMemberGender').value,
-        membership_type: form.querySelector('#addMemberType').value,
-        address: form.querySelector('#addMemberAddress').value,
-        profession: form.querySelector('#addMemberProfession').value,
-        payment_mode: form.querySelector('#addMemberPayment').value,
-        status: form.querySelector('#addMemberStatus').value
-    };
-    ajaxAction('add_member', data, function() {
+    var fd = new FormData();
+    fd.append('action', 'add_member');
+    fd.append('full_name', form.querySelector('#addMemberName').value);
+    fd.append('email', form.querySelector('#addMemberEmail').value);
+    fd.append('mobile', form.querySelector('#addMemberMobile').value);
+    fd.append('gender', form.querySelector('#addMemberGender').value);
+    fd.append('membership_type', form.querySelector('#addMemberType').value);
+    fd.append('address', form.querySelector('#addMemberAddress').value);
+    fd.append('profession', form.querySelector('#addMemberProfession').value);
+    fd.append('payment_mode', form.querySelector('#addMemberPayment').value);
+    fd.append('status', form.querySelector('#addMemberStatus').value);
+    var photoFile = form.querySelector('#addMemberPhoto');
+    if (photoFile && photoFile.files[0]) fd.append('photo', photoFile.files[0]);
+    ajaxActionFD(fd, function() {
         document.getElementById('addMemberModal').style.display = 'none';
-        setTimeout(function() {
-            location.reload();
-        }, 800);
+        setTimeout(function() { location.reload(); }, 800);
     });
     return false;
+}
+
+// Photo preview helper
+function previewMemberPhoto(input, imgId, placeholderId) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            var img = document.getElementById(imgId);
+            var placeholder = document.getElementById(placeholderId);
+            img.src = e.target.result;
+            img.style.display = 'block';
+            placeholder.style.display = 'none';
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
 }
 
 // === AJAX helpers ===
@@ -263,7 +300,7 @@ function ajaxAction(action, data, callback) {
     fd.append('action', action);
     for (var key in data) fd.append(key, data[key]);
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'admin?page=members');
+    xhr.open('POST', 'admin/members');
     xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
     xhr.onload = function() {
         try {
@@ -287,6 +324,29 @@ function ajaxAction(action, data, callback) {
     xhr.send(fd);
 }
 
+// AJAX with FormData (supports file uploads)
+function ajaxActionFD(fd, callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'admin/members');
+    xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+    xhr.onload = function() {
+        try {
+            var res = JSON.parse(xhr.responseText);
+            if (res.success) {
+                showToast(res.message, 'success');
+                if (callback) callback(res);
+                else setTimeout(function() { location.reload(); }, 800);
+            } else {
+                showToast(res.message || 'Something went wrong.', 'error');
+            }
+        } catch (e) {
+            showToast('Server error.', 'error');
+        }
+    };
+    xhr.onerror = function() { showToast('Network error.', 'error'); };
+    xhr.send(fd);
+}
+
 function ajaxMemberAction(action, memberId) {
     ajaxAction(action, {
         member_id: memberId
@@ -296,19 +356,21 @@ function ajaxMemberAction(action, memberId) {
 function submitEditMember(e) {
     e.preventDefault();
     var form = document.getElementById('editMemberForm');
-    var data = {
-        member_id: form.querySelector('#editMemberId').value,
-        full_name: form.querySelector('#editMemberName').value,
-        email: form.querySelector('#editMemberEmail').value,
-        mobile: form.querySelector('#editMemberMobile').value,
-        gender: form.querySelector('#editMemberGender').value,
-        membership_type: form.querySelector('#editMemberType').value,
-        address: form.querySelector('#editMemberAddress').value,
-        profession: form.querySelector('#editMemberProfession').value,
-        payment_mode: form.querySelector('#editMemberPayment').value,
-        status: form.querySelector('#editMemberStatus').value
-    };
-    ajaxAction('update_member', data, function() {
+    var fd = new FormData();
+    fd.append('action', 'update_member');
+    fd.append('member_id', form.querySelector('#editMemberId').value);
+    fd.append('full_name', form.querySelector('#editMemberName').value);
+    fd.append('email', form.querySelector('#editMemberEmail').value);
+    fd.append('mobile', form.querySelector('#editMemberMobile').value);
+    fd.append('gender', form.querySelector('#editMemberGender').value);
+    fd.append('membership_type', form.querySelector('#editMemberType').value);
+    fd.append('address', form.querySelector('#editMemberAddress').value);
+    fd.append('profession', form.querySelector('#editMemberProfession').value);
+    fd.append('payment_mode', form.querySelector('#editMemberPayment').value);
+    fd.append('status', form.querySelector('#editMemberStatus').value);
+    var photoFile = form.querySelector('#editMemberPhoto');
+    if (photoFile && photoFile.files[0]) fd.append('photo', photoFile.files[0]);
+    ajaxActionFD(fd, function() {
         document.getElementById('editMemberModal').style.display = 'none';
         setTimeout(function() {
             location.reload();

@@ -11,7 +11,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_SERVER['HTTP_X_REQUESTED_W
             case 'add_member':
                 $payMode = trim($_POST['payment_mode'] ?? 'Cash');
                 $status = trim($_POST['status'] ?? 'pending');
-                $stmt = $pdo->prepare("INSERT INTO members (full_name, gender, address, email, mobile, membership_type, profession, payment_mode, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                $photo = null;
+                if (!empty($_FILES['photo']['name']) && $_FILES['photo']['error'] === UPLOAD_ERR_OK) {
+                    $uploadDir = __DIR__ . '/assets/uploads/members/';
+                    if (!is_dir($uploadDir)) mkdir($uploadDir, 0755, true);
+                    $ext = strtolower(pathinfo($_FILES['photo']['name'], PATHINFO_EXTENSION));
+                    if (in_array($ext, ['jpg','jpeg','png','webp']) && $_FILES['photo']['size'] <= 2*1024*1024) {
+                        $photo = 'member_' . uniqid() . '.' . $ext;
+                        move_uploaded_file($_FILES['photo']['tmp_name'], $uploadDir . $photo);
+                    }
+                }
+                $stmt = $pdo->prepare("INSERT INTO members (full_name, gender, address, email, mobile, membership_type, profession, photo, payment_mode, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
                 $stmt->execute([
                     trim($_POST['full_name']),
                     trim($_POST['gender'] ?? ''),
@@ -20,6 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_SERVER['HTTP_X_REQUESTED_W
                     trim($_POST['mobile'] ?? ''),
                     trim($_POST['membership_type'] ?? ''),
                     trim($_POST['profession'] ?? ''),
+                    $photo,
                     $payMode,
                     $status
                 ]);
@@ -32,8 +43,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_SERVER['HTTP_X_REQUESTED_W
                 exit;
 
             case 'update_member':
-                $stmt = $pdo->prepare("UPDATE members SET full_name = ?, email = ?, mobile = ?, gender = ?, membership_type = ?, address = ?, profession = ?, payment_mode = ?, status = ? WHERE id = ?");
-                $stmt->execute([
+                $memberId = (int)$_POST['member_id'];
+                // Handle photo upload
+                $photoSql = '';
+                $params = [
                     trim($_POST['full_name']),
                     trim($_POST['email'] ?? ''),
                     trim($_POST['mobile'] ?? ''),
@@ -41,10 +54,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_SERVER['HTTP_X_REQUESTED_W
                     trim($_POST['membership_type'] ?? ''),
                     trim($_POST['address'] ?? ''),
                     trim($_POST['profession'] ?? ''),
-                    trim($_POST['payment_mode'] ?? 'Cash'),
-                    trim($_POST['status'] ?? 'pending'),
-                    (int)$_POST['member_id']
-                ]);
+                ];
+                if (!empty($_FILES['photo']['name']) && $_FILES['photo']['error'] === UPLOAD_ERR_OK) {
+                    $uploadDir = __DIR__ . '/assets/uploads/members/';
+                    if (!is_dir($uploadDir)) mkdir($uploadDir, 0755, true);
+                    $ext = strtolower(pathinfo($_FILES['photo']['name'], PATHINFO_EXTENSION));
+                    if (in_array($ext, ['jpg','jpeg','png','webp']) && $_FILES['photo']['size'] <= 2*1024*1024) {
+                        $newPhoto = 'member_' . uniqid() . '.' . $ext;
+                        move_uploaded_file($_FILES['photo']['tmp_name'], $uploadDir . $newPhoto);
+                        // Delete old photo
+                        $old = $pdo->prepare("SELECT photo FROM members WHERE id = ?");
+                        $old->execute([$memberId]);
+                        $oldPhoto = $old->fetchColumn();
+                        if ($oldPhoto && file_exists($uploadDir . $oldPhoto)) unlink($uploadDir . $oldPhoto);
+                        $photoSql = ', photo = ?';
+                        $params[] = $newPhoto;
+                    }
+                }
+                $params[] = trim($_POST['payment_mode'] ?? 'Cash');
+                $params[] = trim($_POST['status'] ?? 'pending');
+                $params[] = $memberId;
+                $stmt = $pdo->prepare("UPDATE members SET full_name = ?, email = ?, mobile = ?, gender = ?, membership_type = ?, address = ?, profession = ?" . $photoSql . ", payment_mode = ?, status = ? WHERE id = ?");
+                $stmt->execute($params);
                 echo json_encode(['success' => true, 'message' => 'Member updated successfully.']);
                 exit;
 
@@ -211,7 +242,7 @@ if (isset($_POST['login'])) {
         $_SESSION['admin_name'] = $admin['name'];
         $_SESSION['admin_id'] = $admin['id'];
         $_SESSION['login_time'] = time();
-        header('Location: admin?page=dashboard');
+        header('Location: admin/dashboard');
         exit;
     } else {
         $loginError = 'Invalid email or password.';
@@ -247,7 +278,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_GET['action'] ?? '') === 'update
     } else {
         $_SESSION['settings_error'] = 'Name and email are required.';
     }
-    header('Location: admin?page=settings');
+    header('Location: admin/settings');
     exit;
 }
 
@@ -274,7 +305,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_GET['action'] ?? '') === 'change
             $_SESSION['settings_error'] = 'Current password is incorrect.';
         }
     }
-    header('Location: admin?page=settings');
+    header('Location: admin/settings');
     exit;
 }
 
@@ -340,7 +371,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'creat
     $stmt = $pdo->prepare("INSERT INTO blogs (title, slug, category, content, meta_description, meta_keywords, author, image, status, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
     $stmt->execute([$title, $slug, $category, $content, $meta_description, $meta_keywords, $author, $image, $status, $created_at]);
     $_SESSION['blog_success'] = 'Blog post created successfully.';
-    header('Location: admin?page=blogs');
+    header('Location: admin/blogs');
     exit;
 }
 
@@ -389,7 +420,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'updat
     }
 
     $_SESSION['blog_success'] = 'Blog post updated successfully.';
-    header('Location: admin?page=blogs');
+    header('Location: admin/blogs');
     exit;
 }
 
@@ -406,7 +437,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'delet
     $stmt = $pdo->prepare("DELETE FROM blogs WHERE id = ?");
     $stmt->execute([$id]);
     $_SESSION['blog_success'] = 'Blog post deleted successfully.';
-    header('Location: admin?page=blogs');
+    header('Location: admin/blogs');
     exit;
 }
 
@@ -416,7 +447,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'appro
     $stmt = $pdo->prepare("UPDATE blog_comments SET status = 'approved' WHERE id = ?");
     $stmt->execute([$id]);
     $_SESSION['comment_success'] = 'Comment approved successfully.';
-    header('Location: admin?page=comments');
+    header('Location: admin/comments');
     exit;
 }
 
@@ -426,7 +457,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'rejec
     $stmt = $pdo->prepare("UPDATE blog_comments SET status = 'rejected' WHERE id = ?");
     $stmt->execute([$id]);
     $_SESSION['comment_success'] = 'Comment rejected.';
-    header('Location: admin?page=comments');
+    header('Location: admin/comments');
     exit;
 }
 
@@ -436,7 +467,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'delet
     $stmt = $pdo->prepare("DELETE FROM blog_comments WHERE id = ?");
     $stmt->execute([$id]);
     $_SESSION['comment_success'] = 'Comment deleted successfully.';
-    header('Location: admin?page=comments');
+    header('Location: admin/comments');
     exit;
 }
 
@@ -446,7 +477,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'toggl
     $stmt = $pdo->prepare("UPDATE blogs SET status = IF(status='published','draft','published') WHERE id = ?");
     $stmt->execute([$id]);
     $_SESSION['blog_success'] = 'Blog status updated.';
-    header('Location: admin?page=blogs');
+    header('Location: admin/blogs');
     exit;
 }
 
@@ -465,7 +496,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'add_d
         trim($_POST['notes'] ?? '')
     ]);
     $_SESSION['donation_success'] = 'Donation record added.';
-    header('Location: admin?page=donations');
+    header('Location: admin/donations');
     exit;
 }
 
@@ -473,7 +504,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'add_d
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'complete_donation') {
     $pdo->prepare("UPDATE donations SET status = 'completed' WHERE id = ?")->execute([(int)$_POST['donation_id']]);
     $_SESSION['donation_success'] = 'Donation marked as completed.';
-    header('Location: admin?page=donations');
+    header('Location: admin/donations');
     exit;
 }
 
@@ -481,7 +512,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'compl
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'fail_donation') {
     $pdo->prepare("UPDATE donations SET status = 'failed' WHERE id = ?")->execute([(int)$_POST['donation_id']]);
     $_SESSION['donation_success'] = 'Donation marked as failed.';
-    header('Location: admin?page=donations');
+    header('Location: admin/donations');
     exit;
 }
 
@@ -489,7 +520,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'fail_
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'delete_donation') {
     $pdo->prepare("DELETE FROM donations WHERE id = ?")->execute([(int)$_POST['donation_id']]);
     $_SESSION['donation_success'] = 'Donation record deleted.';
-    header('Location: admin?page=donations');
+    header('Location: admin/donations');
     exit;
 }
 
@@ -497,7 +528,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'delet
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'approve_volunteer') {
     $pdo->prepare("UPDATE volunteers SET status = 'approved' WHERE id = ?")->execute([(int)$_POST['volunteer_id']]);
     $_SESSION['volunteer_success'] = 'Volunteer approved successfully.';
-    header('Location: admin?page=volunteers');
+    header('Location: admin/volunteers');
     exit;
 }
 
@@ -505,7 +536,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'appro
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'reject_volunteer') {
     $pdo->prepare("UPDATE volunteers SET status = 'rejected' WHERE id = ?")->execute([(int)$_POST['volunteer_id']]);
     $_SESSION['volunteer_success'] = 'Volunteer rejected.';
-    header('Location: admin?page=volunteers');
+    header('Location: admin/volunteers');
     exit;
 }
 
@@ -513,7 +544,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'rejec
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'delete_volunteer') {
     $pdo->prepare("DELETE FROM volunteers WHERE id = ?")->execute([(int)$_POST['volunteer_id']]);
     $_SESSION['volunteer_success'] = 'Volunteer deleted.';
-    header('Location: admin?page=volunteers');
+    header('Location: admin/volunteers');
     exit;
 }
 
@@ -521,7 +552,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'delet
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'mark_read_query') {
     $pdo->prepare("UPDATE contact_queries SET status = 'read' WHERE id = ?")->execute([(int)$_POST['query_id']]);
     $_SESSION['query_success'] = 'Query marked as read.';
-    header('Location: admin?page=queries');
+    header('Location: admin/queries');
     exit;
 }
 
@@ -529,7 +560,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'mark_
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'mark_replied_query') {
     $pdo->prepare("UPDATE contact_queries SET status = 'replied' WHERE id = ?")->execute([(int)$_POST['query_id']]);
     $_SESSION['query_success'] = 'Query marked as replied.';
-    header('Location: admin?page=queries');
+    header('Location: admin/queries');
     exit;
 }
 
@@ -537,7 +568,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'mark_
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'delete_query') {
     $pdo->prepare("DELETE FROM contact_queries WHERE id = ?")->execute([(int)$_POST['query_id']]);
     $_SESSION['query_success'] = 'Query deleted.';
-    header('Location: admin?page=queries');
+    header('Location: admin/queries');
     exit;
 }
 
@@ -546,7 +577,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'creat
     $stmt = $pdo->prepare("INSERT INTO careers (title, department, location, type, description, requirements) VALUES (?, ?, ?, ?, ?, ?)");
     $stmt->execute([trim($_POST['title']), trim($_POST['department'] ?? ''), trim($_POST['location'] ?? ''), $_POST['type'] ?? 'full-time', trim($_POST['description'] ?? ''), trim($_POST['requirements'] ?? '')]);
     $_SESSION['career_success'] = 'Job opening created.';
-    header('Location: admin?page=careers');
+    header('Location: admin/careers');
     exit;
 }
 
@@ -554,7 +585,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'creat
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'toggle_career') {
     $pdo->prepare("UPDATE careers SET status = IF(status='active','closed','active') WHERE id = ?")->execute([(int)$_POST['career_id']]);
     $_SESSION['career_success'] = 'Career status updated.';
-    header('Location: admin?page=careers');
+    header('Location: admin/careers');
     exit;
 }
 
@@ -562,7 +593,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'toggl
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'delete_career') {
     $pdo->prepare("DELETE FROM careers WHERE id = ?")->execute([(int)$_POST['career_id']]);
     $_SESSION['career_success'] = 'Job opening deleted.';
-    header('Location: admin?page=careers');
+    header('Location: admin/careers');
     exit;
 }
 
@@ -574,7 +605,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'updat
         $pdo->prepare("UPDATE career_applications SET status = ? WHERE id = ?")->execute([$s, (int)$_POST['app_id']]);
     }
     $_SESSION['career_success'] = 'Application status updated.';
-    header('Location: admin?page=careers');
+    header('Location: admin/careers');
     exit;
 }
 
@@ -589,7 +620,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'delet
     }
     $pdo->prepare("DELETE FROM career_applications WHERE id = ?")->execute([(int)$_POST['app_id']]);
     $_SESSION['career_success'] = 'Application deleted.';
-    header('Location: admin?page=careers');
+    header('Location: admin/careers');
     exit;
 }
 
@@ -626,7 +657,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'uploa
         }
     }
     $_SESSION['gallery_success'] = $uploaded . ' photo(s) uploaded successfully.';
-    header('Location: admin?page=gallery');
+    header('Location: admin/gallery');
     exit;
 }
 
@@ -641,7 +672,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'delet
         $pdo->prepare("DELETE FROM gallery WHERE id = ?")->execute([(int)$_POST['gallery_id']]);
     }
     $_SESSION['gallery_success'] = 'Photo deleted.';
-    header('Location: admin?page=gallery');
+    header('Location: admin/gallery');
     exit;
 }
 
@@ -704,7 +735,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'updat
         (int)$_POST['plan_sort_order'], (int)$_POST['plan_id']
     ]);
     $_SESSION['member_success'] = 'Membership plan updated successfully.';
-    header('Location: admin?page=members');
+    header('Location: admin/members');
     exit;
 }
 
@@ -719,7 +750,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'add_m
         (int)$_POST['plan_sort_order']
     ]);
     $_SESSION['member_success'] = 'New membership plan added.';
-    header('Location: admin?page=members');
+    header('Location: admin/members');
     exit;
 }
 
@@ -727,7 +758,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'add_m
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'delete_membership_plan') {
     $pdo->prepare("DELETE FROM membership_plans WHERE id = ?")->execute([(int)$_POST['plan_id']]);
     $_SESSION['member_success'] = 'Membership plan deleted.';
-    header('Location: admin?page=members');
+    header('Location: admin/members');
     exit;
 }
 
@@ -764,7 +795,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'impor
     } else {
         $_SESSION['member_success'] = 'No file uploaded.';
     }
-    header('Location: admin?page=members');
+    header('Location: admin/members');
     exit;
 }
 
@@ -772,7 +803,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'impor
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'approve_member') {
     $pdo->prepare("UPDATE members SET status = 'approved' WHERE id = ?")->execute([(int)$_POST['member_id']]);
     $_SESSION['member_success'] = 'Member approved successfully.';
-    header('Location: admin?page=members');
+    header('Location: admin/members');
     exit;
 }
 
@@ -780,7 +811,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'appro
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'reject_member') {
     $pdo->prepare("UPDATE members SET status = 'rejected' WHERE id = ?")->execute([(int)$_POST['member_id']]);
     $_SESSION['member_success'] = 'Member rejected.';
-    header('Location: admin?page=members');
+    header('Location: admin/members');
     exit;
 }
 
@@ -800,7 +831,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'updat
         (int)$_POST['member_id']
     ]);
     $_SESSION['member_success'] = 'Member updated successfully.';
-    header('Location: admin?page=members');
+    header('Location: admin/members');
     exit;
 }
 
@@ -808,7 +839,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'updat
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'delete_member') {
     $pdo->prepare("DELETE FROM members WHERE id = ?")->execute([(int)$_POST['member_id']]);
     $_SESSION['member_success'] = 'Member deleted.';
-    header('Location: admin?page=members');
+    header('Location: admin/members');
     exit;
 }
 
@@ -866,7 +897,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'uploa
             $_SESSION['toast_error'] = 'Only PDF files up to 10MB allowed.';
         }
     }
-    header('Location: admin?page=reports');
+    header('Location: admin/reports');
     exit;
 }
 
@@ -881,7 +912,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'delet
     }
     $pdo->prepare("DELETE FROM financial_reports WHERE id = ?")->execute([(int)$_POST['report_id']]);
     $_SESSION['toast_success'] = 'Report deleted.';
-    header('Location: admin?page=reports');
+    header('Location: admin/reports');
     exit;
 }
 
@@ -889,7 +920,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'delet
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'toggle_report') {
     $pdo->prepare("UPDATE financial_reports SET is_active = NOT is_active WHERE id = ?")->execute([(int)$_POST['report_id']]);
     $_SESSION['toast_success'] = 'Report status updated.';
-    header('Location: admin?page=reports');
+    header('Location: admin/reports');
     exit;
 }
 
@@ -916,7 +947,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'creat
     $stmt = $pdo->prepare("INSERT INTO news (title, slug, category, content, image, source, source_url, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
     $stmt->execute([$title, $slug, trim($_POST['category'] ?? 'General'), trim($_POST['content'] ?? ''), $image, trim($_POST['source'] ?? ''), trim($_POST['source_url'] ?? ''), $_POST['status'] ?? 'published']);
     $_SESSION['toast_success'] = 'News article published.';
-    header('Location: admin?page=news');
+    header('Location: admin/news');
     exit;
 }
 
@@ -931,7 +962,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'delet
     }
     $pdo->prepare("DELETE FROM news WHERE id = ?")->execute([(int)$_POST['news_id']]);
     $_SESSION['toast_success'] = 'News article deleted.';
-    header('Location: admin?page=news');
+    header('Location: admin/news');
     exit;
 }
 
@@ -959,7 +990,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'updat
     $params[] = (int)$_POST['news_id'];
     $pdo->prepare($sql)->execute($params);
     $_SESSION['toast_success'] = 'News article updated.';
-    header('Location: admin?page=news');
+    header('Location: admin/news');
     exit;
 }
 
@@ -967,7 +998,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'updat
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'toggle_news') {
     $pdo->prepare("UPDATE news SET status = CASE WHEN status = 'published' THEN 'draft' ELSE 'published' END WHERE id = ?")->execute([(int)$_POST['news_id']]);
     $_SESSION['toast_success'] = 'News status updated.';
-    header('Location: admin?page=news');
+    header('Location: admin/news');
     exit;
 }
 
@@ -979,19 +1010,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     if ($subAction === 'unsubscribe' && $subId) {
         $pdo->prepare("UPDATE subscribers SET status = 'unsubscribed' WHERE id = ?")->execute([$subId]);
         $_SESSION['toast_success'] = 'Subscriber unsubscribed.';
-        header('Location: admin?page=subscribers');
+        header('Location: admin/subscribers');
         exit;
     }
     if ($subAction === 'resubscribe' && $subId) {
         $pdo->prepare("UPDATE subscribers SET status = 'active' WHERE id = ?")->execute([$subId]);
         $_SESSION['toast_success'] = 'Subscriber reactivated.';
-        header('Location: admin?page=subscribers');
+        header('Location: admin/subscribers');
         exit;
     }
     if ($subAction === 'delete_subscriber' && $subId) {
         $pdo->prepare("DELETE FROM subscribers WHERE id = ?")->execute([$subId]);
         $_SESSION['toast_success'] = 'Subscriber deleted.';
-        header('Location: admin?page=subscribers');
+        header('Location: admin/subscribers');
         exit;
     }
 }

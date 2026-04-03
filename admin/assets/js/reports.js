@@ -9,7 +9,7 @@ function ajaxReportAction(action, reportId) {
     fd.append('action', action);
     fd.append('report_id', reportId);
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'admin?page=reports');
+    xhr.open('POST', 'admin/reports');
     xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
     xhr.onload = function() {
         try {

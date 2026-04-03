@@ -40,20 +40,20 @@ $activeSubs = count(array_filter($subscribers, fn($s) => $s['status'] === 'activ
                         <button class="action-trigger" onclick="toggleActionMenu(this)"><i class="fas fa-ellipsis-v"></i></button>
                         <div class="action-menu">
                             <?php if ($sub['status'] === 'active'): ?>
-                            <form method="POST" action="admin?page=subscribers" class="action-form-inline">
+                            <form method="POST" action="admin/subscribers" class="action-form-inline">
                                 <input type="hidden" name="action" value="unsubscribe">
                                 <input type="hidden" name="subscriber_id" value="<?= $sub['id'] ?>">
                                 <button type="submit"><i class="fas fa-ban"></i> Unsubscribe</button>
                             </form>
                             <?php else: ?>
-                            <form method="POST" action="admin?page=subscribers" class="action-form-inline">
+                            <form method="POST" action="admin/subscribers" class="action-form-inline">
                                 <input type="hidden" name="action" value="resubscribe">
                                 <input type="hidden" name="subscriber_id" value="<?= $sub['id'] ?>">
                                 <button type="submit"><i class="fas fa-check"></i> Reactivate</button>
                             </form>
                             <?php endif; ?>
                             <div class="action-divider"></div>
-                            <form method="POST" action="admin?page=subscribers" class="action-form-inline">
+                            <form method="POST" action="admin/subscribers" class="action-form-inline">
                                 <input type="hidden" name="action" value="delete_subscriber">
                                 <input type="hidden" name="subscriber_id" value="<?= $sub['id'] ?>">
                                 <button type="submit" class="action-delete" onclick="return confirm('Delete this subscriber?')"><i class="fas fa-trash"></i> Delete</button>

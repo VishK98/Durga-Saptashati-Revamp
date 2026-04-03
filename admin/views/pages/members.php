@@ -356,8 +356,18 @@ if (isset($_SESSION['member_success'])) {
         <button onclick="document.getElementById('editMemberModal').style.display='none'"
             class="mb-modal-close">&times;</button>
         <h4 class="mb-modal-title"><i class="fas fa-edit"></i> Edit Member</h4>
-        <form id="editMemberForm" onsubmit="return submitEditMember(event)">
+        <form id="editMemberForm" onsubmit="return submitEditMember(event)" enctype="multipart/form-data">
             <input type="hidden" name="member_id" id="editMemberId">
+            <div class="mb-form-group" style="text-align:center;">
+                <div class="mb-photo-preview" id="editMemberPhotoPreview">
+                    <img id="editMemberPhotoImg" src="" alt="">
+                    <span class="mb-photo-placeholder" id="editMemberPhotoPlaceholder"><i class="fas fa-user"></i></span>
+                </div>
+                <label class="mb-photo-upload-btn">
+                    <i class="fas fa-camera"></i> Change Photo
+                    <input type="file" name="photo" id="editMemberPhoto" accept=".jpg,.jpeg,.png,.webp" hidden onchange="previewMemberPhoto(this, 'editMemberPhotoImg', 'editMemberPhotoPlaceholder')">
+                </label>
+            </div>
             <div class="mb-form-group">
                 <label class="mb-form-label">Full Name</label>
                 <input type="text" name="full_name" id="editMemberName" required class="mb-form-input">
@@ -507,7 +517,17 @@ if (isset($_SESSION['member_success'])) {
         <button onclick="document.getElementById('addMemberModal').style.display='none'"
             class="mb-modal-close">&times;</button>
         <h4 class="mb-modal-title"><i class="fas fa-user-plus"></i> Add Member</h4>
-        <form id="addMemberForm" onsubmit="return submitAddMember(event)">
+        <form id="addMemberForm" onsubmit="return submitAddMember(event)" enctype="multipart/form-data">
+            <div class="mb-form-group" style="text-align:center;">
+                <div class="mb-photo-preview" id="addMemberPhotoPreview">
+                    <span class="mb-photo-placeholder" id="addMemberPhotoPlaceholder"><i class="fas fa-user"></i></span>
+                    <img id="addMemberPhotoImg" src="" alt="" style="display:none;">
+                </div>
+                <label class="mb-photo-upload-btn">
+                    <i class="fas fa-camera"></i> Upload Photo
+                    <input type="file" name="photo" id="addMemberPhoto" accept=".jpg,.jpeg,.png,.webp" hidden onchange="previewMemberPhoto(this, 'addMemberPhotoImg', 'addMemberPhotoPlaceholder')">
+                </label>
+            </div>
             <div class="mb-form-group">
                 <label class="mb-form-label">Full Name</label>
                 <input type="text" name="full_name" id="addMemberName" required class="mb-form-input">
@@ -598,6 +618,7 @@ var allMembers = <?= json_encode(array_map(function ($m) {
             'address' => $m['address'],
             'membership_type' => $m['membership_type'],
             'profession' => $m['profession'] ?? '',
+            'photo' => $m['photo'] ?? '',
             'payment_mode' => $m['payment_mode'],
             'status' => $m['status'],
             'created_at' => $m['created_at']
@@ -605,5 +626,6 @@ var allMembers = <?= json_encode(array_map(function ($m) {
     }, $members)) ?>;
 
 var planMap = <?= json_encode($planMap) ?>;
+var memberUploadsUrl = '<?= url('assets/uploads/members/') ?>';
 </script>
 <script src="../admin/assets/js/members.js"></script>

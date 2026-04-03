@@ -87,7 +87,7 @@ $activeReports = count(array_filter($reports, fn($r) => $r['is_active']));
     <div class="rp-modal-box">
         <button onclick="document.getElementById('uploadReportModal').style.display='none'" class="rp-modal-close">&times;</button>
         <h4 class="rp-modal-title"><i class="fas fa-cloud-upload-alt rp-modal-title-icon"></i> Upload Financial Report</h4>
-        <form id="uploadReportForm" method="POST" action="admin?page=reports" enctype="multipart/form-data">
+        <form id="uploadReportForm" method="POST" action="admin/reports" enctype="multipart/form-data">
             <input type="hidden" name="action" value="upload_report">
             <input type="hidden" name="icon" value="fa-file-pdf">
             <div class="rp-form-grid">

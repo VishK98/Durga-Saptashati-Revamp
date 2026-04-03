@@ -19,96 +19,86 @@
             </div>
 
             <div class="sidebar-menu">
-                <div class="sidebar-menu-label">Main</div>
+                <?php
+                // Dynamic counts
+                try { $queryCount = $pdo->query("SELECT COUNT(*) FROM contact_queries WHERE status = 'new'")->fetchColumn(); } catch(Exception $e) { $queryCount = 0; }
+                try { $pendingComments = $pdo->query("SELECT COUNT(*) FROM blog_comments WHERE status = 'pending'")->fetchColumn(); } catch(Exception $e) { $pendingComments = 0; }
+                try { $donationCount = $pdo->query("SELECT COUNT(*) FROM donations")->fetchColumn(); } catch(Exception $e) { $donationCount = 0; }
+                try { $pendingVolunteers = $pdo->query("SELECT COUNT(*) FROM volunteers WHERE status = 'pending'")->fetchColumn(); } catch(Exception $e) { $pendingVolunteers = 0; }
+                try { $pendingMembers = $pdo->query("SELECT COUNT(*) FROM members WHERE status = 'pending'")->fetchColumn(); } catch(Exception $e) { $pendingMembers = 0; }
+                try { $blogCount = $pdo->query("SELECT COUNT(*) FROM blogs")->fetchColumn(); } catch(Exception $e) { $blogCount = 0; }
+                try { $newsCount = $pdo->query("SELECT COUNT(*) FROM news")->fetchColumn(); } catch(Exception $e) { $newsCount = 0; }
+                try { $galleryCount = $pdo->query("SELECT COUNT(*) FROM gallery")->fetchColumn(); } catch(Exception $e) { $galleryCount = 0; }
+                try { $subscriberCount = $pdo->query("SELECT COUNT(*) FROM subscribers")->fetchColumn(); } catch(Exception $e) { $subscriberCount = 0; }
+                try { $newAppsCount = $pdo->query("SELECT COUNT(*) FROM career_applications WHERE status = 'new'")->fetchColumn(); } catch(Exception $e) { $newAppsCount = 0; }
+                try { $reportsCount = $pdo->query("SELECT COUNT(*) FROM financial_reports")->fetchColumn(); } catch(Exception $e) { $reportsCount = 0; }
+                ?>
 
-                <a href="admin?page=dashboard"
-                    class="sidebar-item <?= $currentPage === 'dashboard' ? 'active' : '' ?>">
+                <!-- 1. Dashboard -->
+                <div class="sidebar-menu-label">Overview</div>
+                <a href="admin/dashboard" class="sidebar-item <?= $currentPage === 'dashboard' ? 'active' : '' ?>">
                     <i class="fas fa-home"></i> <span>Dashboard</span>
                 </a>
 
-                <?php
-                // Dynamic counts
-                $blogCount = $pdo->query("SELECT COUNT(*) FROM blogs")->fetchColumn();
-                $pendingComments = $pdo->query("SELECT COUNT(*) FROM blog_comments WHERE status = 'pending'")->fetchColumn();
-                $totalComments = $pdo->query("SELECT COUNT(*) FROM blog_comments")->fetchColumn();
-
-                // Safe count for tables that may not exist yet
-                try { $donationCount = $pdo->query("SELECT COUNT(*) FROM donations")->fetchColumn(); } catch(Exception $e) { $donationCount = 0; }
-                try { $subscriberCount = $pdo->query("SELECT COUNT(*) FROM subscribers")->fetchColumn(); } catch(Exception $e) { $subscriberCount = 0; }
-                try { $queryCount = $pdo->query("SELECT COUNT(*) FROM contact_queries WHERE status = 'new'")->fetchColumn(); } catch(Exception $e) { $queryCount = 0; }
-                ?>
-
-                <a href="admin?page=blogs" class="sidebar-item <?= $currentPage === 'blogs' ? 'active' : '' ?>">
-                    <i class="fas fa-blog"></i> <span>Blogs</span>
-                    <?php if ($blogCount > 0): ?><span class="badge-count"><?= $blogCount ?></span><?php endif; ?>
-                </a>
-
-                <a href="admin?page=queries" class="sidebar-item <?= $currentPage === 'queries' ? 'active' : '' ?>">
+                <!-- 2. User Interaction -->
+                <div class="sidebar-menu-label">Engagement</div>
+                <a href="admin/queries" class="sidebar-item <?= $currentPage === 'queries' ? 'active' : '' ?>">
                     <i class="fas fa-comments"></i> <span>Queries</span>
                     <?php if ($queryCount > 0): ?><span class="badge-count"><?= $queryCount ?></span><?php endif; ?>
                 </a>
-
-                <a href="admin?page=comments" class="sidebar-item <?= $currentPage === 'comments' ? 'active' : '' ?>">
+                <a href="admin/comments" class="sidebar-item <?= $currentPage === 'comments' ? 'active' : '' ?>">
                     <i class="fas fa-comment-dots"></i> <span>Comments</span>
                     <?php if ($pendingComments > 0): ?><span class="badge-count"><?= $pendingComments ?></span><?php endif; ?>
                 </a>
-
-                <a href="admin?page=donations" class="sidebar-item <?= $currentPage === 'donations' ? 'active' : '' ?>">
+                <a href="admin/donations" class="sidebar-item <?= $currentPage === 'donations' ? 'active' : '' ?>">
                     <i class="fas fa-donate"></i> <span>Donations</span>
                     <?php if ($donationCount > 0): ?><span class="badge-count"><?= $donationCount ?></span><?php endif; ?>
                 </a>
-
-                <?php
-                try { $pendingVolunteers = $pdo->query("SELECT COUNT(*) FROM volunteers WHERE status = 'pending'")->fetchColumn(); } catch(Exception $e) { $pendingVolunteers = 0; }
-                ?>
-
-                <a href="admin?page=volunteers" class="sidebar-item <?= $currentPage === 'volunteers' ? 'active' : '' ?>">
+                <a href="admin/volunteers" class="sidebar-item <?= $currentPage === 'volunteers' ? 'active' : '' ?>">
                     <i class="fas fa-user-plus"></i> <span>Volunteers</span>
                     <?php if ($pendingVolunteers > 0): ?><span class="badge-count"><?= $pendingVolunteers ?></span><?php endif; ?>
                 </a>
-
-                <?php try { $pendingMembers = $pdo->query("SELECT COUNT(*) FROM members WHERE status = 'pending'")->fetchColumn(); } catch(Exception $e) { $pendingMembers = 0; } ?>
-                <a href="admin?page=members" class="sidebar-item <?= $currentPage === 'members' ? 'active' : '' ?>">
+                <a href="admin/members" class="sidebar-item <?= $currentPage === 'members' ? 'active' : '' ?>">
                     <i class="fas fa-id-card"></i> <span>Members</span>
                     <?php if ($pendingMembers > 0): ?><span class="badge-count"><?= $pendingMembers ?></span><?php endif; ?>
                 </a>
 
-                <?php try { $newAppsCount = $pdo->query("SELECT COUNT(*) FROM career_applications WHERE status = 'new'")->fetchColumn(); } catch(Exception $e) { $newAppsCount = 0; } ?>
-                <a href="admin?page=careers" class="sidebar-item <?= $currentPage === 'careers' ? 'active' : '' ?>">
-                    <i class="fas fa-briefcase"></i> <span>Careers</span>
-                    <?php if ($newAppsCount > 0): ?><span class="badge-count"><?= $newAppsCount ?></span><?php endif; ?>
-                </a>
-
-                <?php try { $reportsCount = $pdo->query("SELECT COUNT(*) FROM financial_reports")->fetchColumn(); } catch(Exception $e) { $reportsCount = 0; } ?>
-                <a href="admin?page=reports" class="sidebar-item <?= $currentPage === 'reports' ? 'active' : '' ?>">
-                    <i class="fas fa-file-invoice-dollar"></i> <span>Reports</span>
-                    <?php if ($reportsCount > 0): ?><span class="badge-count"><?= $reportsCount ?></span><?php endif; ?>
-                </a>
-
+                <!-- 3. Content Management -->
                 <div class="sidebar-menu-label">Content</div>
-
-                <?php try { $newsCount = $pdo->query("SELECT COUNT(*) FROM news")->fetchColumn(); } catch(Exception $e) { $newsCount = 0; } ?>
-                <a href="admin?page=news" class="sidebar-item <?= $currentPage === 'news' ? 'active' : '' ?>">
+                <a href="admin/blogs" class="sidebar-item <?= $currentPage === 'blogs' ? 'active' : '' ?>">
+                    <i class="fas fa-blog"></i> <span>Blogs</span>
+                    <?php if ($blogCount > 0): ?><span class="badge-count"><?= $blogCount ?></span><?php endif; ?>
+                </a>
+                <a href="admin/news" class="sidebar-item <?= $currentPage === 'news' ? 'active' : '' ?>">
                     <i class="fas fa-newspaper"></i> <span>News</span>
                     <?php if ($newsCount > 0): ?><span class="badge-count"><?= $newsCount ?></span><?php endif; ?>
                 </a>
-
-                <?php try { $galleryCount = $pdo->query("SELECT COUNT(*) FROM gallery")->fetchColumn(); } catch(Exception $e) { $galleryCount = 0; } ?>
-                <a href="admin?page=gallery" class="sidebar-item <?= $currentPage === 'gallery' ? 'active' : '' ?>">
+                <a href="admin/gallery" class="sidebar-item <?= $currentPage === 'gallery' ? 'active' : '' ?>">
                     <i class="fas fa-images"></i> <span>Gallery</span>
                     <?php if ($galleryCount > 0): ?><span class="badge-count"><?= $galleryCount ?></span><?php endif; ?>
                 </a>
-
-                <a href="admin?page=subscribers"
-                    class="sidebar-item <?= $currentPage === 'subscribers' ? 'active' : '' ?>">
+                <a href="admin/subscribers" class="sidebar-item <?= $currentPage === 'subscribers' ? 'active' : '' ?>">
                     <i class="fas fa-envelope-open-text"></i> <span>Newsletter</span>
                     <?php if ($subscriberCount > 0): ?><span class="badge-count"><?= $subscriberCount ?></span><?php endif; ?>
                 </a>
 
-                <div class="sidebar-menu-label">System</div>
+                <!-- 4. HR / Opportunities -->
+                <div class="sidebar-menu-label">HR</div>
+                <a href="admin/careers" class="sidebar-item <?= $currentPage === 'careers' ? 'active' : '' ?>">
+                    <i class="fas fa-briefcase"></i> <span>Careers</span>
+                    <?php if ($newAppsCount > 0): ?><span class="badge-count"><?= $newAppsCount ?></span><?php endif; ?>
+                </a>
 
-                <a href="admin?page=settings"
-                    class="sidebar-item <?= $currentPage === 'settings' ? 'active' : '' ?>">
+                <!-- 5. Reports -->
+                <div class="sidebar-menu-label">Analytics</div>
+                <a href="admin/reports" class="sidebar-item <?= $currentPage === 'reports' ? 'active' : '' ?>">
+                    <i class="fas fa-chart-bar"></i> <span>Reports</span>
+                    <?php if ($reportsCount > 0): ?><span class="badge-count"><?= $reportsCount ?></span><?php endif; ?>
+                </a>
+
+                <!-- 6. System -->
+                <div class="sidebar-menu-label">System</div>
+                <a href="admin/settings" class="sidebar-item <?= $currentPage === 'settings' ? 'active' : '' ?>">
                     <i class="fas fa-cog"></i> <span>Settings</span>
                 </a>
             </div>
@@ -157,7 +147,7 @@
                                 </div>
                             </div>
                             <div class="profile-dropdown-body">
-                                <a href="admin?page=settings" class="profile-dropdown-item">
+                                <a href="admin/settings" class="profile-dropdown-item">
                                     <i class="fas fa-cog"></i> Settings
                                 </a>
                             </div>

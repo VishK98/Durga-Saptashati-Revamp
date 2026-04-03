@@ -184,10 +184,16 @@ try {
                             </div>
                         </div>
 
-                        <div class="mb-3">
-                            <label class="mbr-label">Profession</label>
-                            <input type="text" name="profession" class="mbr-input"
-                                placeholder="e.g. Teacher, Engineer, Business">
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="mbr-label">Profession</label>
+                                <input type="text" name="profession" class="mbr-input"
+                                    placeholder="e.g. Teacher, Engineer, Business">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="mbr-label">Passport Photo</label>
+                                <input type="file" name="photo" accept=".jpg,.jpeg,.png,.webp" class="mbr-input" style="padding:8px 12px;">
+                            </div>
                         </div>
 
                         <div class="mb-3">

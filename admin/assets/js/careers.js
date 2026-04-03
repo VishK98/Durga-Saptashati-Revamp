@@ -64,7 +64,7 @@ function ajaxCareerAction(action, data) {
     fd.append('action', action);
     for (var key in data) fd.append(key, data[key]);
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'admin?page=careers');
+    xhr.open('POST', 'admin/careers');
     xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
     xhr.onload = function() {
         try {
