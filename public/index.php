@@ -129,15 +129,15 @@ include '../app/views/layout/header.php';
                     <div class="home-stats-overlay">
                         <div class="home-stats-bar">
                             <div class="home-stat-item">
-                                <h4>10+</h4>
+                                <h4>5+</h4>
                                 <small>Years of Service</small>
                             </div>
                             <div class="home-stat-item">
-                                <h4>5K+</h4>
+                                <h4>3.5K+</h4>
                                 <small>Lives Impacted</small>
                             </div>
                             <div class="home-stat-item home-stat-last">
-                                <h4>100+</h4>
+                                <h4>40+</h4>
                                 <small>Volunteers</small>
                             </div>
                         </div>
@@ -208,34 +208,26 @@ include '../app/views/layout/header.php';
 <!-- Facts/Counter Section Start -->
 <div class="container-fluid facts-section">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 text-center" data-aos="fade-up" data-aos-delay="100">
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-4 col-4 text-center" data-aos="fade-up" data-aos-delay="100">
                 <div class="facts-item">
-                    <i class="fa fa-heart fa-3x mb-3 facts-icon"></i>
-                    <h1 class="text-white mb-2 counter-num" data-target="25">0</h1>
-                    <h6 class="text-uppercase text-white facts-label">Happy Donators</h6>
+                    <i class="fa fa-smile fa-3x mb-3 facts-icon"></i>
+                    <h1 class="text-white mb-2 counter-num" data-target="1000">0</h1>
+                    <h6 class="text-uppercase text-white facts-label">Smiles</h6>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 text-center" data-aos="fade-up" data-aos-delay="200">
+            <div class="col-lg-4 col-md-4 col-4 text-center" data-aos="fade-up" data-aos-delay="200">
                 <div class="facts-item">
-                    <i class="fa fa-check-circle fa-3x mb-3 facts-icon"></i>
-                    <h1 class="text-white mb-2 counter-num" data-target="10">0</h1>
-                    <h6 class="text-uppercase text-white facts-label">Success Mission</h6>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 text-center" data-aos="fade-up" data-aos-delay="300">
-                <div class="facts-item">
-                    <i class="fa fa-users fa-3x mb-3 facts-icon"></i>
+                    <i class="fa fa-home fa-3x mb-3 facts-icon"></i>
                     <h1 class="text-white mb-2 counter-num" data-target="100">0</h1>
-                    <h6 class="text-uppercase text-white facts-label">Volunteer Reached</h6>
+                    <h6 class="text-uppercase text-white facts-label">Happy Families</h6>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 text-center" data-aos="fade-up" data-aos-delay="400">
+            <div class="col-lg-4 col-md-4 col-4 text-center" data-aos="fade-up" data-aos-delay="300">
                 <div class="facts-item">
-                    <i class="fa fa-globe fa-3x mb-3 facts-icon"></i>
-                    <h1 class="text-white mb-2 counter-num" data-target="5">0</h1>
-                    <h6 class="text-uppercase text-white facts-label">Globalization Work
-                    </h6>
+                    <i class="fa fa-lightbulb fa-3x mb-3 facts-icon"></i>
+                    <h1 class="text-white mb-2 counter-num" data-target="10">0</h1>
+                    <h6 class="text-uppercase text-white facts-label">Initiatives</h6>
                 </div>
             </div>
         </div>

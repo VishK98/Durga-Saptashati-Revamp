@@ -354,17 +354,16 @@ include '../app/views/layout/header.php';
         <div class="row text-center">
             <?php
             $impactStats = [
-                ['num' => '5,000+', 'label' => 'Lives Transformed', 'icon' => 'fa-users'],
-                ['num' => '500+', 'label' => 'Students Educated', 'icon' => 'fa-graduation-cap'],
-                ['num' => '2,000+', 'label' => 'Women Empowered', 'icon' => 'fa-female'],
-                ['num' => '50+', 'label' => 'Health Camps', 'icon' => 'fa-heartbeat'],
+                ['num' => '1,000+', 'label' => 'Smiles', 'icon' => 'fa-smile', 'target' => 1000],
+                ['num' => '100+', 'label' => 'Happy Families', 'icon' => 'fa-home', 'target' => 100],
+                ['num' => '10+', 'label' => 'Initiatives', 'icon' => 'fa-lightbulb', 'target' => 10],
             ];
             foreach ($impactStats as $i => $stat):
                 ?>
-            <div class="col-lg-3 col-md-6 col-6 mb-3" data-aos="zoom-in" data-aos-delay="<?= $i * 80 ?>">
+            <div class="col-lg-4 col-md-4 col-4 mb-3" data-aos="zoom-in" data-aos-delay="<?= $i * 80 ?>">
                 <div class="abt-impact-item">
                     <i class="fas <?= $stat['icon'] ?>"></i>
-                    <h3><?= $stat['num'] ?></h3>
+                    <h3 class="abt-counter-num" data-target="<?= $stat['target'] ?>">0</h3>
                     <p><?= $stat['label'] ?></p>
                 </div>
             </div>
@@ -685,4 +684,33 @@ $('#videoModal').on('show.bs.modal', function(e) {
 $('#videoModal').on('hidden.bs.modal', function() {
     $('#aboutVideoIframe').attr('src', '');
 });
+
+// Impact stats counter animation
+(function() {
+    var started = false;
+    function animateCounters() {
+        if (started) return;
+        started = true;
+        document.querySelectorAll('.abt-counter-num').forEach(function(el) {
+            var target = parseInt(el.getAttribute('data-target'));
+            var duration = 2000;
+            var startTime = null;
+            function step(ts) {
+                if (!startTime) startTime = ts;
+                var progress = Math.min((ts - startTime) / duration, 1);
+                var eased = 1 - Math.pow(1 - progress, 3);
+                el.textContent = Math.floor(eased * target) + '+';
+                if (progress < 1) requestAnimationFrame(step);
+                else el.textContent = target + '+';
+            }
+            requestAnimationFrame(step);
+        });
+    }
+    var el = document.querySelector('.abt-counter-num');
+    if (el) {
+        new IntersectionObserver(function(entries, obs) {
+            if (entries[0].isIntersecting) { animateCounters(); obs.disconnect(); }
+        }, { threshold: 0.3 }).observe(el);
+    }
+})();
 </script>

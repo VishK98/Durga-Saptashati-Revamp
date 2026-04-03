@@ -17,11 +17,11 @@
                 if (!startTime) startTime = timestamp;
                 var progress = Math.min((timestamp - startTime) / duration, 1);
                 var eased = 1 - Math.pow(1 - progress, 3);
-                el.textContent = Math.floor(eased * target);
+                el.textContent = Math.floor(eased * target) + '+';
                 if (progress < 1) {
                     requestAnimationFrame(step);
                 } else {
-                    el.textContent = target;
+                    el.textContent = target + '+';
                 }
             }
             requestAnimationFrame(step);
