@@ -81,7 +81,7 @@ function ajaxNewsAction(action, newsId) {
     fd.append('action', action);
     fd.append('news_id', newsId);
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'admin/news');
+    xhr.open('POST', '/admin/news');
     xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
     xhr.onload = function() {
         try {

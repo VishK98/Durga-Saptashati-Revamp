@@ -48,19 +48,23 @@
                 </a>
                 <a href="/admin/comments" class="sidebar-item <?= $currentPage === 'comments' ? 'active' : '' ?>">
                     <i class="fas fa-comment-dots"></i> <span>Comments</span>
-                    <?php if ($pendingComments > 0): ?><span class="badge-count"><?= $pendingComments ?></span><?php endif; ?>
+                    <?php if ($pendingComments > 0): ?><span
+                        class="badge-count"><?= $pendingComments ?></span><?php endif; ?>
                 </a>
                 <a href="/admin/donations" class="sidebar-item <?= $currentPage === 'donations' ? 'active' : '' ?>">
                     <i class="fas fa-donate"></i> <span>Donations</span>
-                    <?php if ($donationCount > 0): ?><span class="badge-count"><?= $donationCount ?></span><?php endif; ?>
+                    <?php if ($donationCount > 0): ?><span
+                        class="badge-count"><?= $donationCount ?></span><?php endif; ?>
                 </a>
                 <a href="/admin/volunteers" class="sidebar-item <?= $currentPage === 'volunteers' ? 'active' : '' ?>">
                     <i class="fas fa-user-plus"></i> <span>Volunteers</span>
-                    <?php if ($pendingVolunteers > 0): ?><span class="badge-count"><?= $pendingVolunteers ?></span><?php endif; ?>
+                    <?php if ($pendingVolunteers > 0): ?><span
+                        class="badge-count"><?= $pendingVolunteers ?></span><?php endif; ?>
                 </a>
                 <a href="/admin/members" class="sidebar-item <?= $currentPage === 'members' ? 'active' : '' ?>">
-                    <i class="fas fa-id-card"></i> <span>Members</span>
-                    <?php if ($pendingMembers > 0): ?><span class="badge-count"><?= $pendingMembers ?></span><?php endif; ?>
+                    <i class="fas fa-id-card"></i> <span>Membership</span>
+                    <?php if ($pendingMembers > 0): ?><span
+                        class="badge-count"><?= $pendingMembers ?></span><?php endif; ?>
                 </a>
 
                 <!-- 3. Content Management -->
@@ -79,7 +83,8 @@
                 </a>
                 <a href="/admin/subscribers" class="sidebar-item <?= $currentPage === 'subscribers' ? 'active' : '' ?>">
                     <i class="fas fa-envelope-open-text"></i> <span>Newsletter</span>
-                    <?php if ($subscriberCount > 0): ?><span class="badge-count"><?= $subscriberCount ?></span><?php endif; ?>
+                    <?php if ($subscriberCount > 0): ?><span
+                        class="badge-count"><?= $subscriberCount ?></span><?php endif; ?>
                 </a>
 
                 <!-- 4. HR / Opportunities -->
@@ -90,7 +95,7 @@
                 </a>
 
                 <!-- 5. Reports -->
-                <div class="sidebar-menu-label">Analytics</div>
+                <div class="sidebar-menu-label">Financial </div>
                 <a href="/admin/reports" class="sidebar-item <?= $currentPage === 'reports' ? 'active' : '' ?>">
                     <i class="fas fa-chart-bar"></i> <span>Reports</span>
                     <?php if ($reportsCount > 0): ?><span class="badge-count"><?= $reportsCount ?></span><?php endif; ?>
@@ -130,20 +135,24 @@
                         <span class="notif-dot"></span>
                     </button>
                     <div class="header-profile-wrap" style="position:relative;margin-left:8px;">
-                        <div class="header-profile" onclick="document.getElementById('profileDropdown').classList.toggle('show')">
+                        <div class="header-profile"
+                            onclick="document.getElementById('profileDropdown').classList.toggle('show')">
                             <div class="avatar"><?= strtoupper(substr($_SESSION['admin_name'] ?? 'A', 0, 1)) ?></div>
                             <div class="profile-info">
                                 <h6><?= $_SESSION['admin_name'] ?? 'Admin' ?></h6>
                                 <small><?= $_SESSION['admin_email'] ?? '' ?></small>
                             </div>
-                            <i class="fas fa-chevron-down" id="profileArrow" style="color:#9ca3af;font-size:0.7rem;margin-left:5px;transition:transform 0.3s;"></i>
+                            <i class="fas fa-chevron-down" id="profileArrow"
+                                style="color:#9ca3af;font-size:0.7rem;margin-left:5px;transition:transform 0.3s;"></i>
                         </div>
                         <!-- Profile Dropdown -->
                         <div id="profileDropdown" class="profile-dropdown">
                             <div class="profile-dropdown-header">
                                 <div>
-                                    <h6 style="margin:0;font-size:0.9rem;font-weight:700;color:var(--text-primary);"><?= $_SESSION['admin_name'] ?? 'Admin' ?></h6>
-                                    <small style="color:var(--text-muted);font-size:0.75rem;"><?= $_SESSION['admin_email'] ?? '' ?></small>
+                                    <h6 style="margin:0;font-size:0.9rem;font-weight:700;color:var(--text-primary);">
+                                        <?= $_SESSION['admin_name'] ?? 'Admin' ?></h6>
+                                    <small
+                                        style="color:var(--text-muted);font-size:0.75rem;"><?= $_SESSION['admin_email'] ?? '' ?></small>
                                 </div>
                             </div>
                             <div class="profile-dropdown-body">
@@ -197,7 +206,9 @@
     if (clockEl) {
         function updateClock() {
             clockEl.textContent = new Date().toLocaleTimeString('en-GB', {
-                hour: '2-digit', minute: '2-digit', second: '2-digit'
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
             });
         }
         setInterval(updateClock, 1000);
@@ -231,7 +242,10 @@
     if (activeItem) {
         var menu = document.querySelector('.sidebar-menu');
         if (menu) {
-            activeItem.scrollIntoView({ block: 'center', behavior: 'instant' });
+            activeItem.scrollIntoView({
+                block: 'center',
+                behavior: 'instant'
+            });
         }
     }
 
@@ -242,7 +256,8 @@
             if (!tbody) return;
             var allRows = Array.prototype.slice.call(tbody.querySelectorAll('tr'));
             // Skip if table has no data rows or only a "no data" placeholder row
-            if (allRows.length === 0 || (allRows.length === 1 && allRows[0].querySelectorAll('td').length === 1)) return;
+            if (allRows.length === 0 || (allRows.length === 1 && allRows[0].querySelectorAll('td')
+                    .length === 1)) return;
 
             var pageSize = 10;
             var currentPage = 1;
@@ -275,15 +290,18 @@
 
                 // Build pagination HTML
                 var html = '<div class="page-info">';
-                html += '<span>Showing ' + (total === 0 ? '0' : (start + 1)) + '-' + end + ' of ' + total + '</span>';
+                html += '<span>Showing ' + (total === 0 ? '0' : (start + 1)) + '-' + end + ' of ' + total +
+                    '</span>';
                 html += '<select class="page-size-select" data-action="pagesize">';
                 [5, 10, 25, 50].forEach(function(s) {
-                    html += '<option value="' + s + '"' + (s === pageSize ? ' selected' : '') + '>' + s + '/page</option>';
+                    html += '<option value="' + s + '"' + (s === pageSize ? ' selected' : '') +
+                        '>' + s + '/page</option>';
                 });
                 html += '</select></div>';
 
                 html += '<div class="page-numbers">';
-                html += '<button class="page-btn' + (currentPage <= 1 ? ' disabled' : '') + '" data-action="prev">&lt;</button>';
+                html += '<button class="page-btn' + (currentPage <= 1 ? ' disabled' : '') +
+                    '" data-action="prev">&lt;</button>';
 
                 // Page number buttons (show max 5)
                 var startPage = Math.max(1, currentPage - 2);
@@ -291,10 +309,12 @@
                 if (endPage - startPage < 4) startPage = Math.max(1, endPage - 4);
 
                 for (var p = startPage; p <= endPage; p++) {
-                    html += '<button class="page-btn' + (p === currentPage ? ' active' : '') + '" data-action="page" data-page="' + p + '">' + p + '</button>';
+                    html += '<button class="page-btn' + (p === currentPage ? ' active' : '') +
+                        '" data-action="page" data-page="' + p + '">' + p + '</button>';
                 }
 
-                html += '<button class="page-btn' + (currentPage >= tp ? ' disabled' : '') + '" data-action="next">&gt;</button>';
+                html += '<button class="page-btn' + (currentPage >= tp ? ' disabled' : '') +
+                    '" data-action="next">&gt;</button>';
                 html += '</div>';
 
                 paginationDiv.innerHTML = html;
@@ -305,9 +325,16 @@
                 var btn = e.target.closest('[data-action]');
                 if (!btn) return;
                 var action = btn.getAttribute('data-action');
-                if (action === 'prev' && currentPage > 1) { currentPage--; render(); }
-                else if (action === 'next' && currentPage < totalPages()) { currentPage++; render(); }
-                else if (action === 'page') { currentPage = parseInt(btn.getAttribute('data-page')); render(); }
+                if (action === 'prev' && currentPage > 1) {
+                    currentPage--;
+                    render();
+                } else if (action === 'next' && currentPage < totalPages()) {
+                    currentPage++;
+                    render();
+                } else if (action === 'page') {
+                    currentPage = parseInt(btn.getAttribute('data-page'));
+                    render();
+                }
             });
 
             paginationDiv.addEventListener('change', function(e) {
@@ -324,32 +351,158 @@
     </script>
 
     <!-- Global Toaster -->
-    <div id="toasterContainer" style="position:fixed;top:20px;right:20px;z-index:999999;display:flex;flex-direction:column;gap:10px;pointer-events:none;"></div>
+    <div id="toasterContainer"
+        style="position:fixed;top:20px;right:20px;z-index:999999;display:flex;flex-direction:column;gap:10px;pointer-events:none;">
+    </div>
     <style>
-    .toaster{pointer-events:all;display:flex;align-items:center;gap:12px;padding:14px 20px;border-radius:10px;background:#fff;box-shadow:0 10px 40px rgba(0,0,0,0.15);font-size:0.9rem;font-family:inherit;min-width:300px;max-width:420px;transform:translateX(120%);animation:toastIn 0.4s ease forwards;border-left:4px solid #10b981;position:relative;overflow:hidden;}
-    .toaster.toast-success{border-left-color:#10b981;}.toaster.toast-success .toast-icon{color:#10b981;}
-    .toaster.toast-error{border-left-color:#ef4444;}.toaster.toast-error .toast-icon{color:#ef4444;}
-    .toaster.toast-info{border-left-color:#3b82f6;}.toaster.toast-info .toast-icon{color:#3b82f6;}
-    .toaster .toast-icon{font-size:1.2rem;flex-shrink:0;}
-    .toaster .toast-body{flex:1;}
-    .toaster .toast-body strong{display:block;color:#1a1b2e;font-size:0.88rem;margin-bottom:2px;}
-    .toaster .toast-body span{color:#666;font-size:0.82rem;}
-    .toaster .toast-close{background:none;border:none;color:#999;font-size:1.1rem;cursor:pointer;padding:0 0 0 8px;flex-shrink:0;transition:color 0.2s;}
-    .toaster .toast-close:hover{color:#333;}
-    .toaster .toast-progress{position:absolute;bottom:0;left:0;height:3px;border-radius:0 0 0 10px;animation:toastProgress 3s linear forwards;}
-    .toaster.toast-success .toast-progress{background:#10b981;}
-    .toaster.toast-error .toast-progress{background:#ef4444;}
-    .toaster.toast-info .toast-progress{background:#3b82f6;}
-    .toaster.removing{animation:toastOut 0.3s ease forwards;}
-    @keyframes toastIn{from{transform:translateX(120%);opacity:0;}to{transform:translateX(0);opacity:1;}}
-    @keyframes toastOut{from{transform:translateX(0);opacity:1;}to{transform:translateX(120%);opacity:0;}}
-    @keyframes toastProgress{from{width:100%;}to{width:0%;}}
+    .toaster {
+        pointer-events: all;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 14px 20px;
+        border-radius: 10px;
+        background: #fff;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+        font-size: 0.9rem;
+        font-family: inherit;
+        min-width: 300px;
+        max-width: 420px;
+        transform: translateX(120%);
+        animation: toastIn 0.4s ease forwards;
+        border-left: 4px solid #10b981;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .toaster.toast-success {
+        border-left-color: #10b981;
+    }
+
+    .toaster.toast-success .toast-icon {
+        color: #10b981;
+    }
+
+    .toaster.toast-error {
+        border-left-color: #ef4444;
+    }
+
+    .toaster.toast-error .toast-icon {
+        color: #ef4444;
+    }
+
+    .toaster.toast-info {
+        border-left-color: #3b82f6;
+    }
+
+    .toaster.toast-info .toast-icon {
+        color: #3b82f6;
+    }
+
+    .toaster .toast-icon {
+        font-size: 1.2rem;
+        flex-shrink: 0;
+    }
+
+    .toaster .toast-body {
+        flex: 1;
+    }
+
+    .toaster .toast-body strong {
+        display: block;
+        color: #1a1b2e;
+        font-size: 0.88rem;
+        margin-bottom: 2px;
+    }
+
+    .toaster .toast-body span {
+        color: #666;
+        font-size: 0.82rem;
+    }
+
+    .toaster .toast-close {
+        background: none;
+        border: none;
+        color: #999;
+        font-size: 1.1rem;
+        cursor: pointer;
+        padding: 0 0 0 8px;
+        flex-shrink: 0;
+        transition: color 0.2s;
+    }
+
+    .toaster .toast-close:hover {
+        color: #333;
+    }
+
+    .toaster .toast-progress {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 3px;
+        border-radius: 0 0 0 10px;
+        animation: toastProgress 3s linear forwards;
+    }
+
+    .toaster.toast-success .toast-progress {
+        background: #10b981;
+    }
+
+    .toaster.toast-error .toast-progress {
+        background: #ef4444;
+    }
+
+    .toaster.toast-info .toast-progress {
+        background: #3b82f6;
+    }
+
+    .toaster.removing {
+        animation: toastOut 0.3s ease forwards;
+    }
+
+    @keyframes toastIn {
+        from {
+            transform: translateX(120%);
+            opacity: 0;
+        }
+
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes toastOut {
+        from {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        to {
+            transform: translateX(120%);
+            opacity: 0;
+        }
+    }
+
+    @keyframes toastProgress {
+        from {
+            width: 100%;
+        }
+
+        to {
+            width: 0%;
+        }
+    }
     </style>
     <script>
     function showToast(message, type, title) {
         type = type || 'success';
         title = title || (type === 'success' ? 'Success' : type === 'error' ? 'Error' : 'Info');
-        var icons = {success:'fa-check-circle', error:'fa-exclamation-circle', info:'fa-info-circle'};
+        var icons = {
+            success: 'fa-check-circle',
+            error: 'fa-exclamation-circle',
+            info: 'fa-info-circle'
+        };
         var container = document.getElementById('toasterContainer');
         var toast = document.createElement('div');
         toast.className = 'toaster toast-' + type;
@@ -358,12 +511,17 @@
             '<button class="toast-close" onclick="removeToast(this.parentElement)">&times;</button>' +
             '<div class="toast-progress"></div>';
         container.appendChild(toast);
-        setTimeout(function(){ removeToast(toast); }, 3000);
+        setTimeout(function() {
+            removeToast(toast);
+        }, 3000);
     }
+
     function removeToast(el) {
         if (!el || el.classList.contains('removing')) return;
         el.classList.add('removing');
-        setTimeout(function(){ if(el.parentElement) el.parentElement.removeChild(el); }, 300);
+        setTimeout(function() {
+            if (el.parentElement) el.parentElement.removeChild(el);
+        }, 300);
     }
     </script>
 

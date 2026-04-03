@@ -550,17 +550,17 @@ a {
 
 .action-menu {
   position: absolute;
-  top: calc(100% + 6px);
+  bottom: calc(100% + 6px);
   right: 0;
   min-width: 160px;
   background: var(--card-bg);
   border: 1.5px solid var(--border);
   border-radius: 12px;
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 -4px 25px rgba(0, 0, 0, 0.1), 0 4px 15px rgba(0, 0, 0, 0.08);
   z-index: 100;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-6px);
+  transform: translateY(6px);
   transition: all 0.2s ease;
   overflow: hidden;
   padding: 6px;

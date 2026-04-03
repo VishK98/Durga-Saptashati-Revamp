@@ -162,7 +162,12 @@ function filterMembers() {
     var payment = document.getElementById('filterPayment').value;
     var tbody = document.getElementById('membersTable').querySelector('tbody');
     var rows = tbody.querySelectorAll('tr');
+
+    // First show all rows (override pagination hiding)
+    rows.forEach(function(row) { row.style.display = ''; });
+
     var count = 0;
+    var hasFilter = search || status || type || payment;
     rows.forEach(function(row) {
         var cells = row.querySelectorAll('td');
         if (cells.length <= 1) return;
@@ -178,12 +183,21 @@ function filterMembers() {
         var matchPayment = !payment || rowPayment === payment;
         if (matchSearch && matchStatus && matchType && matchPayment) {
             row.style.display = '';
+            row.removeAttribute('data-filtered');
             count++;
             cells[0].textContent = count;
         } else {
             row.style.display = 'none';
+            row.setAttribute('data-filtered', 'hidden');
         }
     });
+
+    // Hide/show pagination when filtering
+    var paginationEl = document.querySelector('#membersTable').closest('.data-panel').querySelector('.table-pagination');
+    if (paginationEl) {
+        paginationEl.style.display = hasFilter ? 'none' : '';
+    }
+
     updateClearBtnVisibility();
 }
 
@@ -199,7 +213,16 @@ function clearMemberFilters() {
         wrap.querySelectorAll('.custom-select-option').forEach(function(o) { o.classList.remove('selected'); });
         wrap.querySelector('.custom-select-option[data-value=""]').classList.add('selected');
     });
+    // Restore pagination visibility
+    var paginationEl = document.querySelector('#membersTable').closest('.data-panel').querySelector('.table-pagination');
+    if (paginationEl) paginationEl.style.display = '';
     filterMembers();
+    // Re-trigger pagination render
+    if (paginationEl) {
+        var evt = new Event('change', { bubbles: true });
+        var sel = paginationEl.querySelector('.page-size-select');
+        if (sel) sel.dispatchEvent(evt);
+    }
 }
 
 function submitAddPlan(e) {
@@ -300,7 +323,7 @@ function ajaxAction(action, data, callback) {
     fd.append('action', action);
     for (var key in data) fd.append(key, data[key]);
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'admin/members');
+    xhr.open('POST', '/admin/members');
     xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
     xhr.onload = function() {
         try {
@@ -327,7 +350,7 @@ function ajaxAction(action, data, callback) {
 // AJAX with FormData (supports file uploads)
 function ajaxActionFD(fd, callback) {
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'admin/members');
+    xhr.open('POST', '/admin/members');
     xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
     xhr.onload = function() {
         try {

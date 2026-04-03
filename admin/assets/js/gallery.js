@@ -52,7 +52,7 @@ function ajaxGalleryAction(action, galleryId) {
     fd.append('action', action);
     fd.append('gallery_id', galleryId);
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'admin/gallery');
+    xhr.open('POST', '/admin/gallery');
     xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
     xhr.onload = function () {
         try {

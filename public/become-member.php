@@ -19,7 +19,7 @@ try {
 
 // Fetch approved members
 try {
-    $approvedMembers = $pdo->query("SELECT full_name, profession, membership_type, created_at FROM members WHERE status = 'approved' ORDER BY created_at DESC")->fetchAll();
+    $approvedMembers = $pdo->query("SELECT full_name, profession, membership_type, photo, created_at FROM members WHERE status = 'approved' ORDER BY created_at DESC")->fetchAll();
     $planMapPublic = [];
     foreach ($membershipPlans as $mp) { $planMapPublic[$mp['slug']] = $mp['name']; }
 } catch (Exception $e) {
@@ -228,7 +228,7 @@ try {
                 <?php foreach ($approvedMembers as $idx => $am): ?>
                 <div class="mbr-member-card <?= $idx >= 9 ? 'mbr-member-hidden' : '' ?>" data-aos="fade-up" data-aos-delay="<?= min($idx * 50, 300) ?>">
                     <div class="mbr-member-avatar">
-                        <img src="<?= asset('images/profile-1.png') ?>" alt="<?= htmlspecialchars($am['full_name']) ?>">
+                        <img src="<?= !empty($am['photo']) ? asset('uploads/members/' . $am['photo']) : asset('images/profile-1.png') ?>" alt="<?= htmlspecialchars($am['full_name']) ?>">
                     </div>
                     <div class="mbr-member-info">
                         <h6 class="mbr-member-name"><?= htmlspecialchars($am['full_name']) ?></h6>

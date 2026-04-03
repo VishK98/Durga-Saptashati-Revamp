@@ -45,18 +45,18 @@
             </div>
             <?php endif; ?>
 
-            <form method="POST" action="/public/admin.php" autocomplete="on" id="loginForm">
+            <form method="POST" action="/public/admin.php" autocomplete="on" id="loginForm" name="login">
                 <div class="form-group">
-                    <label>Email</label>
+                    <label for="loginEmail">Email</label>
                     <div class="input-wrapper">
-                        <input type="email" name="email" placeholder="admin@example.com" required autofocus
-                            autocomplete="username"
+                        <input type="email" name="email" id="loginEmail" placeholder="admin@example.com" required autofocus
+                            autocomplete="username email"
                             value="<?= htmlspecialchars($loginEmail) ?>">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label>Password</label>
+                    <label for="passwordInput">Password</label>
                     <div class="input-wrapper">
                         <input type="password" name="password" id="passwordInput" placeholder="Enter your password"
                             required autocomplete="current-password">
