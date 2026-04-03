@@ -428,6 +428,14 @@ $seoType = isset($pageType) ? $pageType : 'website';
                         <span class="btn-text">Contact Us</span>
                     </a>
                 </div>
+
+                <!-- Mobile Social Links -->
+                <div class="mobile-social-links d-lg-none">
+                    <a href="https://x.com/Saptashati_F" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.facebook.com/Durgasaptashati.org" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/durgasaptashatifoundation/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/channel/UCKWpbOcfN4HHrkFHmjz4l5Q" target="_blank"><i class="fab fa-youtube"></i></a>
+                </div>
             </div>
 
             <!-- Desktop CTA Button -->

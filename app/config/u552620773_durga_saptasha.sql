@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 02, 2026 at 04:57 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- Host: 127.0.0.1:3306
+-- Generation Time: Apr 03, 2026 at 12:04 PM
+-- Server version: 11.8.6-MariaDB-log
+-- PHP Version: 7.2.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `durga_saptashati`
+-- Database: `u552620773_durga_saptasha`
 --
 
 -- --------------------------------------------------------
@@ -34,6 +34,7 @@ CREATE TABLE `admin_users` (
   `phone` varchar(20) DEFAULT NULL,
   `address` varchar(255) DEFAULT NULL,
   `password` varchar(255) NOT NULL,
+  `remember_token` varchar(255) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -42,8 +43,8 @@ CREATE TABLE `admin_users` (
 -- Dumping data for table `admin_users`
 --
 
-INSERT INTO `admin_users` (`id`, `name`, `email`, `phone`, `address`, `password`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'support@saptashati.org', NULL, NULL, '$2y$10$aKPn0vb/bYmIWDCgxzx4d.56n95Glk9Ni7KECl6Mcvsviy/iZ.DZ6', '2026-03-24 09:27:50', '2026-03-24 09:27:50');
+INSERT INTO `admin_users` (`id`, `name`, `email`, `phone`, `address`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Admin', 'support@saptashati.org', NULL, NULL, '$2y$10$aKPn0vb/bYmIWDCgxzx4d.56n95Glk9Ni7KECl6Mcvsviy/iZ.DZ6', '97e0912ace874e4b58d49810812b89b32b627074e9ca9180b756a2042ff42099', '2026-03-24 09:27:50', '2026-04-03 08:19:51');
 
 -- --------------------------------------------------------
 
@@ -267,7 +268,8 @@ CREATE TABLE `donations` (
 --
 
 INSERT INTO `donations` (`id`, `name`, `email`, `phone`, `amount`, `cause`, `transaction_id`, `payment_method`, `status`, `notes`, `created_at`) VALUES
-(1, 'Kumar Vishesh', 'vishesh@purplewaveindia.com', '9876543211', 5.00, '', 'pay_SYb01OyWm6u9zJ', 'Online', 'completed', '', '2026-04-02 10:45:13');
+(1, 'Vishesh Kumar', 'vishesh@purplewaveindia.com', '7352690391', 11.00, '', 'pay_SYgY4QyPoVaPIs', 'Online', 'completed', '', '2026-04-02 16:11:10'),
+(2, 'Ajeet Dubey', 'ajeet@purplewave.in', '8130377731', 10.00, '', 'pay_SYtRlfJLm855ih', 'Online', 'completed', 'Thanks', '2026-04-03 04:48:11');
 
 -- --------------------------------------------------------
 
@@ -366,7 +368,10 @@ INSERT INTO `gallery` (`id`, `title`, `category`, `image`, `created_at`) VALUES
 (35, 'श्री बालमुकुंद जी', 'General', 'gallery_1774861047_0.webp', '2026-03-30 08:57:27'),
 (36, 'Durga Saptashati Foundation partnered with MCD for Raahigiri Day.', 'General', 'gallery_1774861328_0.webp', '2026-03-30 09:02:08'),
 (37, 'Serving People', 'Donation', 'gallery_1774861407_0.webp', '2026-03-30 09:03:27'),
-(38, 'Durga Saptashati Foundation organized a program on the occasion of Republic Day on 26 January 2024.', 'Donation', 'gallery_1774861488_0.webp', '2024-01-26 09:04:48');
+(38, 'Durga Saptashati Foundation organized a program on the occasion of Republic Day on 26 January 2024.', 'Donation', 'gallery_1774861488_0.webp', '2024-01-26 09:04:48'),
+(41, 'Little Minds Academy', 'Education', 'gallery_1775217198_2.jpeg', '2026-04-03 11:53:18'),
+(42, 'Creative Kids Corner', 'Education', 'gallery_1775217436_0.jpeg', '2026-04-03 11:57:16'),
+(43, 'Playful Learning Kids', 'Education', 'gallery_1775217483_0.jpeg', '2026-04-03 11:58:03');
 
 -- --------------------------------------------------------
 
@@ -383,6 +388,7 @@ CREATE TABLE `members` (
   `mobile` varchar(20) DEFAULT NULL,
   `membership_type` varchar(50) NOT NULL,
   `profession` varchar(255) DEFAULT NULL,
+  `photo` varchar(255) DEFAULT NULL,
   `payment_mode` varchar(50) NOT NULL DEFAULT 'N/A',
   `transaction_id` varchar(100) DEFAULT NULL,
   `status` enum('pending','approved','rejected') DEFAULT 'pending',
@@ -393,24 +399,24 @@ CREATE TABLE `members` (
 -- Dumping data for table `members`
 --
 
-INSERT INTO `members` (`id`, `full_name`, `gender`, `address`, `email`, `mobile`, `membership_type`, `profession`, `payment_mode`, `transaction_id`, `status`, `created_at`) VALUES
-(1, 'Promila Malik', 'Female', 'F-802 jagran apartment, sector-22, plot no.17, dwarka  new delhi', 'promila.malik09@gmail.com', '9810457310', 'lifetime', 'Retired Teacher', 'Online', NULL, 'approved', '2026-03-31 07:04:15'),
-(2, 'Sutapa Banerjee', 'Female', 'C-46,Mohan Garden, 3rd floor, dwarka mod new delhi', 'sutapa1680@gmail.com', '9910579994', '1-year', 'Teacher', 'Cash', NULL, 'approved', '2024-02-14 07:06:08'),
-(3, 'Namita Gupta', 'Female', 'Flat no.160, sector-17A, Sarvahit Apartment, Dwarka', 'namita303@gmail.com', '8368141273', '1-year', 'Advocate', 'Online', NULL, 'approved', '2024-01-03 07:07:35'),
-(4, 'Neeti Kapoor', 'Female', '202 Supriya appartment sector 10, plot no. 20, Dwarka New Delhi', 'neeti.1959@gmail.com', '9899112510', '6-year', 'Financial Advisor', 'Online', NULL, 'approved', '2025-04-25 07:09:17'),
-(5, 'Shashi Bakshi', '', 'Flat no. 101,Udyog Vihar CGHS Ltd,plot no.-12, Sec-22, Dwarka,Bagdola', 'shashi.bakahi2011@gmail.com', '9818900975', '6-year', '', 'Cash', NULL, 'approved', '2025-05-08 07:10:47'),
-(6, 'Bahnishikha Kar (Bani)', 'Female', 'C 137/138, Sainik Nagar, Uttam Nagar, New Delhi -59', 'bahnishikha.kar@gmail.com', '9971130134', '1-year', '', 'Online', NULL, 'approved', '2025-08-09 07:12:43'),
-(7, 'Aditi Asthana', 'Female', 'MIG-248, Kautltya Appartments sec-14,Dwarka New Delhi', 'adity.asthana83@gmail.com', '7838440054', '6-year', '', 'Online', NULL, 'approved', '2025-08-13 07:14:01'),
-(8, 'Sheetal Dhall', 'Female', 'New Rashtriya apartments, 712 ,plot no.15, Sector 18A, Dwarka New Delhi', 'vnsharts@gmail.com', '9910718811', '1-year', 'Dynamic Divas Group', 'Online', NULL, 'approved', '2025-08-27 07:15:29'),
-(9, 'Bunti Chauhan', 'Male', 'C 43 shri chand park Matiala,Gurpreet Nagar,sector-3, New Delhi', 'bunti110059@gmail.com', '9311796395', '1-year', 'Fitness and Gym Expert', 'Cash', NULL, 'approved', '2025-10-09 07:16:40'),
-(10, 'Ritu Rajput', 'Female', 'B-12 sanjay enclave bindapur uttam nagar-110059', 'riturajput2629@gmail.com', '8882339258', '1-year', 'Salon owner (Nature\'s Herbal Parlour)', 'Cash', NULL, 'approved', '2025-09-11 07:17:53'),
-(11, 'Poonam Bansal', 'Female', 'Plot no.180,block DP East Pitampura, Shalimar Bagh', 'poonamb3003@gmail.com', '9873914123', 'lifetime', '', 'Cash', NULL, 'approved', '2025-09-17 07:18:42'),
-(12, 'Sunil Gautam', 'Male', 'B-17 mansa ram park, Uttam Nagar', 'kidspride17@gmail.com', '9711264470', '1-year', 'Principal (Kids Pride School)', 'Online', NULL, 'approved', '2025-09-18 07:19:49'),
-(13, 'Manisha Sharma', 'Female', 'D-44 type-3 Police Colony Sector-16B-Dwarka', 'manishasharma53600@gmail.com', '9582010793', '1-year', '', 'Online', NULL, 'approved', '2025-09-18 07:20:47'),
-(14, 'Suman Sharma', 'Female', 'J-24,Police Housing Complex,PHP sector-16B Dwarka', 'ss978837@gmail.com', '8076824912', '1-year', '', 'Online', NULL, 'approved', '2025-09-18 07:21:40'),
-(15, 'MP Garg', 'Male', 'Flat no.-389,DDA pocket-1 ,Dwarka Sector-22', 'nagliguru1954@gmail.com', '9812137569', 'lifetime', 'President of Rotary Club & Chief Patron of Bharat Vikas Parishad', 'Cash', NULL, 'approved', '2026-01-13 07:22:32'),
-(16, 'Arti Sharma', 'Female', 'Netaji subhash appartment sector-13 dwarka', 'sharma28arti@gmail.com', '8750209955', '1-year', '', 'Online', NULL, 'approved', '2026-01-17 07:23:23'),
-(17, 'Sushma Rao', 'Female', 'D-63, Dwarka sector-8, new delhi', 'sushmarao9916@gmail.com', '9971213001', '1-year', '', 'Cash', NULL, 'approved', '2026-03-20 07:24:07');
+INSERT INTO `members` (`id`, `full_name`, `gender`, `address`, `email`, `mobile`, `membership_type`, `profession`, `photo`, `payment_mode`, `transaction_id`, `status`, `created_at`) VALUES
+(1, 'Promila Malik', 'Female', 'F-802 jagran apartment, sector-22, plot no.17, dwarka  new delhi', 'promila.malik09@gmail.com', '9810457310', 'lifetime', 'Retired Teacher', 'member_69cf7b57e17d9.png', 'Online', NULL, 'approved', '2026-03-31 07:04:15'),
+(2, 'Sutapa Banerjee', 'Female', 'C-46,Mohan Garden, 3rd floor, dwarka mod new delhi', 'sutapa1680@gmail.com', '9910579994', '1-year', 'Teacher', 'member_69cf9280b1ac9.png', 'Cash', NULL, 'approved', '2024-02-14 07:06:08'),
+(3, 'Namita Gupta', 'Female', 'Flat no.160, sector-17A, Sarvahit Apartment, Dwarka', 'namita303@gmail.com', '8368141273', '1-year', 'Advocate', 'member_69cf930d4d5d4.png', 'Online', NULL, 'approved', '2024-01-03 07:07:35'),
+(4, 'Neeti Kapoor', 'Female', '202 Supriya appartment sector 10, plot no. 20, Dwarka New Delhi', 'neeti.1959@gmail.com', '9899112510', '6-year', 'Financial Advisor', 'member_69cf7c1104e8f.png', 'Online', NULL, 'approved', '2025-04-25 07:09:17'),
+(5, 'Shashi Bakshi', '', 'Flat no. 101,Udyog Vihar CGHS Ltd,plot no.-12, Sec-22, Dwarka,Bagdola', 'shashi.bakahi2011@gmail.com', '9818900975', '6-year', '', NULL, 'Cash', NULL, 'approved', '2025-05-08 07:10:47'),
+(6, 'Bahnishikha Kar', 'Female', 'C 137/138, Sainik Nagar, Uttam Nagar, New Delhi -59', 'bahnishikha.kar@gmail.com', '9971130134', '1-year', '', 'member_69cf92be58892.png', 'Online', NULL, 'approved', '2025-08-09 07:12:43'),
+(7, 'Aditi Asthana', 'Female', 'MIG-248, Kautltya Appartments sec-14,Dwarka New Delhi', 'adity.asthana83@gmail.com', '7838440054', '6-year', '', 'member_69cf921f9b6a2.png', 'Online', NULL, 'approved', '2025-08-13 07:14:01'),
+(8, 'Sheetal Dhal', 'Female', 'New Rashtriya apartments, 712 ,plot no.15, Sector 18A, Dwarka New Delhi', 'vnsharts@gmail.com', '9910718811', '1-year', 'Dynamic Divas Group', 'member_69cf7bd453656.png', 'Online', NULL, 'approved', '2025-08-27 07:15:29'),
+(9, 'Bunti Chauhan', 'Male', 'C 43 shri chand park Matiala,Gurpreet Nagar,sector-3, New Delhi', 'bunti110059@gmail.com', '9311796395', '1-year', 'Fitness and Gym Expert', NULL, 'Cash', NULL, 'approved', '2025-10-09 07:16:40'),
+(10, 'Ritu Rajput', 'Female', 'B-12 sanjay enclave bindapur uttam nagar-110059', 'riturajput2629@gmail.com', '8882339258', '1-year', 'Salon owner (Nature\'s Herbal Parlour)', 'member_69cf92e61fc5c.png', 'Cash', NULL, 'approved', '2025-09-11 07:17:53'),
+(11, 'Poonam Bansal', 'Female', 'Plot no.180,block DP East Pitampura, Shalimar Bagh', 'poonamb3003@gmail.com', '9873914123', 'lifetime', '', 'member_69cf7dd989b7b.png', 'Cash', NULL, 'approved', '2025-09-17 07:18:42'),
+(12, 'Sunil Gautam', 'Male', 'B-17 mansa ram park, Uttam Nagar', 'kidspride17@gmail.com', '9711264470', '1-year', 'Principal (Kids Pride School)', NULL, 'Online', NULL, 'approved', '2025-09-18 07:19:49'),
+(13, 'Manisha Sharma', 'Female', 'D-44 type-3 Police Colony Sector-16B-Dwarka', 'manishasharma53600@gmail.com', '9582010793', '1-year', '', 'member_69cf7d0458f92.png', 'Online', NULL, 'approved', '2025-09-18 07:20:47'),
+(14, 'Suman Sharma', 'Female', 'J-24,Police Housing Complex,PHP sector-16B Dwarka', 'ss978837@gmail.com', '8076824912', '1-year', '', 'member_69cf7ca0271a7.png', 'Online', NULL, 'approved', '2025-09-18 07:21:40'),
+(15, 'MP Garg', 'Male', 'Flat no.-389,DDA pocket-1 ,Dwarka Sector-22', 'nagliguru1954@gmail.com', '9812137569', 'lifetime', 'President of Rotary Club & Chief Patron of Bharat Vikas Parishad', 'member_69cf797c881cb.png', 'Cash', NULL, 'approved', '2026-01-13 07:22:32'),
+(16, 'Arti Sharma', 'Female', 'Netaji subhash appartment sector-13 dwarka', 'sharma28arti@gmail.com', '8750209955', '1-year', '', NULL, 'Online', NULL, 'approved', '2026-01-17 07:23:23'),
+(17, 'Sushma Rao', 'Female', 'D-63, Dwarka sector-8, new delhi', 'sushmarao9916@gmail.com', '9971213001', '1-year', '', NULL, 'Cash', NULL, 'approved', '2026-03-20 07:24:07');
 
 -- --------------------------------------------------------
 
@@ -705,7 +711,7 @@ ALTER TABLE `contact_queries`
 -- AUTO_INCREMENT for table `donations`
 --
 ALTER TABLE `donations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `events`
@@ -723,7 +729,7 @@ ALTER TABLE `financial_reports`
 -- AUTO_INCREMENT for table `gallery`
 --
 ALTER TABLE `gallery`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `members`

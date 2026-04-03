@@ -86,17 +86,25 @@ document.addEventListener("DOMContentLoaded", function () {
       }, 100);
     };
 
-    // Mouse events on dropdown toggle
-    dropdown.addEventListener("mouseenter", openDropdown);
-    dropdown.addEventListener("mouseleave", closeDropdown);
+    // Mouse events on dropdown toggle (desktop only)
+    dropdown.addEventListener("mouseenter", function() {
+      if (window.innerWidth >= 992) openDropdown();
+    });
+    dropdown.addEventListener("mouseleave", function() {
+      if (window.innerWidth >= 992) closeDropdown();
+    });
 
-    // Keep dropdown open when hovering on menu
+    // Keep dropdown open when hovering on menu (desktop only)
     if (menu) {
       menu.addEventListener("mouseenter", () => {
-        clearTimeout(closeTimer);
-        openDropdown();
+        if (window.innerWidth >= 992) {
+          clearTimeout(closeTimer);
+          openDropdown();
+        }
       });
-      menu.addEventListener("mouseleave", closeDropdown);
+      menu.addEventListener("mouseleave", () => {
+        if (window.innerWidth >= 992) closeDropdown();
+      });
     }
 
     // Click toggle for mobile
@@ -104,6 +112,9 @@ document.addEventListener("DOMContentLoaded", function () {
       toggle.addEventListener("click", function (e) {
         if (window.innerWidth < 992) {
           e.preventDefault();
+          e.stopPropagation();
+
+          const isOpen = dropdown.classList.contains("show");
 
           // Close all other dropdowns first
           dropdowns.forEach((other) => {
@@ -112,14 +123,30 @@ document.addEventListener("DOMContentLoaded", function () {
               const otherMenu = other.querySelector(".dropdown-menu");
               if (otherMenu) {
                 otherMenu.classList.remove("show");
+                otherMenu.style.opacity = "";
+                otherMenu.style.visibility = "";
+                otherMenu.style.display = "";
               }
             }
           });
 
           // Toggle current dropdown
-          dropdown.classList.toggle("show");
-          if (menu) {
-            menu.classList.toggle("show");
+          if (isOpen) {
+            dropdown.classList.remove("show");
+            if (menu) {
+              menu.classList.remove("show");
+              menu.style.opacity = "";
+              menu.style.visibility = "";
+              menu.style.display = "";
+            }
+          } else {
+            dropdown.classList.add("show");
+            if (menu) {
+              menu.classList.add("show");
+              menu.style.opacity = "";
+              menu.style.visibility = "";
+              menu.style.display = "";
+            }
           }
         }
       });

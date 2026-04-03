@@ -51,14 +51,16 @@ include '../app/views/layout/header.php';
             </div>
             <div class="carousel-item">
                 <div class="carousel-img">
-                    <img src="<?php echo asset('images/banner/banner.jpg'); ?>" alt="Gender Equality to Social Justice">
+                    <img src="<?php echo asset('images/banner/class-banner.jpeg'); ?>"
+                        alt="Gender Equality to Social Justice">
                 </div>
                 <div class="carousel-text">
-                    <h1 data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">From Gender Equality to Social
-                        Justice</h1>
+                    <h1 data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
+                        Empowering Young Minds Through Digital Learning
+                    </h1>
                     <p data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000">
-                        We are dismantling barriers, challenging stereotypes, and creating a more inclusive society
-                        through grassroots initiatives.
+                        Our classrooms blend technology with teaching, where dedicated educators and curious students
+                        learn, explore, and grow together in a modern, interactive environment.
                     </p>
                     <div class="carousel-btn" data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000">
                         <a class="btn btn-custom" href="<?php echo url('make-donation.php'); ?>">Donate Now</a>
