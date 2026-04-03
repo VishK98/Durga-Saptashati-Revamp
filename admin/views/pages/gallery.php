@@ -122,6 +122,9 @@ $categories = $pdo->query("SELECT DISTINCT category FROM gallery ORDER BY catego
                             <div class="custom-select-option" data-value="Causes" onclick="selectFormDropdown('uploadGalleryCat', this)">
                                 <span class="cs-opt-text">Causes</span><i class="fas fa-check cs-opt-check"></i>
                             </div>
+                            <div class="custom-select-option" data-value="Education" onclick="selectFormDropdown('uploadGalleryCat', this)">
+                                <span class="cs-opt-text">Education</span><i class="fas fa-check cs-opt-check"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
