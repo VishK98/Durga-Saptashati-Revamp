@@ -36,8 +36,10 @@ include '../app/views/layout/header.php';
         <!-- Openings + Sidebar -->
         <div class="row">
             <div class="col-lg-8">
+                <div class="row">
                 <?php foreach ($openings as $job): ?>
-                <div style="background:#fff;border-radius:12px;padding:28px;box-shadow:0 4px 20px rgba(0,0,0,0.06);border-left:4px solid #f26522;transition:all 0.3s;margin-bottom:20px;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 10px 30px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.06)'">
+                <div class="col-md-6 mb-4">
+                <div style="background:#fff;border-radius:12px;padding:28px;box-shadow:0 4px 20px rgba(0,0,0,0.06);border-left:4px solid #f26522;transition:all 0.3s;height:100%;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 10px 30px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.06)'">
                     <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:12px;">
                         <h5 style="color:#1a1b2e;font-weight:700;margin:0;font-size:1.1rem;"><?= htmlspecialchars($job['title']) ?></h5>
                         <span style="background:rgba(16,185,129,0.1);color:#059669;padding:4px 12px;border-radius:20px;font-size:0.72rem;font-weight:600;white-space:nowrap;"><?= ucfirst(str_replace('-', ' ', $job['type'])) ?></span>
@@ -56,7 +58,9 @@ include '../app/views/layout/header.php';
                         Apply Now <i class="fas fa-arrow-right ml-1"></i>
                     </button>
                 </div>
+                </div>
                 <?php endforeach; ?>
+                </div>
             </div>
             <div class="col-lg-4">
                 <div style="background:#fff;border-radius:14px;padding:25px;box-shadow:0 4px 20px rgba(0,0,0,0.06);margin-bottom:20px;">

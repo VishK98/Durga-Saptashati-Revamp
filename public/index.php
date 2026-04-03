@@ -26,7 +26,7 @@ include '../app/views/layout/header.php';
                     </p>
                     <div class="carousel-btn" data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000">
                         <a class="btn btn-custom" href="<?php echo url('make-donation.php'); ?>">Donate Now</a>
-                        <a class="btn btn-custom" href="<?php echo url('become-volunteer.php'); ?>">Join Us</a>
+                        <a class="btn btn-custom" href="<?php echo url('become-member.php'); ?>">Join Us</a>
                     </div>
                 </div>
             </div>
@@ -254,7 +254,7 @@ include '../app/views/layout/header.php';
             $homeEvents = [
                 ['title' => 'Durga Award Ceremony', 'icon' => 'fa-trophy', 'url' => 'durga-award.php', 'img' => 'durga-award/durga-award.jpeg', 'desc' => 'Honouring exceptional individuals and organisations making outstanding contributions to social welfare and community development.', 'tag' => 'Award'],
                 ['title' => 'International Yoga Day', 'icon' => 'fa-spa', 'url' => 'yoga-day.php', 'img' => 'yoga-day/yoga.jpeg', 'desc' => 'Celebrating the transformative power of yoga through mass sessions, mindfulness workshops, and community wellness programs.', 'tag' => 'Wellness'],
-                ['title' => 'Ganpati Celebration', 'icon' => 'fa-pray', 'url' => 'ganpati-celebration.php', 'img' => 'ganpati/ganpati.jpeg', 'desc' => 'Celebrating the auspicious festival of Ganesh Chaturthi with devotion, cultural performances, and community gatherings.', 'tag' => 'Festival'],
+                ['title' => 'Saree Run', 'icon' => 'fa-running', 'url' => 'saree-run.php', 'img' => 'saree/saree-6.webp', 'desc' => 'A unique event celebrating Indian women\'s strength, culture, and fitness through a vibrant community run in sarees.', 'tag' => 'Event'],
             ];
             foreach ($homeEvents as $i => $event): ?>
             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="<?= ($i + 1) * 100 ?>">

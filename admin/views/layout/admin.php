@@ -236,6 +236,15 @@
     window.addEventListener('resize', checkWidth);
     checkWidth();
 
+    // Scroll active sidebar item into view
+    var activeItem = document.querySelector('.sidebar-menu .sidebar-item.active');
+    if (activeItem) {
+        var menu = document.querySelector('.sidebar-menu');
+        if (menu) {
+            activeItem.scrollIntoView({ block: 'center', behavior: 'instant' });
+        }
+    }
+
     // ===== CLIENT-SIDE TABLE PAGINATION =====
     (function() {
         document.querySelectorAll('table.paginated-table').forEach(function(table) {
