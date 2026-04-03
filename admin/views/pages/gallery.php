@@ -87,7 +87,7 @@ $categories = $pdo->query("SELECT DISTINCT category FROM gallery ORDER BY catego
     <div class="gl-modal-content">
         <button onclick="document.getElementById('uploadPhotosModal').style.display='none'" class="gl-modal-close">&times;</button>
         <h4 class="gl-modal-title"><i class="fas fa-cloud-upload-alt gl-modal-title-icon"></i> Upload Photos</h4>
-        <form id="uploadPhotosForm" method="POST" action="admin/gallery" enctype="multipart/form-data">
+        <form id="uploadPhotosForm" method="POST" action="/admin/gallery" enctype="multipart/form-data">
             <input type="hidden" name="action" value="upload_gallery">
             <div class="gl-form-grid">
                 <div>

@@ -249,7 +249,7 @@ $shortlisted = count(array_filter($applications, fn($a) => $a['status'] === 'sho
         <button onclick="document.getElementById('addJobModal').style.display='none'"
             class="cr-modal-close">&times;</button>
         <h4 class="cr-modal-title"><i class="fas fa-briefcase"></i> Add Job Opening</h4>
-        <form method="POST" action="admin/careers">
+        <form method="POST" action="/admin/careers">
             <input type="hidden" name="action" value="create_career">
             <div class="cr-form-group">
                 <label class="cr-form-label">Job Title <span class="cr-form-required">*</span></label>

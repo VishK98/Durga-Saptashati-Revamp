@@ -1,7 +1,8 @@
-document.querySelector('form').addEventListener('submit', function() {
+document.getElementById('loginForm').addEventListener('submit', function() {
     var btn = document.getElementById('loginBtn');
     btn.disabled = true;
     btn.innerHTML = '<span class="btn-spinner"></span>';
+    // Let the form submit normally
 });
 
 function togglePassword() {

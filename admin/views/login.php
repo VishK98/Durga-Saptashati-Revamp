@@ -34,18 +34,24 @@
                 <p>Enter your details and step back into your account.</p>
             </div>
 
+            <?php
+            $loginError = $loginError ?? ($_SESSION['login_error'] ?? '');
+            $loginEmail = $_SESSION['login_email'] ?? ($_COOKIE['admin_email'] ?? '');
+            unset($_SESSION['login_error'], $_SESSION['login_email']);
+            ?>
             <?php if (!empty($loginError)): ?>
             <div class="login-error">
                 <i class="fas fa-exclamation-circle"></i> <?= htmlspecialchars($loginError) ?>
             </div>
             <?php endif; ?>
 
-            <form method="POST" action="admin">
+            <form method="POST" action="/public/admin.php" autocomplete="on" id="loginForm">
                 <div class="form-group">
                     <label>Email</label>
                     <div class="input-wrapper">
                         <input type="email" name="email" placeholder="admin@example.com" required autofocus
-                            value="<?= htmlspecialchars($_POST['email'] ?? '') ?>">
+                            autocomplete="username"
+                            value="<?= htmlspecialchars($loginEmail) ?>">
                     </div>
                 </div>
 
@@ -53,7 +59,7 @@
                     <label>Password</label>
                     <div class="input-wrapper">
                         <input type="password" name="password" id="passwordInput" placeholder="Enter your password"
-                            required>
+                            required autocomplete="current-password">
                         <button type="button" class="toggle-password" onclick="togglePassword()">
                             <i class="fas fa-eye" id="eyeIcon"></i>
                         </button>

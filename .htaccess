@@ -5,11 +5,14 @@
     RewriteCond %{REQUEST_URI} ^/admin/assets/
     RewriteRule ^(.*)$ /$1 [L]
 
-    # Rewrite /admin to /public/admin.php
-    RewriteRule ^admin/?$ /public/admin.php [L]
+    # Admin clean URLs: /admin → /public/admin.php
+    RewriteRule ^admin/?$ /public/admin.php [L,QSA]
+
+    # Admin page URLs: /admin/members → /public/admin.php?page=members
+    RewriteRule ^admin/([a-zA-Z0-9_-]+)/?$ /public/admin.php?page=$1 [L,QSA]
 
     # Redirect everything else to the public folder
     RewriteCond %{REQUEST_URI} !^/public/
-    RewriteCond %{REQUEST_URI} !^/admin/assets/
+    RewriteCond %{REQUEST_URI} !^/admin
     RewriteRule ^(.*)$ /public/$1 [L]
 </IfModule>

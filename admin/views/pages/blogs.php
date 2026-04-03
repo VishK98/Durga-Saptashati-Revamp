@@ -164,7 +164,7 @@ $blogs = $stmt->fetchAll();
         <button onclick="closeBlogModal()" id="modalCloseBtn" class="blog-modal-close">&times;</button>
         <h3 id="blogModalTitle" class="blog-modal-title"><i class="fas fa-blog"></i> New Blog Post</h3>
 
-        <form id="blogForm" method="POST" action="admin/blogs" enctype="multipart/form-data">
+        <form id="blogForm" method="POST" action="/admin/blogs" enctype="multipart/form-data">
             <input type="hidden" name="action" id="blogAction" value="create_blog">
             <input type="hidden" name="blog_id" id="blogId" value="">
 
@@ -299,7 +299,7 @@ $blogs = $stmt->fetchAll();
         <i class="fas fa-exclamation-triangle blog-delete-icon"></i>
         <h4 class="blog-delete-title">Delete Blog Post?</h4>
         <p class="blog-delete-text">This action cannot be undone.</p>
-        <form id="deleteForm" method="POST" action="admin/blogs">
+        <form id="deleteForm" method="POST" action="/admin/blogs">
             <input type="hidden" name="action" value="delete_blog">
             <input type="hidden" name="blog_id" id="deleteBlogId" value="">
             <button type="button" onclick="closeDeleteModal()" class="blog-btn-delete-cancel">Cancel</button>
@@ -319,7 +319,7 @@ $blogs = $stmt->fetchAll();
 <button id="exitFsBtn" class="blog-exit-fs-btn"><i class="fas fa-compress"></i> Exit Fullscreen</button>
 
 <!-- Hidden toggle form -->
-<form id="toggleForm" method="POST" action="admin/blogs" hidden>
+<form id="toggleForm" method="POST" action="/admin/blogs" hidden>
     <input type="hidden" name="action" value="toggle_blog_status">
     <input type="hidden" name="blog_id" id="toggleBlogId" value="">
 </form>

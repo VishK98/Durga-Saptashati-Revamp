@@ -244,7 +244,7 @@ try {
     <div class="db-table-card">
         <div class="db-table-header">
             <h4>Recent Donations</h4>
-            <a href="admin/donations" class="db-table-link">View All
+            <a href="/admin/donations" class="db-table-link">View All
                 <i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="db-table-body">
@@ -285,7 +285,7 @@ try {
     <div class="db-table-card">
         <div class="db-table-header">
             <h4>Pending Members</h4>
-            <a href="admin/members" class="db-table-link">Manage <i class="fas fa-arrow-right"></i></a>
+            <a href="/admin/members" class="db-table-link">Manage <i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="db-table-body">
             <?php if (empty($pendingMembersList)): ?>
@@ -352,7 +352,7 @@ try {
                     <p class="db-activity-subtitle">Latest membership applications</p>
                 </div>
             </div>
-            <a href="admin/members" class="db-activity-link">View All <i class="fas fa-arrow-right"></i></a>
+            <a href="/admin/members" class="db-activity-link">View All <i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="db-activity-body">
             <?php if (empty($actMembers)): ?>
@@ -397,7 +397,7 @@ try {
                     <p class="db-activity-subtitle">Latest donation transactions</p>
                 </div>
             </div>
-            <a href="admin/donations" class="db-activity-link">View All <i class="fas fa-arrow-right"></i></a>
+            <a href="/admin/donations" class="db-activity-link">View All <i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="db-activity-body">
             <?php if (empty($actDonations)): ?>
@@ -439,7 +439,7 @@ try {
                     <p class="db-activity-subtitle">Latest volunteer applications</p>
                 </div>
             </div>
-            <a href="admin/volunteers" class="db-activity-link">View All <i class="fas fa-arrow-right"></i></a>
+            <a href="/admin/volunteers" class="db-activity-link">View All <i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="db-activity-body">
             <?php if (empty($actVolunteers)): ?>
@@ -482,7 +482,7 @@ try {
                     <p class="db-activity-subtitle">Latest contact form submissions</p>
                 </div>
             </div>
-            <a href="admin/queries" class="db-activity-link">View All <i class="fas fa-arrow-right"></i></a>
+            <a href="/admin/queries" class="db-activity-link">View All <i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="db-activity-body">
             <?php if (empty($actQueries)): ?>

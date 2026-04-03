@@ -3,10 +3,14 @@
 
   # ============================================================
   # Redirect /public/*.php URLs to clean URLs (301)
+  # Skip admin.php to prevent POST data loss
   # ============================================================
   RewriteCond %{THE_REQUEST} \s/public/([\S]*\.php)\s [NC]
+  RewriteCond %1 !^admin [NC]
   RewriteRule ^ /%1 [R=301,L]
   RewriteCond %{THE_REQUEST} \s/public/\s [NC]
+  RewriteCond %{THE_REQUEST} !/public/admin [NC]
+  RewriteCond %{THE_REQUEST} !/public/assets/ [NC]
   RewriteRule ^ / [R=301,L]
 
   # ============================================================
@@ -33,14 +37,11 @@
   RewriteRule ^news/([a-zA-Z0-9_-]+)/?$ news-detail.php?slug=$1 [L,QSA]
 
   # ============================================================
-  # Admin clean URLs: /admin/members → admin.php?page=members
-  # ============================================================
-  RewriteRule ^admin/([a-zA-Z0-9_-]+)/?$ admin.php?page=$1 [L,QSA]
-
-  # ============================================================
   # Remove .php extension from URLs (301 redirect)
+  # Skip admin.php (handled by root .htaccess)
   # ============================================================
   RewriteCond %{THE_REQUEST} \s/+([^\s?]*?)\.php[\s?] [NC]
+  RewriteCond %1 !^public/admin [NC]
   RewriteRule ^ /%1 [R=301,L]
 
   # ============================================================

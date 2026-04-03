@@ -48,19 +48,19 @@ $newCount = $pdo->query("SELECT COUNT(*) FROM contact_queries WHERE status = 'ne
                         <div class="action-menu">
                             <a href="javascript:void(0)" onclick="viewQuery(<?= $q['id'] ?>)"><i class="fas fa-eye"></i> View</a>
                             <?php if ($q['status'] === 'new'): ?>
-                            <form method="POST" action="admin/queries" class="action-form-inline">
+                            <form method="POST" action="/admin/queries" class="action-form-inline">
                                 <input type="hidden" name="action" value="mark_read_query">
                                 <input type="hidden" name="query_id" value="<?= $q['id'] ?>">
                                 <button type="submit"><i class="fas fa-check"></i> Mark Read</button>
                             </form>
                             <?php endif; ?>
-                            <form method="POST" action="admin/queries" class="action-form-inline">
+                            <form method="POST" action="/admin/queries" class="action-form-inline">
                                 <input type="hidden" name="action" value="mark_replied_query">
                                 <input type="hidden" name="query_id" value="<?= $q['id'] ?>">
                                 <button type="submit"><i class="fas fa-reply"></i> Mark Replied</button>
                             </form>
                             <div class="action-divider"></div>
-                            <form method="POST" action="admin/queries" class="action-form-inline">
+                            <form method="POST" action="/admin/queries" class="action-form-inline">
                                 <input type="hidden" name="action" value="delete_query">
                                 <input type="hidden" name="query_id" value="<?= $q['id'] ?>">
                                 <button type="submit" class="action-delete" onclick="return confirm('Delete this query?')"><i class="fas fa-trash"></i> Delete</button>

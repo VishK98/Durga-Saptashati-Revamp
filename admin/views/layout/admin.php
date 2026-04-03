@@ -36,69 +36,69 @@
 
                 <!-- 1. Dashboard -->
                 <div class="sidebar-menu-label">Overview</div>
-                <a href="admin/dashboard" class="sidebar-item <?= $currentPage === 'dashboard' ? 'active' : '' ?>">
+                <a href="/admin/dashboard" class="sidebar-item <?= $currentPage === 'dashboard' ? 'active' : '' ?>">
                     <i class="fas fa-home"></i> <span>Dashboard</span>
                 </a>
 
                 <!-- 2. User Interaction -->
                 <div class="sidebar-menu-label">Engagement</div>
-                <a href="admin/queries" class="sidebar-item <?= $currentPage === 'queries' ? 'active' : '' ?>">
+                <a href="/admin/queries" class="sidebar-item <?= $currentPage === 'queries' ? 'active' : '' ?>">
                     <i class="fas fa-comments"></i> <span>Queries</span>
                     <?php if ($queryCount > 0): ?><span class="badge-count"><?= $queryCount ?></span><?php endif; ?>
                 </a>
-                <a href="admin/comments" class="sidebar-item <?= $currentPage === 'comments' ? 'active' : '' ?>">
+                <a href="/admin/comments" class="sidebar-item <?= $currentPage === 'comments' ? 'active' : '' ?>">
                     <i class="fas fa-comment-dots"></i> <span>Comments</span>
                     <?php if ($pendingComments > 0): ?><span class="badge-count"><?= $pendingComments ?></span><?php endif; ?>
                 </a>
-                <a href="admin/donations" class="sidebar-item <?= $currentPage === 'donations' ? 'active' : '' ?>">
+                <a href="/admin/donations" class="sidebar-item <?= $currentPage === 'donations' ? 'active' : '' ?>">
                     <i class="fas fa-donate"></i> <span>Donations</span>
                     <?php if ($donationCount > 0): ?><span class="badge-count"><?= $donationCount ?></span><?php endif; ?>
                 </a>
-                <a href="admin/volunteers" class="sidebar-item <?= $currentPage === 'volunteers' ? 'active' : '' ?>">
+                <a href="/admin/volunteers" class="sidebar-item <?= $currentPage === 'volunteers' ? 'active' : '' ?>">
                     <i class="fas fa-user-plus"></i> <span>Volunteers</span>
                     <?php if ($pendingVolunteers > 0): ?><span class="badge-count"><?= $pendingVolunteers ?></span><?php endif; ?>
                 </a>
-                <a href="admin/members" class="sidebar-item <?= $currentPage === 'members' ? 'active' : '' ?>">
+                <a href="/admin/members" class="sidebar-item <?= $currentPage === 'members' ? 'active' : '' ?>">
                     <i class="fas fa-id-card"></i> <span>Members</span>
                     <?php if ($pendingMembers > 0): ?><span class="badge-count"><?= $pendingMembers ?></span><?php endif; ?>
                 </a>
 
                 <!-- 3. Content Management -->
                 <div class="sidebar-menu-label">Content</div>
-                <a href="admin/blogs" class="sidebar-item <?= $currentPage === 'blogs' ? 'active' : '' ?>">
+                <a href="/admin/blogs" class="sidebar-item <?= $currentPage === 'blogs' ? 'active' : '' ?>">
                     <i class="fas fa-blog"></i> <span>Blogs</span>
                     <?php if ($blogCount > 0): ?><span class="badge-count"><?= $blogCount ?></span><?php endif; ?>
                 </a>
-                <a href="admin/news" class="sidebar-item <?= $currentPage === 'news' ? 'active' : '' ?>">
+                <a href="/admin/news" class="sidebar-item <?= $currentPage === 'news' ? 'active' : '' ?>">
                     <i class="fas fa-newspaper"></i> <span>News</span>
                     <?php if ($newsCount > 0): ?><span class="badge-count"><?= $newsCount ?></span><?php endif; ?>
                 </a>
-                <a href="admin/gallery" class="sidebar-item <?= $currentPage === 'gallery' ? 'active' : '' ?>">
+                <a href="/admin/gallery" class="sidebar-item <?= $currentPage === 'gallery' ? 'active' : '' ?>">
                     <i class="fas fa-images"></i> <span>Gallery</span>
                     <?php if ($galleryCount > 0): ?><span class="badge-count"><?= $galleryCount ?></span><?php endif; ?>
                 </a>
-                <a href="admin/subscribers" class="sidebar-item <?= $currentPage === 'subscribers' ? 'active' : '' ?>">
+                <a href="/admin/subscribers" class="sidebar-item <?= $currentPage === 'subscribers' ? 'active' : '' ?>">
                     <i class="fas fa-envelope-open-text"></i> <span>Newsletter</span>
                     <?php if ($subscriberCount > 0): ?><span class="badge-count"><?= $subscriberCount ?></span><?php endif; ?>
                 </a>
 
                 <!-- 4. HR / Opportunities -->
                 <div class="sidebar-menu-label">HR</div>
-                <a href="admin/careers" class="sidebar-item <?= $currentPage === 'careers' ? 'active' : '' ?>">
+                <a href="/admin/careers" class="sidebar-item <?= $currentPage === 'careers' ? 'active' : '' ?>">
                     <i class="fas fa-briefcase"></i> <span>Careers</span>
                     <?php if ($newAppsCount > 0): ?><span class="badge-count"><?= $newAppsCount ?></span><?php endif; ?>
                 </a>
 
                 <!-- 5. Reports -->
                 <div class="sidebar-menu-label">Analytics</div>
-                <a href="admin/reports" class="sidebar-item <?= $currentPage === 'reports' ? 'active' : '' ?>">
+                <a href="/admin/reports" class="sidebar-item <?= $currentPage === 'reports' ? 'active' : '' ?>">
                     <i class="fas fa-chart-bar"></i> <span>Reports</span>
                     <?php if ($reportsCount > 0): ?><span class="badge-count"><?= $reportsCount ?></span><?php endif; ?>
                 </a>
 
                 <!-- 6. System -->
                 <div class="sidebar-menu-label">System</div>
-                <a href="admin/settings" class="sidebar-item <?= $currentPage === 'settings' ? 'active' : '' ?>">
+                <a href="/admin/settings" class="sidebar-item <?= $currentPage === 'settings' ? 'active' : '' ?>">
                     <i class="fas fa-cog"></i> <span>Settings</span>
                 </a>
             </div>
@@ -147,12 +147,12 @@
                                 </div>
                             </div>
                             <div class="profile-dropdown-body">
-                                <a href="admin/settings" class="profile-dropdown-item">
+                                <a href="/admin/settings" class="profile-dropdown-item">
                                     <i class="fas fa-cog"></i> Settings
                                 </a>
                             </div>
                             <div class="profile-dropdown-footer">
-                                <a href="admin?logout=1" class="profile-dropdown-item logout">
+                                <a href="/admin?logout=1" class="profile-dropdown-item logout">
                                     <i class="fas fa-sign-out-alt"></i> Sign out
                                 </a>
                             </div>

@@ -127,7 +127,7 @@ $draftCount = $totalNews - $publishedCount;
     <div class="nw-modal-box">
         <button onclick="document.getElementById('addNewsModal').style.display='none'" class="nw-modal-close">&times;</button>
         <h4 class="nw-modal-title"><i class="fas fa-plus-circle nw-modal-title-icon"></i> Add News Article</h4>
-        <form id="addNewsForm" method="POST" action="admin/news" enctype="multipart/form-data">
+        <form id="addNewsForm" method="POST" action="/admin/news" enctype="multipart/form-data">
             <input type="hidden" name="action" value="create_news">
             <div class="nw-form-grid-2">
                 <div>
@@ -211,7 +211,7 @@ $draftCount = $totalNews - $publishedCount;
     <div class="nw-modal-box">
         <button onclick="document.getElementById('editNewsModal').style.display='none'" class="nw-modal-close">&times;</button>
         <h4 class="nw-modal-title"><i class="fas fa-edit nw-modal-title-icon"></i> Edit News Article</h4>
-        <form method="POST" action="admin/news" enctype="multipart/form-data">
+        <form method="POST" action="/admin/news" enctype="multipart/form-data">
             <input type="hidden" name="action" value="update_news">
             <input type="hidden" name="news_id" id="editNewsId">
             <div class="nw-form-grid-2">
