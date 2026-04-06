@@ -123,6 +123,8 @@ $seoType = isset($pageType) ? $pageType : 'website';
     <link href="<?= asset('css/form-animations.css') ?>" rel="stylesheet">
     <!-- Gallery Lightbox Responsive -->
     <link href="<?= asset('css/gallery-lightbox.css') ?>" rel="stylesheet">
+    <!-- Shared Gallery Cards + Lightbox -->
+    <link href="<?= asset('css/gallery-cards.css') ?>" rel="stylesheet">
     <!-- Page-Specific Stylesheets -->
     <?php
     $currentPage = basename($_SERVER['PHP_SELF'], '.php');
@@ -147,6 +149,8 @@ $seoType = isset($pageType) ? $pageType : 'website';
 
     <!-- Enhanced Navbar JavaScript -->
     <script src="<?= asset('js/navbar-enhanced.js') ?>" defer></script>
+    <!-- Shared Gallery Lightbox + Counter JS -->
+    <script src="<?= asset('js/gallery-lightbox.js') ?>" defer></script>
 </head>
 
 <body>
@@ -258,7 +262,7 @@ $seoType = isset($pageType) ? $pageType : 'website';
                                             <i class="fas fa-spa"></i> International Yoga Day
                                             <span class="item-description">June 21st - Join thousands</span>
                                         </a>
-                                        <a class="dropdown-item" href="<?= url('womens-day.php') ?>">
+                                        <a class="dropdown-item" href="<?= url('international-womens-day.php') ?>">
                                             <i class="fas fa-female"></i> Women's Day
                                             <span class="item-description">March 8th - Empowerment events</span>
                                         </a>

@@ -1,9 +1,9 @@
 <?php
 require_once '../app/config/config.php';
 
-$pageTitle = "Durga Saptashati Foundation: Livelihood NGO in Dwarka Delhi";
-$pageDescription = "Durga Saptashati Foundation Livelihood cause aims at empowering needy women, handicapped individuals, sexual violence survivors, and widowed or abandoned women in Dwarka. We provide free skill-based training and vocational learning opportunities. Join hands with us.";
-$pageKeywords = "NGOs in Dwarka, Delhi, Durga Saptashati NGO in Dwarka, Best Livelihood NGO in Delhi.,Best NGO Delhi, Education NGO, Volunteer Delhi, Volunteer Delhi, Volunteer NCR, Top 100 NGO India, , NGO underprivileged children, NGO underprivileged children education NCR, NGO underprivileged children education Delhi, NGO underprivileged children education Delhi, NGO schools in Delhi, NGO schools in NCR, NGO schools in Delhi, NGO girl child education, NGO girl education, NGO mentor program, School fees NGO, Distribute food NGO, Distribute snacks NGO, Celebrate with NGO, Celebrate birthday with underprivileged kids, Top 10 NGOs NCR, Top 10 NGOs Delhi, Charity NGO, Charity education, online donation, online donation noida, online donations delhi, donations for children, donations for children noida, charity donations, charity donations dwarka, ngo donations, feed the hungry, feed the hungry delhi, NGO for Child Education, NGO for Child Education dwarka, corona virus donation dwarka, covid19 Donation delhi, NGO working on COVID, NGO working on COVID delhi, NGO donations for Conorna virus, covid donation, covid donation delhi,Durga Saptashati,Durga Saptashati NGO,Durga Saptashati foundation,DurgaSaptashati,Livelihoods in Dwarka Delhi, Underprivileged Women Vocational Skills in Dwarka Delhi, Livelihood NGO in Dwarka Delhi, Livelihood Top NGOs Senior Citizens in Dwarka Delhi, Livelihoods Top NGOs Senior Citizens in Dwarka Delhi, Livelihood Training Program in Dwarka Delhi";
+$pageTitle = "Livelihood Support NGO in Dwarka Delhi | Skill Development NGO- Durga Saptashati Foundation";
+$pageDescription = "Durga Saptashati Foundation is a premier NGO dedicated to livelihood skill development training in Idwarka Delhi. Explore our online and offline livelihood skill training programmes and impactful initiatives in Dwarka and beyond. Join us to provide free skill-based training and vocational learning opportunities. ";
+$pageKeywords = "Livelihood Support NGO In Dwarka , Livelihood Development Program In Dwarka ,NGO for Livelihood Support In Delhi ,Livelihood NGO in Delhi , NGO for Skill Training In Dwarka , Sustainable Livelihood Program In Dwarka,Livelihood Empowerment NGO In Dwarka, Livelihood in Dwarka Delhi,Underprivileged Women vocational skills in Dwarka Delhi,Livelihood NGO in Dwarka Delhi,Livelihood Top NGOs Senior Citizens In Dwarka Delhi,Livelihoods Top NGOs Senior Citizens in Dwarka Delhi,livelihood training Program in Dwarka Delhi, Best Livelihood NGO in Dwarka, Livelihood NGO in Delhi, Livelihood NGO in Dwarka Delhi,Livelihood Top NGOs Senior Citizens In Dwarka Delhi,livelihoods in DwarkaDelhi,underprivileged women vocational skills in Dwarka Delhi,Trusted Charity Organisation In Dwarka Delhi,Best NGOs Working On Livelihood In Delhi,Top NGOs Senior Citizens in Dwarka Delhi,livelihood training Program in Dwarka Delhi,Livelihood Top NGOs Senior Citizens in Dwarka Delhi,Livelihood International Women day celebration in Dwarka,Livelihood International Women Day In Dwarka,Livelihood Best Food Health NGO in Delhi,Livelihood Kids Education in Dwarka,Livelihood Self Defence Camp In Dwarka,Livelihood training in Dwarka";
 
 include '../app/views/layout/header.php';
 ?>
@@ -82,22 +82,22 @@ include '../app/views/layout/header.php';
         <div class="lv-stats-strip" data-aos="fade-up" data-aos-delay="300">
             <div class="lv-strip-item">
                 <div class="lv-strip-icon"><i class="fas fa-user-tie"></i></div>
-                <div class="lv-strip-num" data-counter="300">0</div>
+                <div class="lv-strip-num" data-counter="300" data-counter-suffix="+" data-counter-locale>0</div>
                 <div class="lv-strip-label">People Trained</div>
             </div>
             <div class="lv-strip-item">
                 <div class="lv-strip-icon"><i class="fas fa-briefcase"></i></div>
-                <div class="lv-strip-num" data-counter="50">0</div>
+                <div class="lv-strip-num" data-counter="50" data-counter-suffix="+" data-counter-locale>0</div>
                 <div class="lv-strip-label">Employed</div>
             </div>
             <div class="lv-strip-item">
                 <div class="lv-strip-icon"><i class="fas fa-tools"></i></div>
-                <div class="lv-strip-num" data-counter="10">0</div>
+                <div class="lv-strip-num" data-counter="10" data-counter-suffix="+" data-counter-locale>0</div>
                 <div class="lv-strip-label">Trades</div>
             </div>
             <div class="lv-strip-item">
                 <div class="lv-strip-icon"><i class="fas fa-building"></i></div>
-                <div class="lv-strip-num" data-counter="8">0</div>
+                <div class="lv-strip-num" data-counter="8" data-counter-suffix="+" data-counter-locale>0</div>
                 <div class="lv-strip-label">Centers</div>
             </div>
         </div>
@@ -132,33 +132,19 @@ include '../app/views/layout/header.php';
             ['file' => 'livelihood-11.webp', 'title' => 'Handicraft Workshop'],
         ];
         ?>
-        <div class="lv-gallery-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+        <div class="lv-gallery-grid gallery-grid">
             <?php foreach ($lvImages as $i => $img): ?>
-            <div data-aos="fade-up" data-aos-delay="<?= ($i % 3) * 50 ?>"
-                style="cursor:pointer;border-radius:14px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.06);transition:all 0.3s;background:#fff;"
-                onclick="openLvLightbox(<?= $i ?>)"
-                onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 12px 35px rgba(0,0,0,0.12)'"
-                onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.06)'">
-                <div style="position:relative;overflow:hidden;">
-                    <img src="<?= url('assets/images/livelihood/' . $img['file']) ?>"
-                        alt="<?= htmlspecialchars($img['title']) ?>"
-                        style="width:100%;height:220px;object-fit:cover;display:block;transition:transform 0.4s;"
-                        onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                    <div
-                        style="position:absolute;top:12px;left:12px;background:rgba(0,0,0,0.6);color:#fff;padding:4px 12px;border-radius:15px;font-size:0.72rem;font-weight:600;backdrop-filter:blur(4px);">
-                        Livelihood</div>
-                    <div style="position:absolute;inset:0;background:rgba(0,0,0,0.3);opacity:0;transition:opacity 0.3s;display:flex;align-items:center;justify-content:center;"
-                        onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0'">
-                        <div
-                            style="width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;">
-                            <i class="fas fa-search-plus" style="color:#f26522;font-size:1.2rem;"></i>
-                        </div>
+            <div class="gallery-card" data-aos="fade-up" data-aos-delay="<?= ($i % 3) * 50 ?>" onclick="pageLb.open(<?= $i ?>)">
+                <div class="gc-img-wrap">
+                    <img class="gc-img" src="<?= url('assets/images/livelihood/' . $img['file']) ?>"
+                        alt="<?= htmlspecialchars($img['title']) ?>">
+                    <div class="gc-badge">Livelihood</div>
+                    <div class="gc-overlay">
+                        <div class="gc-search-icon"><i class="fas fa-search-plus"></i></div>
                     </div>
                 </div>
-                <div style="padding:14px 16px;">
-                    <h6 style="color:#1a1b2e;font-weight:600;font-size:0.9rem;margin:0;">
-                        <?= htmlspecialchars($img['title']) ?>
-                    </h6>
+                <div class="gc-caption">
+                    <h6><?= htmlspecialchars($img['title']) ?></h6>
                 </div>
             </div>
             <?php endforeach; ?>
@@ -167,98 +153,20 @@ include '../app/views/layout/header.php';
 </section>
 
 <!-- Lightbox -->
-<div id="lvLightbox"
-    style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.92);z-index:99999;align-items:center;justify-content:center;backdrop-filter:blur(8px);">
-    <button onclick="closeLvLightbox()"
-        style="position:absolute;top:20px;right:20px;background:rgba(255,255,255,0.1);border:none;width:44px;height:44px;border-radius:50%;cursor:pointer;color:#fff;font-size:1.3rem;z-index:10;display:flex;align-items:center;justify-content:center;transition:all 0.2s;"
-        onmouseover="this.style.background='rgba(255,255,255,0.2)'"
-        onmouseout="this.style.background='rgba(255,255,255,0.1)'">&times;</button>
-    <button onclick="lvPrev()"
-        style="position:absolute;left:20px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.1);border:none;width:50px;height:50px;border-radius:50%;cursor:pointer;color:#fff;font-size:1.2rem;z-index:10;display:flex;align-items:center;justify-content:center;transition:all 0.2s;"
-        onmouseover="this.style.background='rgba(255,255,255,0.2)'"
-        onmouseout="this.style.background='rgba(255,255,255,0.1)'"><i class="fas fa-chevron-left"></i></button>
-    <button onclick="lvNext()"
-        style="position:absolute;right:20px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.1);border:none;width:50px;height:50px;border-radius:50%;cursor:pointer;color:#fff;font-size:1.2rem;z-index:10;display:flex;align-items:center;justify-content:center;transition:all 0.2s;"
-        onmouseover="this.style.background='rgba(255,255,255,0.2)'"
-        onmouseout="this.style.background='rgba(255,255,255,0.1)'"><i class="fas fa-chevron-right"></i></button>
-    <div style="text-align:center;max-width:90%;max-height:85vh;">
-        <img id="lvLbImg" src="" alt=""
-            style="max-width:100%;max-height:78vh;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,0.5);object-fit:contain;">
-        <h5 id="lvLbTitle" style="color:#fff;font-weight:600;font-size:1rem;margin:14px 0 0;"></h5>
+<div id="lvLightbox" class="page-lightbox">
+    <button class="lb-close">&times;</button>
+    <button class="lb-prev"><i class="fas fa-chevron-left"></i></button>
+    <button class="lb-next"><i class="fas fa-chevron-right"></i></button>
+    <div class="lb-content">
+        <img class="lb-img" src="" alt="">
+        <h5 class="lb-title"></h5>
     </div>
 </div>
 
 <script>
-var lvData =
-    <?= json_encode(array_map(function ($img) {
-            return ['src' => url('assets/images/livelihood/' . $img['file']), 'title' => $img['title']];
-        }, $lvImages)) ?>;
-var lvIdx = 0;
-
-function openLvLightbox(i) {
-    lvIdx = i;
-    updateLvLb();
-    document.getElementById('lvLightbox').style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-}
-
-function closeLvLightbox() {
-    document.getElementById('lvLightbox').style.display = 'none';
-    document.body.style.overflow = '';
-}
-
-function updateLvLb() {
-    document.getElementById('lvLbImg').src = lvData[lvIdx].src;
-    document.getElementById('lvLbTitle').textContent = lvData[lvIdx].title;
-}
-
-function lvPrev() {
-    lvIdx = (lvIdx - 1 + lvData.length) % lvData.length;
-    updateLvLb();
-}
-
-function lvNext() {
-    lvIdx = (lvIdx + 1) % lvData.length;
-    updateLvLb();
-}
-document.getElementById('lvLightbox').addEventListener('click', function(e) {
-    if (e.target === this) closeLvLightbox();
-});
-document.addEventListener('keydown', function(e) {
-    if (document.getElementById('lvLightbox').style.display !== 'flex') return;
-    if (e.key === 'Escape') closeLvLightbox();
-    if (e.key === 'ArrowLeft') lvPrev();
-    if (e.key === 'ArrowRight') lvNext();
-});
-
-// Counter
 document.addEventListener('DOMContentLoaded', function() {
-    var counters = document.querySelectorAll('[data-counter]');
-    var obs = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-                var c = entry.target,
-                    target = parseInt(c.getAttribute('data-counter')),
-                    current = 0,
-                    inc = target / 60;
-                var timer = setInterval(function() {
-                    current += inc;
-                    if (current >= target) {
-                        c.textContent = target.toLocaleString() + '+';
-                        clearInterval(timer);
-                    } else {
-                        c.textContent = Math.floor(current).toLocaleString();
-                    }
-                }, 25);
-                obs.unobserve(c);
-            }
-        });
-    }, {
-        threshold: 0.7
-    });
-    counters.forEach(function(c) {
-        obs.observe(c);
-    });
+    var pageLb = initLightbox('lvLightbox', <?= json_encode(array_map(function($img) { return ['src' => url('assets/images/livelihood/' . $img['file']), 'title' => $img['title']]; }, $lvImages)) ?>);
+    window.pageLb = pageLb;
 });
 </script>
 

@@ -70,6 +70,8 @@
   RewriteRule ^gallery\.html$                  event-gallery.php [R=301,L]
   RewriteRule ^investor\.html$                 investor.php [R=301,L]
   RewriteRule ^international-womens-day\.html$          international-womens-day.php [R=301,L]
+  RewriteRule ^womens-day\.php$                          international-womens-day.php [R=301,L]
+  RewriteRule ^womens-day$                               international-womens-day.php [R=301,L]
   RewriteRule ^independence-day\.html$                   independence-day.php [R=301,L]
   RewriteRule ^yoga-day\.html$                           yoga-day.php [R=301,L]
   RewriteRule ^ganpati-celebration\.html$                ganpati-celebration.php [R=301,L]

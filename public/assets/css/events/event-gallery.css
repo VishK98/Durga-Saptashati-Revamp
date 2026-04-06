@@ -1,0 +1,87 @@
+/* ==========================================
+   EVENT GALLERY PAGE STYLES
+   ========================================== */
+
+/* Section Header */
+.eg-section-subtitle {
+    color: #f26522;
+    letter-spacing: 3px;
+    font-weight: 600;
+}
+
+.eg-section-title {
+    color: #1a1b2e;
+    font-weight: 700;
+}
+
+.eg-section-desc {
+    color: #888;
+    max-width: 600px;
+    margin: 10px auto 0;
+}
+
+/* Empty State */
+.eg-empty-state {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.eg-empty-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(242, 101, 34, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.eg-empty-icon i {
+    font-size: 2rem;
+    color: #f26522;
+}
+
+.eg-empty-title {
+    color: #1a1b2e;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.eg-empty-desc {
+    color: #888;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/* Filter Buttons */
+.gallery-filter-wrap {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+}
+
+.gallery-filter {
+    padding: 8px 20px;
+    border-radius: 25px;
+    border: 2px solid #e5e7eb;
+    background: #fff;
+    color: #555;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.3s;
+}
+
+.gallery-filter.active {
+    border-color: #f26522;
+    background: #f26522;
+    color: #fff;
+}
+
+/* Gallery Grid - auto-fill override for event gallery */
+.eg-gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}

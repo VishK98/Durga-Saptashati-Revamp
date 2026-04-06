@@ -1,9 +1,9 @@
 <?php
 require_once '../app/config/config.php';
 
-$pageTitle = "About Us — Best NGO & Charity Organisation in Delhi | Saptashati";
-$pageDescription = "Saptashati Foundation empowers women, provides free education to underprivileged children, and creates safe spaces for senior citizens in Delhi/NCR.";
-$pageKeywords = "Best NGOs in Delhi, Saptashati Foundation, Women Safety NGO Dwarka, Top NGOs Senior Citizens Delhi, charity organisation Delhi";
+$pageTitle = "About Durga Saptashati Foundation | NGO for Social Welfare in Dwarka Delhi";
+$pageDescription = "Learn about Durga Saptashati Foundation, a nonprofit NGO in Dwarka Delhi dedicated to women empowerment, child education, hunger relief, livelihood support, senior citizen welfare and community welfare programs for underprivileged people. Join our mission.";
+$pageKeywords = "NGO in Dwarka Delhi, social welfare NGO Delhi, women empowerment NGO Delhi, senior citizen welfare NGO in Dwarka Delhi, charity organization Delhi, Community welfare NGO in Dwarka Delhi";
 
 include '../app/views/layout/header.php';
 ?>
@@ -31,63 +31,51 @@ include '../app/views/layout/header.php';
 <!-- ============================================ -->
 <section id="about-foundation" class="abt-section">
     <div class="container py-4">
-        <div class="row" style="align-items:stretch;">
+        <div class="row abt-row-stretch">
             <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right" data-aos-duration="1000">
-                <div class="position-relative h-100"
-                    style="border-radius:12px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,0.12);">
+                <div class="position-relative h-100 abt-img-container">
                     <img src="<?= asset('images/about-us-durga.jpeg') ?>" alt="About Durga Saptashati"
-                        style="width:100%;height:100%;object-fit:cover;display:block;">
-                    <a class="position-absolute d-flex align-items-center justify-content-center" href="#"
-                        data-toggle="modal" data-target="#videoModal"
-                        data-src="https://www.youtube.com/embed/-VtO2d-zJ4k" onclick="event.preventDefault();"
-                        style="top:0;left:0;right:0;bottom:0;background:linear-gradient(to top,rgba(0,0,0,0.5),rgba(0,0,0,0.1));">
-                        <div style="width:70px;height:70px;border-radius:50%;background:rgba(242,101,34,0.9);display:flex;align-items:center;justify-content:center;transition:all 0.3s;box-shadow:0 5px 25px rgba(242,101,34,0.4);"
-                            onmouseover="this.style.transform='scale(1.1)';this.style.background='#f26522'"
-                            onmouseout="this.style.transform='scale(1)';this.style.background='rgba(242,101,34,0.9)'">
-                            <i class="fa fa-play text-white" style="font-size:1.5rem;margin-left:4px;"></i>
+                        class="abt-img-cover">
+                    <a class="position-absolute d-flex align-items-center justify-content-center abt-video-overlay"
+                        href="#" data-toggle="modal" data-target="#videoModal"
+                        data-src="https://www.youtube.com/embed/-VtO2d-zJ4k" onclick="event.preventDefault();">
+                        <div class="abt-play-btn">
+                            <i class="fa fa-play text-white"></i>
                         </div>
                     </a>
-                    <div class="position-absolute" style="bottom:20px;left:20px;right:20px;">
-                        <div
-                            style="background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);border-radius:10px;padding:15px 20px;display:flex;align-items:center;justify-content:space-evenly;">
-                            <div style="text-align:center;padding:0 15px;border-right:1px solid #eee;">
-                                <h4 style="color:#f26522;font-weight:700;margin:0;font-size:1.3rem;">10+</h4>
-                                <small
-                                    style="color:#666;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;">Years
+                    <div class="position-absolute abt-stat-bar-wrap">
+                        <div class="abt-stat-overlay">
+                            <div class="abt-stat-overlay-item abt-stat-overlay-item--bordered">
+                                <h4>10+</h4>
+                                <small>Years
                                     of Service</small>
                             </div>
-                            <div style="text-align:center;padding:0 15px;border-right:1px solid #eee;">
-                                <h4 style="color:#f26522;font-weight:700;margin:0;font-size:1.3rem;">5K+</h4>
-                                <small
-                                    style="color:#666;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;">Lives
+                            <div class="abt-stat-overlay-item abt-stat-overlay-item--bordered">
+                                <h4>5K+</h4>
+                                <small>Lives
                                     Impacted</small>
                             </div>
-                            <div style="text-align:center;padding:0 15px;">
-                                <h4 style="color:#f26522;font-weight:700;margin:0;font-size:1.3rem;">100+</h4>
-                                <small
-                                    style="color:#666;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;">Volunteers</small>
+                            <div class="abt-stat-overlay-item">
+                                <h4>100+</h4>
+                                <small>Volunteers</small>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-6 d-flex flex-column" data-aos="fade-left" data-aos-duration="1000">
-                <h2 class="text-uppercase"
-                    style="color:#f26522;letter-spacing:4px;font-weight:700;font-size:clamp(1rem, 2vw, 1.35rem);margin-bottom:8px;">
+                <h2 class="text-uppercase abt-foundation-heading">
                     Durga Saptashati Foundation</h2>
-                <p style="color:#f26522;font-weight:600;font-size:0.75rem;margin-bottom:15px;letter-spacing:1.5px;">
+                <p class="abt-foundation-tagline">
                     Empowerment | Education | Equality | Empathy</p>
 
-                <h3
-                    style="color:#1a1b2e;font-weight:800;margin-bottom:20px;font-size:1.5rem;position:relative;padding-bottom:15px;">
-                    Our Commitment <span
-                        style="background:linear-gradient(135deg,#f26522,#ff8c42);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">to
+                <h3 class="abt-commitment-heading">
+                    Our Commitment <span class="abt-gradient-text">to
                         Community!</span>
-                    <span
-                        style="position:absolute;bottom:0;left:0;width:60px;height:4px;background:linear-gradient(90deg,#f26522,#ff8c42);border-radius:2px;"></span>
+                    <span class="abt-heading-underline"></span>
                 </h3>
 
-                <p style="color:#555;line-height:1.85;font-size:0.95rem;">Durga Saptashati NGO in Dwarka, Delhi, is the
+                <p class="abt-body-text">Durga Saptashati NGO in Dwarka, Delhi, is the
                     brainchild of a visionary and empathetic leader, <strong>Sandhya Singh</strong>. Saptashati
                     Foundation
                     is a trusted
@@ -100,10 +88,8 @@ include '../app/views/layout/header.php';
                     communities. Through our programs, we aim to inspire hope, bring positive change, and create
                     opportunities that transform lives.</p>
 
-                <div
-                    style="background:linear-gradient(135deg,rgba(242,101,34,0.08),rgba(242,101,34,0.03));border-left:4px solid #f26522;border-radius:0 12px 12px 0;padding:18px 22px;margin-bottom:25px;">
-                    <p
-                        style="color:#1a1b2e;line-height:1.8;font-size:0.95rem;font-weight:600;margin:0;font-style:italic;">
+                <div class="abt-quote-block">
+                    <p>
                         From gender equality to social justice, we are dismantling barriers, challenging
                         stereotypes,
                         and trying to create a more inclusive society!</p>
@@ -116,11 +102,11 @@ include '../app/views/layout/header.php';
 <!-- Video Modal -->
 <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-        <div class="modal-content" style="background:transparent;border:none;">
+        <div class="modal-content abt-video-modal-content">
             <div class="modal-body p-0">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-                    style="position:absolute;top:-30px;right:0;color:#fff;opacity:1;font-size:1.5rem;z-index:10;">&times;</button>
-                <div class="embed-responsive embed-responsive-16by9" style="border-radius:12px;overflow:hidden;">
+                <button type="button" class="close abt-video-modal-close" data-dismiss="modal"
+                    aria-label="Close">&times;</button>
+                <div class="embed-responsive embed-responsive-16by9 abt-video-embed">
                     <iframe class="embed-responsive-item" src="" id="aboutVideoIframe" allowscriptaccess="always"
                         allow="autoplay" allowfullscreen></iframe>
                 </div>
@@ -133,40 +119,34 @@ include '../app/views/layout/header.php';
 <!-- ============================================ -->
 <!-- SECTION: Mission — Split with accent sidebar -->
 <!-- ============================================ -->
-<section style="padding:70px 0;background:#fff;overflow:hidden;">
+<section class="abt-mission-section">
     <div class="container">
         <div class="row align-items-start">
             <!-- Left: Sticky accent card -->
             <div class="col-lg-4 mb-4" data-aos="fade-right">
-                <div style="position:sticky;top:120px;">
-                    <div
-                        style="background:linear-gradient(135deg,#f26522,#ff8c42);border-radius:20px;padding:35px 28px;color:#fff;box-shadow:0 15px 40px rgba(242,101,34,0.25);">
-                        <i class="fas fa-bullseye"
-                            style="font-size:2.5rem;opacity:0.3;margin-bottom:15px;display:block;"></i>
-                        <h3 style="font-weight:800;font-size:1.6rem;margin-bottom:12px;">Our Mission</h3>
-                        <p style="opacity:0.9;line-height:1.7;font-size:0.9rem;margin-bottom:25px;">Empowering the
+                <div class="abt-mission-sticky">
+                    <div class="abt-mission-card">
+                        <i class="fas fa-bullseye abt-mission-icon"></i>
+                        <h3 class="abt-mission-card-title">Our Mission</h3>
+                        <p class="abt-mission-card-desc">Empowering the
                             voiceless, uplifting the vulnerable, and creating a just society through grassroots action.
                         </p>
-                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-                            <div
-                                style="background:rgba(255,255,255,0.15);border-radius:12px;padding:14px;text-align:center;backdrop-filter:blur(6px);">
-                                <strong style="font-size:1.5rem;display:block;">5+</strong>
-                                <small style="font-size:0.68rem;opacity:0.85;">Years of Service</small>
+                        <div class="abt-mission-stats-grid">
+                            <div class="abt-mission-stat-box">
+                                <strong>5+</strong>
+                                <small>Years of Service</small>
                             </div>
-                            <div
-                                style="background:rgba(255,255,255,0.15);border-radius:12px;padding:14px;text-align:center;backdrop-filter:blur(6px);">
-                                <strong style="font-size:1.5rem;display:block;">5K+</strong>
-                                <small style="font-size:0.68rem;opacity:0.85;">Lives Touched</small>
+                            <div class="abt-mission-stat-box">
+                                <strong>5K+</strong>
+                                <small>Lives Touched</small>
                             </div>
-                            <div
-                                style="background:rgba(255,255,255,0.15);border-radius:12px;padding:14px;text-align:center;backdrop-filter:blur(6px);">
-                                <strong style="font-size:1.5rem;display:block;">50+</strong>
-                                <small style="font-size:0.68rem;opacity:0.85;">Programs Run</small>
+                            <div class="abt-mission-stat-box">
+                                <strong>50+</strong>
+                                <small>Programs Run</small>
                             </div>
-                            <div
-                                style="background:rgba(255,255,255,0.15);border-radius:12px;padding:14px;text-align:center;backdrop-filter:blur(6px);">
-                                <strong style="font-size:1.5rem;display:block;">100+</strong>
-                                <small style="font-size:0.68rem;opacity:0.85;">Volunteers</small>
+                            <div class="abt-mission-stat-box">
+                                <strong>100+</strong>
+                                <small>Volunteers</small>
                             </div>
                         </div>
                     </div>
@@ -175,28 +155,26 @@ include '../app/views/layout/header.php';
 
             <!-- Right: Mission content -->
             <div class="col-lg-8" data-aos="fade-left">
-                <p style="color:#555;line-height:1.9;font-size:0.95rem;margin-bottom:20px;">
+                <p class="abt-body-text abt-body-text--spaced">
                     Widowed women, handicapped people, disabled people, have to struggle for their rights and are
                     frequently victims of discrimination. At Saptashati Foundation, our team works towards empowering
                     the widowed women of our Indian society and we ensure that we reach every corner of India to uplift
                     these widowed from their distressed state.
                 </p>
-                <p style="color:#555;line-height:1.9;font-size:0.95rem;margin-bottom:20px;">
+                <p class="abt-body-text abt-body-text--spaced">
                     Widowed women and their children need our support and care. Saptashati Foundation was established
                     with the aim to inspire a sense of welfare and bring a social revolution. Our purpose is to offer
                     financial, social, and economic security to women who have endured the grief of widowhood.
                 </p>
 
-                <div
-                    style="background:linear-gradient(135deg,rgba(242,101,34,0.06),rgba(242,101,34,0.02));border-left:4px solid #f26522;border-radius:0 14px 14px 0;padding:20px 24px;margin:25px 0;">
-                    <p
-                        style="color:#1a1b2e;line-height:1.8;font-size:0.95rem;font-weight:600;margin:0;font-style:italic;">
+                <div class="abt-quote-block abt-quote-block--lg">
+                    <p>
                         Saptashati Foundation's mission is to instill knowledge and skill development in the minds of
                         widowed and less fortunate women — thus enabling them to become self-reliant and provide them
                         with social, financial, and psychological support for a better life.</p>
                 </div>
 
-                <div style="display:flex;gap:16px;margin-top:30px;flex-wrap:wrap;">
+                <div class="abt-focus-areas">
                     <?php
                     $focusAreas = [
                         ['icon' => 'fa-female', 'color' => '#f26522', 'title' => "Women's Empowerment", 'desc' => 'Supporting widowed women and single mothers'],
@@ -205,16 +183,13 @@ include '../app/views/layout/header.php';
                     ];
                     foreach ($focusAreas as $area):
                         ?>
-                    <div style="flex:1;min-width:180px;background:#fff;border-radius:14px;padding:22px 18px;box-shadow:0 4px 18px rgba(0,0,0,0.06);border:1px solid rgba(0,0,0,0.04);text-align:center;transition:all 0.3s;"
-                        onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 30px rgba(242,101,34,0.12)'"
-                        onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 18px rgba(0,0,0,0.06)'">
-                        <div
-                            style="width:50px;height:50px;background:<?= $area['color'] ?>;border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;box-shadow:0 6px 18px <?= $area['color'] ?>33;">
-                            <i class="fas <?= $area['icon'] ?>" style="color:#fff;font-size:1.1rem;"></i>
+                    <div class="abt-focus-card">
+                        <div class="abt-focus-card-icon"
+                            style="background:<?= $area['color'] ?>;box-shadow:0 6px 18px <?= $area['color'] ?>33;">
+                            <i class="fas <?= $area['icon'] ?>"></i>
                         </div>
-                        <strong
-                            style="color:#1a1b2e;font-size:0.88rem;display:block;margin-bottom:4px;"><?= $area['title'] ?></strong>
-                        <small style="color:#888;font-size:0.78rem;"><?= $area['desc'] ?></small>
+                        <strong><?= $area['title'] ?></strong>
+                        <small><?= $area['desc'] ?></small>
                     </div>
                     <?php endforeach; ?>
                 </div>
@@ -226,51 +201,42 @@ include '../app/views/layout/header.php';
 <!-- ============================================ -->
 <!-- SECTION: Vision — Dark with accent boxes     -->
 <!-- ============================================ -->
-<section
-    style="padding:70px 0;background:linear-gradient(135deg,#1a1b2e 0%,#0d0e14 100%);overflow:hidden;position:relative;">
-    <div
-        style="position:absolute;top:-50px;right:-50px;width:300px;height:300px;background:radial-gradient(circle,rgba(242,101,34,0.08),transparent 70%);border-radius:50%;">
-    </div>
-    <div
-        style="position:absolute;bottom:-80px;left:-80px;width:400px;height:400px;background:radial-gradient(circle,rgba(242,101,34,0.05),transparent 70%);border-radius:50%;">
-    </div>
+<section class="abt-vision-section">
+    <div class="abt-vision-glow abt-vision-glow--top"></div>
+    <div class="abt-vision-glow abt-vision-glow--bottom"></div>
 
-    <div class="container position-relative" style="z-index:2;">
+    <div class="container position-relative abt-vision-content">
         <div class="text-center mb-5" data-aos="fade-up">
-            <div
-                style="display:inline-flex;align-items:center;gap:10px;background:rgba(242,101,34,0.15);border:1px solid rgba(242,101,34,0.25);color:#ff8c42;padding:8px 20px;border-radius:50px;font-size:0.82rem;font-weight:600;margin-bottom:18px;">
+            <div class="abt-vision-label">
                 <i class="fas fa-eye"></i> Our Vision
             </div>
-            <h2 style="color:#fff;font-weight:800;font-size:clamp(1.8rem,3.5vw,2.4rem);">Shaping a Better <span
-                    style="color:#f26522;">Future</span></h2>
+            <h2 class="abt-vision-heading">Shaping a Better <span>Future</span></h2>
         </div>
 
         <div class="row" data-aos="fade-up">
             <div class="col-lg-6 mb-4">
-                <p style="color:rgba(255,255,255,0.75);line-height:1.9;font-size:0.95rem;margin-bottom:18px;">
+                <p class="abt-vision-text abt-vision-text--spaced">
                     Our vision focuses on the welfare of handicapped people, widows, and senior citizens. In a bid to
                     empower them with equal opportunities, we help them live independently with pride, dignity and
                     self-respect. We work towards the economic reform of these people, and help them provide the right
                     skillset and exposure, so they may move forward in life.
                 </p>
-                <p style="color:rgba(255,255,255,0.75);line-height:1.9;font-size:0.95rem;">
+                <p class="abt-vision-text">
                     Every change on the planet starts with a new phase of consciousness, a new experience, and a new
                     vision. We, at Durga Saptashati, create a new experience to set the motion for women's empowerment
                     through various programs and events that we organize annually.
                 </p>
             </div>
             <div class="col-lg-6 mb-4">
-                <p style="color:rgba(255,255,255,0.75);line-height:1.9;font-size:0.95rem;margin-bottom:18px;">
+                <p class="abt-vision-text abt-vision-text--spaced">
                     Our vision is to start and promote such methods and actions where socially and economically stable
                     women irrespective of age, class, color, or family are able to engage actively in the means of their
                     community so that they are able to start a life of dignity and respect.
                 </p>
 
-                <div
-                    style="background:rgba(242,101,34,0.12);border:1px solid rgba(242,101,34,0.2);border-radius:14px;padding:22px 24px;margin-top:20px;">
-                    <i class="fas fa-quote-left"
-                        style="color:#f26522;font-size:1.2rem;margin-bottom:10px;display:block;opacity:0.6;"></i>
-                    <p style="color:#fff;line-height:1.8;font-size:0.95rem;font-weight:600;margin:0;font-style:italic;">
+                <div class="abt-vision-quote">
+                    <i class="fas fa-quote-left abt-vision-quote-icon"></i>
+                    <p>
                         Women comprise half the population of the globe and share one percent of the resources. We are
                         here to bring about a positive change, offering equality to rural women and widows — thus
                         changing society's outlook as a whole.</p>
@@ -279,7 +245,7 @@ include '../app/views/layout/header.php';
         </div>
 
         <!-- Vision pillars -->
-        <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:20px;" data-aos="fade-up" data-aos-delay="200">
+        <div class="abt-vision-pillars" data-aos="fade-up" data-aos-delay="200">
             <?php
             $pillars = [
                 ['icon' => 'fa-balance-scale', 'title' => 'Equality', 'desc' => 'Equal opportunities for all'],
@@ -289,15 +255,12 @@ include '../app/views/layout/header.php';
             ];
             foreach ($pillars as $p):
                 ?>
-            <div style="flex:1;min-width:200px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:22px 18px;text-align:center;transition:all 0.3s;"
-                onmouseover="this.style.background='rgba(242,101,34,0.1)';this.style.borderColor='rgba(242,101,34,0.25)';this.style.transform='translateY(-4px)'"
-                onmouseout="this.style.background='rgba(255,255,255,0.04)';this.style.borderColor='rgba(255,255,255,0.08)';this.style.transform='translateY(0)'">
-                <div
-                    style="width:48px;height:48px;background:rgba(242,101,34,0.15);border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;">
-                    <i class="fas <?= $p['icon'] ?>" style="color:#f26522;font-size:1.1rem;"></i>
+            <div class="abt-vision-pillar">
+                <div class="abt-vision-pillar-icon">
+                    <i class="fas <?= $p['icon'] ?>"></i>
                 </div>
-                <strong style="color:#fff;font-size:0.9rem;display:block;margin-bottom:4px;"><?= $p['title'] ?></strong>
-                <small style="color:rgba(255,255,255,0.5);font-size:0.78rem;"><?= $p['desc'] ?></small>
+                <strong><?= $p['title'] ?></strong>
+                <small><?= $p['desc'] ?></small>
             </div>
             <?php endforeach; ?>
         </div>
@@ -419,7 +382,7 @@ include '../app/views/layout/header.php';
                 <i class="fas fa-star"></i>
                 <span>Leadership</span>
             </div>
-            <h2 class="abt-section-title">Our <span style="color:#f26522;">Patrons</span></h2>
+            <h2 class="abt-section-title">Our <span class="abt-accent-text">Patrons</span></h2>
             <p class="abt-section-subtitle">Visionary leaders guiding our mission to uplift communities</p>
         </div>
         <div class="row justify-content-center">
@@ -455,7 +418,7 @@ include '../app/views/layout/header.php';
                 <i class="fas fa-users"></i>
                 <span>The People Behind The Mission</span>
             </div>
-            <h2 class="abt-section-title">Meet Our <span style="color:#f26522;">Executive Team</span></h2>
+            <h2 class="abt-section-title">Meet Our <span class="abt-accent-text">Executive Team</span></h2>
             <p class="abt-section-subtitle">Passionate individuals dedicated to creating lasting social impact</p>
         </div>
         <div class="abt-exec-grid">
@@ -501,9 +464,9 @@ include '../app/views/layout/header.php';
     <div class="container">
         <div class="row align-items-center" data-aos="fade-up">
             <div class="col-lg-7">
-                <h3 style="color:#fff;font-weight:700;font-size:1.7rem;margin-bottom:10px;">Want to Support a Cause?
+                <h3 class="cta-heading">Want to Support a Cause?
                 </h3>
-                <p style="color:rgba(255,255,255,0.8);font-size:0.95rem;margin:0;line-height:1.7;">Your contribution can
+                <p class="cta-text">Your contribution can
                     create a lasting impact. Join hands with us to transform lives in communities that need it most.</p>
             </div>
             <div class="col-lg-5 text-lg-end mt-4 mt-lg-0">
@@ -688,6 +651,7 @@ $('#videoModal').on('hidden.bs.modal', function() {
 // Impact stats counter animation
 (function() {
     var started = false;
+
     function animateCounters() {
         if (started) return;
         started = true;
@@ -695,6 +659,7 @@ $('#videoModal').on('hidden.bs.modal', function() {
             var target = parseInt(el.getAttribute('data-target'));
             var duration = 2000;
             var startTime = null;
+
             function step(ts) {
                 if (!startTime) startTime = ts;
                 var progress = Math.min((ts - startTime) / duration, 1);
@@ -709,8 +674,13 @@ $('#videoModal').on('hidden.bs.modal', function() {
     var el = document.querySelector('.abt-counter-num');
     if (el) {
         new IntersectionObserver(function(entries, obs) {
-            if (entries[0].isIntersecting) { animateCounters(); obs.disconnect(); }
-        }, { threshold: 0.3 }).observe(el);
+            if (entries[0].isIntersecting) {
+                animateCounters();
+                obs.disconnect();
+            }
+        }, {
+            threshold: 0.3
+        }).observe(el);
     }
 })();
 </script>

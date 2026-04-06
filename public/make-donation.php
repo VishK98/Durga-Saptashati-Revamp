@@ -1,10 +1,12 @@
 <?php
 require_once '../app/config/config.php';
-$pageTitle = "Donate Online — Support NGO in Delhi | Saptashati Foundation";
-$pageDescription = "Donate to Saptashati Foundation and help needy people in Delhi. Your contribution supports women empowerment, child education, and hunger relief.";
-$pageKeywords = "donate online, NGO donation Delhi, support charity, donate for education, donate for women, Durga Saptashati donation";
+$pageTitle = "Make Donation to NGO In Dwarka Delhi | Support NGO in Delhi | Saptashati Foundation";
+$pageDescription = "Support Durga Saptashati Foundation by making a donation online. Your contribution helps provide food, education, women empowerment programs and support for underprivileged communities in Dwarka Delhi.";
+$pageKeywords = "Donate to NGO in Dwarka , Online Donation NGO in Delhi ,Charity NGO in Dwarka Delhi ,Donate to NGO in Dwarka NCR ,Best NGO to Donate in Delhi ,Food and Clothes Donation NGO in Dwarka ,Support Charity Organization in Delhi ";
 include '../app/views/layout/header.php';
 ?>
+
+<link rel="stylesheet" href="<?= url('assets/css/events/make-donation.css') ?>">
 
 <!-- Page Header Start -->
 <div class="page-header">
@@ -26,101 +28,77 @@ include '../app/views/layout/header.php';
 <div class="container-fluid">
     <div class="container">
         <div class="text-center mb-5" data-aos="fade-up">
-            <h6 class="text-uppercase mb-2" style="color:#f26522;letter-spacing:3px;font-weight:600;">Support Our
+            <h6 class="text-uppercase mb-2 donate-subtitle">Support Our
                 Mission</h6>
-            <h1 style="color:#1a1b2e;font-weight:700;">Make Donation</h1>
-            <p style="color:#888;max-width:700px;margin:10px auto 0;">Your generous donation helps us provide education,
+            <h1 class="donate-title">Make Donation</h1>
+            <p class="donate-desc">Your generous donation helps us provide education,
                 healthcare, and empowerment programs to those who need it most. Every rupee counts.</p>
         </div>
 
         <div class="row">
             <!-- Donation Form -->
             <div class="col-lg-7 mb-4" data-aos="fade-right">
-                <div style="background:#fff;border-radius:14px;padding:35px;box-shadow:0 5px 25px rgba(0,0,0,0.06);">
-                    <h4 style="color:#1a1b2e;font-weight:700;margin-bottom:8px;">Donation Details</h4>
-                    <p style="color:#999;font-size:0.88rem;margin-bottom:25px;">Select an amount or enter a custom
+                <div class="donate-form-card">
+                    <h4>Donation Details</h4>
+                    <p class="form-hint">Select an amount or enter a custom
                         amount to donate.</p>
 
                     <!-- Amount Options -->
-                    <div style="margin-bottom:20px;">
-                        <label
-                            style="display:block;margin-bottom:10px;font-weight:600;font-size:0.85rem;color:#333;">Select
+                    <div class="mb-4">
+                        <label class="amt-label">Select
                             Amount</label>
-                        <div style="display:flex;flex-wrap:wrap;gap:10px;" id="amountOptions">
+                        <div class="amt-options" id="amountOptions">
                             <button type="button" class="amt-btn" data-amount="500"
-                                style="padding:10px 22px;border:2px solid #e5e7eb;border-radius:10px;background:#f9fafb;font-size:0.9rem;font-weight:600;cursor:pointer;font-family:inherit;transition:all 0.3s;color:#333;"
                                 onclick="selectAmount(this,500)">&#8377;500</button>
                             <button type="button" class="amt-btn" data-amount="1000"
-                                style="padding:10px 22px;border:2px solid #e5e7eb;border-radius:10px;background:#f9fafb;font-size:0.9rem;font-weight:600;cursor:pointer;font-family:inherit;transition:all 0.3s;color:#333;"
                                 onclick="selectAmount(this,1000)">&#8377;1,000</button>
                             <button type="button" class="amt-btn" data-amount="2000"
-                                style="padding:10px 22px;border:2px solid #e5e7eb;border-radius:10px;background:#f9fafb;font-size:0.9rem;font-weight:600;cursor:pointer;font-family:inherit;transition:all 0.3s;color:#333;"
                                 onclick="selectAmount(this,2000)">&#8377;2,000</button>
                             <button type="button" class="amt-btn" data-amount="5000"
-                                style="padding:10px 22px;border:2px solid #e5e7eb;border-radius:10px;background:#f9fafb;font-size:0.9rem;font-weight:600;cursor:pointer;font-family:inherit;transition:all 0.3s;color:#333;"
                                 onclick="selectAmount(this,5000)">&#8377;5,000</button>
                             <button type="button" class="amt-btn" data-amount="custom"
-                                style="padding:10px 22px;border:2px solid #e5e7eb;border-radius:10px;background:#f9fafb;font-size:0.9rem;font-weight:600;cursor:pointer;font-family:inherit;transition:all 0.3s;color:#333;"
                                 onclick="selectAmount(this,0)">Custom</button>
                         </div>
                     </div>
 
                     <form id="donationForm" onsubmit="return false;">
-                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-bottom:15px;">
+                        <div class="donate-form-grid">
                             <div>
-                                <label
-                                    style="display:block;margin-bottom:6px;font-weight:600;font-size:0.85rem;color:#333;">Full
+                                <label class="donate-field-label">Full
                                     Name *</label>
                                 <input type="text" name="name" required placeholder="Your full name"
-                                    style="width:100%;padding:12px 16px;border:1.5px solid #e5e7eb;border-radius:10px;font-size:0.9rem;font-family:inherit;transition:all 0.3s;background:#f9fafb;"
-                                    onfocus="this.style.borderColor='#f26522';this.style.boxShadow='0 0 0 3px rgba(242,101,34,0.1)';this.style.background='#fff'"
-                                    onblur="this.style.borderColor='#e5e7eb';this.style.boxShadow='none';this.style.background='#f9fafb'">
+                                    class="donate-input">
                             </div>
                             <div>
-                                <label
-                                    style="display:block;margin-bottom:6px;font-weight:600;font-size:0.85rem;color:#333;">Email
+                                <label class="donate-field-label">Email
                                     Address *</label>
                                 <input type="email" name="email" required placeholder="you@email.com"
-                                    style="width:100%;padding:12px 16px;border:1.5px solid #e5e7eb;border-radius:10px;font-size:0.9rem;font-family:inherit;transition:all 0.3s;background:#f9fafb;"
-                                    onfocus="this.style.borderColor='#f26522';this.style.boxShadow='0 0 0 3px rgba(242,101,34,0.1)';this.style.background='#fff'"
-                                    onblur="this.style.borderColor='#e5e7eb';this.style.boxShadow='none';this.style.background='#f9fafb'">
+                                    class="donate-input">
                             </div>
                         </div>
-                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-bottom:15px;">
+                        <div class="donate-form-grid">
                             <div>
-                                <label
-                                    style="display:block;margin-bottom:6px;font-weight:600;font-size:0.85rem;color:#333;">Phone
+                                <label class="donate-field-label">Phone
                                     Number</label>
                                 <input type="text" name="phone" placeholder="+91 XXXXXXXXXX"
-                                    style="width:100%;padding:12px 16px;border:1.5px solid #e5e7eb;border-radius:10px;font-size:0.9rem;font-family:inherit;transition:all 0.3s;background:#f9fafb;"
-                                    onfocus="this.style.borderColor='#f26522';this.style.boxShadow='0 0 0 3px rgba(242,101,34,0.1)';this.style.background='#fff'"
-                                    onblur="this.style.borderColor='#e5e7eb';this.style.boxShadow='none';this.style.background='#f9fafb'">
+                                    class="donate-input">
                             </div>
                             <div>
-                                <label
-                                    style="display:block;margin-bottom:6px;font-weight:600;font-size:0.85rem;color:#333;">Amount
+                                <label class="donate-field-label">Amount
                                     (&#8377;) *</label>
                                 <input type="number" name="amount" id="donationAmount" required min="1"
                                     placeholder="Enter amount"
-                                    style="width:100%;padding:12px 16px;border:1.5px solid #e5e7eb;border-radius:10px;font-size:0.9rem;font-family:inherit;transition:all 0.3s;background:#f9fafb;"
-                                    onfocus="this.style.borderColor='#f26522';this.style.boxShadow='0 0 0 3px rgba(242,101,34,0.1)';this.style.background='#fff'"
-                                    onblur="this.style.borderColor='#e5e7eb';this.style.boxShadow='none';this.style.background='#f9fafb'">
+                                    class="donate-input">
                             </div>
                         </div>
 
-                        <div style="margin-bottom:20px;">
-                            <label
-                                style="display:block;margin-bottom:6px;font-weight:600;font-size:0.85rem;color:#333;">Message
+                        <div class="donate-msg-wrap">
+                            <label class="donate-field-label">Message
                                 (Optional)</label>
                             <textarea name="message" rows="3" placeholder="Any message for us..."
-                                style="width:100%;padding:12px 16px;border:1.5px solid #e5e7eb;border-radius:10px;font-size:0.9rem;font-family:inherit;resize:vertical;transition:all 0.3s;background:#f9fafb;"
-                                onfocus="this.style.borderColor='#f26522';this.style.boxShadow='0 0 0 3px rgba(242,101,34,0.1)';this.style.background='#fff'"
-                                onblur="this.style.borderColor='#e5e7eb';this.style.boxShadow='none';this.style.background='#f9fafb'"></textarea>
+                                class="donate-textarea"></textarea>
                         </div>
-                        <button type="submit" id="donationSubmitBtn"
-                            style="background:#f26522;color:#fff;border:none;padding:14px 35px;border-radius:10px;font-size:0.95rem;font-weight:600;cursor:pointer;font-family:inherit;transition:all 0.3s;min-width:160px;"
-                            onmouseover="this.style.background='#d4541a';this.style.boxShadow='0 8px 25px rgba(242,101,34,0.3)'"
-                            onmouseout="this.style.background='#f26522';this.style.boxShadow='none'">
+                        <button type="submit" id="donationSubmitBtn" class="donate-submit-btn">
                             Donate Now
                         </button>
                     </form>
@@ -128,14 +106,8 @@ include '../app/views/layout/header.php';
                     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
                     <script>
                     function selectAmount(btn, amount) {
-                        document.querySelectorAll('.amt-btn').forEach(function(b) {
-                            b.style.borderColor = '#e5e7eb';
-                            b.style.background = '#f9fafb';
-                            b.style.color = '#333';
-                        });
-                        btn.style.borderColor = '#f26522';
-                        btn.style.background = '#f26522';
-                        btn.style.color = '#fff';
+                        document.querySelectorAll('.amt-btn').forEach(function(b) { b.classList.remove('active'); });
+                        btn.classList.add('active');
                         var input = document.getElementById('donationAmount');
                         if (amount > 0) {
                             input.value = amount;
@@ -230,9 +202,7 @@ include '../app/views/layout/header.php';
                                                     form.reset();
                                                     document.querySelectorAll('.amt-btn')
                                                         .forEach(function(b) {
-                                                            b.style.borderColor = '#e5e7eb';
-                                                            b.style.background = '#f9fafb';
-                                                            b.style.color = '#333';
+                                                            b.classList.remove('active');
                                                         });
                                                     window.scrollTo({
                                                         top: 0,
@@ -269,44 +239,36 @@ include '../app/views/layout/header.php';
             <!-- Payment Info Side -->
             <div class="col-lg-5 mb-4" data-aos="fade-left">
                 <!-- Why Donate -->
-                <div
-                    style="background:#fff;border-radius:14px;padding:30px;box-shadow:0 5px 25px rgba(0,0,0,0.06);margin-bottom:20px;">
-                    <h5 style="color:#1a1b2e;font-weight:700;margin-bottom:15px;"><i class="fas fa-heart"
-                            style="color:#f26522;margin-right:8px;"></i> Why Donate?</h5>
-                    <div style="display:flex;flex-direction:column;gap:12px;">
-                        <div
-                            style="display:flex;align-items:center;gap:12px;padding:12px;background:#f9fafb;border-radius:10px;">
-                            <div
-                                style="width:40px;height:40px;background:rgba(242,101,34,0.1);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                                <i class="fas fa-graduation-cap" style="color:#f26522;"></i>
+                <div class="donate-why-card">
+                    <h5><i class="fas fa-heart"></i> Why Donate?</h5>
+                    <div class="donate-why-list">
+                        <div class="donate-why-item">
+                            <div class="donate-why-icon">
+                                <i class="fas fa-graduation-cap"></i>
                             </div>
                             <div>
-                                <strong style="color:#1a1b2e;font-size:0.85rem;">Education</strong>
-                                <p style="color:#888;font-size:0.78rem;margin:0;">Help underprivileged children access
+                                <strong>Education</strong>
+                                <p>Help underprivileged children access
                                     quality education</p>
                             </div>
                         </div>
-                        <div
-                            style="display:flex;align-items:center;gap:12px;padding:12px;background:#f9fafb;border-radius:10px;">
-                            <div
-                                style="width:40px;height:40px;background:rgba(242,101,34,0.1);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                                <i class="fas fa-female" style="color:#f26522;"></i>
+                        <div class="donate-why-item">
+                            <div class="donate-why-icon">
+                                <i class="fas fa-female"></i>
                             </div>
                             <div>
-                                <strong style="color:#1a1b2e;font-size:0.85rem;">Women Empowerment</strong>
-                                <p style="color:#888;font-size:0.78rem;margin:0;">Skill development and self-reliance
+                                <strong>Women Empowerment</strong>
+                                <p>Skill development and self-reliance
                                     programmes</p>
                             </div>
                         </div>
-                        <div
-                            style="display:flex;align-items:center;gap:12px;padding:12px;background:#f9fafb;border-radius:10px;">
-                            <div
-                                style="width:40px;height:40px;background:rgba(242,101,34,0.1);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                                <i class="fas fa-utensils" style="color:#f26522;"></i>
+                        <div class="donate-why-item">
+                            <div class="donate-why-icon">
+                                <i class="fas fa-utensils"></i>
                             </div>
                             <div>
-                                <strong style="color:#1a1b2e;font-size:0.85rem;">Hunger Relief</strong>
-                                <p style="color:#888;font-size:0.78rem;margin:0;">Free kitchens and food donation drives
+                                <strong>Hunger Relief</strong>
+                                <p>Free kitchens and food donation drives
                                 </p>
                             </div>
                         </div>
@@ -314,11 +276,9 @@ include '../app/views/layout/header.php';
                 </div>
 
                 <!-- Tax Benefits -->
-                <div
-                    style="background:linear-gradient(135deg,#1a1b2e,#2d2e45);border-radius:14px;padding:25px;color:#fff;">
-                    <h5 style="font-weight:700;margin-bottom:10px;"><i class="fas fa-receipt"
-                            style="color:#f26522;margin-right:8px;"></i> Tax Benefits</h5>
-                    <p style="color:#ccc;font-size:0.85rem;line-height:1.6;margin:0;">All donations are eligible for tax
+                <div class="donate-tax-card">
+                    <h5><i class="fas fa-receipt"></i> Tax Benefits</h5>
+                    <p>All donations are eligible for tax
                         deduction under Section 80G of the Income Tax Act. You will receive an official receipt via
                         email.</p>
                 </div>

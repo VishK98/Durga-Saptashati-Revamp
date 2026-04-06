@@ -1,9 +1,9 @@
 <?php
 require_once '../app/config/config.php';
 
-$pageTitle = "NGO working for women empowerment | Durga Saptashati Foundation";
-$pageDescription = "Durga Saptashati NGOs working towards empowering women in different ways–from helping victims of crime to providing rural women with modern-day jobs. NGOs working for women empowerment to ensure that all women have the opportunity to be free from violence.";
-$pageKeywords = "Women Empowerment vocational training In Dwarka,Women Empowerment Self defence In Dwarka,Women Empowerment Selfdefence Training In Dwarka,NGOs, women empowerment India, listicle, volunteers and NGOs, women empowerment, Dwarka, Delhi, Durga Saptashati, Durga Saptashati, Women empowerment , NGO Women empowerment,Durga Saptashati,Durga Saptashati NGO,Durga Saptashati foundation,DurgaSaptashati,Top Women Empowerment NGO In Dwarka,Top Women Empowerment Services In Dwarka,Empowerment Of Women In Dwarka,NGO For Women Empowerment In Delhi,Women NGOs And Welfare Services In Delhi,Women NGOs and Welfare Services in Delhi, Women Empowerment & Safety NGO in Dwarka, NGO for Women Empowerment in Delhi, Empowerment of Women in Dwarka, Top Women Empowerment Services in Dwarka, Top Women Empowerment NGO in Dwarka, Women's Empowerment in Dwarka, Women's Empowerment in Dwarka Delhi, Women's Empowerment, Women Empowerment Vocational Training in Dwarka, Women Empowerment Self Defence in Dwarka, Women Empowerment Selfdefence Training in Dwarka, Women's Welfare NGO in Dwarka, NGOs for Women in Dwarka Delhi";
+$pageTitle = "Women Empowerment NGO in Dwarka Delhi | Durga Saptashati Foundation";
+$pageDescription = "Durga Saptashati Foundation is a leading women empowerment NGO in Dwarka Delhi. Support an NGO through self defence training, skill development programs, and support for women safety and equality that build confidence and self-reliance.";
+$pageKeywords = "Women NGOs And Welfare Services In Delhi,Women Empowerment and Safety NGO in Dwarka,NGO For Women Empowerment In Delhi,Empowerment Of Women In Dwarka,Top Women Empowerment Services In Dwarka,Top Women Empowerment NGO In Dwarka,Womens Empowerment In Dwarka,Womens Empowerment In Dwarka Delhi,Womens Empowerment,Women Empowerment vocational training In Dwarka,Women Empowerment Self defence In Dwarka,Women Empowerment Self defence Training In Dwarka,Women welfare NGO in Dwarka,NGOS For Women in Dwarka Delhi";
 
 include '../app/views/layout/header.php';
 ?>
@@ -144,33 +144,19 @@ include '../app/views/layout/header.php';
             ['file' => 'womens-empowerment-6.webp', 'title' => 'Women Leadership Meet'],
         ];
         ?>
-        <div class="we-gallery-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+        <div class="we-gallery-grid gallery-grid">
             <?php foreach ($weImages as $i => $img): ?>
-            <div data-aos="fade-up" data-aos-delay="<?= ($i % 3) * 50 ?>"
-                style="cursor:pointer;border-radius:14px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.06);transition:all 0.3s;background:#fff;"
-                onclick="openWeLightbox(<?= $i ?>)"
-                onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 12px 35px rgba(0,0,0,0.12)'"
-                onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.06)'">
-                <div style="position:relative;overflow:hidden;">
-                    <img src="<?= url('assets/images/womens-empowerment/' . $img['file']) ?>"
-                        alt="<?= htmlspecialchars($img['title']) ?>"
-                        style="width:100%;height:220px;object-fit:cover;display:block;transition:transform 0.4s;"
-                        onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                    <div
-                        style="position:absolute;top:12px;left:12px;background:rgba(0,0,0,0.6);color:#fff;padding:4px 12px;border-radius:15px;font-size:0.72rem;font-weight:600;backdrop-filter:blur(4px);">
-                        Women's Empowerment</div>
-                    <div style="position:absolute;inset:0;background:rgba(0,0,0,0.3);opacity:0;transition:opacity 0.3s;display:flex;align-items:center;justify-content:center;"
-                        onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0'">
-                        <div
-                            style="width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;">
-                            <i class="fas fa-search-plus" style="color:#f26522;font-size:1.2rem;"></i>
-                        </div>
+            <div class="gallery-card" data-aos="fade-up" data-aos-delay="<?= ($i % 3) * 50 ?>" onclick="pageLb.open(<?= $i ?>)">
+                <div class="gc-img-wrap">
+                    <img class="gc-img" src="<?= url('assets/images/womens-empowerment/' . $img['file']) ?>"
+                        alt="<?= htmlspecialchars($img['title']) ?>">
+                    <div class="gc-badge">Women's Empowerment</div>
+                    <div class="gc-overlay">
+                        <div class="gc-search-icon"><i class="fas fa-search-plus"></i></div>
                     </div>
                 </div>
-                <div style="padding:14px 16px;">
-                    <h6 style="color:#1a1b2e;font-weight:600;font-size:0.9rem;margin:0;">
-                        <?= htmlspecialchars($img['title']) ?>
-                    </h6>
+                <div class="gc-caption">
+                    <h6><?= htmlspecialchars($img['title']) ?></h6>
                 </div>
             </div>
             <?php endforeach; ?>
@@ -180,107 +166,22 @@ include '../app/views/layout/header.php';
 
 
 <!-- Lightbox -->
-<div id="weLightbox"
-    style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.92);z-index:99999;align-items:center;justify-content:center;backdrop-filter:blur(8px);">
-    <button onclick="closeWeLightbox()"
-        style="position:absolute;top:20px;right:20px;background:rgba(255,255,255,0.1);border:none;width:44px;height:44px;border-radius:50%;cursor:pointer;color:#fff;font-size:1.3rem;z-index:10;display:flex;align-items:center;justify-content:center;transition:all 0.2s;"
-        onmouseover="this.style.background='rgba(255,255,255,0.2)'"
-        onmouseout="this.style.background='rgba(255,255,255,0.1)'">&times;</button>
-    <button onclick="wePrev()"
-        style="position:absolute;left:20px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.1);border:none;width:50px;height:50px;border-radius:50%;cursor:pointer;color:#fff;font-size:1.2rem;z-index:10;display:flex;align-items:center;justify-content:center;transition:all 0.2s;"
-        onmouseover="this.style.background='rgba(255,255,255,0.2)'"
-        onmouseout="this.style.background='rgba(255,255,255,0.1)'"><i class="fas fa-chevron-left"></i></button>
-    <button onclick="weNext()"
-        style="position:absolute;right:20px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.1);border:none;width:50px;height:50px;border-radius:50%;cursor:pointer;color:#fff;font-size:1.2rem;z-index:10;display:flex;align-items:center;justify-content:center;transition:all 0.2s;"
-        onmouseover="this.style.background='rgba(255,255,255,0.2)'"
-        onmouseout="this.style.background='rgba(255,255,255,0.1)'"><i class="fas fa-chevron-right"></i></button>
-    <div style="text-align:center;max-width:90%;max-height:85vh;">
-        <img id="weLbImg" src="" alt=""
-            style="max-width:100%;max-height:78vh;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,0.5);object-fit:contain;">
-        <h5 id="weLbTitle" style="color:#fff;font-weight:600;font-size:1rem;margin:14px 0 0;"></h5>
+<div id="weLightbox" class="page-lightbox">
+    <button class="lb-close">&times;</button>
+    <button class="lb-prev"><i class="fas fa-chevron-left"></i></button>
+    <button class="lb-next"><i class="fas fa-chevron-right"></i></button>
+    <div class="lb-content">
+        <img class="lb-img" src="" alt="">
+        <h5 class="lb-title"></h5>
     </div>
 </div>
 
 <!-- JavaScript -->
 <script>
-var weData =
-    <?= json_encode(array_map(function ($img) {
-            return ['src' => url('assets/images/womens-empowerment/' . $img['file']), 'title' => $img['title']]; }, $weImages)) ?>;
-var weIdx = 0;
-
-function openWeLightbox(i) {
-    weIdx = i;
-    updateWeLb();
-    document.getElementById('weLightbox').style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-}
-
-function closeWeLightbox() {
-    document.getElementById('weLightbox').style.display = 'none';
-    document.body.style.overflow = '';
-}
-
-function updateWeLb() {
-    document.getElementById('weLbImg').src = weData[weIdx].src;
-    document.getElementById('weLbTitle').textContent = weData[weIdx].title;
-}
-
-function wePrev() {
-    weIdx = (weIdx - 1 + weData.length) % weData.length;
-    updateWeLb();
-}
-
-function weNext() {
-    weIdx = (weIdx + 1) % weData.length;
-    updateWeLb();
-}
-document.getElementById('weLightbox').addEventListener('click', function(e) {
-    if (e.target === this) closeWeLightbox();
-});
-document.addEventListener('keydown', function(e) {
-    if (document.getElementById('weLightbox').style.display !== 'flex') return;
-    if (e.key === 'Escape') closeWeLightbox();
-    if (e.key === 'ArrowLeft') wePrev();
-    if (e.key === 'ArrowRight') weNext();
-});
-
-// Counter Animation
 document.addEventListener('DOMContentLoaded', function() {
-    var counters = document.querySelectorAll('[data-counter]');
-    var counterObserver = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-                var counter = entry.target;
-                var target = parseInt(counter.getAttribute('data-counter'));
-                var current = 0;
-                var increment = target / 60;
-                var timer = setInterval(function() {
-                    current += increment;
-                    if (current >= target) {
-                        counter.textContent = target;
-                        clearInterval(timer);
-                    } else {
-                        counter.textContent = Math.floor(current);
-                    }
-                }, 25);
-                counterObserver.unobserve(counter);
-            }
-        });
-    }, {
-        threshold: 0.7
-    });
-    counters.forEach(function(c) {
-        counterObserver.observe(c);
-    });
-});
-
-// Floating element animation
-document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.we-floating').forEach(function(el, i) {
-        setTimeout(function() {
-            el.style.animation = 'weFloat 6s ease-in-out infinite';
-        }, i * 2000);
-    });
+    var pageLb = initLightbox('weLightbox', <?= json_encode(array_map(function($img) { return ['src' => url('assets/images/womens-empowerment/' . $img['file']), 'title' => $img['title']]; }, $weImages)) ?>);
+    window.pageLb = pageLb;
+    initFloatingAnimation('.we-floating', 'weFloat');
 });
 </script>
 

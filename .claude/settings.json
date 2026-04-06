@@ -10,7 +10,8 @@
       "Bash(sed -i \"s|Location: admin?page=|Location: admin/|g\" public/admin.php)",
       "Bash(sed -i \"s|Location: admin$|Location: admin/dashboard|\" public/admin.php)",
       "Bash(sed -i \"s|Location: admin/|Location: /admin/|g\" public/admin.php)",
-      "Bash(sed -i \"s|Location: admin$|Location: /admin|\" public/admin.php)"
+      "Bash(sed -i \"s|Location: admin$|Location: /admin|\" public/admin.php)",
+      "Bash(grep \"\\\\.php$\")"
     ],
     "additionalDirectories": [
       "c:\\xampp\\htdocs\\Durga-Saptashati-Revamp\\public"

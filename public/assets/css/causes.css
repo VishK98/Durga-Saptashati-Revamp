@@ -330,3 +330,22 @@
     margin-top: 12px;
   }
 }
+
+/* ===== Event Page Extras ===== */
+.event-grid-gap {
+  row-gap: 30px;
+}
+
+.causes-cta .cta-heading {
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.7rem;
+  margin-bottom: 10px;
+}
+
+.causes-cta .cta-text {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
+  margin: 0;
+  line-height: 1.7;
+}

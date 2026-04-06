@@ -54,15 +54,15 @@ include '../app/views/layout/header.php';
 
                     <div class="indra-stats-inline">
                         <div class="indra-si">
-                            <strong data-counter="50">0</strong>
+                            <strong data-counter="50" data-counter-suffix="+">0</strong>
                             <span>Poets & Writers</span>
                         </div>
                         <div class="indra-si">
-                            <strong data-counter="500">0</strong>
+                            <strong data-counter="500" data-counter-suffix="+">0</strong>
                             <span>Attendees</span>
                         </div>
                         <div class="indra-si">
-                            <strong data-counter="12">0</strong>
+                            <strong data-counter="12" data-counter-suffix="+">0</strong>
                             <span>Sessions</span>
                         </div>
                     </div>
@@ -121,28 +121,17 @@ include '../app/views/layout/header.php';
             ['file' => 'indra-5.webp', 'title' => 'Poetry Evening'],
         ];
         ?>
-        <div class="indra-gallery-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+        <div class="indra-gallery-grid gallery-grid">
             <?php foreach ($indraImages as $i => $img): ?>
-            <div data-aos="fade-up" data-aos-delay="<?= ($i % 3) * 50 ?>"
-                style="cursor:pointer;border-radius:14px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.06);transition:all 0.3s;background:#fff;"
-                onclick="openIndraLb(<?= $i ?>)"
-                onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 12px 35px rgba(0,0,0,0.12)'"
-                onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.06)'">
-                <div style="position:relative;overflow:hidden;">
-                    <img src="<?= url('assets/images/indra/' . $img['file']) ?>"
-                        alt="<?= htmlspecialchars($img['title']) ?>"
-                        style="width:100%;height:220px;object-fit:cover;display:block;transition:transform 0.4s;"
-                        onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                    <div style="position:absolute;top:12px;left:12px;background:rgba(0,0,0,0.6);color:#fff;padding:4px 12px;border-radius:15px;font-size:0.72rem;font-weight:600;backdrop-filter:blur(4px);">साहित्य महोत्सव</div>
-                    <div style="position:absolute;inset:0;background:rgba(0,0,0,0.3);opacity:0;transition:opacity 0.3s;display:flex;align-items:center;justify-content:center;"
-                        onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0'">
-                        <div style="width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;">
-                            <i class="fas fa-search-plus" style="color:#f26522;font-size:1.2rem;"></i>
-                        </div>
-                    </div>
+            <div class="gallery-card" data-aos="fade-up" data-aos-delay="<?= ($i % 3) * 50 ?>" onclick="pageLb.open(<?= $i ?>)">
+                <div class="gc-img-wrap">
+                    <img class="gc-img" src="<?= url('assets/images/indra/' . $img['file']) ?>"
+                        alt="<?= htmlspecialchars($img['title']) ?>">
+                    <div class="gc-badge">साहित्य महोत्सव</div>
+                    <div class="gc-overlay"><div class="gc-search-icon"><i class="fas fa-search-plus"></i></div></div>
                 </div>
-                <div style="padding:14px 16px;">
-                    <h6 style="color:#1a1b2e;font-weight:600;font-size:0.9rem;margin:0;"><?= htmlspecialchars($img['title']) ?></h6>
+                <div class="gc-caption">
+                    <h6><?= htmlspecialchars($img['title']) ?></h6>
                 </div>
             </div>
             <?php endforeach; ?>
@@ -151,47 +140,19 @@ include '../app/views/layout/header.php';
 </section>
 
 <!-- Lightbox -->
-<div id="indraLb" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.92);z-index:99999;align-items:center;justify-content:center;backdrop-filter:blur(8px);">
-    <button onclick="closeIndraLb()" style="position:absolute;top:20px;right:20px;background:rgba(255,255,255,0.1);border:none;width:44px;height:44px;border-radius:50%;cursor:pointer;color:#fff;font-size:1.3rem;z-index:10;display:flex;align-items:center;justify-content:center;" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">&times;</button>
-    <button onclick="indraPrev()" style="position:absolute;left:20px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.1);border:none;width:50px;height:50px;border-radius:50%;cursor:pointer;color:#fff;font-size:1.2rem;z-index:10;display:flex;align-items:center;justify-content:center;" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'"><i class="fas fa-chevron-left"></i></button>
-    <button onclick="indraNext()" style="position:absolute;right:20px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.1);border:none;width:50px;height:50px;border-radius:50%;cursor:pointer;color:#fff;font-size:1.2rem;z-index:10;display:flex;align-items:center;justify-content:center;" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'"><i class="fas fa-chevron-right"></i></button>
-    <div style="text-align:center;max-width:90%;max-height:85vh;">
-        <img id="indraLbImg" src="" alt="" style="max-width:100%;max-height:78vh;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,0.5);object-fit:contain;">
-        <h5 id="indraLbTitle" style="color:#fff;font-weight:600;font-size:1rem;margin:14px 0 0;"></h5>
+<div id="indraLb" class="page-lightbox">
+    <button class="lb-close">&times;</button>
+    <button class="lb-prev"><i class="fas fa-chevron-left"></i></button>
+    <button class="lb-next"><i class="fas fa-chevron-right"></i></button>
+    <div class="lb-content">
+        <img class="lb-img" src="" alt="">
+        <h5 class="lb-title"></h5>
     </div>
 </div>
 
 <script>
-var indraData = <?= json_encode(array_map(function($img) { return ['src' => url('assets/images/indra/' . $img['file']), 'title' => $img['title']]; }, $indraImages)) ?>;
-var indraIdx = 0;
-function openIndraLb(i) { indraIdx = i; updateIndraLb(); document.getElementById('indraLb').style.display = 'flex'; document.body.style.overflow = 'hidden'; }
-function closeIndraLb() { document.getElementById('indraLb').style.display = 'none'; document.body.style.overflow = ''; }
-function updateIndraLb() { document.getElementById('indraLbImg').src = indraData[indraIdx].src; document.getElementById('indraLbTitle').textContent = indraData[indraIdx].title; }
-function indraPrev() { indraIdx = (indraIdx - 1 + indraData.length) % indraData.length; updateIndraLb(); }
-function indraNext() { indraIdx = (indraIdx + 1) % indraData.length; updateIndraLb(); }
-document.getElementById('indraLb').addEventListener('click', function(e) { if (e.target === this) closeIndraLb(); });
-document.addEventListener('keydown', function(e) {
-    if (document.getElementById('indraLb').style.display !== 'flex') return;
-    if (e.key === 'Escape') closeIndraLb();
-    if (e.key === 'ArrowLeft') indraPrev();
-    if (e.key === 'ArrowRight') indraNext();
-});
 document.addEventListener('DOMContentLoaded', function() {
-    var counters = document.querySelectorAll('[data-counter]');
-    var obs = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-                var c = entry.target, target = parseInt(c.getAttribute('data-counter')), current = 0, inc = target / 60;
-                var timer = setInterval(function() {
-                    current += inc;
-                    if (current >= target) { c.textContent = target + '+'; clearInterval(timer); }
-                    else { c.textContent = Math.floor(current); }
-                }, 25);
-                obs.unobserve(c);
-            }
-        });
-    }, { threshold: 0.7 });
-    counters.forEach(function(c) { obs.observe(c); });
+    window.pageLb = initLightbox('indraLb', <?= json_encode(array_map(function($img) { return ['src' => url('assets/images/indra/' . $img['file']), 'title' => $img['title']]; }, $indraImages)) ?>);
 });
 </script>
 

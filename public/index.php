@@ -1,9 +1,9 @@
 <?php
 require_once '../app/config/config.php';
 
-$pageTitle = "Top NGOs In Delhi Working For Women, Kids & Senior Citizens | Saptashati";
-$pageDescription = "Saptashati Foundation is a top NGO in Dwarka, Delhi working for women empowerment, child education, and senior citizen welfare. Join our mission.";
-$pageKeywords = "top NGOs in Delhi, best NGO Dwarka, women empowerment NGO, child education Delhi, senior citizen welfare, Durga Saptashati Foundation, charity Delhi";
+$pageTitle = "Top NGO in Dwarka Delhi | Education and Social Welfare in Dwarka Delhi- Durga Saptashati Foundation";
+$pageDescription = "Durga Saptashati Foundation is a nonprofit NGO in Dwarka Delhi working for women empowerment, child education, hunger relief, livelihood support, senior citizen welfare and community welfare programs. Join our mission.";
+$pageKeywords = "Top NGO in Dwarka For Women,Top NGO in Dwarka For Kids,Top NGO in Dwarka Delhi, NGOs in Dwarka Delhi,Trusted Charity Organisation In Dwarka Delhi,Free Medical Care For Handicapped In Dwarka, Top NGOs Senior Citizens in Dwarka Delhi, Top Charitable Organisations in  Dwarka,NGO For Handicapped in Dwarka, NGO Widowed Women in Dwarka, Best NGO in Delhi for Social Welfare,NGO For Social Welfare, Social Welfare Society NGO in Delhi, NGO in Dwarka Delhi, Women empowerment NGO In Dwarka, charity organization in Delhi, Kids education NGO In Dwarka, food donation NGO, social welfare NGO, NGO for women and children";
 
 include '../app/views/layout/header.php';
 ?>

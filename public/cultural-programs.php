@@ -1,8 +1,8 @@
 <?php
 require_once '../app/config/config.php';
-$pageTitle = "Durga Saptashati NGO Cultural Programmes in Dwarka, Delhi.";
-$pageDescription = "Sandhya Singh, founder of Durga Saptashati NGO in Delhi believes cultural activities are integral to an individual’s development. They instil a sense of belonging, teach civic responsibilities, and also help in busting social myths. Therefore, we organise various cultural programmes at periodic intervals. Catch glimpses of beautiful folk dances, rangoli decorations, drawings, paintings, etc in our images gallery. Join us!";
-$pageKeywords = "Durga Saptashati NGO, Top NGO in Dwarka, Delhi, NGO for underprivileged children,CulturalFolkDancesCompetitionsInDwarka,CulturalDrawingCompetitionsInDwarka,RangoliMakingCompetitionsInDwarka,IndependencedayCelebrationInDwarka,CulturalSingingCompetitionsInDwarka,FestivalCelebrationsInDwarka,Durga Saptashati,Durga Saptashati NGO,Durga Saptashati foundation,DurgaSaptashati,Cultural Programme for Underprivileged Children in Dwarka, Cultural Programme NGO in Dwarka Delhi, Cultural Programme for Underprivileged Children, Cultural Programme for Children in Delhi";
+$pageTitle = "Cultural Programs in Dwarka Delhi | Cultural Events NGO- Durga Saptashati ";
+$pageDescription = "Durga Saptashati Foundation organizes cultural programs in Dwarka Delhi including dance, music, art and community events that promote cultural values, creativity and social unity. Therefore, we organise various cultural programmes at periodic intervals. Catch glimpses of beautiful folk dances, rangoli decorations, drawings, paintings that promote cultural values, creativity and social unity visit our images gallery. Join us!";
+$pageKeywords = "Cultural Programme For Underprivileged Children In Dwarka,Cultural Programme NGO in Dwarka Delhi,Cultural Programme for Underprivileged Children,Cultural Programme For Children In Delhi, cultural programs in Delhi, cultural activities for kids In Dwarka, cultural event in Dwarka Delhi, NGO cultural activities In Dwarka, Dance and music cultural programs In Dwarka";
 include '../app/views/layout/header.php';
 ?>
 
@@ -41,11 +41,11 @@ include '../app/views/layout/header.php';
                         <img src="<?= url('assets/images/cultural/cultural-2.webp') ?>" alt="Heritage Celebration">
                     </div>
                     <div class="we-float-stat we-float-stat-1" data-aos="zoom-in" data-aos-delay="400">
-                        <div class="we-fs-number" data-counter="500">0</div>
+                        <div class="we-fs-number" data-counter="500" data-counter-suffix="+">0</div>
                         <div class="we-fs-label">Participants</div>
                     </div>
                     <div class="we-float-stat we-float-stat-2" data-aos="zoom-in" data-aos-delay="500">
-                        <div class="we-fs-number" data-counter="20">0</div>
+                        <div class="we-fs-number" data-counter="20" data-counter-suffix="+">0</div>
                         <div class="we-fs-label">Performances</div>
                     </div>
                 </div>
@@ -83,21 +83,21 @@ include '../app/views/layout/header.php';
                         <div class="we-ms-item">
                             <i class="fas fa-music"></i>
                             <div>
-                                <strong data-counter="8">0</strong>
+                                <strong data-counter="8" data-counter-suffix="+">0</strong>
                                 <span>Events</span>
                             </div>
                         </div>
                         <div class="we-ms-item">
                             <i class="fas fa-paint-brush"></i>
                             <div>
-                                <strong data-counter="12">0</strong>
+                                <strong data-counter="12" data-counter-suffix="+">0</strong>
                                 <span>Art Forms</span>
                             </div>
                         </div>
                         <div class="we-ms-item">
                             <i class="fas fa-map-marker-alt"></i>
                             <div>
-                                <strong data-counter="5">0</strong>
+                                <strong data-counter="5" data-counter-suffix="+">0</strong>
                                 <span>Venues</span>
                             </div>
                         </div>
@@ -144,32 +144,19 @@ include '../app/views/layout/header.php';
             ['file' => 'cultural-10.webp', 'title' => 'Joyful Evening'],
         ];
         ?>
-        <div class="we-gallery-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+        <div class="we-gallery-grid gallery-grid">
             <?php foreach ($culturalImages as $i => $img): ?>
-            <div data-aos="fade-up" data-aos-delay="<?= ($i % 3) * 50 ?>"
-                style="cursor:pointer;border-radius:14px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.06);transition:all 0.3s;background:#fff;"
-                onclick="openCulturalLb(<?= $i ?>)"
-                onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 12px 35px rgba(0,0,0,0.12)'"
-                onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.06)'">
-                <div style="position:relative;overflow:hidden;">
-                    <img src="<?= url('assets/images/cultural/' . $img['file']) ?>"
-                        alt="<?= htmlspecialchars($img['title']) ?>"
-                        style="width:100%;height:220px;object-fit:cover;display:block;transition:transform 0.4s;"
-                        onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                    <div
-                        style="position:absolute;top:12px;left:12px;background:rgba(0,0,0,0.6);color:#fff;padding:4px 12px;border-radius:15px;font-size:0.72rem;font-weight:600;backdrop-filter:blur(4px);">
-                        Cultural Program</div>
-                    <div style="position:absolute;inset:0;background:rgba(0,0,0,0.3);opacity:0;transition:opacity 0.3s;display:flex;align-items:center;justify-content:center;"
-                        onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0'">
-                        <div
-                            style="width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;">
-                            <i class="fas fa-search-plus" style="color:#f26522;font-size:1.2rem;"></i>
-                        </div>
+            <div class="gallery-card" data-aos="fade-up" data-aos-delay="<?= ($i % 3) * 50 ?>" onclick="pageLb.open(<?= $i ?>)">
+                <div class="gc-img-wrap">
+                    <img class="gc-img" src="<?= url('assets/images/cultural/' . $img['file']) ?>"
+                        alt="<?= htmlspecialchars($img['title']) ?>">
+                    <div class="gc-badge">Cultural Program</div>
+                    <div class="gc-overlay">
+                        <div class="gc-search-icon"><i class="fas fa-search-plus"></i></div>
                     </div>
                 </div>
-                <div style="padding:14px 16px;">
-                    <h6 style="color:#1a1b2e;font-weight:600;font-size:0.9rem;margin:0;">
-                        <?= htmlspecialchars($img['title']) ?></h6>
+                <div class="gc-caption">
+                    <h6><?= htmlspecialchars($img['title']) ?></h6>
                 </div>
             </div>
             <?php endforeach; ?>
@@ -178,96 +165,20 @@ include '../app/views/layout/header.php';
 </section>
 
 <!-- Lightbox -->
-<div id="culturalLb"
-    style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.92);z-index:99999;align-items:center;justify-content:center;backdrop-filter:blur(8px);">
-    <button onclick="closeCulturalLb()"
-        style="position:absolute;top:20px;right:20px;background:rgba(255,255,255,0.1);border:none;width:44px;height:44px;border-radius:50%;cursor:pointer;color:#fff;font-size:1.3rem;z-index:10;display:flex;align-items:center;justify-content:center;transition:all 0.2s;"
-        onmouseover="this.style.background='rgba(255,255,255,0.2)'"
-        onmouseout="this.style.background='rgba(255,255,255,0.1)'">&times;</button>
-    <button onclick="culturalPrev()"
-        style="position:absolute;left:20px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.1);border:none;width:50px;height:50px;border-radius:50%;cursor:pointer;color:#fff;font-size:1.2rem;z-index:10;display:flex;align-items:center;justify-content:center;transition:all 0.2s;"
-        onmouseover="this.style.background='rgba(255,255,255,0.2)'"
-        onmouseout="this.style.background='rgba(255,255,255,0.1)'"><i class="fas fa-chevron-left"></i></button>
-    <button onclick="culturalNext()"
-        style="position:absolute;right:20px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.1);border:none;width:50px;height:50px;border-radius:50%;cursor:pointer;color:#fff;font-size:1.2rem;z-index:10;display:flex;align-items:center;justify-content:center;transition:all 0.2s;"
-        onmouseover="this.style.background='rgba(255,255,255,0.2)'"
-        onmouseout="this.style.background='rgba(255,255,255,0.1)'"><i class="fas fa-chevron-right"></i></button>
-    <div style="text-align:center;max-width:90%;max-height:85vh;">
-        <img id="culturalLbImg" src="" alt=""
-            style="max-width:100%;max-height:78vh;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,0.5);object-fit:contain;">
-        <h5 id="culturalLbTitle" style="color:#fff;font-weight:600;font-size:1rem;margin:14px 0 0;"></h5>
+<div id="culturalLb" class="page-lightbox">
+    <button class="lb-close">&times;</button>
+    <button class="lb-prev"><i class="fas fa-chevron-left"></i></button>
+    <button class="lb-next"><i class="fas fa-chevron-right"></i></button>
+    <div class="lb-content">
+        <img class="lb-img" src="" alt="">
+        <h5 class="lb-title"></h5>
     </div>
 </div>
 
 <script>
-var culturalData =
-    <?= json_encode(array_map(function($img) { return ['src' => url('assets/images/cultural/' . $img['file']), 'title' => $img['title']]; }, $culturalImages)) ?>;
-var culturalIdx = 0;
-
-function openCulturalLb(i) {
-    culturalIdx = i;
-    updateCulturalLb();
-    document.getElementById('culturalLb').style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-}
-
-function closeCulturalLb() {
-    document.getElementById('culturalLb').style.display = 'none';
-    document.body.style.overflow = '';
-}
-
-function updateCulturalLb() {
-    document.getElementById('culturalLbImg').src = culturalData[culturalIdx].src;
-    document.getElementById('culturalLbTitle').textContent = culturalData[culturalIdx].title;
-}
-
-function culturalPrev() {
-    culturalIdx = (culturalIdx - 1 + culturalData.length) % culturalData.length;
-    updateCulturalLb();
-}
-
-function culturalNext() {
-    culturalIdx = (culturalIdx + 1) % culturalData.length;
-    updateCulturalLb();
-}
-document.getElementById('culturalLb').addEventListener('click', function(e) {
-    if (e.target === this) closeCulturalLb();
-});
-document.addEventListener('keydown', function(e) {
-    if (document.getElementById('culturalLb').style.display !== 'flex') return;
-    if (e.key === 'Escape') closeCulturalLb();
-    if (e.key === 'ArrowLeft') culturalPrev();
-    if (e.key === 'ArrowRight') culturalNext();
-});
-
-// Counter
 document.addEventListener('DOMContentLoaded', function() {
-    var counters = document.querySelectorAll('[data-counter]');
-    var obs = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-                var c = entry.target,
-                    target = parseInt(c.getAttribute('data-counter')),
-                    current = 0,
-                    inc = target / 60;
-                var timer = setInterval(function() {
-                    current += inc;
-                    if (current >= target) {
-                        c.textContent = target + '+';
-                        clearInterval(timer);
-                    } else {
-                        c.textContent = Math.floor(current);
-                    }
-                }, 25);
-                obs.unobserve(c);
-            }
-        });
-    }, {
-        threshold: 0.7
-    });
-    counters.forEach(function(c) {
-        obs.observe(c);
-    });
+    var pageLb = initLightbox('culturalLb', <?= json_encode(array_map(function($img) { return ['src' => url('assets/images/cultural/' . $img['file']), 'title' => $img['title']]; }, $culturalImages)) ?>);
+    window.pageLb = pageLb;
 });
 </script>
 

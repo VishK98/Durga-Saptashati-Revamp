@@ -1,9 +1,9 @@
 <?php
 require_once '../app/config/config.php';
 
-$pageTitle = "Durga Saptashati NGO in Delhi: International Women’s day Celebration in Dwarka.";
-$pageDescription = "Durga Saptashati NGO in Dwarka is dedicated to improving the living conditions of marginalised women in Delhi. Although we celebrate the power of women every day, celebrating International women’s day on 8th March every year- has its own charm. We conduct various fun activities, cultural programmes, and competitions to promote women’s empowerment and spread awareness about women’s safety and education in Delhi.";
-$pageKeywords = "Durga Saptashati NGO, Best NGO in Dwarka, Delhi, International Women’s day celebration in Dwarka,InternationalWomenDayInDwarka, InternationalWomenDay, Internationalwomendaycelebrationindwarka, CelebrationofInternationalWomenDay, Internationalwomendaycelebration,Durga Saptashati,Durga Saptashati NGO,Durga Saptashati foundation,DurgaSaptashati,International Women’s Day celebrated in Dwarka, Women’s Rights Non-Profit Organization in Delhi";
+$pageTitle = "International Women’s Day Celebration in Dwarka Delhi | International Women’s day";
+$pageDescription = "Durga Saptashati Foundation celebrates International Women’s Day in Dwarka Delhi with women empowerment programs, awareness campaigns and community events promoting gender equality and women’s rights. Although we celebrate the power of women every day  celebrating International women’s day on 8th March every year- has its own charm.";
+$pageKeywords = "International Women’s Day in Dwarka ,Women’s Day Celebration in Dwarka Delhi ,Women Empowerment NGO in Delhi ,Women’s Day Event NGO in Delhi ,NGO Celebrating Women’s Day in Dwarka ,Women Empowerment Program in Delhi ,Women Safety Awareness Program Delhi , International Women Day Celebrated In Dwarka,Women Rights Non Profit Organization In Delhi, International Women Day In Dwarka, International Women Day, Celebrating International Women Day In Dwarka, International Women Day Celebration In Dwarka";
 
 include '../app/views/layout/header.php';
 ?>
@@ -82,28 +82,28 @@ include '../app/views/layout/header.php';
                         <div class="iwd-stat-item">
                             <div class="iwd-stat-icon"><i class="fas fa-users"></i></div>
                             <div class="iwd-stat-content">
-                                <div class="iwd-stat-number" data-counter="300">0</div>
+                                <div class="iwd-stat-number" data-counter="300" data-counter-suffix="+" data-counter-locale>0</div>
                                 <div class="iwd-stat-label">Attendees</div>
                             </div>
                         </div>
                         <div class="iwd-stat-item">
                             <div class="iwd-stat-icon"><i class="fas fa-microphone"></i></div>
                             <div class="iwd-stat-content">
-                                <div class="iwd-stat-number" data-counter="10">0</div>
+                                <div class="iwd-stat-number" data-counter="10" data-counter-suffix="+" data-counter-locale>0</div>
                                 <div class="iwd-stat-label">Speakers</div>
                             </div>
                         </div>
                         <div class="iwd-stat-item">
                             <div class="iwd-stat-icon"><i class="fas fa-chalkboard"></i></div>
                             <div class="iwd-stat-content">
-                                <div class="iwd-stat-number" data-counter="5">0</div>
+                                <div class="iwd-stat-number" data-counter="5" data-counter-suffix="+" data-counter-locale>0</div>
                                 <div class="iwd-stat-label">Workshops</div>
                             </div>
                         </div>
                         <div class="iwd-stat-item">
                             <div class="iwd-stat-icon"><i class="fas fa-trophy"></i></div>
                             <div class="iwd-stat-content">
-                                <div class="iwd-stat-number" data-counter="15">0</div>
+                                <div class="iwd-stat-number" data-counter="15" data-counter-suffix="+" data-counter-locale>0</div>
                                 <div class="iwd-stat-label">Awards Given</div>
                             </div>
                         </div>
@@ -177,32 +177,17 @@ include '../app/views/layout/header.php';
             ['file' => 'woman-6.jpeg', 'title' => 'Cultural Programme'],
         ];
         ?>
-        <div class="iwd-gallery-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+        <div class="iwd-gallery-grid gallery-grid">
             <?php foreach ($iwdImages as $i => $img): ?>
-            <div data-aos="fade-up" data-aos-delay="<?= ($i % 3) * 50 ?>"
-                style="cursor:pointer;border-radius:14px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.06);transition:all 0.3s;background:#fff;"
-                onclick="openIwdLightbox(<?= $i ?>)"
-                onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 12px 35px rgba(0,0,0,0.12)'"
-                onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.06)'">
-                <div style="position:relative;overflow:hidden;">
-                    <img src="<?= url('assets/images/woman-day/' . $img['file']) ?>"
-                        alt="<?= htmlspecialchars($img['title']) ?>"
-                        style="width:100%;height:220px;object-fit:cover;display:block;transition:transform 0.4s;"
-                        onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                    <div
-                        style="position:absolute;top:12px;left:12px;background:rgba(0,0,0,0.6);color:#fff;padding:4px 12px;border-radius:15px;font-size:0.72rem;font-weight:600;backdrop-filter:blur(4px);">
-                        Women's Day</div>
-                    <div style="position:absolute;inset:0;background:rgba(0,0,0,0.3);opacity:0;transition:opacity 0.3s;display:flex;align-items:center;justify-content:center;"
-                        onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0'">
-                        <div
-                            style="width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;">
-                            <i class="fas fa-search-plus" style="color:#f26522;font-size:1.2rem;"></i>
-                        </div>
-                    </div>
+            <div class="gallery-card" data-aos="fade-up" data-aos-delay="<?= ($i % 3) * 50 ?>" onclick="pageLb.open(<?= $i ?>)">
+                <div class="gc-img-wrap">
+                    <img class="gc-img" src="<?= url('assets/images/woman-day/' . $img['file']) ?>"
+                        alt="<?= htmlspecialchars($img['title']) ?>">
+                    <div class="gc-badge">Women's Day</div>
+                    <div class="gc-overlay"><div class="gc-search-icon"><i class="fas fa-search-plus"></i></div></div>
                 </div>
-                <div style="padding:14px 16px;">
-                    <h6 style="color:#1a1b2e;font-weight:600;font-size:0.9rem;margin:0;">
-                        <?= htmlspecialchars($img['title']) ?></h6>
+                <div class="gc-caption">
+                    <h6><?= htmlspecialchars($img['title']) ?></h6>
                 </div>
             </div>
             <?php endforeach; ?>
@@ -211,106 +196,21 @@ include '../app/views/layout/header.php';
 </section>
 
 <!-- Lightbox -->
-<div id="iwdLightbox"
-    style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.92);z-index:99999;align-items:center;justify-content:center;backdrop-filter:blur(8px);">
-    <button onclick="closeIwdLightbox()"
-        style="position:absolute;top:20px;right:20px;background:rgba(255,255,255,0.1);border:none;width:44px;height:44px;border-radius:50%;cursor:pointer;color:#fff;font-size:1.3rem;z-index:10;display:flex;align-items:center;justify-content:center;transition:all 0.2s;"
-        onmouseover="this.style.background='rgba(255,255,255,0.2)'"
-        onmouseout="this.style.background='rgba(255,255,255,0.1)'">&times;</button>
-    <button onclick="iwdPrev()"
-        style="position:absolute;left:20px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.1);border:none;width:50px;height:50px;border-radius:50%;cursor:pointer;color:#fff;font-size:1.2rem;z-index:10;display:flex;align-items:center;justify-content:center;transition:all 0.2s;"
-        onmouseover="this.style.background='rgba(255,255,255,0.2)'"
-        onmouseout="this.style.background='rgba(255,255,255,0.1)'"><i class="fas fa-chevron-left"></i></button>
-    <button onclick="iwdNext()"
-        style="position:absolute;right:20px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.1);border:none;width:50px;height:50px;border-radius:50%;cursor:pointer;color:#fff;font-size:1.2rem;z-index:10;display:flex;align-items:center;justify-content:center;transition:all 0.2s;"
-        onmouseover="this.style.background='rgba(255,255,255,0.2)'"
-        onmouseout="this.style.background='rgba(255,255,255,0.1)'"><i class="fas fa-chevron-right"></i></button>
-    <div style="text-align:center;max-width:90%;max-height:85vh;">
-        <img id="iwdLbImg" src="" alt=""
-            style="max-width:100%;max-height:78vh;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,0.5);object-fit:contain;">
-        <h5 id="iwdLbTitle" style="color:#fff;font-weight:600;font-size:1rem;margin:14px 0 0;"></h5>
+<div id="iwdLightbox" class="page-lightbox">
+    <button class="lb-close">&times;</button>
+    <button class="lb-prev"><i class="fas fa-chevron-left"></i></button>
+    <button class="lb-next"><i class="fas fa-chevron-right"></i></button>
+    <div class="lb-content">
+        <img class="lb-img" src="" alt="">
+        <h5 class="lb-title"></h5>
     </div>
 </div>
 
 <!-- JavaScript -->
 <script>
-var iwdData =
-    <?= json_encode(array_map(function($img) { return ['src' => url('assets/images/woman-day/' . $img['file']), 'title' => $img['title']]; }, $iwdImages)) ?>;
-var iwdIdx = 0;
-
-function openIwdLightbox(i) {
-    iwdIdx = i;
-    updateIwdLb();
-    document.getElementById('iwdLightbox').style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-}
-
-function closeIwdLightbox() {
-    document.getElementById('iwdLightbox').style.display = 'none';
-    document.body.style.overflow = '';
-}
-
-function updateIwdLb() {
-    document.getElementById('iwdLbImg').src = iwdData[iwdIdx].src;
-    document.getElementById('iwdLbTitle').textContent = iwdData[iwdIdx].title;
-}
-
-function iwdPrev() {
-    iwdIdx = (iwdIdx - 1 + iwdData.length) % iwdData.length;
-    updateIwdLb();
-}
-
-function iwdNext() {
-    iwdIdx = (iwdIdx + 1) % iwdData.length;
-    updateIwdLb();
-}
-document.getElementById('iwdLightbox').addEventListener('click', function(e) {
-    if (e.target === this) closeIwdLightbox();
-});
-document.addEventListener('keydown', function(e) {
-    if (document.getElementById('iwdLightbox').style.display !== 'flex') return;
-    if (e.key === 'Escape') closeIwdLightbox();
-    if (e.key === 'ArrowLeft') iwdPrev();
-    if (e.key === 'ArrowRight') iwdNext();
-});
-
-// Counter Animation
 document.addEventListener('DOMContentLoaded', function() {
-    var counters = document.querySelectorAll('[data-counter]');
-    var counterObserver = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-                var counter = entry.target;
-                var target = parseInt(counter.getAttribute('data-counter'));
-                var current = 0;
-                var increment = target / 60;
-                var timer = setInterval(function() {
-                    current += increment;
-                    if (current >= target) {
-                        counter.textContent = target.toLocaleString() + '+';
-                        clearInterval(timer);
-                    } else {
-                        counter.textContent = Math.floor(current).toLocaleString();
-                    }
-                }, 25);
-                counterObserver.unobserve(counter);
-            }
-        });
-    }, {
-        threshold: 0.7
-    });
-    counters.forEach(function(c) {
-        counterObserver.observe(c);
-    });
-});
-
-// Floating element animation
-document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.iwd-floating-lotus').forEach(function(lotus, i) {
-        setTimeout(function() {
-            lotus.style.animation = 'iwdFloatLotus 6s ease-in-out infinite';
-        }, i * 2000);
-    });
+    window.pageLb = initLightbox('iwdLightbox', <?= json_encode(array_map(function ($img) { return ['src' => url('assets/images/woman-day/' . $img['file']), 'title' => $img['title']]; }, $iwdImages)) ?>);
+    initFloatingAnimation('.iwd-floating-lotus', 'iwdFloatLotus');
 });
 </script>
 

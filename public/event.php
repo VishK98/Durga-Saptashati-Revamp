@@ -1,15 +1,15 @@
 <?php
 require_once '../app/config/config.php';
-$pageTitle = "Events & Activities | Saptashati Foundation";
-$pageDescription = "Explore our events: health camps, cultural programs, awareness drives, and community celebrations organized by Saptashati Foundation.";
-$pageKeywords = "Saptashati events, charity events Delhi, community celebrations, health camps, cultural programs, NGO activities";
+$pageTitle = "NGO Events in Dwarka Delhi | Social and Community Programs- Durga Saptashati Foundation";
+$pageDescription = "Explore events organized by Durga Saptashati Foundation in Dwarka Delhi including women empowerment programs, cultural activities, yoga day celebrations, painting competitions, and community welfare initiatives.";
+$pageKeywords = "NGO events in Delhi, community events Dwarka Delhi, NGO social programs in Dwarka, charity events in Delhi, NGO awareness programs in Delhi , cultural and social events NGO, women empowerment events Delhi";
 include '../app/views/layout/header.php';
 
 $events = [
     ['title' => 'Durga Award Ceremony', 'icon' => 'fa-trophy', 'url' => 'durga-award.php', 'img' => 'durga-award/durga-award.jpeg', 'desc' => 'Honouring exceptional individuals making outstanding contributions to social welfare and community development.', 'tag' => 'Award'],
     ['title' => 'International Yoga Day', 'icon' => 'fa-spa', 'url' => 'yoga-day.php', 'img' => 'yoga-day/yoga.jpeg', 'desc' => 'Celebrating the transformative power of yoga through mass sessions, mindfulness, and community wellness.', 'tag' => 'Wellness'],
     ['title' => 'Saree Run', 'icon' => 'fa-running', 'url' => 'saree-run.php', 'img' => 'saree/saree.webp', 'desc' => 'A unique event celebrating Indian women\'s strength, culture, and fitness through a vibrant community run.', 'tag' => 'Event'],
-    ['title' => "International Women's Day", 'icon' => 'fa-venus', 'url' => 'womens-day.php', 'img' => 'woman-day/woman.jpeg', 'desc' => "Celebrating women's achievements through felicitation events, empowerment workshops, and community programs.", 'tag' => 'Celebration'],
+    ['title' => "International Women's Day", 'icon' => 'fa-venus', 'url' => 'international-womens-day.php', 'img' => 'woman-day/woman.jpeg', 'desc' => "Celebrating women's achievements through felicitation events, empowerment workshops, and community programs.", 'tag' => 'Celebration'],
     ['title' => 'Ganpati Celebration', 'icon' => 'fa-pray', 'url' => 'ganpati-celebration.php', 'img' => 'ganpati/ganesh-cover.webp', 'desc' => 'Celebrating Ganesh Chaturthi with traditional rituals, cultural programmes, and community gatherings.', 'tag' => 'Festival'],
     ['title' => 'Hearing Aids Camp', 'icon' => 'fa-assistive-listening-systems', 'url' => 'hearing-aids-camp.php', 'img' => 'hearing/hearing-4.jpeg', 'desc' => 'Providing free hearing aids and audiological support to those in need through community health camps.', 'tag' => 'Health Camp'],
     ['title' => 'Painting Competition', 'icon' => 'fa-palette', 'url' => 'painting-competition.php', 'img' => 'painting/painting.webp', 'desc' => 'Nurturing creativity in children through inter-school painting competitions, workshops, and exhibitions.', 'tag' => 'Arts & Culture'],
@@ -63,7 +63,7 @@ $events = [
 <!-- Events Grid -->
 <div class="causes-grid">
     <div class="container">
-        <div class="row" style="row-gap:30px;">
+        <div class="row event-grid-gap">
             <?php foreach ($events as $i => $event): ?>
             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="<?= ($i % 3) * 80 ?>">
                 <a href="<?= url($event['url']) ?>" class="cause-card">
@@ -88,8 +88,8 @@ $events = [
     <div class="container">
         <div class="row align-items-center" data-aos="fade-up">
             <div class="col-lg-7">
-                <h3 style="color:#fff;font-weight:700;font-size:1.7rem;margin-bottom:10px;">Want to Participate?</h3>
-                <p style="color:rgba(255,255,255,0.8);font-size:0.95rem;margin:0;line-height:1.7;">Be part of our events
+                <h3 class="cta-heading">Want to Participate?</h3>
+                <p class="cta-text">Be part of our events
                     and help us create meaningful experiences that uplift communities and celebrate our heritage.</p>
             </div>
             <div class="col-lg-5 text-lg-end mt-4 mt-lg-0">

@@ -1790,3 +1790,462 @@
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+/* =============================================
+   About Page - Inline Style Replacements
+   ============================================= */
+
+/* Accent text color */
+.abt-accent-text {
+  color: #f26522;
+}
+
+/* Row stretch */
+.abt-row-stretch {
+  align-items: stretch;
+}
+
+/* Image container */
+.abt-img-container {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+}
+
+.abt-img-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Video play overlay */
+.abt-video-overlay {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.1));
+}
+
+.abt-play-btn {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: rgba(242, 101, 34, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  box-shadow: 0 5px 25px rgba(242, 101, 34, 0.4);
+}
+
+.abt-play-btn:hover {
+  transform: scale(1.1);
+  background: #f26522;
+}
+
+.abt-play-btn i {
+  font-size: 1.5rem;
+  margin-left: 4px;
+}
+
+/* Stat bar overlay on image */
+.abt-stat-bar-wrap {
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+}
+
+.abt-stat-overlay {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.abt-stat-overlay-item {
+  text-align: center;
+  padding: 0 15px;
+}
+
+.abt-stat-overlay-item--bordered {
+  border-right: 1px solid #eee;
+}
+
+.abt-stat-overlay-item h4 {
+  color: #f26522;
+  font-weight: 700;
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.abt-stat-overlay-item small {
+  color: #666;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+/* Foundation heading */
+.abt-foundation-heading {
+  color: #f26522;
+  letter-spacing: 4px;
+  font-weight: 700;
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  margin-bottom: 8px;
+}
+
+.abt-foundation-tagline {
+  color: #f26522;
+  font-weight: 600;
+  font-size: 0.75rem;
+  margin-bottom: 15px;
+  letter-spacing: 1.5px;
+}
+
+.abt-commitment-heading {
+  color: #1a1b2e;
+  font-weight: 800;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.abt-gradient-text {
+  background: linear-gradient(135deg, #f26522, #ff8c42);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.abt-heading-underline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #f26522, #ff8c42);
+  border-radius: 2px;
+}
+
+/* Body text */
+.abt-body-text {
+  color: #555;
+  line-height: 1.85;
+  font-size: 0.95rem;
+}
+
+.abt-body-text--spaced {
+  margin-bottom: 20px;
+}
+
+/* Quote block */
+.abt-quote-block {
+  background: linear-gradient(135deg, rgba(242, 101, 34, 0.08), rgba(242, 101, 34, 0.03));
+  border-left: 4px solid #f26522;
+  border-radius: 0 12px 12px 0;
+  padding: 18px 22px;
+  margin-bottom: 25px;
+}
+
+.abt-quote-block p {
+  color: #1a1b2e;
+  line-height: 1.8;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0;
+  font-style: italic;
+}
+
+.abt-quote-block--lg {
+  border-radius: 0 14px 14px 0;
+  padding: 20px 24px;
+  margin: 25px 0;
+}
+
+/* Video modal */
+.abt-video-modal-content {
+  background: transparent;
+  border: none;
+}
+
+.abt-video-modal-close {
+  position: absolute;
+  top: -30px;
+  right: 0;
+  color: #fff;
+  opacity: 1;
+  font-size: 1.5rem;
+  z-index: 10;
+}
+
+.abt-video-embed {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Mission section */
+.abt-mission-section {
+  padding: 70px 0;
+  background: #fff;
+  overflow: hidden;
+}
+
+.abt-mission-sticky {
+  position: sticky;
+  top: 120px;
+}
+
+.abt-mission-card {
+  background: linear-gradient(135deg, #f26522, #ff8c42);
+  border-radius: 20px;
+  padding: 35px 28px;
+  color: #fff;
+  box-shadow: 0 15px 40px rgba(242, 101, 34, 0.25);
+}
+
+.abt-mission-icon {
+  font-size: 2.5rem;
+  opacity: 0.3;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.abt-mission-card-title {
+  font-weight: 800;
+  font-size: 1.6rem;
+  margin-bottom: 12px;
+}
+
+.abt-mission-card-desc {
+  opacity: 0.9;
+  line-height: 1.7;
+  font-size: 0.9rem;
+  margin-bottom: 25px;
+}
+
+.abt-mission-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.abt-mission-stat-box {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: 14px;
+  text-align: center;
+  backdrop-filter: blur(6px);
+}
+
+.abt-mission-stat-box strong {
+  font-size: 1.5rem;
+  display: block;
+}
+
+.abt-mission-stat-box small {
+  font-size: 0.68rem;
+  opacity: 0.85;
+}
+
+/* Focus area cards */
+.abt-focus-areas {
+  display: flex;
+  gap: 16px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.abt-focus-card {
+  flex: 1;
+  min-width: 180px;
+  background: #fff;
+  border-radius: 14px;
+  padding: 22px 18px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.abt-focus-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(242, 101, 34, 0.12);
+}
+
+.abt-focus-card-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+}
+
+.abt-focus-card-icon i {
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+.abt-focus-card strong {
+  color: #1a1b2e;
+  font-size: 0.88rem;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.abt-focus-card small {
+  color: #888;
+  font-size: 0.78rem;
+}
+
+/* Vision section */
+.abt-vision-section {
+  padding: 70px 0;
+  background: linear-gradient(135deg, #1a1b2e 0%, #0d0e14 100%);
+  overflow: hidden;
+  position: relative;
+}
+
+.abt-vision-glow {
+  position: absolute;
+  border-radius: 50%;
+}
+
+.abt-vision-glow--top {
+  top: -50px;
+  right: -50px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(242, 101, 34, 0.08), transparent 70%);
+}
+
+.abt-vision-glow--bottom {
+  bottom: -80px;
+  left: -80px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(242, 101, 34, 0.05), transparent 70%);
+}
+
+.abt-vision-content {
+  z-index: 2;
+}
+
+.abt-vision-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(242, 101, 34, 0.15);
+  border: 1px solid rgba(242, 101, 34, 0.25);
+  color: #ff8c42;
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.abt-vision-heading {
+  color: #fff;
+  font-weight: 800;
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+}
+
+.abt-vision-heading span {
+  color: #f26522;
+}
+
+.abt-vision-text {
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.9;
+  font-size: 0.95rem;
+}
+
+.abt-vision-text--spaced {
+  margin-bottom: 18px;
+}
+
+.abt-vision-quote {
+  background: rgba(242, 101, 34, 0.12);
+  border: 1px solid rgba(242, 101, 34, 0.2);
+  border-radius: 14px;
+  padding: 22px 24px;
+  margin-top: 20px;
+}
+
+.abt-vision-quote-icon {
+  color: #f26522;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  display: block;
+  opacity: 0.6;
+}
+
+.abt-vision-quote p {
+  color: #fff;
+  line-height: 1.8;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0;
+  font-style: italic;
+}
+
+/* Vision pillars */
+.abt-vision-pillars {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.abt-vision-pillar {
+  flex: 1;
+  min-width: 200px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 22px 18px;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.abt-vision-pillar:hover {
+  background: rgba(242, 101, 34, 0.1);
+  border-color: rgba(242, 101, 34, 0.25);
+  transform: translateY(-4px);
+}
+
+.abt-vision-pillar-icon {
+  width: 48px;
+  height: 48px;
+  background: rgba(242, 101, 34, 0.15);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+}
+
+.abt-vision-pillar-icon i {
+  color: #f26522;
+  font-size: 1.1rem;
+}
+
+.abt-vision-pillar strong {
+  color: #fff;
+  font-size: 0.9rem;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.abt-vision-pillar small {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.78rem;
+}
