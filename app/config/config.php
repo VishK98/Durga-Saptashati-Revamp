@@ -19,6 +19,10 @@ function loadEnv($file)
         list($name, $value) = explode('=', $line, 2);
         $name = trim($name);
         $value = trim($value);
+        // Strip surrounding quotes
+        if (strlen($value) >= 2 && (($value[0] === '"' && $value[strlen($value)-1] === '"') || ($value[0] === "'" && $value[strlen($value)-1] === "'"))) {
+            $value = substr($value, 1, -1);
+        }
 
         if (!array_key_exists($name, $_ENV)) {
             $_ENV[$name] = $value;

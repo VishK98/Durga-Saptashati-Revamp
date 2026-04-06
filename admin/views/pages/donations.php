@@ -126,7 +126,8 @@ function viewDonation(id) {
         '<div><small class="qr-view-label">Date</small><p class="qr-view-value">' + d.created_at + '</p></div>' +
         '<div><small class="qr-view-label">Status</small><p class="qr-view-value"><span class="status-badge ' + statusClass + '">' + d.status.charAt(0).toUpperCase() + d.status.slice(1) + '</span></p></div>' +
         '</div></div>' +
-        (d.notes ? '<div><small class="qr-view-label">Notes</small><p class="qr-view-message">' + escHtml(d.notes) + '</p></div>' : '');
+        (d.notes ? '<div><small class="qr-view-label">Notes</small><p class="qr-view-message">' + escHtml(d.notes) + '</p></div>' : '') +
+        (d.status === 'completed' ? '<div style="text-align:center;margin-top:20px;padding-top:18px;border-top:1px dashed #e0d5ca;"><a href="../public/api/generate-receipt.php?type=donation&id=' + d.id + '&format=pdf" target="_blank" style="display:inline-block;background:linear-gradient(135deg,#f26522,#ff8c42);color:#fff;text-decoration:none;padding:10px 28px;border-radius:50px;font-size:13px;font-weight:700;box-shadow:0 3px 12px rgba(242,101,34,0.3);"><i class="fas fa-file-pdf" style="margin-right:6px;"></i> View Receipt</a></div>' : '');
     document.getElementById('viewDonationContent').innerHTML = html;
     document.getElementById('viewDonationModal').style.display = 'flex';
 }

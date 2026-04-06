@@ -55,6 +55,12 @@ function viewMember(id) {
         }
     });
     html += '</div></div>';
+    if (m.status === 'approved' && m.payment_mode === 'Online') {
+        html += '<div style="text-align:center;margin-top:20px;padding-top:18px;border-top:1px dashed #e0d5ca;">' +
+            '<a href="../public/api/generate-receipt.php?type=membership&id=' + m.id + '&format=pdf" target="_blank" ' +
+            'style="display:inline-block;background:linear-gradient(135deg,#f26522,#ff8c42);color:#fff;text-decoration:none;padding:10px 28px;border-radius:50px;font-size:13px;font-weight:700;box-shadow:0 3px 12px rgba(242,101,34,0.3);">' +
+            '<i class="fas fa-file-pdf" style="margin-right:6px;"></i> View Receipt</a></div>';
+    }
     document.getElementById('memberDetails').innerHTML = html;
     document.getElementById('memberModal').style.display = 'flex';
 }

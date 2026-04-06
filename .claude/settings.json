@@ -11,7 +11,20 @@
       "Bash(sed -i \"s|Location: admin$|Location: admin/dashboard|\" public/admin.php)",
       "Bash(sed -i \"s|Location: admin/|Location: /admin/|g\" public/admin.php)",
       "Bash(sed -i \"s|Location: admin$|Location: /admin|\" public/admin.php)",
-      "Bash(grep \"\\\\.php$\")"
+      "Bash(grep \"\\\\.php$\")",
+      "Bash(find /c/xampp/htdocs/Durga-Saptashati-Revamp -name \".htaccess\" -exec cat {} \\\\;)",
+      "Bash(grep -A 8 \"CREATE TABLE \\\\`donations\\\\`\" /c/xampp/htdocs/Durga-Saptashati-Revamp/app/config/u552620773_durga_saptasha.sql)",
+      "Bash(grep -A 8 \"CREATE TABLE \\\\`members\\\\`\" /c/xampp/htdocs/Durga-Saptashati-Revamp/app/config/u552620773_durga_saptasha.sql)",
+      "Bash(grep -A 10 \"CREATE TABLE \\\\`membership_plans\\\\`\" /c/xampp/htdocs/Durga-Saptashati-Revamp/app/config/u552620773_durga_saptasha.sql)",
+      "Bash(composer init:*)",
+      "Read(//c/xampp/php/**)",
+      "Bash(where composer:*)",
+      "Read(//c/ProgramData/ComposerSetup/bin/**)",
+      "Read(//c/Users/__TRACKED_VAR__/AppData/Roaming/Composer/vendor/bin/**)",
+      "Bash(php -r \"copy\\('https://getcomposer.org/installer', 'composer-setup.php'\\);\")",
+      "Bash(php composer-setup.php)",
+      "Bash(php -r \"unlink\\('composer-setup.php'\\);\")",
+      "Bash(php -r \"echo ini_get\\('openssl.cafile'\\);\")"
     ],
     "additionalDirectories": [
       "c:\\xampp\\htdocs\\Durga-Saptashati-Revamp\\public"

@@ -29,6 +29,7 @@ Desktop.ini
 
 # Uploads (user-generated content)
 /public/assets/uploads/
+/public/uploads/receipts/
 
 # Build artifacts
 *.map

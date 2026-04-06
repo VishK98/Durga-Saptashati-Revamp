@@ -1,6 +1,7 @@
 <?php
 header('Content-Type: application/json');
 require_once '../../app/config/config.php';
+require_once '../../mail/send-receipt.php';
 
 $razorpayKeyId = 'rzp_live_SXpNPGQ1lkwtcQ';
 $razorpayKeySecret = 'sFpRY6rpRlLN8QEI4PSmf3Q4';
@@ -86,8 +87,21 @@ if ($action === 'verify_payment') {
 
             $stmt = $pdo->prepare("INSERT INTO donations (name, email, phone, amount, cause, payment_method, status, notes, transaction_id) VALUES (?, ?, ?, ?, '', 'Online', 'completed', ?, ?)");
             $stmt->execute([$name, $email, $phone, $amount, $message, $razorpayPaymentId]);
+            $insertId = $pdo->lastInsertId();
 
-            echo json_encode(['success' => true, 'message' => 'Thank you for your generous donation! Payment received successfully.']);
+            // Generate and send receipt
+            $receiptData = [
+                'receipt_no' => generateReceiptNumber('donation', $insertId),
+                'date' => date('d F Y'),
+                'name' => $name,
+                'email' => $email,
+                'amount' => $amount,
+                'transaction_id' => $razorpayPaymentId,
+                'type' => 'donation',
+            ];
+            $receiptResult = sendReceipt($receiptData, $pdo);
+
+            echo json_encode(['success' => true, 'message' => 'Thank you for your generous donation! Payment received successfully. A receipt has been sent to your email.']);
 
         } elseif ($type === 'membership') {
             $fullName = trim($_POST['full_name'] ?? '');
@@ -100,8 +114,28 @@ if ($action === 'verify_payment') {
 
             $stmt = $pdo->prepare("INSERT INTO members (full_name, gender, address, email, mobile, membership_type, profession, payment_mode, status, transaction_id) VALUES (?, ?, ?, ?, ?, ?, ?, 'Online', 'approved', ?)");
             $stmt->execute([$fullName, $gender, $address, $email, $mobile, $membershipType, $profession, $razorpayPaymentId]);
+            $insertId = $pdo->lastInsertId();
 
-            echo json_encode(['success' => true, 'message' => 'Payment successful! Your membership has been approved.']);
+            // Get membership plan price
+            $planStmt = $pdo->prepare("SELECT price FROM membership_plans WHERE name = ? LIMIT 1");
+            $planStmt->execute([$membershipType]);
+            $plan = $planStmt->fetch();
+            $amount = $plan ? (float)$plan['price'] : 0;
+
+            // Generate and send receipt
+            $receiptData = [
+                'receipt_no' => generateReceiptNumber('membership', $insertId),
+                'date' => date('d F Y'),
+                'name' => $fullName,
+                'email' => $email,
+                'amount' => $amount,
+                'transaction_id' => $razorpayPaymentId,
+                'type' => 'membership',
+                'membership_type' => $membershipType,
+            ];
+            $receiptResult = sendReceipt($receiptData, $pdo);
+
+            echo json_encode(['success' => true, 'message' => 'Payment successful! Your membership has been approved. A receipt has been sent to your email.']);
         }
     } catch (Exception $e) {
         echo json_encode(['success' => false, 'message' => 'Payment received but could not save record. Please contact support with payment ID: ' . $razorpayPaymentId]);
