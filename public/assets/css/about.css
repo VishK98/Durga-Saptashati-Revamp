@@ -818,7 +818,7 @@
 /* ---- Impact Banner ---- */
 .abt-impact-banner {
   background: linear-gradient(135deg, #1a1b26 0%, #2d2e42 100%);
-  padding: 60px 0;
+  padding: 20px 0;
   position: relative;
   overflow: hidden;
 }
