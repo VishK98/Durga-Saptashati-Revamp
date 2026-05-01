@@ -16,11 +16,11 @@ include '../app/views/layout/header.php';
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h2>Durga Award</h2>
+                <h1>Durga Award</h1>
             </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
-                <a href="<?= url('events.php') ?>">Events</a>
+                <a href="<?= url('event.php') ?>">Events</a>
                 <a href="<?= url('durga-award.php') ?>">Durga Award</a>
             </div>
         </div>
@@ -49,11 +49,11 @@ include '../app/views/layout/header.php';
                     <span>Excellence & Recognition</span>
                 </div>
 
-                <h1 class="hero-title-award">
+                <h2 class="hero-title-award">
                     The Prestigious
                     <span class="text-gradient-award">Durga Award</span>
                     Ceremony
-                </h1>
+                </h2>
             </div>
             <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
                 <div class="hero-content-award">
@@ -66,7 +66,7 @@ include '../app/views/layout/header.php';
                             </div>
                         </div>
                         <div class="event-theme">
-                            <h4>"Honouring the Change Makers"</h4>
+                            <h3>"Honouring the Change Makers"</h3>
                             <p>Celebrating courage, compassion, and commitment to society</p>
                         </div>
                     </div>
@@ -213,32 +213,33 @@ include '../app/views/layout/header.php';
         ?>
         <div class="award-gallery-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
             <?php foreach ($awardImages as $i => $img): ?>
-            <div data-aos="fade-up" data-aos-delay="<?= ($i % 3) * 50 ?>"
-                style="cursor:pointer;border-radius:14px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.06);transition:all 0.3s;background:#fff;"
-                onclick="openAwardLightbox(<?= $i ?>)"
-                onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 12px 35px rgba(0,0,0,0.12)'"
-                onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.06)'">
-                <div style="position:relative;overflow:hidden;">
-                    <img src="<?= url('assets/images/durga-award/' . $img['file']) ?>"
-                        alt="<?= htmlspecialchars($img['title']) ?>"
-                        style="width:100%;height:220px;object-fit:cover;display:block;transition:transform 0.4s;"
-                        onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                    <div
-                        style="position:absolute;top:12px;left:12px;background:rgba(0,0,0,0.6);color:#fff;padding:4px 12px;border-radius:15px;font-size:0.72rem;font-weight:600;backdrop-filter:blur(4px);">
-                        Durga Award</div>
-                    <div style="position:absolute;inset:0;background:rgba(0,0,0,0.3);opacity:0;transition:opacity 0.3s;display:flex;align-items:center;justify-content:center;"
-                        onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0'">
+                <div data-aos="fade-up" data-aos-delay="<?= ($i % 3) * 50 ?>"
+                    style="cursor:pointer;border-radius:14px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.06);transition:all 0.3s;background:#fff;"
+                    onclick="openAwardLightbox(<?= $i ?>)"
+                    onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 12px 35px rgba(0,0,0,0.12)'"
+                    onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.06)'">
+                    <div style="position:relative;overflow:hidden;">
+                        <img src="<?= url('assets/images/durga-award/' . $img['file']) ?>"
+                            alt="<?= htmlspecialchars($img['title']) ?>"
+                            style="width:100%;height:220px;object-fit:cover;display:block;transition:transform 0.4s;"
+                            onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
                         <div
-                            style="width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;">
-                            <i class="fas fa-search-plus" style="color:#f26522;font-size:1.2rem;"></i>
+                            style="position:absolute;top:12px;left:12px;background:rgba(0,0,0,0.6);color:#fff;padding:4px 12px;border-radius:15px;font-size:0.72rem;font-weight:600;backdrop-filter:blur(4px);">
+                            Durga Award</div>
+                        <div style="position:absolute;inset:0;background:rgba(0,0,0,0.3);opacity:0;transition:opacity 0.3s;display:flex;align-items:center;justify-content:center;"
+                            onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0'">
+                            <div
+                                style="width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;">
+                                <i class="fas fa-search-plus" style="color:#f26522;font-size:1.2rem;"></i>
+                            </div>
                         </div>
                     </div>
+                    <div style="padding:14px 16px;">
+                        <h3 style="color:#1a1b2e;font-weight:600;font-size:0.9rem;margin:0;">
+                            <?= htmlspecialchars($img['title']) ?>
+                        </h3>
+                    </div>
                 </div>
-                <div style="padding:14px 16px;">
-                    <h6 style="color:#1a1b2e;font-weight:600;font-size:0.9rem;margin:0;">
-                        <?= htmlspecialchars($img['title']) ?></h6>
-                </div>
-            </div>
             <?php endforeach; ?>
         </div>
     </div>
@@ -268,84 +269,85 @@ include '../app/views/layout/header.php';
 
 <!-- JavaScript -->
 <script>
-var awardData =
-    <?= json_encode(array_map(function($img) { return ['src' => url('assets/images/durga-award/' . $img['file']), 'title' => $img['title']]; }, $awardImages)) ?>;
-var awardIdx = 0;
+    var awardData =
+        <?= json_encode(array_map(function ($img) {
+            return ['src' => url('assets/images/durga-award/' . $img['file']), 'title' => $img['title']]; }, $awardImages)) ?>;
+    var awardIdx = 0;
 
-function openAwardLightbox(i) {
-    awardIdx = i;
-    updateAwardLb();
-    document.getElementById('awardLightbox').style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-}
+    function openAwardLightbox(i) {
+        awardIdx = i;
+        updateAwardLb();
+        document.getElementById('awardLightbox').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
 
-function closeAwardLightbox() {
-    document.getElementById('awardLightbox').style.display = 'none';
-    document.body.style.overflow = '';
-}
+    function closeAwardLightbox() {
+        document.getElementById('awardLightbox').style.display = 'none';
+        document.body.style.overflow = '';
+    }
 
-function updateAwardLb() {
-    document.getElementById('awardLbImg').src = awardData[awardIdx].src;
-    document.getElementById('awardLbTitle').textContent = awardData[awardIdx].title;
-}
+    function updateAwardLb() {
+        document.getElementById('awardLbImg').src = awardData[awardIdx].src;
+        document.getElementById('awardLbTitle').textContent = awardData[awardIdx].title;
+    }
 
-function awardPrev() {
-    awardIdx = (awardIdx - 1 + awardData.length) % awardData.length;
-    updateAwardLb();
-}
+    function awardPrev() {
+        awardIdx = (awardIdx - 1 + awardData.length) % awardData.length;
+        updateAwardLb();
+    }
 
-function awardNext() {
-    awardIdx = (awardIdx + 1) % awardData.length;
-    updateAwardLb();
-}
-document.getElementById('awardLightbox').addEventListener('click', function(e) {
-    if (e.target === this) closeAwardLightbox();
-});
-document.addEventListener('keydown', function(e) {
-    if (document.getElementById('awardLightbox').style.display !== 'flex') return;
-    if (e.key === 'Escape') closeAwardLightbox();
-    if (e.key === 'ArrowLeft') awardPrev();
-    if (e.key === 'ArrowRight') awardNext();
-});
+    function awardNext() {
+        awardIdx = (awardIdx + 1) % awardData.length;
+        updateAwardLb();
+    }
+    document.getElementById('awardLightbox').addEventListener('click', function (e) {
+        if (e.target === this) closeAwardLightbox();
+    });
+    document.addEventListener('keydown', function (e) {
+        if (document.getElementById('awardLightbox').style.display !== 'flex') return;
+        if (e.key === 'Escape') closeAwardLightbox();
+        if (e.key === 'ArrowLeft') awardPrev();
+        if (e.key === 'ArrowRight') awardNext();
+    });
 
-// Counter Animation
-document.addEventListener('DOMContentLoaded', function() {
-    var counters = document.querySelectorAll('[data-counter]');
-    var counterObserver = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-                var counter = entry.target;
-                var target = parseInt(counter.getAttribute('data-counter'));
-                var current = 0;
-                var increment = target / 60;
-                var timer = setInterval(function() {
-                    current += increment;
-                    if (current >= target) {
-                        counter.textContent = target;
-                        clearInterval(timer);
-                    } else {
-                        counter.textContent = Math.floor(current);
-                    }
-                }, 25);
-                counterObserver.unobserve(counter);
-            }
+    // Counter Animation
+    document.addEventListener('DOMContentLoaded', function () {
+        var counters = document.querySelectorAll('[data-counter]');
+        var counterObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    var counter = entry.target;
+                    var target = parseInt(counter.getAttribute('data-counter'));
+                    var current = 0;
+                    var increment = target / 60;
+                    var timer = setInterval(function () {
+                        current += increment;
+                        if (current >= target) {
+                            counter.textContent = target;
+                            clearInterval(timer);
+                        } else {
+                            counter.textContent = Math.floor(current);
+                        }
+                    }, 25);
+                    counterObserver.unobserve(counter);
+                }
+            });
+        }, {
+            threshold: 0.7
         });
-    }, {
-        threshold: 0.7
+        counters.forEach(function (c) {
+            counterObserver.observe(c);
+        });
     });
-    counters.forEach(function(c) {
-        counterObserver.observe(c);
-    });
-});
 
-// Floating star animation
-document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.floating-star').forEach(function(star, i) {
-        setTimeout(function() {
-            star.style.animation = 'floatStar 6s ease-in-out infinite';
-        }, i * 2000);
+    // Floating star animation
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.floating-star').forEach(function (star, i) {
+            setTimeout(function () {
+                star.style.animation = 'floatStar 6s ease-in-out infinite';
+            }, i * 2000);
+        });
     });
-});
 </script>
 
 <?php include '../app/views/layout/footer.php'; ?>

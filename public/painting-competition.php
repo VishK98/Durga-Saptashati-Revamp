@@ -16,7 +16,7 @@ include '../app/views/layout/header.php';
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h2>Painting Competition</h2>
+                <h1>Painting Competition</h1>
             </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
@@ -49,11 +49,11 @@ include '../app/views/layout/header.php';
                     <span>Arts & Creativity</span>
                 </div>
 
-                <h1 class="paint-hero-title">
+                <h2 class="paint-hero-title">
                     Painting
                     <span class="paint-text-gradient">Competition</span>
                     for Children
-                </h1>
+                </h2>
             </div>
             <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
                 <div class="paint-hero-content">
@@ -64,7 +64,7 @@ include '../app/views/layout/header.php';
                             </div>
                         </div>
                         <div class="paint-event-theme">
-                            <h4>"Colours of Imagination"</h4>
+                            <h3>"Colours of Imagination"</h3>
                             <p>Unleashing creativity through art and expression</p>
                         </div>
                     </div>
@@ -185,7 +185,7 @@ include '../app/views/layout/header.php';
                     <div class="gc-overlay"><div class="gc-search-icon"><i class="fas fa-search-plus"></i></div></div>
                 </div>
                 <div class="gc-caption">
-                    <h6><?= htmlspecialchars($img['title']) ?></h6>
+                    <h3><?= htmlspecialchars($img['title']) ?></h3>
                 </div>
             </div>
             <?php endforeach; ?>

@@ -13,7 +13,7 @@ include '../app/views/layout/header.php';
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h2>Jan Aushadhi Diwas 2023</h2>
+                <h1>Jan Aushadhi Diwas 2023</h1>
             </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
@@ -62,12 +62,12 @@ include '../app/views/layout/header.php';
                         <span>Healthcare Awareness</span>
                     </div>
 
-                    <h1 class="ja-title">
+                    <h2 class="ja-title">
                         Pradhan Mantri Bhartiya
                         <span class="ja-gradient">Janaushadhi</span>
                         Pariyojana
-                    </h1>
-                    <h4 class="ja-subtitle">Jan Aushadhi Diwas 2023</h4>
+                    </h2>
+                    <h3 class="ja-subtitle">Jan Aushadhi Diwas 2023</h3>
 
                     <p class="ja-desc">
                         Celebrating Jan Aushadhi Diwas to promote awareness about affordable generic medicines
@@ -78,7 +78,7 @@ include '../app/views/layout/header.php';
                     <div class="ja-quote">
                         <i class="fas fa-quote-left"></i>
                         <div>
-                            <h4>"Jan Aushadhi — Sasti Bhi, Acchi Bhi"</h4>
+                            <h3>"Jan Aushadhi — Sasti Bhi, Acchi Bhi"</h3>
                             <p>Affordable quality medicines for all</p>
                         </div>
                     </div>
@@ -177,8 +177,8 @@ include '../app/views/layout/header.php';
                     </div>
                 </div>
                 <div style="padding:14px 16px;">
-                    <h6 style="color:#1a1b2e;font-weight:600;font-size:0.9rem;margin:0;">
-                        <?= htmlspecialchars($img['title']) ?></h6>
+                    <h3 style="color:#1a1b2e;font-weight:600;font-size:0.9rem;margin:0;">
+                        <?= htmlspecialchars($img['title']) ?></h3>
                 </div>
             </div>
             <?php endforeach; ?>

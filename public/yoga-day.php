@@ -16,7 +16,7 @@ include '../app/views/layout/header.php';
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h2>International Yoga Day</h2>
+                <h1>International Yoga Day</h1>
             </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
@@ -49,11 +49,11 @@ include '../app/views/layout/header.php';
                     <span>Inner Peace & Wellness</span>
                 </div>
 
-                <h1 class="hero-title-yoga">
+                <h2 class="hero-title-yoga">
                     International
                     <span class="text-gradient-yoga">Yoga Day</span>
                     Celebration
-                </h1>
+                </h2>
             </div>
             <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
                 <div class="hero-content-yoga">
@@ -66,7 +66,7 @@ include '../app/views/layout/header.php';
                             </div>
                         </div>
                         <div class="event-theme">
-                            <h4>"Yoga for Humanity"</h4>
+                            <h3>"Yoga for Humanity"</h3>
                             <p>Unite mind, body, and soul through ancient wisdom</p>
                         </div>
                     </div>
@@ -199,7 +199,7 @@ include '../app/views/layout/header.php';
                     <div class="gc-overlay"><div class="gc-search-icon"><i class="fas fa-search-plus"></i></div></div>
                 </div>
                 <div class="gc-caption">
-                    <h6><?= htmlspecialchars($img['title']) ?></h6>
+                    <h3><?= htmlspecialchars($img['title']) ?></h3>
                 </div>
             </div>
             <?php endforeach; ?>

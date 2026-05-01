@@ -14,7 +14,7 @@ include '../app/views/layout/header.php';
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h2>Livelihood</h2>
+                <h1>Livelihood</h1>
             </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
@@ -36,9 +36,9 @@ include '../app/views/layout/header.php';
                     <span>Employment & Skills</span>
                 </div>
 
-                <h1 class="lv-title">
+                <h2 class="lv-title">
                     Livelihood In<span class="lv-gradient"> Action</span>
-                </h1>
+                </h2>
 
                 <p class="lv-desc">
                     Our Livelihood Programme empowers individuals from underprivileged communities with
@@ -49,7 +49,7 @@ include '../app/views/layout/header.php';
                 <div class="lv-quote">
                     <i class="fas fa-quote-left"></i>
                     <div>
-                        <h4>Skills for a Better Tomorrow</h4>
+                        <h3>Skills for a Better Tomorrow</h3>
                         <p>Empowering individuals with skills to build sustainable futures</p>
                     </div>
                 </div>
@@ -144,7 +144,7 @@ include '../app/views/layout/header.php';
                     </div>
                 </div>
                 <div class="gc-caption">
-                    <h6><?= htmlspecialchars($img['title']) ?></h6>
+                    <h3><?= htmlspecialchars($img['title']) ?></h3>
                 </div>
             </div>
             <?php endforeach; ?>

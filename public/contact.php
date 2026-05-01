@@ -13,7 +13,7 @@ include '../app/views/layout/header.php';
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h2>Contact Us</h2>
+                <h1>Contact Us</h1>
             </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
@@ -44,8 +44,8 @@ include '../app/views/layout/header.php';
                         style="width:50px;height:50px;border-radius:50%;background:rgba(242,101,34,0.1);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;">
                         <i class="fas fa-map-marker-alt" style="font-size:1.1rem;color:#f26522;"></i>
                     </div>
-                    <h6 style="color:#1a1b2e;font-weight:700;margin-bottom:8px;font-size:0.92rem;">Our Office Location
-                    </h6>
+                    <h3 style="color:#1a1b2e;font-weight:700;margin-bottom:8px;font-size:0.92rem;">Our Office Location
+                    </h3>
                     <p style="color:#666;font-size:0.82rem;line-height:1.6;margin:0;">Property No. 150, Basement, Spine
                         Enclave, Block-C, Pocket-8, Sector-17, Dwarka, New Delhi - 110075</p>
                 </div>
@@ -58,7 +58,7 @@ include '../app/views/layout/header.php';
                         style="width:50px;height:50px;border-radius:50%;background:rgba(242,101,34,0.1);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;">
                         <i class="fas fa-phone-alt" style="font-size:1.1rem;color:#f26522;"></i>
                     </div>
-                    <h6 style="color:#1a1b2e;font-weight:700;margin-bottom:8px;font-size:0.92rem;">Contact Number</h6>
+                    <h3 style="color:#1a1b2e;font-weight:700;margin-bottom:8px;font-size:0.92rem;">Contact Number</h3>
                     <p style="color:#666;font-size:0.82rem;margin:0 0 4px;"><a href="tel:+919289088161"
                             style="color:#666;text-decoration:none;">+91-9289088161</a></p>
                     <p style="color:#aaa;font-size:0.75rem;margin:0;">Mon - Sat: 10:00 AM - 6:00 PM</p>
@@ -72,7 +72,7 @@ include '../app/views/layout/header.php';
                         style="width:50px;height:50px;border-radius:50%;background:rgba(242,101,34,0.1);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;">
                         <i class="fas fa-envelope" style="font-size:1.1rem;color:#f26522;"></i>
                     </div>
-                    <h6 style="color:#1a1b2e;font-weight:700;margin-bottom:8px;font-size:0.92rem;">Email Address</h6>
+                    <h3 style="color:#1a1b2e;font-weight:700;margin-bottom:8px;font-size:0.92rem;">Email Address</h3>
                     <p style="color:#666;font-size:0.82rem;margin:0 0 4px;"><a href="mailto:support@saptashati.org"
                             style="color:#666;text-decoration:none;">support@saptashati.org</a></p>
                     <p style="color:#aaa;font-size:0.75rem;margin:0;">We reply within 24 hours</p>
@@ -84,7 +84,7 @@ include '../app/views/layout/header.php';
         <div class="row">
             <div class="col-lg-7 mb-4">
                 <div style="background:#fff;border-radius:14px;padding:35px;box-shadow:0 5px 25px rgba(0,0,0,0.06);">
-                    <h4 style="color:#1a1b2e;font-weight:700;margin-bottom:8px;">Send Us a Message</h4>
+                    <h3 style="color:#1a1b2e;font-weight:700;margin-bottom:8px;">Send Us a Message</h3>
                     <p style="color:#999;font-size:0.88rem;margin-bottom:25px;">Fill out the form below and we'll get
                         back to you shortly.</p>
 

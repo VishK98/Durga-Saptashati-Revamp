@@ -13,7 +13,7 @@ include '../app/views/layout/header.php';
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h2>Cultural Programs</h2>
+                <h1>Cultural Programs</h1>
             </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
@@ -59,11 +59,11 @@ include '../app/views/layout/header.php';
                         <span>Heritage & Culture</span>
                     </div>
 
-                    <h1 class="we-hero-title">
+                    <h2 class="we-hero-title">
                         Cultural
                         <span class="we-highlight">Programs</span>
                         & Celebrations
-                    </h1>
+                    </h2>
 
                     <p class="we-hero-desc">
                         Preserving and promoting India's rich cultural heritage through vibrant performances,
@@ -74,7 +74,7 @@ include '../app/views/layout/header.php';
                     <div class="we-theme-quote">
                         <i class="fas fa-quote-left"></i>
                         <div>
-                            <h4>Celebrating Our Heritage</h4>
+                            <h3>Celebrating Our Heritage</h3>
                             <p>Keeping traditions alive through art, dance, music, and community spirit</p>
                         </div>
                     </div>
@@ -146,7 +146,8 @@ include '../app/views/layout/header.php';
         ?>
         <div class="we-gallery-grid gallery-grid">
             <?php foreach ($culturalImages as $i => $img): ?>
-            <div class="gallery-card" data-aos="fade-up" data-aos-delay="<?= ($i % 3) * 50 ?>" onclick="pageLb.open(<?= $i ?>)">
+            <div class="gallery-card" data-aos="fade-up" data-aos-delay="<?= ($i % 3) * 50 ?>"
+                onclick="pageLb.open(<?= $i ?>)">
                 <div class="gc-img-wrap">
                     <img class="gc-img" src="<?= url('assets/images/cultural/' . $img['file']) ?>"
                         alt="<?= htmlspecialchars($img['title']) ?>">
@@ -156,7 +157,7 @@ include '../app/views/layout/header.php';
                     </div>
                 </div>
                 <div class="gc-caption">
-                    <h6><?= htmlspecialchars($img['title']) ?></h6>
+                    <h3><?= htmlspecialchars($img['title']) ?></h3>
                 </div>
             </div>
             <?php endforeach; ?>
@@ -177,7 +178,9 @@ include '../app/views/layout/header.php';
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    var pageLb = initLightbox('culturalLb', <?= json_encode(array_map(function($img) { return ['src' => url('assets/images/cultural/' . $img['file']), 'title' => $img['title']]; }, $culturalImages)) ?>);
+    var pageLb = initLightbox('culturalLb',
+        <?= json_encode(array_map(function ($img) {
+            return ['src' => url('assets/images/cultural/' . $img['file']), 'title' => $img['title']]; }, $culturalImages)) ?>);
     window.pageLb = pageLb;
 });
 </script>

@@ -14,7 +14,7 @@ include '../app/views/layout/header.php';
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h2>Education For Every Kids</h2>
+                <h1>Education For Every Kids</h1>
             </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
@@ -34,9 +34,9 @@ include '../app/views/layout/header.php';
                 <i class="fas fa-graduation-cap"></i>
                 <span>Education For All</span>
             </div>
-            <h1 class="edu-hero-title" data-aos="fade-up" data-aos-delay="100">
+            <h2 class="edu-hero-title" data-aos="fade-up" data-aos-delay="100">
                 Education For <span class="edu-gradient">Every Kids</span>
-            </h1>
+            </h2>
             <p class="edu-hero-subtitle" data-aos="fade-up" data-aos-delay="200">
                 Lighting the path of knowledge — every child deserves access to quality education
             </p>
@@ -140,7 +140,7 @@ include '../app/views/layout/header.php';
                     </div>
                 </div>
                 <div class="gc-caption">
-                    <h6><?= htmlspecialchars($img['title']) ?></h6>
+                    <h3><?= htmlspecialchars($img['title']) ?></h3>
                 </div>
             </div>
             <?php endforeach; ?>

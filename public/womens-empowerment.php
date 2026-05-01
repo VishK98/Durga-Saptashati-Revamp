@@ -16,7 +16,7 @@ include '../app/views/layout/header.php';
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h2>Women's Empowerment</h2>
+                <h1>Women's Empowerment</h1>
             </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
@@ -67,10 +67,10 @@ include '../app/views/layout/header.php';
                         <span>Empowerment & Equality</span>
                     </div>
 
-                    <h1 class="we-hero-title">
+                    <h2 class="we-hero-title">
                         Women's
                         <span class="we-highlight">Empowerment</span>
-                    </h1>
+                    </h2>
 
                     <p class="we-hero-desc">
                         We believe that empowering women is the key to transforming entire communities.
@@ -81,7 +81,7 @@ include '../app/views/layout/header.php';
                     <div class="we-theme-quote">
                         <i class="fas fa-quote-left"></i>
                         <div>
-                            <h4>Strength in Unity</h4>
+                            <h3>Strength in Unity</h3>
                             <p>Building confident, independent women for a stronger society</p>
                         </div>
                     </div>
@@ -156,7 +156,7 @@ include '../app/views/layout/header.php';
                     </div>
                 </div>
                 <div class="gc-caption">
-                    <h6><?= htmlspecialchars($img['title']) ?></h6>
+                    <h3><?= htmlspecialchars($img['title']) ?></h3>
                 </div>
             </div>
             <?php endforeach; ?>

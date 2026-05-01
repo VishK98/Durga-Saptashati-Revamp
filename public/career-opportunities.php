@@ -15,7 +15,7 @@ include '../app/views/layout/header.php';
 <div class="page-header">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12"><h2>Career Opportunities</h2></div>
+            <div class="col-12"><h1>Career Opportunities</h1></div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
                 <a href="#">Careers</a>
@@ -41,7 +41,7 @@ include '../app/views/layout/header.php';
                 <div class="col-md-6 mb-4">
                 <div style="background:#fff;border-radius:12px;padding:28px;box-shadow:0 4px 20px rgba(0,0,0,0.06);border-left:4px solid #f26522;transition:all 0.3s;height:100%;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 10px 30px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.06)'">
                     <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:12px;">
-                        <h5 style="color:#1a1b2e;font-weight:700;margin:0;font-size:1.1rem;"><?= htmlspecialchars($job['title']) ?></h5>
+                        <h3 style="color:#1a1b2e;font-weight:700;margin:0;font-size:1.1rem;"><?= htmlspecialchars($job['title']) ?></h3>
                         <span style="background:rgba(16,185,129,0.1);color:#059669;padding:4px 12px;border-radius:20px;font-size:0.72rem;font-weight:600;white-space:nowrap;"><?= ucfirst(str_replace('-', ' ', $job['type'])) ?></span>
                     </div>
                     <div style="display:flex;flex-wrap:wrap;gap:18px;margin-bottom:14px;">
@@ -64,7 +64,7 @@ include '../app/views/layout/header.php';
             </div>
             <div class="col-lg-4">
                 <div style="background:#fff;border-radius:14px;padding:25px;box-shadow:0 4px 20px rgba(0,0,0,0.06);margin-bottom:20px;">
-                    <h5 style="color:#1a1b2e;font-weight:700;margin-bottom:15px;padding-bottom:12px;border-bottom:2px solid #f26522;display:inline-block;">Why Work With Us?</h5>
+                    <h3 style="color:#1a1b2e;font-weight:700;margin-bottom:15px;padding-bottom:12px;border-bottom:2px solid #f26522;display:inline-block;">Why Work With Us?</h3>
                     <div style="margin-bottom:14px;display:flex;gap:12px;align-items:start;">
                         <div style="width:36px;height:36px;border-radius:8px;background:rgba(242,101,34,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fas fa-heart" style="color:#f26522;font-size:0.8rem;"></i></div>
                         <div><strong style="color:#1a1b2e;font-size:0.85rem;">Meaningful Impact</strong><p style="color:#888;font-size:0.8rem;margin:3px 0 0;">Make a real difference in the lives of women, children, and communities.</p></div>
@@ -79,7 +79,7 @@ include '../app/views/layout/header.php';
                     </div>
                 </div>
                 <div style="background:#1a1b2e;border-radius:14px;padding:25px;color:#fff;">
-                    <h5 style="font-weight:700;margin-bottom:12px;">Have Questions?</h5>
+                    <h3 style="font-weight:700;margin-bottom:12px;">Have Questions?</h3>
                     <p style="color:rgba(255,255,255,0.7);font-size:0.85rem;margin-bottom:15px;">Feel free to reach out to us for any career-related inquiries.</p>
                     <a href="mailto:support@saptashati.org" style="color:#f26522;font-size:0.88rem;font-weight:600;text-decoration:none;"><i class="fas fa-envelope mr-2"></i>support@saptashati.org</a>
                 </div>

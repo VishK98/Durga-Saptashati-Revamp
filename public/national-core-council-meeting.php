@@ -13,7 +13,7 @@ include '../app/views/layout/header.php';
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h2>National Core Council Meeting</h2>
+                <h1>National Core Council Meeting</h1>
             </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
@@ -52,10 +52,10 @@ include '../app/views/layout/header.php';
                         <span>Governance & Strategy</span>
                     </div>
 
-                    <h1 class="nccm-title">
+                    <h2 class="nccm-title">
                         National Core Council
                         <span class="nccm-gradient">Meeting</span>
-                    </h1>
+                    </h2>
 
                     <p class="nccm-desc">
                         A two-day strategic meeting bringing together core council members from across the nation
@@ -179,8 +179,8 @@ include '../app/views/layout/header.php';
                     </div>
                 </div>
                 <div style="padding:14px 16px;">
-                    <h6 style="color:#1a1b2e;font-weight:600;font-size:0.9rem;margin:0;">
-                        <?= htmlspecialchars($img['title']) ?></h6>
+                    <h3 style="color:#1a1b2e;font-weight:600;font-size:0.9rem;margin:0;">
+                        <?= htmlspecialchars($img['title']) ?></h3>
                 </div>
             </div>
             <?php endforeach; ?>

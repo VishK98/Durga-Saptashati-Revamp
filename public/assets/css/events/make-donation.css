@@ -155,12 +155,14 @@
     margin-bottom: 20px;
 }
 
+.donate-why-card h3,
 .donate-why-card h5 {
     color: #1a1b2e;
     font-weight: 700;
     margin-bottom: 15px;
 }
 
+.donate-why-card h3 i,
 .donate-why-card h5 i {
     color: #f26522;
     margin-right: 8px;
@@ -215,11 +217,13 @@
     color: #fff;
 }
 
+.donate-tax-card h3,
 .donate-tax-card h5 {
     font-weight: 700;
     margin-bottom: 10px;
 }
 
+.donate-tax-card h3 i,
 .donate-tax-card h5 i {
     color: #f26522;
     margin-right: 8px;

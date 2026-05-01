@@ -24,7 +24,7 @@ $causes = [
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h2>Our Causes</h2>
+                <h1>Our Causes</h1>
             </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
@@ -72,7 +72,7 @@ $causes = [
                         <span class="card-tag"><i class="fas <?= $cause['icon'] ?>"></i> <?= $cause['tag'] ?></span>
                     </div>
                     <div class="card-content">
-                        <h5><?= htmlspecialchars($cause['title']) ?></h5>
+                        <h3><?= htmlspecialchars($cause['title']) ?></h3>
                         <p><?= htmlspecialchars($cause['desc']) ?></p>
                     </div>
                 </a>

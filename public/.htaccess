@@ -77,7 +77,7 @@
   RewriteRule ^ganpati-celebration\.html$                ganpati-celebration.php [R=301,L]
   RewriteRule ^saree-run\.html$                          saree-run.php [R=301,L]
   RewriteRule ^blood-donation-drives\.html$              blood-donation-drives.php [R=301,L]
-  RewriteRule ^health-camps-events\.html$                health-camps-events.php [R=301,L]
+  RewriteRule ^health-camps-events\.html$                health-camps-event.php [R=301,L]
   RewriteRule ^sanitary-pads-distribution\.html$         sanitary-pads-distribution.php [R=301,L]
   RewriteRule ^flood-relief-campaign\.html$              flood-relief-campaign.php [R=301,L]
   RewriteRule ^painting-competition\.html$               painting-competition.php [R=301,L]

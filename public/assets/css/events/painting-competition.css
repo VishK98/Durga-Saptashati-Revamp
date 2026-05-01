@@ -206,7 +206,7 @@
   box-shadow: 0 5px 15px rgba(242, 101, 34, 0.3);
 }
 
-.paint-event-theme h4 {
+.paint-event-theme h3 {
   color: var(--secondary-color);
   font-size: 1.3rem;
   font-weight: 700;

@@ -10,7 +10,7 @@ include '../app/views/layout/header.php';
 <div class="page-header">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12"><h2>Become a Volunteer</h2></div>
+            <div class="col-12"><h1>Become a Volunteer</h1></div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
                 <a href="<?= url('volunteer.php') ?>">Get Involved</a>
@@ -34,7 +34,7 @@ include '../app/views/layout/header.php';
             <!-- Volunteer Form -->
             <div class="col-lg-7 mb-4" data-aos="fade-right">
                 <div style="background:#fff;border-radius:14px;padding:35px;box-shadow:0 5px 25px rgba(0,0,0,0.06);">
-                    <h4 style="color:#1a1b2e;font-weight:700;margin-bottom:8px;">Volunteer Application</h4>
+                    <h3 style="color:#1a1b2e;font-weight:700;margin-bottom:8px;">Volunteer Application</h3>
                     <p style="color:#999;font-size:0.88rem;margin-bottom:25px;">Fill out the form below and our team will reach out to you.</p>
 
                     <form id="volunteerForm" onsubmit="return false;">

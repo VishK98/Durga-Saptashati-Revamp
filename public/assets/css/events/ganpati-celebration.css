@@ -330,7 +330,7 @@ div {
   transform: scale(1.1) rotate(5deg);
 }
 
-.highlight-content h4 {
+.highlight-content h3 {
   font-size: 1.2rem;
   font-weight: 700;
   color: var(--deep-blue);

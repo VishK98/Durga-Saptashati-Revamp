@@ -135,7 +135,7 @@
 }
 
 .ja-quote i { color: #f26522; font-size: 1.1rem; margin-top: 3px; flex-shrink: 0; }
-.ja-quote h4 { color: #1a1b2e; font-size: 0.95rem; font-weight: 700; margin: 0 0 4px; }
+.ja-quote h3 { color: #1a1b2e; font-size: 0.95rem; font-weight: 700; margin: 0 0 4px; }
 .ja-quote p { color: #888; font-size: 0.82rem; margin: 0; }
 
 /* Mini Stats */

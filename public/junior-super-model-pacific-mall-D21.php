@@ -12,7 +12,7 @@ include '../app/views/layout/header.php';
 <div class="page-header jsm-page-header">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12"><h2>Junior Super Model</h2></div>
+            <div class="col-12"><h1>Junior Super Model</h1></div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
                 <a href="<?= url('causes.php') ?>">Causes</a>
@@ -38,11 +38,11 @@ include '../app/views/layout/header.php';
                         <span>Talent & Confidence</span>
                     </div>
 
-                    <h1 class="jsm-title">
+                    <h2 class="jsm-title">
                         Junior Super
                         <span class="jsm-gradient">Model</span>
-                    </h1>
-                    <h4 class="jsm-venue">Pacific Mall D21</h4>
+                    </h2>
+                    <h3 class="jsm-venue">Pacific Mall D21</h3>
 
                     <p class="jsm-desc">
                         A spectacular platform for young talents to showcase their confidence, creativity,
@@ -135,7 +135,7 @@ include '../app/views/layout/header.php';
                     </div>
                 </div>
                 <div style="padding:14px 16px;">
-                    <h6 style="color:#1a1b2e;font-weight:600;font-size:0.9rem;margin:0;"><?= htmlspecialchars($img['title']) ?></h6>
+                    <h3 style="color:#1a1b2e;font-weight:600;font-size:0.9rem;margin:0;"><?= htmlspecialchars($img['title']) ?></h3>
                 </div>
             </div>
             <?php endforeach; ?>

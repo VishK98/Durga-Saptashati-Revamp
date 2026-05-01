@@ -92,6 +92,12 @@
   color: #f26522;
 }
 
+.counter-num {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
 .facts-label {
   letter-spacing: 2px;
   opacity: 0.8;

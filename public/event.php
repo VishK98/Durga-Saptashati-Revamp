@@ -25,7 +25,7 @@ $events = [
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h2>Events & Activities</h2>
+                <h1>Events & Activities</h1>
             </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
@@ -73,7 +73,7 @@ $events = [
                         <span class="card-tag"><i class="fas <?= $event['icon'] ?>"></i> <?= $event['tag'] ?></span>
                     </div>
                     <div class="card-content">
-                        <h5><?= htmlspecialchars($event['title']) ?></h5>
+                        <h3><?= htmlspecialchars($event['title']) ?></h3>
                         <p><?= htmlspecialchars($event['desc']) ?></p>
                     </div>
                 </a>

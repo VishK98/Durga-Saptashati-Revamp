@@ -259,6 +259,7 @@ a:focus {
 /*******************************/
 
 
+.page-header h1,
 .page-header h2 {
   position: relative;
   color: #f26522;
@@ -268,6 +269,7 @@ a:focus {
   padding-bottom: 5px;
 }
 
+.page-header h1::after,
 .page-header h2::after {
   position: absolute;
   content: "";
@@ -309,6 +311,7 @@ a:focus {
     padding: 60px 0;
   }
 
+  .page-header h1,
   .page-header h2 {
     font-size: 45px;
   }
@@ -323,6 +326,7 @@ a:focus {
     padding: 45px 0;
   }
 
+  .page-header h1,
   .page-header h2 {
     font-size: 35px;
   }

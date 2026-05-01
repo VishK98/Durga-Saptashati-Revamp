@@ -15,7 +15,7 @@ include '../app/views/layout/header.php';
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h2>Ganpati Celebration</h2>
+                <h1>Ganpati Celebration</h1>
             </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
@@ -47,11 +47,11 @@ include '../app/views/layout/header.php';
                         <span>Ganesh Chaturthi Celebration</span>
                     </div>
 
-                    <h1 class="hero-title-ganpati">
+                    <h2 class="hero-title-ganpati">
                         Ganpati Festival
                         <span class="text-gradient-divine">Celebration</span>
                         2025
-                    </h1>
+                    </h2>
 
                     <p class="hero-description-ganpati">
                         Join us in celebrating the divine presence of Lord Ganesha, the remover of obstacles
@@ -65,7 +65,7 @@ include '../app/views/layout/header.php';
                                 <i class="fas fa-calendar-alt"></i>
                             </div>
                             <div class="highlight-content">
-                                <h4>11 Days Festival</h4>
+                                <h3>11 Days Festival</h3>
                                 <p>Complete Ganpati Utsav celebration</p>
                             </div>
                         </div>
@@ -74,7 +74,7 @@ include '../app/views/layout/header.php';
                                 <i class="fas fa-users"></i>
                             </div>
                             <div class="highlight-content">
-                                <h4>Community Participation</h4>
+                                <h3>Community Participation</h3>
                                 <p>Open for all devotees and families</p>
                             </div>
                         </div>
@@ -83,7 +83,7 @@ include '../app/views/layout/header.php';
                                 <i class="fas fa-heart"></i>
                             </div>
                             <div class="highlight-content">
-                                <h4>Spiritual Experience</h4>
+                                <h3>Spiritual Experience</h3>
                                 <p>Traditional rituals and prayers</p>
                             </div>
                         </div>
@@ -187,8 +187,8 @@ include '../app/views/layout/header.php';
                     </div>
                 </div>
                 <div style="padding:14px 16px;">
-                    <h6 style="color:#1a1b2e;font-weight:600;font-size:0.9rem;margin:0;">
-                        <?= htmlspecialchars($img['title']) ?></h6>
+                    <h3 style="color:#1a1b2e;font-weight:600;font-size:0.9rem;margin:0;">
+                        <?= htmlspecialchars($img['title']) ?></h3>
                 </div>
             </div>
             <?php endforeach; ?>

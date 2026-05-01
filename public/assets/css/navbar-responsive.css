@@ -1326,7 +1326,8 @@ body {
   padding: 20px;
 }
 
-.carousel .carousel-text h1 {
+.carousel .carousel-text h1,
+.carousel .carousel-text h2 {
   color: #ffffff;
   font-size: 3.5rem;
   font-weight: 700;
@@ -1409,7 +1410,8 @@ body {
     max-width: 800px; /* Wider content area */
   }
 
-  .carousel .carousel-text h1 {
+  .carousel .carousel-text h1,
+.carousel .carousel-text h2 {
     font-size: 4.5rem; /* Larger text for big screens */
     line-height: 1.1;
   }
@@ -1441,7 +1443,8 @@ body {
     max-width: 1000px;
   }
 
-  .carousel .carousel-text h1 {
+  .carousel .carousel-text h1,
+.carousel .carousel-text h2 {
     font-size: 5rem;
   }
 

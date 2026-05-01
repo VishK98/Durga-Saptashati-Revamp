@@ -12,7 +12,7 @@ include '../app/views/layout/header.php';
 <div class="page-header ind-page-header">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12"><h2>Independence Day Celebration</h2></div>
+            <div class="col-12"><h1>Independence Day Celebration</h1></div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
                 <a href="<?= url('event.php') ?>">Events</a>
@@ -34,10 +34,10 @@ include '../app/views/layout/header.php';
                         <span>15th August 2025</span>
                     </div>
 
-                    <h1 class="ind-title">
+                    <h2 class="ind-title">
                         Celebrating <span class="ind-saffron-text">79 Years</span>
                         of <span class="ind-green-text">Freedom</span> & <span class="ind-saffron-text">Unity</span>
-                    </h1>
+                    </h2>
 
                     <p class="ind-desc">
                         Join us in commemorating India's journey of independence, honoring the sacrifices
@@ -151,7 +151,7 @@ include '../app/views/layout/header.php';
                     </div>
                 </div>
                 <div style="padding:14px 16px;">
-                    <h6 style="color:#1a1b2e;font-weight:600;font-size:0.9rem;margin:0;"><?= htmlspecialchars($img['title']) ?></h6>
+                    <h3 style="color:#1a1b2e;font-weight:600;font-size:0.9rem;margin:0;"><?= htmlspecialchars($img['title']) ?></h3>
                 </div>
             </div>
             <?php endforeach; ?>

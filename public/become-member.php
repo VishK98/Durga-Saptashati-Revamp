@@ -34,7 +34,7 @@ try {
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h2>Become a Member</h2>
+                <h1>Become a Member</h1>
             </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
@@ -231,7 +231,7 @@ try {
                         <img src="<?= !empty($am['photo']) ? asset('uploads/members/' . $am['photo']) : asset('images/profile-1.png') ?>" alt="<?= htmlspecialchars($am['full_name']) ?>">
                     </div>
                     <div class="mbr-member-info">
-                        <h6 class="mbr-member-name"><?= htmlspecialchars($am['full_name']) ?></h6>
+                        <h3 class="mbr-member-name"><?= htmlspecialchars($am['full_name']) ?></h3>
                         <?php if (!empty($am['profession'])): ?>
                         <span class="mbr-member-plan"><?= htmlspecialchars($am['profession']) ?></span>
                         <?php endif; ?>

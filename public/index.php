@@ -35,8 +35,8 @@ include '../app/views/layout/header.php';
                     <img src="<?php echo asset('images/banner/banner-3.jpeg'); ?>" alt="Our Commitment to Community">
                 </div>
                 <div class="carousel-text">
-                    <h1 data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">Our Commitment to Community!
-                    </h1>
+                    <h2 data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">Our Commitment to Community!
+                    </h2>
                     <p data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000">
                         A trusted charity organisation in Delhi working for the empowerment of women, deprived children,
                         senior citizens, and people with disabilities.
@@ -55,9 +55,9 @@ include '../app/views/layout/header.php';
                         alt="Gender Equality to Social Justice">
                 </div>
                 <div class="carousel-text">
-                    <h1 data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
+                    <h2 data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
                         Empowering Young Minds Through Digital Learning
-                    </h1>
+                    </h2>
                     <p data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000">
                         Our classrooms blend technology with teaching, where dedicated educators and curious students
                         learn, explore, and grow together in a modern, interactive environment.
@@ -74,8 +74,8 @@ include '../app/views/layout/header.php';
                         alt="Gender Equality to Social Justice">
                 </div>
                 <div class="carousel-text">
-                    <h1 data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">From Gender Equality to Social
-                        Justice</h1>
+                    <h2 data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">From Gender Equality to Social
+                        Justice</h2>
                     <p data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000">
                         We are dismantling barriers, challenging stereotypes, and creating a more inclusive society
                         through grassroots initiatives.
@@ -92,8 +92,8 @@ include '../app/views/layout/header.php';
                         alt="Gender Equality to Social Justice">
                 </div>
                 <div class="carousel-text">
-                    <h1 data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">From Gender Equality to Social
-                        Justice</h1>
+                    <h2 data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">From Gender Equality to Social
+                        Justice</h2>
                     <p data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000">
                         We are dismantling barriers, challenging stereotypes, and creating a more inclusive society
                         through grassroots initiatives.
@@ -212,21 +212,21 @@ include '../app/views/layout/header.php';
             <div class="col-lg-4 col-md-4 col-4 text-center" data-aos="fade-up" data-aos-delay="100">
                 <div class="facts-item">
                     <i class="fa fa-smile fa-3x mb-3 facts-icon"></i>
-                    <h1 class="text-white mb-2 counter-num" data-target="1000">0</h1>
+                    <div class="text-white mb-2 counter-num" data-target="1000">0</div>
                     <h6 class="text-uppercase text-white facts-label">Smiles</h6>
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 col-4 text-center" data-aos="fade-up" data-aos-delay="200">
                 <div class="facts-item">
                     <i class="fa fa-home fa-3x mb-3 facts-icon"></i>
-                    <h1 class="text-white mb-2 counter-num" data-target="100">0</h1>
+                    <div class="text-white mb-2 counter-num" data-target="100">0</div>
                     <h6 class="text-uppercase text-white facts-label">Happy Families</h6>
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 col-4 text-center" data-aos="fade-up" data-aos-delay="300">
                 <div class="facts-item">
                     <i class="fa fa-lightbulb fa-3x mb-3 facts-icon"></i>
-                    <h1 class="text-white mb-2 counter-num" data-target="10">0</h1>
+                    <div class="text-white mb-2 counter-num" data-target="10">0</div>
                     <h6 class="text-uppercase text-white facts-label">Initiatives</h6>
                 </div>
             </div>
@@ -241,7 +241,7 @@ include '../app/views/layout/header.php';
         <div class="text-center mb-4" data-aos="fade-up">
             <h6 class="text-uppercase mb-1 events-section-label">What's Happening
             </h6>
-            <h1 class="events-heading">Upcoming & Past <span class="events-heading-highlight">Events</span></h1>
+            <h2 class="events-heading">Upcoming & Past <span class="events-heading-highlight">Events</span></h2>
         </div>
         <div class="row events-row">
             <?php
@@ -261,9 +261,9 @@ include '../app/views/layout/header.php';
                         </span>
                     </div>
                     <div class="event-card-body">
-                        <h5 class="event-card-title">
+                        <h3 class="event-card-title">
                             <?= htmlspecialchars($event['title']) ?>
-                        </h5>
+                        </h3>
                         <p class="event-card-desc">
                             <?= htmlspecialchars($event['desc']) ?>
                         </p>
@@ -288,8 +288,8 @@ include '../app/views/layout/header.php';
     <div class="container py-5 position-relative text-center volunteer-content">
         <div class="py-5" data-aos="zoom-in">
             <h6 class="text-uppercase text-white mb-3 volunteer-label">Make a Difference</h6>
-            <h1 class="display-4 text-white mb-3 font-weight-bold">Want to Join Us?</h1>
-            <h4 class="text-white mb-4 volunteer-subtitle">Become a Proud Volunteer</h4>
+            <h2 class="display-4 text-white mb-3 font-weight-bold">Want to Join Us?</h2>
+            <h3 class="text-white mb-4 volunteer-subtitle">Become a Proud Volunteer</h3>
             <p class="text-white mx-auto mb-4 volunteer-desc">Join our community of dedicated
                 volunteers and help us create lasting change in the lives of women, children, senior citizens, and
                 people with disabilities.</p>
@@ -318,7 +318,7 @@ $mshipFeatures = [
     <div class="container py-4 position-relative mship-container">
         <div class="text-center mb-4" data-aos="fade-up">
             <div class="mship-label-badge"><i class="fas fa-crown"></i> Join Our Family</div>
-            <h1 class="mship-heading">Choose Your <span>Membership</span></h1>
+            <h2 class="mship-heading">Choose Your <span>Membership</span></h2>
             <p class="mship-subtext">Become a proud member and support our mission to empower communities.</p>
         </div>
         <div class="row justify-content-center mship-row">
@@ -379,7 +379,7 @@ $mshipFeatures = [
     <div class="container py-3">
         <div class="text-center mb-4" data-aos="fade-up">
             <h6 class="text-uppercase mb-1 causes-section-label">See Our Work</h6>
-            <h1 class="causes-heading">Our Campaign / <span class="causes-heading-highlight">Causes</span></h1>
+            <h2 class="causes-heading">Our Campaign / <span class="causes-heading-highlight">Causes</span></h2>
         </div>
         <div class="row causes-row">
             <?php
@@ -399,9 +399,9 @@ $mshipFeatures = [
                         </span>
                     </div>
                     <div class="event-card-body">
-                        <h5 class="event-card-title">
+                        <h3 class="event-card-title">
                             <?= htmlspecialchars($cause['title']) ?>
-                        </h5>
+                        </h3>
                         <p class="event-card-desc">
                             <?= htmlspecialchars($cause['desc']) ?>
                         </p>
@@ -425,7 +425,7 @@ $mshipFeatures = [
         <div class="row align-items-center mb-4">
             <div class="col-lg-6" data-aos="fade-right">
                 <span class="act-label"><i class="fas fa-hands-helping"></i> How We Help</span>
-                <h1 class="act-heading">Making Real <span>Impact</span> Through Action</h1>
+                <h2 class="act-heading">Making Real <span>Impact</span> Through Action</h2>
                 <p class="act-subtitle">From healthcare to hunger, our dedicated volunteers work tirelessly across
                     multiple fronts to create lasting change in communities.</p>
             </div>
@@ -465,7 +465,7 @@ $mshipFeatures = [
                             <i class="fas <?= $act['icon'] ?>"></i>
                         </div>
                     </div>
-                    <h5 class="act-title"><?= $act['title'] ?></h5>
+                    <h3 class="act-title"><?= $act['title'] ?></h3>
                     <p class="act-desc"><?= $act['desc'] ?></p>
                     <div class="act-bottom-line"></div>
                 </div>
@@ -490,9 +490,9 @@ $mshipFeatures = [
                         </span>
                         Make a Donation
                     </h6>
-                    <h1 class="text-white">Your Small Help Can Make a <span class="donate-heading-highlight">Big
+                    <h2 class="text-white">Your Small Help Can Make a <span class="donate-heading-highlight">Big
                             Difference</span>
-                    </h1>
+                    </h2>
                 </div>
                 <p class="text-white mb-4 donate-body-text">Your generosity enables us to continue
                     our mission of empowering women, educating children, and supporting the elderly and disabled. Every
@@ -630,9 +630,9 @@ $latestBlogs = $blogStmt->fetchAll();
                             <small><i class="far fa-comment mr-1 blog-meta-icon"></i>
                                 <?= $hcCount ?></small>
                         </div>
-                        <h5 class="font-weight-bold mb-2 blog-title">
+                        <h3 class="font-weight-bold mb-2 blog-title">
                             <?= htmlspecialchars($bp['title']) ?>
-                        </h5>
+                        </h3>
                         <p class="flex-grow-1 blog-excerpt">
                             <?= htmlspecialchars(mb_strimwidth(strip_tags($bp['content'] ?? ''), 0, 150, '...')) ?>
                         </p>

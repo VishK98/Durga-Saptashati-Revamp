@@ -13,7 +13,7 @@ include '../app/views/layout/header.php';
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h2>Saree Run</h2>
+                <h1>Saree Run</h1>
             </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
@@ -32,9 +32,9 @@ include '../app/views/layout/header.php';
                 <i class="fas fa-running"></i>
                 <span>Celebrating Strength & Culture</span>
             </div>
-            <h1 class="sr-title" data-aos="fade-up" data-aos-delay="100">
+            <h2 class="sr-title" data-aos="fade-up" data-aos-delay="100">
                 The Vibrant <span class="sr-gradient">Saree Run</span>
-            </h1>
+            </h2>
             <p class="sr-subtitle" data-aos="fade-up" data-aos-delay="200">
                 A unique event where women from all walks of life come together for a vibrant community run in sarees —
                 breaking stereotypes and promoting health, unity, and empowerment.
@@ -136,9 +136,9 @@ include '../app/views/layout/header.php';
                     </div>
                 </div>
                 <div style="padding:14px 16px;">
-                    <h6 style="color:#1a1b2e;font-weight:600;font-size:0.9rem;margin:0;">
+                    <h3 style="color:#1a1b2e;font-weight:600;font-size:0.9rem;margin:0;">
                         <?= htmlspecialchars($img['title']) ?>
-                    </h6>
+                    </h3>
                 </div>
             </div>
             <?php endforeach; ?>

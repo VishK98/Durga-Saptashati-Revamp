@@ -12,7 +12,7 @@ include '../app/views/layout/header.php';
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h2>Hearing Aids Camp</h2>
+                <h1>Hearing Aids Camp</h1>
             </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
@@ -43,11 +43,11 @@ include '../app/views/layout/header.php';
                     <i class="fas fa-assistive-listening-systems"></i>
                     <span>Community Healthcare</span>
                 </div>
-                <h1 class="hero-title-yoga">
+                <h2 class="hero-title-yoga">
                     Hearing Aids
                     <span class="text-gradient-yoga">Distribution</span>
                     Camp
-                </h1>
+                </h2>
             </div>
             <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
                 <div class="hero-content-yoga">
@@ -60,7 +60,7 @@ include '../app/views/layout/header.php';
                             </div>
                         </div>
                         <div class="event-theme">
-                            <h4>"Sound of Hope"</h4>
+                            <h3>"Sound of Hope"</h3>
                             <p>Restoring hearing, restoring lives through free audiological support</p>
                         </div>
                     </div>
@@ -197,9 +197,9 @@ include '../app/views/layout/header.php';
                     </div>
                 </div>
                 <div style="padding:14px 16px;">
-                    <h6 style="color:#1a1b2e;font-weight:600;font-size:0.9rem;margin:0;">
+                    <h3 style="color:#1a1b2e;font-weight:600;font-size:0.9rem;margin:0;">
                         <?= htmlspecialchars($img['title']) ?>
-                    </h6>
+                    </h3>
                 </div>
             </div>
             <?php endforeach; ?>

@@ -12,7 +12,7 @@ include '../app/views/layout/header.php';
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h2>Investors & Transparency</h2>
+                <h1>Investors & Transparency</h1>
             </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
@@ -46,7 +46,7 @@ include '../app/views/layout/header.php';
             <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="<?= ($i + 1) * 100 ?>">
                 <div class="inv-why-card">
                     <div class="inv-why-icon"><i class="fas <?= $item['icon'] ?>"></i></div>
-                    <h5 class="inv-why-title"><?= $item['title'] ?></h5>
+                    <h3 class="inv-why-title"><?= $item['title'] ?></h3>
                     <p class="inv-why-desc"><?= $item['desc'] ?></p>
                 </div>
             </div>
@@ -91,7 +91,7 @@ include '../app/views/layout/header.php';
                     <div class="abt-report-icon">
                         <i class="fas <?= htmlspecialchars($report['icon']) ?>"></i>
                     </div>
-                    <h5><?= htmlspecialchars($report['title']) ?></h5>
+                    <h3><?= htmlspecialchars($report['title']) ?></h3>
                     <p><?= htmlspecialchars($report['description']) ?></p>
                     <span class="abt-report-link"><i class="fas fa-eye"></i> View PDF</span>
                 </div>
@@ -129,7 +129,7 @@ include '../app/views/layout/header.php';
             </div>
             <div class="col-lg-6" data-aos="fade-left">
                 <div class="abt-chart-box">
-                    <h4>Impact Distribution</h4>
+                    <h3>Impact Distribution</h3>
                     <p class="abt-chart-subtitle">How we transform communities</p>
                     <?php
                     $progressItems = [

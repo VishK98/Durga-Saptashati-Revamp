@@ -13,7 +13,7 @@ include '../app/views/layout/header.php';
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h2>About Us</h2>
+                <h1>About Us</h1>
             </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
@@ -281,7 +281,7 @@ include '../app/views/layout/header.php';
                     <div class="abt-founder-photo">
                         <img src="<?= url('assets/images/sandhya-singh.jpeg') ?>" alt="Sandhya Singh - Founder">
                     </div>
-                    <h5 class="abt-founder-name">Smt. Sandhya Singh</h5>
+                    <h3 class="abt-founder-name">Smt. Sandhya Singh</h3>
                     <span class="abt-founder-title">Founder - Durga Saptashati Foundation</span>
                 </div>
                 <div class="col-lg-9" data-aos="fade-left" data-aos-delay="150">
@@ -364,7 +364,7 @@ include '../app/views/layout/header.php';
                         <img src="<?= $leader['img'] ?>" alt="<?= $leader['name'] ?>">
                         <div class="abt-leader-ring"></div>
                     </div>
-                    <h4><?= $leader['name'] ?></h4>
+                    <h3><?= $leader['name'] ?></h3>
                     <span class="abt-leader-role"><?= $leader['role'] ?></span>
                     <p><?= $leader['bio'] ?></p>
                 </div>
@@ -400,7 +400,7 @@ include '../app/views/layout/header.php';
                         <img src="<?= asset('images/' . $p['img']) ?>" alt="<?= htmlspecialchars($p['name']) ?>">
                         <div class="abt-leader-ring"></div>
                     </div>
-                    <h4><?= htmlspecialchars($p['name']) ?></h4>
+                    <h3><?= htmlspecialchars($p['name']) ?></h3>
                     <span class="abt-leader-role"><?= htmlspecialchars($p['role']) ?></span>
                     <p><?= htmlspecialchars($p['org']) ?></p>
                 </div>
@@ -450,7 +450,7 @@ include '../app/views/layout/header.php';
                         <img src="<?= asset('images/' . $e['img']) ?>" alt="<?= htmlspecialchars($e['name']) ?>">
                         <div class="abt-leader-ring"></div>
                     </div>
-                    <h4><?= htmlspecialchars($e['name']) ?></h4>
+                    <h3><?= htmlspecialchars($e['name']) ?></h3>
                     <span class="abt-leader-role"><?= htmlspecialchars($e['role']) ?></span>
                 </div>
             </div>

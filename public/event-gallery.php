@@ -23,7 +23,7 @@ try {
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h2>Captured Moments</h2>
+                <h1>Captured Moments</h1>
             </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
@@ -47,7 +47,7 @@ try {
             <div class="eg-empty-icon">
                 <i class="fas fa-images"></i>
             </div>
-            <h4 class="eg-empty-title">Gallery Coming Soon</h4>
+            <h3 class="eg-empty-title">Gallery Coming Soon</h3>
             <p class="eg-empty-desc">We're uploading photos from our events and programs.
                 Check back soon!</p>
         </div>
@@ -81,7 +81,7 @@ try {
                     </div>
                 </div>
                 <div class="gc-caption">
-                    <h6><?= htmlspecialchars($img['title'] ?: 'Untitled') ?></h6>
+                    <h3><?= htmlspecialchars($img['title'] ?: 'Untitled') ?></h3>
                 </div>
             </div>
             <?php endforeach; ?>

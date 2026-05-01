@@ -16,7 +16,7 @@ include '../app/views/layout/header.php';
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h2>No People Hungry</h2>
+                <h1>No People Hungry</h1>
             </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
@@ -43,11 +43,11 @@ include '../app/views/layout/header.php';
                     <span>Food Security</span>
                 </div>
 
-                <h1 class="hunger-hero-title">
+                <h2 class="hunger-hero-title">
                     No People
                     <span class="hunger-highlight">Hungry</span>
                     Campaign
-                </h1>
+                </h2>
 
                 <p class="hunger-hero-desc">
                     Join our mission to eradicate hunger from our communities. Through dedicated food drives,
@@ -59,7 +59,7 @@ include '../app/views/layout/header.php';
                     <div class="hunger-info-card">
                         <div class="hunger-info-icon"><i class="fas fa-utensils"></i></div>
                         <div>
-                            <h4>"Nourishing Lives, Building Hope"</h4>
+                            <h3>"Nourishing Lives, Building Hope"</h3>
                             <p>Every meal served is a step towards a hunger-free world</p>
                         </div>
                     </div>
@@ -127,7 +127,7 @@ include '../app/views/layout/header.php';
                     </div>
                 </div>
                 <div class="gc-caption">
-                    <h6><?= htmlspecialchars($img['title']) ?></h6>
+                    <h3><?= htmlspecialchars($img['title']) ?></h3>
                 </div>
             </div>
             <?php endforeach; ?>

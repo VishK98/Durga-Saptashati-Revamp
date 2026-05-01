@@ -13,7 +13,7 @@ include '../app/views/layout/header.php';
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h2>Sanitary Pads Distribution</h2>
+                <h1>Sanitary Pads Distribution</h1>
             </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
@@ -52,7 +52,7 @@ include '../app/views/layout/header.php';
                             <span>Menstrual Hygiene Awareness</span>
                         </div>
 
-                        <h1 class="spd-title">Sanitary Pads <span class="spd-gradient">Distribution</span></h1>
+                        <h2 class="spd-title">Sanitary Pads <span class="spd-gradient">Distribution</span></h2>
 
                         <p class="spd-desc">
                             Breaking the taboo around menstrual hygiene — we distribute free sanitary pads
@@ -153,9 +153,9 @@ include '../app/views/layout/header.php';
                     </div>
                 </div>
                 <div style="padding:14px 16px;">
-                    <h6 style="color:#1a1b2e;font-weight:600;font-size:0.9rem;margin:0;">
+                    <h3 style="color:#1a1b2e;font-weight:600;font-size:0.9rem;margin:0;">
                         <?= htmlspecialchars($img['title']) ?>
-                    </h6>
+                    </h3>
                 </div>
             </div>
             <?php endforeach; ?>

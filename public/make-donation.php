@@ -13,7 +13,7 @@ include '../app/views/layout/header.php';
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h2>Make a Donation</h2>
+                <h1>Make a Donation</h1>
             </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
@@ -30,7 +30,7 @@ include '../app/views/layout/header.php';
         <div class="text-center mb-5" data-aos="fade-up">
             <h6 class="text-uppercase mb-2 donate-subtitle">Support Our
                 Mission</h6>
-            <h1 class="donate-title">Make Donation</h1>
+            <h2 class="donate-title">Make Donation</h2>
             <p class="donate-desc">Your generous donation helps us provide education,
                 healthcare, and empowerment programs to those who need it most. Every rupee counts.</p>
         </div>
@@ -240,7 +240,7 @@ include '../app/views/layout/header.php';
             <div class="col-lg-5 mb-4" data-aos="fade-left">
                 <!-- Why Donate -->
                 <div class="donate-why-card">
-                    <h5><i class="fas fa-heart"></i> Why Donate?</h5>
+                    <h3><i class="fas fa-heart"></i> Why Donate?</h3>
                     <div class="donate-why-list">
                         <div class="donate-why-item">
                             <div class="donate-why-icon">
@@ -277,7 +277,7 @@ include '../app/views/layout/header.php';
 
                 <!-- Tax Benefits -->
                 <div class="donate-tax-card">
-                    <h5><i class="fas fa-receipt"></i> Tax Benefits</h5>
+                    <h3><i class="fas fa-receipt"></i> Tax Benefits</h3>
                     <p>All donations are eligible for tax
                         deduction under Section 80G of the Income Tax Act. You will receive an official receipt via
                         email.</p>

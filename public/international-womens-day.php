@@ -16,11 +16,11 @@ include '../app/views/layout/header.php';
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h2>International Women's Day</h2>
+                <h1>International Women's Day</h1>
             </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
-                <a href="<?= url('causes.php') ?>">Causes</a>
+                <a href="<?= url('event.php') ?>">Events</a>
                 <a href="<?= url('international-womens-day.php') ?>">International Women's Day</a>
             </div>
         </div>
@@ -49,11 +49,11 @@ include '../app/views/layout/header.php';
                     <span>Celebration & Honour</span>
                 </div>
 
-                <h1 class="iwd-hero-title">
+                <h2 class="iwd-hero-title">
                     International
                     <span class="iwd-text-gradient">Women's Day</span>
                     Celebration
-                </h1>
+                </h2>
             </div>
             <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
                 <div class="iwd-hero-content">
@@ -66,7 +66,7 @@ include '../app/views/layout/header.php';
                             </div>
                         </div>
                         <div class="iwd-event-theme">
-                            <h4>"Inspire Inclusion"</h4>
+                            <h3>"Inspire Inclusion"</h3>
                             <p>Celebrating women's strength, resilience, and achievements</p>
                         </div>
                     </div>
@@ -82,28 +82,32 @@ include '../app/views/layout/header.php';
                         <div class="iwd-stat-item">
                             <div class="iwd-stat-icon"><i class="fas fa-users"></i></div>
                             <div class="iwd-stat-content">
-                                <div class="iwd-stat-number" data-counter="300" data-counter-suffix="+" data-counter-locale>0</div>
+                                <div class="iwd-stat-number" data-counter="300" data-counter-suffix="+"
+                                    data-counter-locale>0</div>
                                 <div class="iwd-stat-label">Attendees</div>
                             </div>
                         </div>
                         <div class="iwd-stat-item">
                             <div class="iwd-stat-icon"><i class="fas fa-microphone"></i></div>
                             <div class="iwd-stat-content">
-                                <div class="iwd-stat-number" data-counter="10" data-counter-suffix="+" data-counter-locale>0</div>
+                                <div class="iwd-stat-number" data-counter="10" data-counter-suffix="+"
+                                    data-counter-locale>0</div>
                                 <div class="iwd-stat-label">Speakers</div>
                             </div>
                         </div>
                         <div class="iwd-stat-item">
                             <div class="iwd-stat-icon"><i class="fas fa-chalkboard"></i></div>
                             <div class="iwd-stat-content">
-                                <div class="iwd-stat-number" data-counter="5" data-counter-suffix="+" data-counter-locale>0</div>
+                                <div class="iwd-stat-number" data-counter="5" data-counter-suffix="+"
+                                    data-counter-locale>0</div>
                                 <div class="iwd-stat-label">Workshops</div>
                             </div>
                         </div>
                         <div class="iwd-stat-item">
                             <div class="iwd-stat-icon"><i class="fas fa-trophy"></i></div>
                             <div class="iwd-stat-content">
-                                <div class="iwd-stat-number" data-counter="15" data-counter-suffix="+" data-counter-locale>0</div>
+                                <div class="iwd-stat-number" data-counter="15" data-counter-suffix="+"
+                                    data-counter-locale>0</div>
                                 <div class="iwd-stat-label">Awards Given</div>
                             </div>
                         </div>
@@ -179,15 +183,18 @@ include '../app/views/layout/header.php';
         ?>
         <div class="iwd-gallery-grid gallery-grid">
             <?php foreach ($iwdImages as $i => $img): ?>
-            <div class="gallery-card" data-aos="fade-up" data-aos-delay="<?= ($i % 3) * 50 ?>" onclick="pageLb.open(<?= $i ?>)">
+            <div class="gallery-card" data-aos="fade-up" data-aos-delay="<?= ($i % 3) * 50 ?>"
+                onclick="pageLb.open(<?= $i ?>)">
                 <div class="gc-img-wrap">
                     <img class="gc-img" src="<?= url('assets/images/woman-day/' . $img['file']) ?>"
                         alt="<?= htmlspecialchars($img['title']) ?>">
                     <div class="gc-badge">Women's Day</div>
-                    <div class="gc-overlay"><div class="gc-search-icon"><i class="fas fa-search-plus"></i></div></div>
+                    <div class="gc-overlay">
+                        <div class="gc-search-icon"><i class="fas fa-search-plus"></i></div>
+                    </div>
                 </div>
                 <div class="gc-caption">
-                    <h6><?= htmlspecialchars($img['title']) ?></h6>
+                    <h3><?= htmlspecialchars($img['title']) ?></h3>
                 </div>
             </div>
             <?php endforeach; ?>
@@ -209,7 +216,10 @@ include '../app/views/layout/header.php';
 <!-- JavaScript -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    window.pageLb = initLightbox('iwdLightbox', <?= json_encode(array_map(function ($img) { return ['src' => url('assets/images/woman-day/' . $img['file']), 'title' => $img['title']]; }, $iwdImages)) ?>);
+    window.pageLb = initLightbox('iwdLightbox',
+        <?= json_encode(array_map(function ($img) {
+            return ['src' => url('assets/images/woman-day/' . $img['file']), 'title' => $img['title']]; }, $iwdImages)) ?>
+    );
     initFloatingAnimation('.iwd-floating-lotus', 'iwdFloatLotus');
 });
 </script>
