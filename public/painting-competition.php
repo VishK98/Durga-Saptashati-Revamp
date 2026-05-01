@@ -16,7 +16,7 @@ include '../app/views/layout/header.php';
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h1>Painting Competition</h1>
+                <p class="page-header-title">Painting Competition</p>
             </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
@@ -49,11 +49,11 @@ include '../app/views/layout/header.php';
                     <span>Arts & Creativity</span>
                 </div>
 
-                <h2 class="paint-hero-title">
+                <h1 class="paint-hero-title">
                     Painting
                     <span class="paint-text-gradient">Competition</span>
                     for Children
-                </h2>
+                </h1>
             </div>
             <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
                 <div class="paint-hero-content">

@@ -13,7 +13,7 @@ include '../app/views/layout/header.php';
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h1>National Core Council Meeting</h1>
+                <p class="page-header-title">National Core Council Meeting</p>
             </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
@@ -52,10 +52,10 @@ include '../app/views/layout/header.php';
                         <span>Governance & Strategy</span>
                     </div>
 
-                    <h2 class="nccm-title">
+                    <h1 class="nccm-title">
                         National Core Council
                         <span class="nccm-gradient">Meeting</span>
-                    </h2>
+                    </h1>
 
                     <p class="nccm-desc">
                         A two-day strategic meeting bringing together core council members from across the nation

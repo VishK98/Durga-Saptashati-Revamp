@@ -16,7 +16,7 @@ include '../app/views/layout/header.php';
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h1>International Yoga Day</h1>
+                <p class="page-header-title">International Yoga Day</p>
             </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
@@ -49,11 +49,11 @@ include '../app/views/layout/header.php';
                     <span>Inner Peace & Wellness</span>
                 </div>
 
-                <h2 class="hero-title-yoga">
+                <h1 class="hero-title-yoga">
                     International
                     <span class="text-gradient-yoga">Yoga Day</span>
                     Celebration
-                </h2>
+                </h1>
             </div>
             <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
                 <div class="hero-content-yoga">

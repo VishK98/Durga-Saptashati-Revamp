@@ -13,7 +13,7 @@ include '../app/views/layout/header.php';
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h1>About Us</h1>
+                <p class="page-header-title">About Us</p>
             </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
@@ -64,8 +64,8 @@ include '../app/views/layout/header.php';
                 </div>
             </div>
             <div class="col-lg-6 d-flex flex-column" data-aos="fade-left" data-aos-duration="1000">
-                <h2 class="text-uppercase abt-foundation-heading">
-                    Durga Saptashati Foundation</h2>
+                <h1 class="text-uppercase abt-foundation-heading">
+                    Durga Saptashati Foundation</h1>
                 <p class="abt-foundation-tagline">
                     Empowerment | Education | Equality | Empathy</p>
 

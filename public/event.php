@@ -25,7 +25,7 @@ $events = [
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h1>Events & Activities</h1>
+                <p class="page-header-title">Events & Activities</p>
             </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
@@ -40,7 +40,7 @@ $events = [
     <div class="causes-hero-overlay"></div>
     <div class="container text-center" data-aos="fade-up">
         <span class="hero-label">What's Happening</span>
-        <h2>Upcoming & Past Events</h2>
+        <h1>Upcoming & Past Events</h1>
         <p>Join our spiritual celebrations, community programmes, and social service events that bring people together
             and create lasting impact.</p>
         <div class="stat-bar" data-aos="fade-up" data-aos-delay="150">

@@ -13,7 +13,7 @@ include '../app/views/layout/header.php';
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h1>Make a Donation</h1>
+                <p class="page-header-title">Make a Donation</p>
             </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
@@ -30,7 +30,7 @@ include '../app/views/layout/header.php';
         <div class="text-center mb-5" data-aos="fade-up">
             <h6 class="text-uppercase mb-2 donate-subtitle">Support Our
                 Mission</h6>
-            <h2 class="donate-title">Make Donation</h2>
+            <h1 class="donate-title">Make Donation</h1>
             <p class="donate-desc">Your generous donation helps us provide education,
                 healthcare, and empowerment programs to those who need it most. Every rupee counts.</p>
         </div>

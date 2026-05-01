@@ -16,7 +16,7 @@ include '../app/views/layout/header.php';
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h1>International Women's Day</h1>
+                <p class="page-header-title">International Women's Day</p>
             </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
@@ -49,11 +49,11 @@ include '../app/views/layout/header.php';
                     <span>Celebration & Honour</span>
                 </div>
 
-                <h2 class="iwd-hero-title">
+                <h1 class="iwd-hero-title">
                     International
                     <span class="iwd-text-gradient">Women's Day</span>
                     Celebration
-                </h2>
+                </h1>
             </div>
             <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
                 <div class="iwd-hero-content">

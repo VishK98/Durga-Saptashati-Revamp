@@ -12,7 +12,7 @@ include '../app/views/layout/header.php';
 <div class="page-header deco-page-header">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12"><h1>Decorative Cover Making</h1></div>
+            <div class="col-12"><p class="page-header-title">Decorative Cover Making</p></div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
                 <a href="<?= url('causes.php') ?>">Causes</a>
@@ -40,7 +40,7 @@ include '../app/views/layout/header.php';
                     <i class="fas fa-cut"></i>
                     <span>Creative Skills</span>
                 </div>
-                <h2 class="deco-title">Decorative Cover <span class="deco-gradient">Making</span></h2>
+                <h1 class="deco-title">Decorative Cover <span class="deco-gradient">Making</span></h1>
                 <p class="deco-desc">Empowering women with creative skills through handcrafted decorative covers — building confidence, artistry, and sustainable income opportunities.</p>
             </div>
 

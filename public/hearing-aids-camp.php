@@ -12,7 +12,7 @@ include '../app/views/layout/header.php';
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h1>Hearing Aids Camp</h1>
+                <p class="page-header-title">Hearing Aids Camp</p>
             </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
@@ -43,11 +43,11 @@ include '../app/views/layout/header.php';
                     <i class="fas fa-assistive-listening-systems"></i>
                     <span>Community Healthcare</span>
                 </div>
-                <h2 class="hero-title-yoga">
+                <h1 class="hero-title-yoga">
                     Hearing Aids
                     <span class="text-gradient-yoga">Distribution</span>
                     Camp
-                </h2>
+                </h1>
             </div>
             <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
                 <div class="hero-content-yoga">

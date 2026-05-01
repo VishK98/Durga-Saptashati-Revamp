@@ -23,7 +23,7 @@ try {
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h1>Captured Moments</h1>
+                <p class="page-header-title">Captured Moments</p>
             </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
@@ -37,7 +37,7 @@ try {
     <div class="container">
         <div class="text-center mb-4" data-aos="fade-up">
             <h6 class="text-uppercase mb-2 eg-section-subtitle">Our Gallery</h6>
-            <h2 class="eg-section-title">Moments That Matter</h2>
+            <h1 class="eg-section-title">Moments That Matter</h1>
             <p class="eg-section-desc">Browse through photos from our events, community
                 programs, and initiatives that are making a difference.</p>
         </div>

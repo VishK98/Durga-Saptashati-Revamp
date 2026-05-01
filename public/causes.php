@@ -24,7 +24,7 @@ $causes = [
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h1>Our Causes</h1>
+                <p class="page-header-title">Our Causes</p>
             </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
@@ -39,7 +39,7 @@ $causes = [
     <div class="causes-hero-overlay"></div>
     <div class="container text-center" data-aos="fade-up">
         <span class="hero-label">What We Do</span>
-        <h2>Transforming Lives, One Cause at a Time</h2>
+        <h1>Transforming Lives, One Cause at a Time</h1>
         <p>Our causes span education, empowerment, livelihood, and cultural preservation — each one creating lasting
             impact in communities across India.</p>
         <div class="stat-bar" data-aos="fade-up" data-aos-delay="150">

@@ -12,7 +12,7 @@ include '../app/views/layout/header.php';
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h1>Investors & Transparency</h1>
+                <p class="page-header-title">Investors & Transparency</p>
             </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
@@ -28,8 +28,8 @@ include '../app/views/layout/header.php';
         <div class="text-center mb-5" data-aos="fade-up">
             <h6 class="text-uppercase mb-2" style="color:#f26522;letter-spacing:3px;font-weight:600;">Why Partner With
                 Us</h6>
-            <h2 style="color:#1a1b2e;font-weight:800;">Your Investment, <span style="color:#f26522;">Our
-                    Accountability</span></h2>
+            <h1 style="color:#1a1b2e;font-weight:800;">Your Investment, <span style="color:#f26522;">Our
+                    Accountability</span></h1>
             <p style="color:#888;max-width:550px;margin:10px auto 0;font-size:0.92rem;">We ensure every rupee is
                 accounted for and creates maximum social impact.</p>
         </div>

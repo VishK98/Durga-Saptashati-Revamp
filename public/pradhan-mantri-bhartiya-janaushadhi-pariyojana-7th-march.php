@@ -13,7 +13,7 @@ include '../app/views/layout/header.php';
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h1>Jan Aushadhi Diwas 2023</h1>
+                <p class="page-header-title">Jan Aushadhi Diwas 2023</p>
             </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
@@ -62,11 +62,11 @@ include '../app/views/layout/header.php';
                         <span>Healthcare Awareness</span>
                     </div>
 
-                    <h2 class="ja-title">
+                    <h1 class="ja-title">
                         Pradhan Mantri Bhartiya
                         <span class="ja-gradient">Janaushadhi</span>
                         Pariyojana
-                    </h2>
+                    </h1>
                     <h3 class="ja-subtitle">Jan Aushadhi Diwas 2023</h3>
 
                     <p class="ja-desc">

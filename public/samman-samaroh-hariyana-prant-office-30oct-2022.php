@@ -12,7 +12,7 @@ include '../app/views/layout/header.php';
 <div class="page-header ss-page-header">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12"><h1>सम्मान समारोह</h1></div>
+            <div class="col-12"><p class="page-header-title">सम्मान समारोह</p></div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
                 <a href="<?= url('causes.php') ?>">Causes</a>
@@ -32,7 +32,7 @@ include '../app/views/layout/header.php';
                 <i class="fas fa-award"></i>
                 <span>सम्मान एवं पुरस्कार</span>
             </div>
-            <h2 class="ss-title">सम्मान समारोह</h2>
+            <h1 class="ss-title">सम्मान समारोह</h1>
             <h3 class="ss-venue">हरियाणा प्रान्त कार्यालय | 30 October 2022</h3>
         </div>
     </div>

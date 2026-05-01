@@ -16,7 +16,7 @@ include '../app/views/layout/header.php';
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h1>No People Hungry</h1>
+                <p class="page-header-title">No People Hungry</p>
             </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
@@ -43,11 +43,11 @@ include '../app/views/layout/header.php';
                     <span>Food Security</span>
                 </div>
 
-                <h2 class="hunger-hero-title">
+                <h1 class="hunger-hero-title">
                     No People
                     <span class="hunger-highlight">Hungry</span>
                     Campaign
-                </h2>
+                </h1>
 
                 <p class="hunger-hero-desc">
                     Join our mission to eradicate hunger from our communities. Through dedicated food drives,

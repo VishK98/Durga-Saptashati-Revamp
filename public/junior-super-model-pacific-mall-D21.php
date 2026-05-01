@@ -12,7 +12,7 @@ include '../app/views/layout/header.php';
 <div class="page-header jsm-page-header">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12"><h1>Junior Super Model</h1></div>
+            <div class="col-12"><p class="page-header-title">Junior Super Model</p></div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
                 <a href="<?= url('causes.php') ?>">Causes</a>
@@ -38,10 +38,10 @@ include '../app/views/layout/header.php';
                         <span>Talent & Confidence</span>
                     </div>
 
-                    <h2 class="jsm-title">
+                    <h1 class="jsm-title">
                         Junior Super
                         <span class="jsm-gradient">Model</span>
-                    </h2>
+                    </h1>
                     <h3 class="jsm-venue">Pacific Mall D21</h3>
 
                     <p class="jsm-desc">

@@ -13,7 +13,7 @@ include '../app/views/layout/header.php';
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h1>Contact Us</h1>
+                <p class="page-header-title">Contact Us</p>
             </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
@@ -29,7 +29,7 @@ include '../app/views/layout/header.php';
     <div class="container">
         <div class="text-center mb-5">
             <h6 class="text-uppercase mb-2" style="color:#f26522;letter-spacing:3px;font-weight:600;">Get In Touch</h6>
-            <h2 style="color:#1a1b2e;font-weight:700;">We'd Love to Hear From You</h2>
+            <h1 style="color:#1a1b2e;font-weight:700;">We'd Love to Hear From You</h1>
             <p style="color:#888;max-width:600px;margin:10px auto 0;">Have a question or want to get involved? Reach out
                 to us and we'll respond as soon as possible.</p>
         </div>

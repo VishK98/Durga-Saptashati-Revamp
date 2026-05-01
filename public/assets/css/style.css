@@ -260,7 +260,8 @@ a:focus {
 
 
 .page-header h1,
-.page-header h2 {
+.page-header h2,
+.page-header .page-header-title {
   position: relative;
   color: #f26522;
   font-size: 60px;
@@ -270,7 +271,8 @@ a:focus {
 }
 
 .page-header h1::after,
-.page-header h2::after {
+.page-header h2::after,
+.page-header .page-header-title::after {
   position: absolute;
   content: "";
   width: 100px;
@@ -312,7 +314,8 @@ a:focus {
   }
 
   .page-header h1,
-  .page-header h2 {
+  .page-header h2,
+  .page-header .page-header-title {
     font-size: 45px;
   }
 
@@ -327,7 +330,8 @@ a:focus {
   }
 
   .page-header h1,
-  .page-header h2 {
+  .page-header h2,
+  .page-header .page-header-title {
     font-size: 35px;
   }
 

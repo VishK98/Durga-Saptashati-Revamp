@@ -14,7 +14,7 @@ include '../app/views/layout/header.php';
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h1>Livelihood</h1>
+                <p class="page-header-title">Livelihood</p>
             </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
@@ -36,9 +36,9 @@ include '../app/views/layout/header.php';
                     <span>Employment & Skills</span>
                 </div>
 
-                <h2 class="lv-title">
+                <h1 class="lv-title">
                     Livelihood In<span class="lv-gradient"> Action</span>
-                </h2>
+                </h1>
 
                 <p class="lv-desc">
                     Our Livelihood Programme empowers individuals from underprivileged communities with

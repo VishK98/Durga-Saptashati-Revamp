@@ -34,7 +34,7 @@ try {
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h1>Become a Member</h1>
+                <p class="page-header-title">Become a Member</p>
             </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
@@ -48,7 +48,7 @@ try {
     <div class="container">
         <div class="text-center mb-5" data-aos="fade-up">
             <h6 class="mbr-section-label">Become a Member</h6>
-            <h2 class="mbr-section-heading">Support Our Mission, Shape the Future</h2>
+            <h1 class="mbr-section-heading">Support Our Mission, Shape the Future</h1>
             <p class="mbr-section-desc">Join Durga Saptashati Foundation to support women, educate children, and uplift
                 communities—creating lasting change.</p>
         </div>

@@ -12,7 +12,7 @@ include '../app/views/layout/header.php';
 <div class="page-header flood-page-header">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12"><h1>Flood Relief Campaign</h1></div>
+            <div class="col-12"><p class="page-header-title">Flood Relief Campaign</p></div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
                 <a href="<?= url('causes.php') ?>">Causes</a>
@@ -35,9 +35,9 @@ include '../app/views/layout/header.php';
                         <span>Emergency Relief</span>
                     </div>
 
-                    <h2 class="frc-title">
+                    <h1 class="frc-title">
                         Flood Relief <span class="frc-gradient">Campaign</span>
-                    </h2>
+                    </h1>
 
                     <p class="frc-desc">
                         When floods devastate communities, we stand with victims — providing emergency food,

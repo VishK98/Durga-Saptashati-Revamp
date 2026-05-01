@@ -15,7 +15,7 @@ include '../app/views/layout/header.php';
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h1>Ganpati Celebration</h1>
+                <p class="page-header-title">Ganpati Celebration</p>
             </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
@@ -47,11 +47,11 @@ include '../app/views/layout/header.php';
                         <span>Ganesh Chaturthi Celebration</span>
                     </div>
 
-                    <h2 class="hero-title-ganpati">
+                    <h1 class="hero-title-ganpati">
                         Ganpati Festival
                         <span class="text-gradient-divine">Celebration</span>
                         2025
-                    </h2>
+                    </h1>
 
                     <p class="hero-description-ganpati">
                         Join us in celebrating the divine presence of Lord Ganesha, the remover of obstacles

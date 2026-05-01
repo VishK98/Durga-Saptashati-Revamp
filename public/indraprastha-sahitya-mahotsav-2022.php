@@ -12,7 +12,7 @@ include '../app/views/layout/header.php';
 <div class="page-header indra-page-header">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12"><h1>इंद्रप्रस्थ साहित्य महोत्सव 2022</h1></div>
+            <div class="col-12"><p class="page-header-title">इंद्रप्रस्थ साहित्य महोत्सव 2022</p></div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
                 <a href="<?= url('causes.php') ?>">Causes</a>
@@ -34,11 +34,11 @@ include '../app/views/layout/header.php';
                         <span>साहित्य एवं संस्कृति</span>
                     </div>
 
-                    <h2 class="indra-title">
+                    <h1 class="indra-title">
                         इंद्रप्रस्थ साहित्य
                         <span class="indra-gradient">महोत्सव</span>
                         2022
-                    </h2>
+                    </h1>
 
                     <p class="indra-desc">
                         A grand celebration of Hindi literature, poetry, and cultural heritage — bringing together

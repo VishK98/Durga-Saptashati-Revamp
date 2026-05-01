@@ -16,7 +16,7 @@ include '../app/views/layout/header.php';
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h1>Durga Award</h1>
+                <p class="page-header-title">Durga Award</p>
             </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
@@ -49,11 +49,11 @@ include '../app/views/layout/header.php';
                     <span>Excellence & Recognition</span>
                 </div>
 
-                <h2 class="hero-title-award">
+                <h1 class="hero-title-award">
                     The Prestigious
                     <span class="text-gradient-award">Durga Award</span>
                     Ceremony
-                </h2>
+                </h1>
             </div>
             <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
                 <div class="hero-content-award">

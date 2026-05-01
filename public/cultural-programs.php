@@ -13,7 +13,7 @@ include '../app/views/layout/header.php';
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h1>Cultural Programs</h1>
+                <p class="page-header-title">Cultural Programs</p>
             </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
@@ -59,11 +59,11 @@ include '../app/views/layout/header.php';
                         <span>Heritage & Culture</span>
                     </div>
 
-                    <h2 class="we-hero-title">
+                    <h1 class="we-hero-title">
                         Cultural
                         <span class="we-highlight">Programs</span>
                         & Celebrations
-                    </h2>
+                    </h1>
 
                     <p class="we-hero-desc">
                         Preserving and promoting India's rich cultural heritage through vibrant performances,

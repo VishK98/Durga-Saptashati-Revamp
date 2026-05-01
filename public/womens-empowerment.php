@@ -16,7 +16,7 @@ include '../app/views/layout/header.php';
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h1>Women's Empowerment</h1>
+                <p class="page-header-title">Women's Empowerment</p>
             </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
@@ -67,10 +67,10 @@ include '../app/views/layout/header.php';
                         <span>Empowerment & Equality</span>
                     </div>
 
-                    <h2 class="we-hero-title">
+                    <h1 class="we-hero-title">
                         Women's
                         <span class="we-highlight">Empowerment</span>
-                    </h2>
+                    </h1>
 
                     <p class="we-hero-desc">
                         We believe that empowering women is the key to transforming entire communities.

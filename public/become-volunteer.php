@@ -10,7 +10,7 @@ include '../app/views/layout/header.php';
 <div class="page-header">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12"><h1>Become a Volunteer</h1></div>
+            <div class="col-12"><p class="page-header-title">Become a Volunteer</p></div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
                 <a href="<?= url('volunteer.php') ?>">Get Involved</a>
@@ -26,7 +26,7 @@ include '../app/views/layout/header.php';
     <div class="container">
         <div class="text-center mb-5" data-aos="fade-up">
             <h6 class="text-uppercase mb-2" style="color:#f26522;letter-spacing:3px;font-weight:600;">Join Our Team</h6>
-            <h2 style="color:#1a1b2e;font-weight:700;">Make a Difference with Your Time & Skills</h2>
+            <h1 style="color:#1a1b2e;font-weight:700;">Make a Difference with Your Time & Skills</h1>
             <p style="color:#888;max-width:700px;margin:10px auto 0;">Volunteering with Durga Saptashati Foundation is a rewarding way to contribute to society. Whether you have a few hours a week or want to commit long-term, your support can transform lives.</p>
         </div>
 

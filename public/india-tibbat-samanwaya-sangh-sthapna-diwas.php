@@ -13,7 +13,7 @@ include '../app/views/layout/header.php';
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h1>India Tibbat Samanwaya Sangh - Sthapna Diwas</h1>
+                <p class="page-header-title">India Tibbat Samanwaya Sangh - Sthapna Diwas</p>
             </div>
             <div class="col-12">
                 <a href="<?= url('index.php') ?>">Home</a>
@@ -36,9 +36,9 @@ include '../app/views/layout/header.php';
                         <span>Foundation Day Celebration</span>
                     </div>
 
-                    <h2 class="sd-title">
+                    <h1 class="sd-title">
                         भारत-तिब्बत समन्वय संघ स्थापना दिवस एवं G20 देशो पर चर्चा एवं भारत का सांस्कृतिक संदेश
-                    </h2>
+                    </h1>
 
                     <p class="sd-desc">
                         Celebrating the foundation day of India Tibbat Samanwaya Sangh with cultural programmes,
